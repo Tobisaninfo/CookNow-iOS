@@ -7,35 +7,37 @@
 //
 
 import Foundation
-import SwiftClient
 
 class RecipeHandler {
 
     class func getRecipe(id: Int) -> RecipeDetail? {
-        let semaphore = DispatchSemaphore.init(value: 0)
         var recipe: RecipeDetail? = nil
         
-        if let host = Bundle.main.infoDictionary?["Host"] as? String {
-            let client = Client().baseUrl(url: host)
-            client.get(url: "/recipe/\(id)")
-                .end(done: {res in
-                    if (res.basicStatus == .ok) {
-                        if let data = res.text?.data(using: .utf8) {
-                            do {
-                                if let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
-                                    recipe = RecipeDetail.fromJson(jsonData: jsonData)
-                                }
-                            } catch {
-                            }
-                        }
-                    } else {
-                        // Fetch Error
-                    }
-                    semaphore.signal()
-            })
-        }
-        semaphore.wait()
-        
+        HttpUtils.get(url: "/recipe/\(id)", callback: {
+            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? [String:Any] {
+                if let json = jsonData {
+                    recipe = RecipeDetail.fromJson(jsonData: json)
+                }
+            }
+        })
         return recipe
+    }
+    
+    class func getRecipes() -> [RecipeDetail] {
+        var recipes: [RecipeDetail] = []
+        
+        HttpUtils.get(url: "/recipe/", callback: {
+            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? [[String:Any]] {
+                if let json = jsonData {
+                    for item in json {
+                        if let recipe = RecipeDetail.fromJson(jsonData: item) {
+                            recipes.append(recipe)
+                        }
+                    }
+                }
+            }
+        })
+        
+        return recipes
     }
 }

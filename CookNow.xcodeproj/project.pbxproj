@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D63441EE0A44800921E86 /* HttpUtils.swift */; };
+		F6AE62CC1EE0779C00D8E0DF /* RecipeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE62CB1EE0779C00D8E0DF /* RecipeHandler.swift */; };
+		F6AE62D01EE0780D00D8E0DF /* RecipeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE62CF1EE0780D00D8E0DF /* RecipeDetail.swift */; };
+		F6AE62D41EE07CE600D8E0DF /* SwiftClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6AE62D21EE0793900D8E0DF /* SwiftClient.framework */; };
+		F6AE62D51EE07CE600D8E0DF /* SwiftClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F6AE62D21EE0793900D8E0DF /* SwiftClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F6AE62D81EE09B6F00D8E0DF /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE62D71EE09B6F00D8E0DF /* Step.swift */; };
 		F6F1EC7A1EDD7C9B004383D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F1EC791EDD7C9B004383D2 /* AppDelegate.swift */; };
 		F6F1EC7C1EDD7C9B004383D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F1EC7B1EDD7C9B004383D2 /* ViewController.swift */; };
 		F6F1EC7F1EDD7C9B004383D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6F1EC7D1EDD7C9B004383D2 /* Main.storyboard */; };
@@ -34,7 +40,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F6AE62D61EE07CE600D8E0DF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F6AE62D51EE07CE600D8E0DF /* SwiftClient.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		F68D63441EE0A44800921E86 /* HttpUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpUtils.swift; sourceTree = "<group>"; };
+		F6AE62CB1EE0779C00D8E0DF /* RecipeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeHandler.swift; sourceTree = "<group>"; };
+		F6AE62CF1EE0780D00D8E0DF /* RecipeDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDetail.swift; sourceTree = "<group>"; };
+		F6AE62D21EE0793900D8E0DF /* SwiftClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftClient.framework; path = Carthage/Build/iOS/SwiftClient.framework; sourceTree = "<group>"; };
+		F6AE62D71EE09B6F00D8E0DF /* Step.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		F6F1EC761EDD7C9B004383D2 /* CookNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6F1EC791EDD7C9B004383D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6F1EC7B1EDD7C9B004383D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6AE62D41EE07CE600D8E0DF /* SwiftClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,12 +102,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F6AE62CA1EE0778200D8E0DF /* NetworkHandle */ = {
+			isa = PBXGroup;
+			children = (
+				F6AE62CB1EE0779C00D8E0DF /* RecipeHandler.swift */,
+				F68D63441EE0A44800921E86 /* HttpUtils.swift */,
+			);
+			name = NetworkHandle;
+			sourceTree = "<group>";
+		};
+		F6AE62CD1EE077FB00D8E0DF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F6AE62CF1EE0780D00D8E0DF /* RecipeDetail.swift */,
+				F6AE62D71EE09B6F00D8E0DF /* Step.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F6AE62D11EE0792200D8E0DF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F6AE62D21EE0793900D8E0DF /* SwiftClient.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F6F1EC6D1EDD7C9B004383D2 = {
 			isa = PBXGroup;
 			children = (
 				F6F1EC781EDD7C9B004383D2 /* CookNow */,
 				F6F1EC901EDD7C9B004383D2 /* CookNowTests */,
 				F6F1EC9B1EDD7C9B004383D2 /* CookNowUITests */,
+				F6AE62D11EE0792200D8E0DF /* Frameworks */,
 				F6F1EC771EDD7C9B004383D2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,6 +152,8 @@
 		F6F1EC781EDD7C9B004383D2 /* CookNow */ = {
 			isa = PBXGroup;
 			children = (
+				F6AE62CD1EE077FB00D8E0DF /* Model */,
+				F6AE62CA1EE0778200D8E0DF /* NetworkHandle */,
 				F6F1EC791EDD7C9B004383D2 /* AppDelegate.swift */,
 				F6F1EC7B1EDD7C9B004383D2 /* ViewController.swift */,
 				F6F1EC7D1EDD7C9B004383D2 /* Main.storyboard */,
@@ -138,6 +193,7 @@
 				F6F1EC721EDD7C9B004383D2 /* Sources */,
 				F6F1EC731EDD7C9B004383D2 /* Frameworks */,
 				F6F1EC741EDD7C9B004383D2 /* Resources */,
+				F6AE62D61EE07CE600D8E0DF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -265,9 +321,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */,
+				F6AE62CC1EE0779C00D8E0DF /* RecipeHandler.swift in Sources */,
 				F6F1EC7C1EDD7C9B004383D2 /* ViewController.swift in Sources */,
+				F6AE62D01EE0780D00D8E0DF /* RecipeDetail.swift in Sources */,
 				F6F1EC821EDD7C9B004383D2 /* CookNow.xcdatamodeld in Sources */,
 				F6F1EC7A1EDD7C9B004383D2 /* AppDelegate.swift in Sources */,
+				F6AE62D81EE09B6F00D8E0DF /* Step.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +482,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GSS77QYM85;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CookNow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.tobias.CookNow;
@@ -435,6 +499,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GSS77QYM85;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CookNow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.tobias.CookNow;
@@ -520,6 +588,7 @@
 				F6F1ECA31EDD7C9B004383D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F6F1ECA41EDD7C9B004383D2 /* Build configuration list for PBXNativeTarget "CookNowTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +597,7 @@
 				F6F1ECA61EDD7C9B004383D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F6F1ECA71EDD7C9B004383D2 /* Build configuration list for PBXNativeTarget "CookNowUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +606,7 @@
 				F6F1ECA91EDD7C9B004383D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

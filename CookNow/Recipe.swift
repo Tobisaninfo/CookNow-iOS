@@ -13,13 +13,17 @@ class Recipe {
     let name: String
     let description: String
     let steps: [Step]
+    
+    let ingredients: [IngredientUse]
+    
     let time: Int
     let difficulty: Int
     
-    init(name: String, description: String, steps: [Step], time: Int, difficulty: Int) {
+    init(name: String, description: String, steps: [Step], ingredients: [IngredientUse], time: Int, difficulty: Int) {
         self.name = name
         self.description = description
         self.steps = steps
+        self.ingredients = ingredients
         self.time = time
         self.difficulty = difficulty
     }
@@ -43,6 +47,11 @@ class Recipe {
         }
         let steps = Step.formJson(jsonData: stepsData)
         
-        return Recipe(name: name, description: description, steps: steps, time: time, difficulty: difficulty)
+        guard let ingredientData = jsonData["ingredients"] as? [[String:Any]] else {
+            return nil
+        }
+        let ingredientUse = IngredientUse.fromJson(jsonData: ingredientData)
+        
+        return Recipe(name: name, description: description, steps: steps, ingredients: ingredientUse, time: time, difficulty: difficulty)
     }
 }

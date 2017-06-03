@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Ingredient" representedClassName="Ingredient" syncable="YES" codeGenerationType="class">
+    <entity name="IngredientRef" representedClassName="IngredientRef" syncable="YES" codeGenerationType="class">
         <attribute name="ingredientID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="pantry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pantry" inverseName="ingredients" inverseEntity="Pantry" syncable="YES"/>
     </entity>
     <entity name="Pantry" representedClassName="Pantry" syncable="YES" codeGenerationType="class">
-        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="pantry" inverseEntity="Ingredient" syncable="YES"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IngredientRef" inverseName="pantry" inverseEntity="IngredientRef" syncable="YES"/>
     </entity>
     <entity name="Plan" representedClassName="Plan" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -27,7 +27,7 @@
         <relationship name="recipeBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeBook" inverseName="recipes" inverseEntity="RecipeBook" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Ingredient" positionX="9" positionY="90" width="128" height="75"/>
+        <element name="IngredientRef" positionX="9" positionY="90" width="128" height="73"/>
         <element name="Pantry" positionX="0" positionY="81" width="128" height="60"/>
         <element name="Plan" positionX="-9" positionY="72" width="128" height="75"/>
         <element name="Rating" positionX="27" positionY="108" width="128" height="75"/>

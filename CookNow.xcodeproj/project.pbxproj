@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F66F5CE91EE34CB70060491F /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66F5CE81EE34CB70060491F /* Ingredient.swift */; };
+		F66F5CEB1EE34D210060491F /* IngredientUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66F5CEA1EE34D210060491F /* IngredientUse.swift */; };
 		F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D63441EE0A44800921E86 /* HttpUtils.swift */; };
 		F6AE62CC1EE0779C00D8E0DF /* RecipeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE62CB1EE0779C00D8E0DF /* RecipeHandler.swift */; };
 		F6AE62D01EE0780D00D8E0DF /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE62CF1EE0780D00D8E0DF /* Recipe.swift */; };
@@ -55,6 +57,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F66F5CE81EE34CB70060491F /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		F66F5CEA1EE34D210060491F /* IngredientUse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientUse.swift; sourceTree = "<group>"; };
 		F68D63441EE0A44800921E86 /* HttpUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpUtils.swift; sourceTree = "<group>"; };
 		F6AE62CB1EE0779C00D8E0DF /* RecipeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeHandler.swift; sourceTree = "<group>"; };
 		F6AE62CF1EE0780D00D8E0DF /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 			children = (
 				F6AE62CF1EE0780D00D8E0DF /* Recipe.swift */,
 				F6AE62D71EE09B6F00D8E0DF /* Step.swift */,
+				F66F5CE81EE34CB70060491F /* Ingredient.swift */,
+				F66F5CEA1EE34D210060491F /* IngredientUse.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -325,8 +331,10 @@
 				F6AE62CC1EE0779C00D8E0DF /* RecipeHandler.swift in Sources */,
 				F6F1EC7C1EDD7C9B004383D2 /* ViewController.swift in Sources */,
 				F6AE62D01EE0780D00D8E0DF /* Recipe.swift in Sources */,
+				F66F5CE91EE34CB70060491F /* Ingredient.swift in Sources */,
 				F6F1EC821EDD7C9B004383D2 /* CookNow.xcdatamodeld in Sources */,
 				F6F1EC7A1EDD7C9B004383D2 /* AppDelegate.swift in Sources */,
+				F66F5CEB1EE34D210060491F /* IngredientUse.swift in Sources */,
 				F6AE62D81EE09B6F00D8E0DF /* Step.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

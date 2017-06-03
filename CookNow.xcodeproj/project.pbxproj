@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D63441EE0A44800921E86 /* HttpUtils.swift */; };
 		F6AE62CC1EE0779C00D8E0DF /* RecipeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE62CB1EE0779C00D8E0DF /* RecipeHandler.swift */; };
-		F6AE62D01EE0780D00D8E0DF /* RecipeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE62CF1EE0780D00D8E0DF /* RecipeDetail.swift */; };
+		F6AE62D01EE0780D00D8E0DF /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE62CF1EE0780D00D8E0DF /* Recipe.swift */; };
 		F6AE62D41EE07CE600D8E0DF /* SwiftClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6AE62D21EE0793900D8E0DF /* SwiftClient.framework */; };
 		F6AE62D51EE07CE600D8E0DF /* SwiftClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F6AE62D21EE0793900D8E0DF /* SwiftClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F6AE62D81EE09B6F00D8E0DF /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE62D71EE09B6F00D8E0DF /* Step.swift */; };
@@ -57,7 +57,7 @@
 /* Begin PBXFileReference section */
 		F68D63441EE0A44800921E86 /* HttpUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpUtils.swift; sourceTree = "<group>"; };
 		F6AE62CB1EE0779C00D8E0DF /* RecipeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeHandler.swift; sourceTree = "<group>"; };
-		F6AE62CF1EE0780D00D8E0DF /* RecipeDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDetail.swift; sourceTree = "<group>"; };
+		F6AE62CF1EE0780D00D8E0DF /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		F6AE62D21EE0793900D8E0DF /* SwiftClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftClient.framework; path = Carthage/Build/iOS/SwiftClient.framework; sourceTree = "<group>"; };
 		F6AE62D71EE09B6F00D8E0DF /* Step.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		F6F1EC761EDD7C9B004383D2 /* CookNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,7 +114,7 @@
 		F6AE62CD1EE077FB00D8E0DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F6AE62CF1EE0780D00D8E0DF /* RecipeDetail.swift */,
+				F6AE62CF1EE0780D00D8E0DF /* Recipe.swift */,
 				F6AE62D71EE09B6F00D8E0DF /* Step.swift */,
 			);
 			name = Model;
@@ -324,7 +324,7 @@
 				F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */,
 				F6AE62CC1EE0779C00D8E0DF /* RecipeHandler.swift in Sources */,
 				F6F1EC7C1EDD7C9B004383D2 /* ViewController.swift in Sources */,
-				F6AE62D01EE0780D00D8E0DF /* RecipeDetail.swift in Sources */,
+				F6AE62D01EE0780D00D8E0DF /* Recipe.swift in Sources */,
 				F6F1EC821EDD7C9B004383D2 /* CookNow.xcdatamodeld in Sources */,
 				F6F1EC7A1EDD7C9B004383D2 /* AppDelegate.swift in Sources */,
 				F6AE62D81EE09B6F00D8E0DF /* Step.swift in Sources */,

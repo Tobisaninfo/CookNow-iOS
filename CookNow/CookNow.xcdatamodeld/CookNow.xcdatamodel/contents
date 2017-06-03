@@ -15,23 +15,23 @@
         <attribute name="rating" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="recipeID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="Recipe" representedClassName="Recipe" syncable="YES" codeGenerationType="class">
+    <entity name="RecipeBook" representedClassName="RecipeBook" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="recipes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeRef" inverseName="recipeBook" inverseEntity="RecipeRef" syncable="YES"/>
+    </entity>
+    <entity name="RecipeRef" representedClassName="RecipeRef" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="recipeBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeBook" inverseName="recipes" inverseEntity="RecipeBook" syncable="YES"/>
-    </entity>
-    <entity name="RecipeBook" representedClassName="RecipeBook" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="recipes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="recipeBook" inverseEntity="Recipe" syncable="YES"/>
     </entity>
     <elements>
         <element name="Ingredient" positionX="9" positionY="90" width="128" height="75"/>
         <element name="Pantry" positionX="0" positionY="81" width="128" height="60"/>
         <element name="Plan" positionX="-9" positionY="72" width="128" height="75"/>
         <element name="Rating" positionX="27" positionY="108" width="128" height="75"/>
-        <element name="Recipe" positionX="-18" positionY="27" width="128" height="105"/>
+        <element name="RecipeRef" positionX="-18" positionY="27" width="128" height="103"/>
         <element name="RecipeBook" positionX="-45" positionY="0" width="128" height="90"/>
     </elements>
 </model>

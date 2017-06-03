@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RecipeDetail {
+class Recipe {
     
     let name: String
     let description: String
@@ -24,7 +24,7 @@ class RecipeDetail {
         self.difficulty = difficulty
     }
     
-    class func fromJson(jsonData: [String: Any]) -> RecipeDetail? {
+    class func fromJson(jsonData: [String: Any]) -> Recipe? {
         guard let name = jsonData["name"] as? String else {
             return nil
         }
@@ -43,6 +43,6 @@ class RecipeDetail {
         }
         let steps = Step.formJson(jsonData: stepsData)
         
-        return RecipeDetail(name: name, description: description, steps: steps, time: time, difficulty: difficulty)
+        return Recipe(name: name, description: description, steps: steps, time: time, difficulty: difficulty)
     }
 }

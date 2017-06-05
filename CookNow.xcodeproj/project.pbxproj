@@ -10,6 +10,11 @@
 		F60743E01EE4A58C00D1C75C /* IngredientProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */; };
 		F64F26781EE57BFA00711189 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26771EE57BFA00711189 /* Item.swift */; };
 		F64F267A1EE5804B00711189 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26791EE5804B00711189 /* Unit.swift */; };
+		F64F267C1EE5833A00711189 /* IngredientHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F267B1EE5833A00711189 /* IngredientHandler.swift */; };
+		F64F267E1EE583E000711189 /* MarketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F267D1EE583E000711189 /* MarketHandler.swift */; };
+		F64F26821EE5848400711189 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26811EE5848400711189 /* Market.swift */; };
+		F64F26841EE5867B00711189 /* MarketOfferHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26831EE5867B00711189 /* MarketOfferHandler.swift */; };
+		F64F26861EE5869800711189 /* MarketOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26851EE5869800711189 /* MarketOffer.swift */; };
 		F66F5CE91EE34CB70060491F /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66F5CE81EE34CB70060491F /* Ingredient.swift */; };
 		F66F5CEB1EE34D210060491F /* IngredientUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66F5CEA1EE34D210060491F /* IngredientUse.swift */; };
 		F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D63441EE0A44800921E86 /* HttpUtils.swift */; };
@@ -63,6 +68,11 @@
 		F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientProperty.swift; sourceTree = "<group>"; };
 		F64F26771EE57BFA00711189 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F64F26791EE5804B00711189 /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
+		F64F267B1EE5833A00711189 /* IngredientHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientHandler.swift; sourceTree = "<group>"; };
+		F64F267D1EE583E000711189 /* MarketHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketHandler.swift; sourceTree = "<group>"; };
+		F64F26811EE5848400711189 /* Market.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
+		F64F26831EE5867B00711189 /* MarketOfferHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketOfferHandler.swift; sourceTree = "<group>"; };
+		F64F26851EE5869800711189 /* MarketOffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketOffer.swift; sourceTree = "<group>"; };
 		F66F5CE81EE34CB70060491F /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		F66F5CEA1EE34D210060491F /* IngredientUse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientUse.swift; sourceTree = "<group>"; };
 		F68D63441EE0A44800921E86 /* HttpUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpUtils.swift; sourceTree = "<group>"; };
@@ -112,11 +122,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F64F267F1EE5844600711189 /* Ingredient */ = {
+			isa = PBXGroup;
+			children = (
+				F66F5CE81EE34CB70060491F /* Ingredient.swift */,
+				F66F5CEA1EE34D210060491F /* IngredientUse.swift */,
+				F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */,
+				F64F26791EE5804B00711189 /* Unit.swift */,
+			);
+			name = Ingredient;
+			sourceTree = "<group>";
+		};
+		F64F26801EE5845B00711189 /* Market */ = {
+			isa = PBXGroup;
+			children = (
+				F64F26811EE5848400711189 /* Market.swift */,
+				F64F26851EE5869800711189 /* MarketOffer.swift */,
+			);
+			name = Market;
+			sourceTree = "<group>";
+		};
 		F6AE62CA1EE0778200D8E0DF /* NetworkHandle */ = {
 			isa = PBXGroup;
 			children = (
-				F6AE62CB1EE0779C00D8E0DF /* RecipeHandler.swift */,
 				F68D63441EE0A44800921E86 /* HttpUtils.swift */,
+				F64F267B1EE5833A00711189 /* IngredientHandler.swift */,
+				F64F267D1EE583E000711189 /* MarketHandler.swift */,
+				F6AE62CB1EE0779C00D8E0DF /* RecipeHandler.swift */,
+				F64F26831EE5867B00711189 /* MarketOfferHandler.swift */,
 			);
 			name = NetworkHandle;
 			sourceTree = "<group>";
@@ -124,13 +157,11 @@
 		F6AE62CD1EE077FB00D8E0DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F64F267F1EE5844600711189 /* Ingredient */,
+				F64F26801EE5845B00711189 /* Market */,
+				F64F26771EE57BFA00711189 /* Item.swift */,
 				F6AE62CF1EE0780D00D8E0DF /* Recipe.swift */,
 				F6AE62D71EE09B6F00D8E0DF /* Step.swift */,
-				F66F5CE81EE34CB70060491F /* Ingredient.swift */,
-				F66F5CEA1EE34D210060491F /* IngredientUse.swift */,
-				F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */,
-				F64F26771EE57BFA00711189 /* Item.swift */,
-				F64F26791EE5804B00711189 /* Unit.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -336,7 +367,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F64F267E1EE583E000711189 /* MarketHandler.swift in Sources */,
 				F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */,
+				F64F26841EE5867B00711189 /* MarketOfferHandler.swift in Sources */,
 				F6AE62CC1EE0779C00D8E0DF /* RecipeHandler.swift in Sources */,
 				F6F1EC7C1EDD7C9B004383D2 /* ViewController.swift in Sources */,
 				F6AE62D01EE0780D00D8E0DF /* Recipe.swift in Sources */,
@@ -345,9 +378,12 @@
 				F64F26781EE57BFA00711189 /* Item.swift in Sources */,
 				F6F1EC7A1EDD7C9B004383D2 /* AppDelegate.swift in Sources */,
 				F66F5CEB1EE34D210060491F /* IngredientUse.swift in Sources */,
+				F64F26861EE5869800711189 /* MarketOffer.swift in Sources */,
+				F64F267C1EE5833A00711189 /* IngredientHandler.swift in Sources */,
 				F64F267A1EE5804B00711189 /* Unit.swift in Sources */,
 				F6AE62D81EE09B6F00D8E0DF /* Step.swift in Sources */,
 				F60743E01EE4A58C00D1C75C /* IngredientProperty.swift in Sources */,
+				F64F26821EE5848400711189 /* Market.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

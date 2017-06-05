@@ -12,7 +12,7 @@ enum IngredientProperty : Int {
     case Vegan = 1
     case Vegetarian
     
-    static func fromJson(jsonData: [String:Any]) -> IngredientProperty? {
+    static func fromJson(jsonData: JsonObject) -> IngredientProperty? {
         guard let id = jsonData["id"] as? Int else {
             return nil
         }

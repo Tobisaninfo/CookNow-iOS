@@ -31,7 +31,7 @@ class Recipe {
         self.difficulty = difficulty
     }
     
-    class func fromJson(jsonData: [String: Any]) -> Recipe? {
+    class func fromJson(jsonData: JsonObject) -> Recipe? {
         // Base Data
         guard let name = jsonData["name"] as? String else {
             return nil

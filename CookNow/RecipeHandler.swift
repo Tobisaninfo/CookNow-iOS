@@ -10,7 +10,7 @@ import Foundation
 
 class RecipeHandler {
 
-    class func getRecipe(id: Int) -> Recipe? {
+    class func get(id: Int) -> Recipe? {
         var recipe: Recipe? = nil
         
         HttpUtils.get(url: "/recipe/\(id)", callback: {
@@ -23,7 +23,7 @@ class RecipeHandler {
         return recipe
     }
     
-    class func getRecipes() -> [Recipe] {
+    class func list() -> [Recipe] {
         var recipes: [Recipe] = []
         
         HttpUtils.get(url: "/recipe/", callback: {

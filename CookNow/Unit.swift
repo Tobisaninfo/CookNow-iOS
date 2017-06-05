@@ -18,7 +18,7 @@ enum Unit: Int {
     case TL
     case Ohne
     
-    static func fromJson(jsonData: [String:Any]) -> Unit? {
+    static func fromJson(jsonData: JsonObject) -> Unit? {
         guard let id = jsonData["id"] as? Int else {
             return nil
         }

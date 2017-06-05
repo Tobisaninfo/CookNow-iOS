@@ -1,5 +1,5 @@
 //
-//  Item.swift
+//  Market.swift
 //  CookNow
 //
 //  Created by Tobias on 05.06.17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Item {
+class Market {
     let id: Int
     let name: String
     
@@ -17,13 +17,13 @@ class Item {
         self.name = name
     }
     
-    class func fromJson(jsonData: JsonObject) -> Item? {
+    class func fromJson(jsonData: JsonObject) -> Market? {
         guard let name = jsonData["name"] as? String else {
             return nil
         }
         guard let id = jsonData["id"] as? Int else {
             return nil
         }
-        return Item(id: id, name: name)
+        return Market(id: id, name: name)
     }
 }

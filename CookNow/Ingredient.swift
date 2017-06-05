@@ -24,7 +24,7 @@ class Ingredient {
     
     private static var cache: [Int: Ingredient] = [:]
     
-    class func fromJson(jsonData: [String: Any]) -> Ingredient? {
+    class func fromJson(jsonData: JsonObject) -> Ingredient? {
         guard let id = jsonData["id"] as? Int else {
             return nil
         }

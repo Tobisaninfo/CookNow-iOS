@@ -17,7 +17,7 @@ class IngredientUse {
         self.amount = amount
     }
     
-    class func fromJson(jsonData: [String:Any]) -> IngredientUse? {
+    class func fromJson(jsonData: JsonObject) -> IngredientUse? {
         guard let amount = jsonData["amount"] as? Double else {
             return nil
         }

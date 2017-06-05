@@ -20,7 +20,7 @@ class Step {
         self.content = content
     }
     
-    class func formJson(jsonData: [String:Any]) -> Step? {
+    class func formJson(jsonData: JsonObject) -> Step? {
         guard let id = jsonData["id"] as? Int else {
             return nil
         }

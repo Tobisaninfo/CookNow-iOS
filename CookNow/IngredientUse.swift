@@ -21,7 +21,7 @@ class IngredientUse {
         guard let amount = jsonData["amount"] as? Double else {
             return nil
         }
-        guard let ingredientData = jsonData["ingredient"] as? [String:Any] else {
+        guard let ingredientData = jsonData["ingredient"] as? JsonObject else {
             return nil
         }
         guard let ingredient = Ingredient.fromJson(jsonData: ingredientData) else {

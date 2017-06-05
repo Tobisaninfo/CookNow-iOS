@@ -47,7 +47,7 @@ class Recipe {
         }
         
         // Steps
-        guard let stepsData = jsonData["steps"] as? [[String:Any]] else {
+        guard let stepsData = jsonData["steps"] as? JsonArray else {
             return nil
         }
         var steps: [Step] = []
@@ -60,7 +60,7 @@ class Recipe {
         steps.sort {$0.order < $1.order }
         
         // Items
-        guard let itemsData = jsonData["items"] as? [[String:Any]] else {
+        guard let itemsData = jsonData["items"] as? JsonArray else {
             return nil
         }
         var items: [Item] = []
@@ -71,7 +71,7 @@ class Recipe {
         }
         
         // Ingredients
-        guard let ingredientData = jsonData["ingredients"] as? [[String:Any]] else {
+        guard let ingredientData = jsonData["ingredients"] as? JsonArray else {
             return nil
         }
         var ingredients: [IngredientUse] = []

@@ -9,6 +9,9 @@
 import Foundation
 import SwiftClient
 
+typealias JsonObject = [String:Any]
+typealias JsonArray = [[String:Any]]
+
 class HttpUtils {
     
     class func get(url: String, callback: @escaping (Data) -> Void, error: ((Response.BasicResponseType) -> Void)? = nil) {

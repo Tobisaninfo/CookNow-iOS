@@ -20,18 +20,16 @@ class Step {
         self.content = content
     }
     
-    class func formJson(jsonData: [[String:Any]]) -> [Step] {
-        var steps: [Step] = []
-        for data in jsonData {
-            if let index = data["id"] as? Int {
-                if let order = data["order"] as? Int {
-                    if let content = data["content"] as? String {
-                        steps.append(Step(id: index, order: order, content: content))
-                    }
-                }
-            }
+    class func formJson(jsonData: [String:Any]) -> Step? {
+        guard let id = jsonData["id"] as? Int else {
+            return nil
         }
-        steps.sort {$0.order < $1.order }
-        return steps
+        guard let order = jsonData["order"] as? Int else {
+            return nil
+        }
+        guard let content = jsonData["content"] as? String else {
+            return nil
+        }
+        return Step(id: id, order: order, content: content)
     }
 }

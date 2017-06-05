@@ -17,17 +17,16 @@ class IngredientUse {
         self.amount = amount
     }
     
-    class func fromJson(jsonData: [[String:Any]]) -> [IngredientUse] {
-        var ingredients: [IngredientUse] = []
-        for data in jsonData {
-            if let amount = data["amount"] as? Double {
-                if let ingredientData = data["ingredient"] as? [String:Any] {
-                    if let ingredient = Ingredient.fromJson(jsonData: ingredientData) {
-                        ingredients.append(IngredientUse(ingredient: ingredient, amount: amount))
-                    }
-                }
-            }
+    class func fromJson(jsonData: [String:Any]) -> IngredientUse? {
+        guard let amount = jsonData["amount"] as? Double else {
+            return nil
         }
-        return ingredients
+        guard let ingredientData = jsonData["ingredient"] as? [String:Any] else {
+            return nil
+        }
+        guard let ingredient = Ingredient.fromJson(jsonData: ingredientData) else {
+            return nil
+        }
+        return IngredientUse(ingredient: ingredient, amount: amount)
     }
 }

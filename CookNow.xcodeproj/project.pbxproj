@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F60743E01EE4A58C00D1C75C /* IngredientProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */; };
+		F64F26781EE57BFA00711189 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26771EE57BFA00711189 /* Item.swift */; };
+		F64F267A1EE5804B00711189 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26791EE5804B00711189 /* Unit.swift */; };
 		F66F5CE91EE34CB70060491F /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66F5CE81EE34CB70060491F /* Ingredient.swift */; };
 		F66F5CEB1EE34D210060491F /* IngredientUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66F5CEA1EE34D210060491F /* IngredientUse.swift */; };
 		F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D63441EE0A44800921E86 /* HttpUtils.swift */; };
@@ -59,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientProperty.swift; sourceTree = "<group>"; };
+		F64F26771EE57BFA00711189 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		F64F26791EE5804B00711189 /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		F66F5CE81EE34CB70060491F /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		F66F5CEA1EE34D210060491F /* IngredientUse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientUse.swift; sourceTree = "<group>"; };
 		F68D63441EE0A44800921E86 /* HttpUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpUtils.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 				F66F5CE81EE34CB70060491F /* Ingredient.swift */,
 				F66F5CEA1EE34D210060491F /* IngredientUse.swift */,
 				F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */,
+				F64F26771EE57BFA00711189 /* Item.swift */,
+				F64F26791EE5804B00711189 /* Unit.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -336,8 +342,10 @@
 				F6AE62D01EE0780D00D8E0DF /* Recipe.swift in Sources */,
 				F66F5CE91EE34CB70060491F /* Ingredient.swift in Sources */,
 				F6F1EC821EDD7C9B004383D2 /* CookNow.xcdatamodeld in Sources */,
+				F64F26781EE57BFA00711189 /* Item.swift in Sources */,
 				F6F1EC7A1EDD7C9B004383D2 /* AppDelegate.swift in Sources */,
 				F66F5CEB1EE34D210060491F /* IngredientUse.swift in Sources */,
+				F64F267A1EE5804B00711189 /* Unit.swift in Sources */,
 				F6AE62D81EE09B6F00D8E0DF /* Step.swift in Sources */,
 				F60743E01EE4A58C00D1C75C /* IngredientProperty.swift in Sources */,
 			);

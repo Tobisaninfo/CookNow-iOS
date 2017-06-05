@@ -11,11 +11,14 @@ import Foundation
 class Ingredient {
     let id: Int
     let name: String
+    
+    let unit: Unit
     let properties: [IngredientProperty]
     
-    private init(id: Int, name: String, properties: [IngredientProperty]) {
+    private init(id: Int, name: String, unit: Unit, properties: [IngredientProperty]) {
         self.id = id
         self.name = name
+        self.unit = unit
         self.properties = properties
     }
     
@@ -33,16 +36,20 @@ class Ingredient {
         }
         var properties: [IngredientProperty] = []
         for data in propertiesData {
-            guard let id = data["id"] as? Int else {
-                return nil
-            }
-            if let property = IngredientProperty(rawValue: id) {
+            if let property = IngredientProperty.fromJson(jsonData: data) {
                 properties.append(property)
             }
         }
         
+        guard let unitData = jsonData["unit"] as? [String: Any] else {
+            return nil
+        }
+        guard let unit = Unit.fromJson(jsonData: unitData) else {
+            return nil
+        }
+        
         if (cache[id] == nil) {
-            cache[id] = Ingredient(id: id, name: name, properties: properties)
+            cache[id] = Ingredient(id: id, name: name, unit: unit, properties: properties)
         }
         
         return cache[id]

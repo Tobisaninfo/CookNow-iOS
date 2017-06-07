@@ -14,10 +14,13 @@ class Step {
     let order: Int
     let content: String
     
-    init(id: Int, order: Int, content: String) {
+    let items: [Item]
+    
+    init(id: Int, order: Int, content: String, items: [Item]) {
         self.id = id
         self.order = order
         self.content = content
+        self.items = items
     }
     
     class func formJson(jsonData: JsonObject) -> Step? {
@@ -30,6 +33,16 @@ class Step {
         guard let content = jsonData["content"] as? String else {
             return nil
         }
-        return Step(id: id, order: order, content: content)
+        // Items
+        guard let itemsData = jsonData["items"] as? JsonArray else {
+            return nil
+        }
+        var items: [Item] = []
+        for i in itemsData {
+            if let item = Item.fromJson(jsonData: i) {
+                items.append(item)
+            }
+        }
+        return Step(id: id, order: order, content: content, items: items)
     }
 }

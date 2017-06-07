@@ -14,18 +14,16 @@ class Recipe {
     let description: String
     
     let steps: [Step]
-    let items: [Item]
     
     let ingredients: [IngredientUse]
     
     let time: Int
     let difficulty: Int
     
-    init(name: String, description: String, steps: [Step], items: [Item], ingredients: [IngredientUse], time: Int, difficulty: Int) {
+    init(name: String, description: String, steps: [Step], ingredients: [IngredientUse], time: Int, difficulty: Int) {
         self.name = name
         self.description = description
         self.steps = steps
-        self.items = items
         self.ingredients = ingredients
         self.time = time
         self.difficulty = difficulty
@@ -59,17 +57,6 @@ class Recipe {
         // Sort steps into right order
         steps.sort {$0.order < $1.order }
         
-        // Items
-        guard let itemsData = jsonData["items"] as? JsonArray else {
-            return nil
-        }
-        var items: [Item] = []
-        for i in itemsData {
-            if let item = Item.fromJson(jsonData: i) {
-                items.append(item)
-            }
-        }
-        
         // Ingredients
         guard let ingredientData = jsonData["ingredients"] as? JsonArray else {
             return nil
@@ -81,6 +68,6 @@ class Recipe {
             }
         }
 
-        return Recipe(name: name, description: description, steps: steps, items: items, ingredients: ingredients, time: time, difficulty: difficulty)
+        return Recipe(name: name, description: description, steps: steps, ingredients: ingredients, time: time, difficulty: difficulty)
     }
 }

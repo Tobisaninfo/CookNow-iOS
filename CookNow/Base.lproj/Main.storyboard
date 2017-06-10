@@ -29,16 +29,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NG1-1j-rhW">
                                 <rect key="frame" x="0.0" y="28" width="375" height="546"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="shoppingCell" id="qjn-Qe-sQV" customClass="ShoppingTableViewCell" customModule="CookNow" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="72"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qjn-Qe-sQV" id="h2p-Fy-5JA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="MO2-cL-wPY" id="u7a-iF-J55"/>
                                     <outlet property="delegate" destination="MO2-cL-wPY" id="8W4-MT-bF7"/>
@@ -64,25 +54,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EaQ-4L-ouN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-114.40000000000001" y="33.733133433283363"/>
-        </scene>
-        <!--Pantry-->
-        <scene sceneID="YVJ-X5-eKs">
-            <objects>
-                <viewController id="TGD-8e-3qr" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="d2c-8Y-FDt"/>
-                        <viewControllerLayoutGuide type="bottom" id="Adc-gf-aGV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="VyP-pK-EPe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Pantry" id="CP1-Fb-5Nl"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JJ2-qZ-E50" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-111" y="699"/>
         </scene>
         <!--Collections-->
         <scene sceneID="wkr-Mp-UHw">
@@ -153,7 +124,7 @@
                     <connections>
                         <segue destination="Syt-qT-cQA" kind="relationship" relationship="viewControllers" id="KOS-f4-an1"/>
                         <segue destination="MO2-cL-wPY" kind="relationship" relationship="viewControllers" id="BwQ-1r-J9F"/>
-                        <segue destination="TGD-8e-3qr" kind="relationship" relationship="viewControllers" id="uv9-8k-xS7"/>
+                        <segue destination="Rtp-MC-7Iz" kind="relationship" relationship="viewControllers" id="uv9-8k-xS7"/>
                         <segue destination="B7P-wf-GyW" kind="relationship" relationship="viewControllers" id="TX0-Lb-idM"/>
                         <segue destination="GfO-Ob-sgy" kind="relationship" relationship="viewControllers" id="B4Z-k1-ORB"/>
                     </connections>
@@ -180,6 +151,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4d-Pf-QpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-111.2" y="-616.64167916041981"/>
+        </scene>
+        <!--Pantry-->
+        <scene sceneID="6UG-sp-EaQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rtp-MC-7Iz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Pantry" id="CP1-Fb-5Nl"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oyr-AI-hH5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MhV-jZ-Tvs" kind="relationship" relationship="rootViewController" id="yDP-6Y-mAV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KlA-DE-KnS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-111.2" y="698.5007496251875"/>
+        </scene>
+        <!--Pantry-->
+        <scene sceneID="Gsy-FP-m1B">
+            <objects>
+                <collectionViewController id="MhV-jZ-Tvs" customClass="PantryCollectionViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="EoE-Bu-jDm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KCe-E2-u8Q">
+                            <size key="itemSize" width="100" height="100"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="MhV-jZ-Tvs" id="2u2-kM-35c"/>
+                            <outlet property="delegate" destination="MhV-jZ-Tvs" id="xEV-xM-sTs"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Pantry" id="8U0-DG-yG4"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fkN-mz-76A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="646" y="698"/>
         </scene>
     </scenes>
 </document>

@@ -25,10 +25,13 @@ class ResourceHandler {
     }
     
     class func loadImage(scope: Scope, id: Int) -> UIImage? {
-        var image: UIImage? = nil
-        HttpUtils.get(url: "/\(scope.url())/\(id))", callback: {
-            image = UIImage(data: $0)
-        })
-        return image
+        if let host = Bundle.main.infoDictionary?["Host"] as? String {
+            if let url = URL(string: host + "/res/\(scope.url())/\(id).jpg") {
+                if let data = try? Data(contentsOf: url) {
+                    return UIImage(data: data)
+                }
+            }
+        }
+        return nil
     }
 }

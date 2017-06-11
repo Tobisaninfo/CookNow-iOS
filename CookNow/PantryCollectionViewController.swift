@@ -8,7 +8,8 @@
 
 import UIKit
 
-private let reuseIdentifier = "pantryCell"
+private let pantryReuseIdentifier = "pantryCell"
+private let addReuseIdentifier = "pantryAddCell"
 
 class PantryCollectionViewController: UICollectionViewController {
 
@@ -19,8 +20,8 @@ class PantryCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UINib(nibName: "PantryCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
-        // Do any additional setup after loading the view.
+        self.collectionView!.register(UINib(nibName: "PantryCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: pantryReuseIdentifier)
+        self.collectionView!.register(UINib(nibName: "PantryAddCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: addReuseIdentifier)
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,21 +53,26 @@ class PantryCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PantryCollectionViewCell
-        
-        DispatchQueue.global().async {
-            if let image = ResourceHandler.loadImage(scope: .ingredient, id: 1) {
-                DispatchQueue.main.sync {
-                    cell.animate(image: image)
+        if (indexPath.row == 0) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: addReuseIdentifier, for: indexPath) as! PantryAddCollectionViewCell
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pantryReuseIdentifier, for: indexPath) as! PantryCollectionViewCell
+            
+            DispatchQueue.global().async {
+                if let image = ResourceHandler.loadImage(scope: .ingredient, id: 1) {
+                    DispatchQueue.main.sync {
+                        cell.animate(image: image)
+                    }
                 }
             }
+            
+            cell.nameLabel.text = "Apfel"
+            cell.amountLabel.text = "3 Stück"
+            // Configure the cell
+            
+            return cell
         }
-        
-        cell.nameLabel.text = "Apfel"
-        cell.amountLabel.text = "3 Stück"
-        // Configure the cell
-        
-        return cell
     }
 
     // MARK: UICollectionViewDelegate

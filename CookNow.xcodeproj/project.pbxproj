@@ -16,6 +16,7 @@
 		F64F26821EE5848400711189 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26811EE5848400711189 /* Market.swift */; };
 		F64F26841EE5867B00711189 /* MarketOfferHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26831EE5867B00711189 /* MarketOfferHandler.swift */; };
 		F64F26861EE5869800711189 /* MarketOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26851EE5869800711189 /* MarketOffer.swift */; };
+		F65A09041EEF2B0100F136F9 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A09031EEF2B0100F136F9 /* ScannerViewController.swift */; };
 		F65C60501EEC439D008D7F0C /* ResourceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C604F1EEC439D008D7F0C /* ResourceHandler.swift */; };
 		F65C60531EEC4D0D008D7F0C /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C60521EEC4D0D008D7F0C /* ShoppingViewController.swift */; };
 		F65C605A1EEC5AE3008D7F0C /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C60581EEC5AE3008D7F0C /* ShoppingTableViewCell.swift */; };
@@ -84,6 +85,7 @@
 		F64F26811EE5848400711189 /* Market.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		F64F26831EE5867B00711189 /* MarketOfferHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketOfferHandler.swift; sourceTree = "<group>"; };
 		F64F26851EE5869800711189 /* MarketOffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketOffer.swift; sourceTree = "<group>"; };
+		F65A09031EEF2B0100F136F9 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		F65C604F1EEC439D008D7F0C /* ResourceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceHandler.swift; sourceTree = "<group>"; };
 		F65C60521EEC4D0D008D7F0C /* ShoppingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
 		F65C60581EEC5AE3008D7F0C /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
@@ -162,6 +164,17 @@
 			name = Market;
 			sourceTree = "<group>";
 		};
+		F65A09021EEF2ADC00F136F9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F6E107111EEDFD33007D82CC /* PantryAddCollectionViewCell.swift */,
+				F6E107121EEDFD33007D82CC /* PantryAddCollectionViewCell.xib */,
+				F65C60601EEC656B008D7F0C /* PantryCollectionViewCell.swift */,
+				F65C60611EEC656B008D7F0C /* PantryCollectionViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		F65C60511EEC4CEC008D7F0C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,12 +197,10 @@
 		F65C605F1EEC652B008D7F0C /* Pantry */ = {
 			isa = PBXGroup;
 			children = (
+				F65A09021EEF2ADC00F136F9 /* Cells */,
 				F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */,
-				F6E107111EEDFD33007D82CC /* PantryAddCollectionViewCell.swift */,
-				F6E107121EEDFD33007D82CC /* PantryAddCollectionViewCell.xib */,
-				F65C60601EEC656B008D7F0C /* PantryCollectionViewCell.swift */,
-				F65C60611EEC656B008D7F0C /* PantryCollectionViewCell.xib */,
 				F65C605D1EEC6528008D7F0C /* PantryCollectionViewController.swift */,
+				F65A09031EEF2B0100F136F9 /* ScannerViewController.swift */,
 			);
 			name = Pantry;
 			sourceTree = "<group>";
@@ -437,6 +448,7 @@
 				F6F1EC7C1EDD7C9B004383D2 /* ViewController.swift in Sources */,
 				F6AE62D01EE0780D00D8E0DF /* Recipe.swift in Sources */,
 				F66F5CE91EE34CB70060491F /* Ingredient.swift in Sources */,
+				F65A09041EEF2B0100F136F9 /* ScannerViewController.swift in Sources */,
 				F65C605E1EEC6528008D7F0C /* PantryCollectionViewController.swift in Sources */,
 				F6F1EC821EDD7C9B004383D2 /* CookNow.xcdatamodeld in Sources */,
 				F64F26781EE57BFA00711189 /* Item.swift in Sources */,

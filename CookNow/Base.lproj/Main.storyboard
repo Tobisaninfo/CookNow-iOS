@@ -266,7 +266,7 @@
             </objects>
             <point key="canvasLocation" x="1454" y="697"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Product-->
         <scene sceneID="Nt8-Ey-yai">
             <objects>
                 <viewController id="deJ-pz-hxh" sceneMemberID="viewController">
@@ -289,6 +289,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Add Product" id="YQQ-cZ-6vK"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="ui0-qD-6NM" id="Kne-22-BSm"/>
                     </connections>
@@ -306,10 +307,10 @@
             </objects>
             <point key="canvasLocation" x="2356" y="388"/>
         </scene>
-        <!--View Controller-->
+        <!--Scan Barcode-->
         <scene sceneID="F3y-Iw-Mfd">
             <objects>
-                <viewController id="vm4-vm-Ncd" sceneMemberID="viewController">
+                <viewController id="vm4-vm-Ncd" customClass="ScannerViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8TL-FK-wsf"/>
                         <viewControllerLayoutGuide type="bottom" id="GNk-Y7-5fx"/>
@@ -317,8 +318,22 @@
                     <view key="view" contentMode="scaleToFill" id="SfU-mV-T7L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0a-B2-DpL">
+                                <rect key="frame" x="21" y="72" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Flash"/>
+                                <connections>
+                                    <action selector="flashlightHandler:" destination="vm4-vm-Ncd" eventType="touchUpInside" id="yzz-JL-w0a"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Scan Barcode" id="q9I-7C-3XJ"/>
+                    <connections>
+                        <outlet property="flashlightButton" destination="w0a-B2-DpL" id="t46-vK-Vdb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xZ-UQ-2F6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

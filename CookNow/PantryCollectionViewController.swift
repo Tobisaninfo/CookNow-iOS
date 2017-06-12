@@ -78,12 +78,6 @@ class PantryCollectionViewController: UICollectionViewController {
     }
 
     // MARK: UICollectionViewDelegate
-
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == 1 {
-            performSegue(withIdentifier: "addIngredient", sender: self)
-        }
-    }
     
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking

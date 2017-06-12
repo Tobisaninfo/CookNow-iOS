@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F60743E01EE4A58C00D1C75C /* IngredientProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */; };
+		F6348D681EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */; };
 		F64F26781EE57BFA00711189 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26771EE57BFA00711189 /* Item.swift */; };
 		F64F267A1EE5804B00711189 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26791EE5804B00711189 /* Unit.swift */; };
 		F64F267C1EE5833A00711189 /* IngredientHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F267B1EE5833A00711189 /* IngredientHandler.swift */; };
@@ -75,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientProperty.swift; sourceTree = "<group>"; };
+		F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIngredientOptionMenuViewController.swift; sourceTree = "<group>"; };
 		F64F26771EE57BFA00711189 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F64F26791EE5804B00711189 /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		F64F267B1EE5833A00711189 /* IngredientHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientHandler.swift; sourceTree = "<group>"; };
@@ -182,11 +184,12 @@
 		F65C605F1EEC652B008D7F0C /* Pantry */ = {
 			isa = PBXGroup;
 			children = (
-				F65C605D1EEC6528008D7F0C /* PantryCollectionViewController.swift */,
-				F65C60601EEC656B008D7F0C /* PantryCollectionViewCell.swift */,
-				F65C60611EEC656B008D7F0C /* PantryCollectionViewCell.xib */,
+				F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */,
 				F6E107111EEDFD33007D82CC /* PantryAddCollectionViewCell.swift */,
 				F6E107121EEDFD33007D82CC /* PantryAddCollectionViewCell.xib */,
+				F65C60601EEC656B008D7F0C /* PantryCollectionViewCell.swift */,
+				F65C60611EEC656B008D7F0C /* PantryCollectionViewCell.xib */,
+				F65C605D1EEC6528008D7F0C /* PantryCollectionViewController.swift */,
 			);
 			name = Pantry;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				F64F267E1EE583E000711189 /* MarketHandler.swift in Sources */,
 				F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */,
 				F6E107131EEDFD33007D82CC /* PantryAddCollectionViewCell.swift in Sources */,
+				F6348D681EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift in Sources */,
 				F65C60501EEC439D008D7F0C /* ResourceHandler.swift in Sources */,
 				F64F26841EE5867B00711189 /* MarketOfferHandler.swift in Sources */,
 				F65C605A1EEC5AE3008D7F0C /* ShoppingTableViewCell.swift in Sources */,

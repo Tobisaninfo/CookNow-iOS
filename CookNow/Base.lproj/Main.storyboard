@@ -55,24 +55,31 @@
             </objects>
             <point key="canvasLocation" x="-114.40000000000001" y="33.733133433283363"/>
         </scene>
-        <!--Collections-->
-        <scene sceneID="wkr-Mp-UHw">
+        <!--Cook Book Collection View Controller-->
+        <scene sceneID="Jcm-XI-x1c">
             <objects>
-                <viewController id="B7P-wf-GyW" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MxT-mL-Uzs"/>
-                        <viewControllerLayoutGuide type="bottom" id="IYK-cW-SCG"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ka2-zA-tKX">
+                <collectionViewController id="vBG-Ov-m5g" customClass="CookBookCollectionViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="3lk-f4-y7o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Collections" id="0YJ-Mn-vAl"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TaN-uK-LoZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eEz-Ev-bZi">
+                            <size key="itemSize" width="150" height="150"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="vBG-Ov-m5g" id="kdi-b5-LlI"/>
+                            <outlet property="delegate" destination="vBG-Ov-m5g" id="ugl-gL-aF0"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="Nab-VG-CW2"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0W8-st-4wS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-111" y="1363"/>
+            <point key="canvasLocation" x="828" y="1360.569715142429"/>
         </scene>
         <!--Settings-->
         <scene sceneID="tUw-KM-py8">
@@ -125,8 +132,8 @@
                         <segue destination="Syt-qT-cQA" kind="relationship" relationship="viewControllers" id="KOS-f4-an1"/>
                         <segue destination="MO2-cL-wPY" kind="relationship" relationship="viewControllers" id="BwQ-1r-J9F"/>
                         <segue destination="Rtp-MC-7Iz" kind="relationship" relationship="viewControllers" id="uv9-8k-xS7"/>
-                        <segue destination="B7P-wf-GyW" kind="relationship" relationship="viewControllers" id="TX0-Lb-idM"/>
-                        <segue destination="GfO-Ob-sgy" kind="relationship" relationship="viewControllers" id="B4Z-k1-ORB"/>
+                        <segue destination="9LF-MI-2JL" kind="relationship" relationship="viewControllers" id="v0x-JS-cMe"/>
+                        <segue destination="GfO-Ob-sgy" kind="relationship" relationship="viewControllers" id="0ni-2R-2tr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zV4-GI-BNE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -337,7 +344,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xZ-UQ-2F6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2356" y="1044"/>
+            <point key="canvasLocation" x="3295.1999999999998" y="1043.9280359820091"/>
+        </scene>
+        <!--Collections-->
+        <scene sceneID="czb-SH-tLc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9LF-MI-2JL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Collections" id="ell-RE-2rj"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BdR-Uo-i4I">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vBG-Ov-m5g" kind="relationship" relationship="rootViewController" id="6jt-wf-5N3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lZM-yx-rO2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-111.2" y="1360.569715142429"/>
         </scene>
     </scenes>
 </document>

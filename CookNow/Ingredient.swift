@@ -31,7 +31,7 @@ class Ingredient {
         guard let name = jsonData["name"] as? String else {
             return nil
         }
-        guard let propertiesData = jsonData["properties"] as? JsonArray else {
+        guard let propertiesData = jsonData["property"] as? JsonArray else {
             return nil
         }
         var properties: [IngredientProperty] = []

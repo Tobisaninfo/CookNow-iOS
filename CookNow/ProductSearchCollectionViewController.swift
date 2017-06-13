@@ -1,6 +1,5 @@
-
 //
-//  CookBookCollectionViewController.swift
+//  ProductSearchCollectionViewController.swift
 //  CookNow
 //
 //  Created by Tobias on 13.06.17.
@@ -9,12 +8,14 @@
 
 import UIKit
 
-class CookBookCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AddCollectionViewCellDelegate {
+class ProductSearchCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
     private let reuseIdentifier = "Cell"
-    private let addReuseIdentifier = "AddCell"
+    private let columnCount = 3
+
+    private var ingredients: [Ingredient]?
     
-    private let columnCount = 2
+    private var activityIndicator: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +24,10 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UINib(nibName: "CookBookCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
-        self.collectionView!.register(UINib(nibName: "AddCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: addReuseIdentifier)
-        
+        self.collectionView!.register(UINib(nibName: "PantryCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
         // Do any additional setup after loading the view.
+        
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,66 +55,64 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 5
+        return ingredients?.count ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if (indexPath.row == 0) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: addReuseIdentifier, for: indexPath)
-            if let cell = cell as? AddCollectionViewCell {
-                cell.delegate = self
-            }
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        
-            if let cell = cell as? CookBookCollectionViewCell {
-                cell.titleLabel.text = "Nudelrezepte"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+    
+        if let cell = cell as? PantryCollectionViewCell {
+            if let ingredient = ingredients?[indexPath.row] {
+                cell.nameLabel.text = ingredient.name
+                
                 DispatchQueue.global().async {
-                    if let image = ResourceHandler.loadImage(scope: .recipe, id: 1) {
+                    if let image = ResourceHandler.loadImage(scope: .ingredient, id: 1) {
                         DispatchQueue.main.sync {
-                            cell.imageHeader.image = image
-                        }
-                    }
-                    if let image = ResourceHandler.loadImage(scope: .recipe, id: 2) {
-                        DispatchQueue.main.sync {
-                            cell.imageFooter[0].image = image
-                        }
-                    }
-                    
-                    if let image = ResourceHandler.loadImage(scope: .recipe, id: 3) {
-                        DispatchQueue.main.sync {
-                            cell.imageFooter[1].image = image
-                        }
-                    }
-                    
-                    if let image = ResourceHandler.loadImage(scope: .recipe, id: 4) {
-                        DispatchQueue.main.sync {
-                            cell.imageFooter[2].image = image
+                            cell.animate(image: image)
                         }
                     }
                 }
             }
-            return cell
+        }
+    
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if (kind == UICollectionElementKindSectionHeader) {
+            let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchBarHeader", for: indexPath)
+            
+            return headerView
+        }
+        
+        return UICollectionReusableView()
+        
+    }
+    
+    //MARK: - Search
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            DispatchQueue.global().async {
+                self.ingredients = IngredientHanler.list()
+                self.ingredients = IngredientHanler.list().filter() {
+                    $0.name.hasPrefix(text)
+                }
+                DispatchQueue.main.sync {
+                    self.collectionView?.reloadData()
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                }
+            }
         }
     }
     
-    func onAction() {
-        let alert = UIAlertController(title: "Add CookBook", message: "Enter a name.", preferredStyle: .alert)
-        
-        alert.addTextField { (textField) in
-            textField.placeholder = "Cook Book Name"
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if(searchText.isEmpty){
+            self.ingredients = nil
+            self.collectionView?.reloadData()
         }
-        
-        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (_) in
-            if let textField = alert?.textFields![0] {
-                if let name = textField.text {
-                    print("CookBook: \(name)")
-                }
-            }
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) -> Void in }))
-        self.present(alert, animated: true, completion: nil)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -126,8 +125,28 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
         return CGSize(width: itemSize, height: itemSize)
     }
     
-    // MARK: UICollectionViewDelegate
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let ingredient = ingredients?[indexPath.row] {
+            let alert = UIAlertController(title: "Add Product", message: "Enter amount of \(ingredient.name)", preferredStyle: .alert)
+            
+            alert.addTextField { (textField) in
+                textField.placeholder = "350 \(ingredient.unit)"
+            }
+            
+            alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (_) in
+                if let textField = alert?.textFields![0] {
+                    if let amount = textField.text {
+                        print("Add Ingredient with amount: \(amount)")
+                    }
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) -> Void in }))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
     
+    // MARK: UICollectionViewDelegate
+
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {

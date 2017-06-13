@@ -35,6 +35,8 @@
 		F6AE62D41EE07CE600D8E0DF /* SwiftClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6AE62D21EE0793900D8E0DF /* SwiftClient.framework */; };
 		F6AE62D51EE07CE600D8E0DF /* SwiftClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F6AE62D21EE0793900D8E0DF /* SwiftClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F6AE62D81EE09B6F00D8E0DF /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE62D71EE09B6F00D8E0DF /* Step.swift */; };
+		F6D7FABF1EF058F1001DD906 /* SearchBarCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7FABE1EF058F1001DD906 /* SearchBarCollectionReusableView.swift */; };
+		F6D7FAC31EF05993001DD906 /* ProductSearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7FAC21EF05993001DD906 /* ProductSearchCollectionViewController.swift */; };
 		F6E107131EEDFD33007D82CC /* AddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E107111EEDFD33007D82CC /* AddCollectionViewCell.swift */; };
 		F6E107141EEDFD33007D82CC /* AddCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6E107121EEDFD33007D82CC /* AddCollectionViewCell.xib */; };
 		F6F1EC7A1EDD7C9B004383D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F1EC791EDD7C9B004383D2 /* AppDelegate.swift */; };
@@ -106,6 +108,8 @@
 		F6AE62CF1EE0780D00D8E0DF /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		F6AE62D21EE0793900D8E0DF /* SwiftClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftClient.framework; path = Carthage/Build/iOS/SwiftClient.framework; sourceTree = "<group>"; };
 		F6AE62D71EE09B6F00D8E0DF /* Step.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		F6D7FABE1EF058F1001DD906 /* SearchBarCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarCollectionReusableView.swift; sourceTree = "<group>"; };
+		F6D7FAC21EF05993001DD906 /* ProductSearchCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductSearchCollectionViewController.swift; sourceTree = "<group>"; };
 		F6E107111EEDFD33007D82CC /* AddCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6E107121EEDFD33007D82CC /* AddCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCollectionViewCell.xib; sourceTree = "<group>"; };
 		F6F1EC761EDD7C9B004383D2 /* CookNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +211,7 @@
 				F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */,
 				F65C605D1EEC6528008D7F0C /* PantryCollectionViewController.swift */,
 				F65A09031EEF2B0100F136F9 /* ScannerViewController.swift */,
+				F6D7FAC21EF05993001DD906 /* ProductSearchCollectionViewController.swift */,
 			);
 			name = Pantry;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 			children = (
 				F6E107111EEDFD33007D82CC /* AddCollectionViewCell.swift */,
 				F6E107121EEDFD33007D82CC /* AddCollectionViewCell.xib */,
+				F6D7FABE1EF058F1001DD906 /* SearchBarCollectionReusableView.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -493,7 +499,9 @@
 				F64F26861EE5869800711189 /* MarketOffer.swift in Sources */,
 				F64F267C1EE5833A00711189 /* IngredientHandler.swift in Sources */,
 				F64F267A1EE5804B00711189 /* Unit.swift in Sources */,
+				F6D7FAC31EF05993001DD906 /* ProductSearchCollectionViewController.swift in Sources */,
 				F6AE62D81EE09B6F00D8E0DF /* Step.swift in Sources */,
+				F6D7FABF1EF058F1001DD906 /* SearchBarCollectionReusableView.swift in Sources */,
 				F60743E01EE4A58C00D1C75C /* IngredientProperty.swift in Sources */,
 				F64F26821EE5848400711189 /* Market.swift in Sources */,
 			);

@@ -35,8 +35,8 @@
 		F6AE62D41EE07CE600D8E0DF /* SwiftClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6AE62D21EE0793900D8E0DF /* SwiftClient.framework */; };
 		F6AE62D51EE07CE600D8E0DF /* SwiftClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F6AE62D21EE0793900D8E0DF /* SwiftClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F6AE62D81EE09B6F00D8E0DF /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE62D71EE09B6F00D8E0DF /* Step.swift */; };
-		F6E107131EEDFD33007D82CC /* PantryAddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E107111EEDFD33007D82CC /* PantryAddCollectionViewCell.swift */; };
-		F6E107141EEDFD33007D82CC /* PantryAddCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6E107121EEDFD33007D82CC /* PantryAddCollectionViewCell.xib */; };
+		F6E107131EEDFD33007D82CC /* AddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E107111EEDFD33007D82CC /* AddCollectionViewCell.swift */; };
+		F6E107141EEDFD33007D82CC /* AddCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6E107121EEDFD33007D82CC /* AddCollectionViewCell.xib */; };
 		F6F1EC7A1EDD7C9B004383D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F1EC791EDD7C9B004383D2 /* AppDelegate.swift */; };
 		F6F1EC7C1EDD7C9B004383D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F1EC7B1EDD7C9B004383D2 /* ViewController.swift */; };
 		F6F1EC7F1EDD7C9B004383D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6F1EC7D1EDD7C9B004383D2 /* Main.storyboard */; };
@@ -106,8 +106,8 @@
 		F6AE62CF1EE0780D00D8E0DF /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		F6AE62D21EE0793900D8E0DF /* SwiftClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftClient.framework; path = Carthage/Build/iOS/SwiftClient.framework; sourceTree = "<group>"; };
 		F6AE62D71EE09B6F00D8E0DF /* Step.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
-		F6E107111EEDFD33007D82CC /* PantryAddCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryAddCollectionViewCell.swift; sourceTree = "<group>"; };
-		F6E107121EEDFD33007D82CC /* PantryAddCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PantryAddCollectionViewCell.xib; sourceTree = "<group>"; };
+		F6E107111EEDFD33007D82CC /* AddCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCollectionViewCell.swift; sourceTree = "<group>"; };
+		F6E107121EEDFD33007D82CC /* AddCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCollectionViewCell.xib; sourceTree = "<group>"; };
 		F6F1EC761EDD7C9B004383D2 /* CookNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6F1EC791EDD7C9B004383D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6F1EC7B1EDD7C9B004383D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -173,8 +173,6 @@
 		F65A09021EEF2ADC00F136F9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F6E107111EEDFD33007D82CC /* PantryAddCollectionViewCell.swift */,
-				F6E107121EEDFD33007D82CC /* PantryAddCollectionViewCell.xib */,
 				F65C60601EEC656B008D7F0C /* PantryCollectionViewCell.swift */,
 				F65C60611EEC656B008D7F0C /* PantryCollectionViewCell.xib */,
 			);
@@ -184,6 +182,7 @@
 		F65C60511EEC4CEC008D7F0C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F6D7FABB1EF0468B001DD906 /* Cells */,
 				F65C605C1EEC6513008D7F0C /* Shopping */,
 				F65C605F1EEC652B008D7F0C /* Pantry */,
 				F6ACBDAC1EEFF39300472AA3 /* Collections */,
@@ -261,6 +260,15 @@
 				F6AE62D21EE0793900D8E0DF /* SwiftClient.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F6D7FABB1EF0468B001DD906 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F6E107111EEDFD33007D82CC /* AddCollectionViewCell.swift */,
+				F6E107121EEDFD33007D82CC /* AddCollectionViewCell.xib */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		F6F1EC6D1EDD7C9B004383D2 = {
@@ -430,7 +438,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6E107141EEDFD33007D82CC /* PantryAddCollectionViewCell.xib in Resources */,
+				F6E107141EEDFD33007D82CC /* AddCollectionViewCell.xib in Resources */,
 				F6F1EC871EDD7C9B004383D2 /* LaunchScreen.storyboard in Resources */,
 				F6ACBDB31EEFF42F00472AA3 /* CookBookCollectionViewCell.xib in Resources */,
 				F65C605B1EEC5AE3008D7F0C /* ShoppingTableViewCell.xib in Resources */,
@@ -465,7 +473,7 @@
 				F65C60531EEC4D0D008D7F0C /* ShoppingViewController.swift in Sources */,
 				F64F267E1EE583E000711189 /* MarketHandler.swift in Sources */,
 				F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */,
-				F6E107131EEDFD33007D82CC /* PantryAddCollectionViewCell.swift in Sources */,
+				F6E107131EEDFD33007D82CC /* AddCollectionViewCell.swift in Sources */,
 				F6348D681EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift in Sources */,
 				F6ACBDAE1EEFF3E900472AA3 /* CookBookCollectionViewController.swift in Sources */,
 				F65C60501EEC439D008D7F0C /* ResourceHandler.swift in Sources */,

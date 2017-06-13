@@ -9,10 +9,13 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+class CookBookCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AddCollectionViewCellDelegate {
 
-class CookBookCollectionViewController: UICollectionViewController {
-
+    private let reuseIdentifier = "Cell"
+    private let addReuseIdentifier = "AddCell"
+    
+    private let columnCount = 2
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +24,8 @@ class CookBookCollectionViewController: UICollectionViewController {
 
         // Register cell classes
         self.collectionView!.register(UINib(nibName: "CookBookCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
-
+        self.collectionView!.register(UINib(nibName: "AddCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: addReuseIdentifier)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -54,41 +58,76 @@ class CookBookCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        if let cell = cell as? CookBookCollectionViewCell {
-            cell.titleLabel.text = "Nudelrezepte"
-            DispatchQueue.global().async {
-                if let image = ResourceHandler.loadImage(scope: .recipe, id: 1) {
-                    DispatchQueue.main.sync {
-                        cell.imageHeader.image = image
+        if (indexPath.row == 0) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: addReuseIdentifier, for: indexPath)
+            if let cell = cell as? AddCollectionViewCell {
+                cell.delegate = self
+            }
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        
+            if let cell = cell as? CookBookCollectionViewCell {
+                cell.titleLabel.text = "Nudelrezepte"
+                DispatchQueue.global().async {
+                    if let image = ResourceHandler.loadImage(scope: .recipe, id: 1) {
+                        DispatchQueue.main.sync {
+                            cell.imageHeader.image = image
+                        }
                     }
-                }
-                if let image = ResourceHandler.loadImage(scope: .recipe, id: 2) {
-                    DispatchQueue.main.sync {
-                        cell.imageFooter[0].image = image
+                    if let image = ResourceHandler.loadImage(scope: .recipe, id: 2) {
+                        DispatchQueue.main.sync {
+                            cell.imageFooter[0].image = image
+                        }
                     }
-                }
-                
-                if let image = ResourceHandler.loadImage(scope: .recipe, id: 3) {
-                    DispatchQueue.main.sync {
-                        cell.imageFooter[1].image = image
+                    
+                    if let image = ResourceHandler.loadImage(scope: .recipe, id: 3) {
+                        DispatchQueue.main.sync {
+                            cell.imageFooter[1].image = image
+                        }
                     }
-                }
-                
-                if let image = ResourceHandler.loadImage(scope: .recipe, id: 4) {
-                    DispatchQueue.main.sync {
-                        cell.imageFooter[2].image = image
+                    
+                    if let image = ResourceHandler.loadImage(scope: .recipe, id: 4) {
+                        DispatchQueue.main.sync {
+                            cell.imageFooter[2].image = image
+                        }
                     }
                 }
             }
+            return cell
         }
+    }
     
-        return cell
+    func onAction() {
+        let alert = UIAlertController(title: "Add CookBook", message: "Enter a name.", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Cook Book Name"
+        }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            if let textField = alert?.textFields![0] {
+                if let name = textField.text {
+                    print("CookBook: \(name)")
+                }
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) -> Void in }))
+        self.present(alert, animated: true, completion: nil)
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
+            return CGSize()
+        }
+        
+        let viewWidth =  collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right - flowLayout.minimumInteritemSpacing * CGFloat(columnCount - 1)
+        let itemSize = viewWidth / CGFloat(columnCount)
+        return CGSize(width: itemSize, height: itemSize)
+    }
+    
     // MARK: UICollectionViewDelegate
-
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {

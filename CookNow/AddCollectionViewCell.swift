@@ -8,16 +8,20 @@
 
 import UIKit
 
-class PantryAddCollectionViewCell: UICollectionViewCell {
-
-    weak var collectionViewController: PantryCollectionViewController?
+class AddCollectionViewCell: UICollectionViewCell {
+    
+    var delegate: AddCollectionViewCellDelegate?
+    @IBOutlet weak var button: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     @IBAction func addHandler(_ sender: Any) {
-        collectionViewController?.performSegue(withIdentifier: "addIngredient", sender: collectionViewController)
+        delegate?.onAction()
     }
+}
+
+protocol AddCollectionViewCellDelegate {
+    func onAction()
 }

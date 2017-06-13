@@ -8,11 +8,12 @@
 
 import UIKit
 
-private let pantryReuseIdentifier = "pantryCell"
-private let addReuseIdentifier = "pantryAddCell"
-
-class PantryCollectionViewController: UICollectionViewController {
-
+class PantryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AddCollectionViewCellDelegate {
+    
+    private let pantryReuseIdentifier = "pantryCell"
+    private let addReuseIdentifier = "pantryAddCell"
+    private let columnCount = 3
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +22,7 @@ class PantryCollectionViewController: UICollectionViewController {
 
         // Register cell classes
         self.collectionView!.register(UINib(nibName: "PantryCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: pantryReuseIdentifier)
-        self.collectionView!.register(UINib(nibName: "PantryAddCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: addReuseIdentifier)
+        self.collectionView!.register(UINib(nibName: "AddCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: addReuseIdentifier)
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,8 +56,8 @@ class PantryCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if (indexPath.row == 0) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: addReuseIdentifier, for: indexPath) as! PantryAddCollectionViewCell
-            cell.collectionViewController = self
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: addReuseIdentifier, for: indexPath) as! AddCollectionViewCell
+            cell.delegate = self
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pantryReuseIdentifier, for: indexPath) as! PantryCollectionViewCell
@@ -75,6 +76,20 @@ class PantryCollectionViewController: UICollectionViewController {
             
             return cell
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
+            return CGSize()
+        }
+        
+        let viewWidth =  collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right - flowLayout.minimumInteritemSpacing * CGFloat(columnCount - 1)
+        let itemSize = viewWidth / CGFloat(columnCount)
+        return CGSize(width: itemSize, height: itemSize)
+    }
+    
+    func onAction() {
+        performSegue(withIdentifier: "addIngredient", sender: self)
     }
 
     // MARK: UICollectionViewDelegate

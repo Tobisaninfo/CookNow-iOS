@@ -67,7 +67,7 @@
                             <size key="itemSize" width="150" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells/>
                         <connections>
@@ -79,7 +79,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0W8-st-4wS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="1360.569715142429"/>
+            <point key="canvasLocation" x="646" y="1361"/>
         </scene>
         <!--Settings-->
         <scene sceneID="tUw-KM-py8">
@@ -344,7 +344,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xZ-UQ-2F6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3295.1999999999998" y="1043.9280359820091"/>
+            <point key="canvasLocation" x="2356" y="1048"/>
         </scene>
         <!--Collections-->
         <scene sceneID="czb-SH-tLc">

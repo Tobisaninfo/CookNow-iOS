@@ -126,6 +126,20 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
         return CGSize(width: itemSize, height: itemSize)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row != 0 { // row == 0 --> add button
+            performSegue(withIdentifier: "recipeCollectionSegue", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "recipeCollectionSegue" {
+            if let destinationViewController = segue.destination as? RecipeCollectionViewController {
+                destinationViewController.recipeBook = nil
+            }
+        }
+    }
+    
     // MARK: UICollectionViewDelegate
     
     /*

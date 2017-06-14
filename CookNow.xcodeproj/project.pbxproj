@@ -51,6 +51,9 @@
 		F6F789511EF16C05009E7323 /* RecipeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6F7894F1EF16C05009E7323 /* RecipeCollectionViewCell.xib */; };
 		F6F789531EF16CBD009E7323 /* RecipeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F789521EF16CBD009E7323 /* RecipeCollectionViewController.swift */; };
 		F6F789551EF17126009E7323 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F789541EF17126009E7323 /* Utils.swift */; };
+		F6F789571EF17C24009E7323 /* RecipeStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F789561EF17C24009E7323 /* RecipeStepViewController.swift */; };
+		F6F7895A1EF17FD6009E7323 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F789591EF17FD6009E7323 /* RecipeViewController.swift */; };
+		F6F7895C1EF197C7009E7323 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6F7895B1EF197C7009E7323 /* 1.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +137,9 @@
 		F6F7894F1EF16C05009E7323 /* RecipeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeCollectionViewCell.xib; sourceTree = "<group>"; };
 		F6F789521EF16CBD009E7323 /* RecipeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewController.swift; sourceTree = "<group>"; };
 		F6F789541EF17126009E7323 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		F6F789561EF17C24009E7323 /* RecipeStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeStepViewController.swift; sourceTree = "<group>"; };
+		F6F789591EF17FD6009E7323 /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		F6F7895B1EF197C7009E7323 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +204,7 @@
 				F65C605C1EEC6513008D7F0C /* Shopping */,
 				F65C605F1EEC652B008D7F0C /* Pantry */,
 				F6ACBDAC1EEFF39300472AA3 /* Collections */,
+				F6F789581EF17C27009E7323 /* Recipe */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -323,6 +330,7 @@
 				F6F1EC851EDD7C9B004383D2 /* LaunchScreen.storyboard */,
 				F6F1EC881EDD7C9B004383D2 /* Info.plist */,
 				F6F1EC801EDD7C9B004383D2 /* CookNow.xcdatamodeld */,
+				F6F7895B1EF197C7009E7323 /* 1.jpg */,
 			);
 			path = CookNow;
 			sourceTree = "<group>";
@@ -343,6 +351,15 @@
 				F6F1EC9E1EDD7C9B004383D2 /* Info.plist */,
 			);
 			path = CookNowUITests;
+			sourceTree = "<group>";
+		};
+		F6F789581EF17C27009E7323 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				F6F789561EF17C24009E7323 /* RecipeStepViewController.swift */,
+				F6F789591EF17FD6009E7323 /* RecipeViewController.swift */,
+			);
+			name = Recipe;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -462,6 +479,7 @@
 				F65C605B1EEC5AE3008D7F0C /* ShoppingTableViewCell.xib in Resources */,
 				F6F789511EF16C05009E7323 /* RecipeCollectionViewCell.xib in Resources */,
 				F6F1EC841EDD7C9B004383D2 /* Assets.xcassets in Resources */,
+				F6F7895C1EF197C7009E7323 /* 1.jpg in Resources */,
 				F6F1EC7F1EDD7C9B004383D2 /* Main.storyboard in Resources */,
 				F65C60631EEC656B008D7F0C /* PantryCollectionViewCell.xib in Resources */,
 			);
@@ -508,7 +526,9 @@
 				F65C605E1EEC6528008D7F0C /* PantryCollectionViewController.swift in Sources */,
 				F6F1EC821EDD7C9B004383D2 /* CookNow.xcdatamodeld in Sources */,
 				F64F26781EE57BFA00711189 /* Item.swift in Sources */,
+				F6F7895A1EF17FD6009E7323 /* RecipeViewController.swift in Sources */,
 				F6F1EC7A1EDD7C9B004383D2 /* AppDelegate.swift in Sources */,
+				F6F789571EF17C24009E7323 /* RecipeStepViewController.swift in Sources */,
 				F66F5CEB1EE34D210060491F /* IngredientUse.swift in Sources */,
 				F64F26861EE5869800711189 /* MarketOffer.swift in Sources */,
 				F6F789551EF17126009E7323 /* Utils.swift in Sources */,

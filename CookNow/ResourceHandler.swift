@@ -1,3 +1,4 @@
+
 //
 //  ResourceHandler.swift
 //  CookNow
@@ -28,9 +29,25 @@ class ResourceHandler {
     }
     
     class func loadImage(scope: Scope, id: Int) -> UIImage? {
+        let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] as String
+        let folder = URL(fileURLWithPath: path).appendingPathComponent(scope.url())
+        let localUrl = folder.appendingPathComponent("\(id).jpg")
+        
+        if let data = try? Data(contentsOf: localUrl) {
+            return UIImage(data: data)
+        } else {
+            try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true, attributes: nil)
+        }
+        
         if let host = Bundle.main.infoDictionary?["Host"] as? String {
             if let url = URL(string: host + "/res/\(scope.url())/\(id).jpg") {
                 if let data = try? Data(contentsOf: url) {
+                    do {
+                        try data.write(to: localUrl)
+                    } catch {
+                        print(error)
+                    }
+                    print("Load Image: \(url)")
                     return UIImage(data: data)
                 }
             }

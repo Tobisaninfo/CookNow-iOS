@@ -13,6 +13,7 @@ class ResourceHandler {
     enum Scope {
         case recipe
         case ingredient
+        case market
         
         func url() -> String {
             switch self {
@@ -20,6 +21,8 @@ class ResourceHandler {
                 return "recipe"
             case .ingredient:
                 return "ingredient"
+            case .market:
+                return "market"
             }
         }
     }

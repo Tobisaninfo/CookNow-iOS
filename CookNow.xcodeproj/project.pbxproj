@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F60743E01EE4A58C00D1C75C /* IngredientProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */; };
 		F6348D681EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */; };
+		F644D2DB1EF2AA0E0037746B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644D2DA1EF2AA0E0037746B /* SettingsTableViewController.swift */; };
 		F64F26781EE57BFA00711189 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26771EE57BFA00711189 /* Item.swift */; };
 		F64F267A1EE5804B00711189 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26791EE5804B00711189 /* Unit.swift */; };
 		F64F267C1EE5833A00711189 /* IngredientHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F267B1EE5833A00711189 /* IngredientHandler.swift */; };
@@ -89,6 +90,7 @@
 /* Begin PBXFileReference section */
 		F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientProperty.swift; sourceTree = "<group>"; };
 		F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIngredientOptionMenuViewController.swift; sourceTree = "<group>"; };
+		F644D2DA1EF2AA0E0037746B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		F64F26771EE57BFA00711189 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F64F26791EE5804B00711189 /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		F64F267B1EE5833A00711189 /* IngredientHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientHandler.swift; sourceTree = "<group>"; };
@@ -166,6 +168,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F644D2D71EF2A9D70037746B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F644D2DA1EF2AA0E0037746B /* SettingsTableViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		F64F267F1EE5844600711189 /* Ingredient */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,10 +209,11 @@
 			isa = PBXGroup;
 			children = (
 				F6D7FABB1EF0468B001DD906 /* Cells */,
-				F65C605C1EEC6513008D7F0C /* Shopping */,
-				F65C605F1EEC652B008D7F0C /* Pantry */,
 				F6ACBDAC1EEFF39300472AA3 /* Collections */,
+				F65C605F1EEC652B008D7F0C /* Pantry */,
 				F6F789581EF17C27009E7323 /* Recipe */,
+				F644D2D71EF2A9D70037746B /* Settings */,
+				F65C605C1EEC6513008D7F0C /* Shopping */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -508,6 +519,7 @@
 				F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */,
 				F6E107131EEDFD33007D82CC /* AddCollectionViewCell.swift in Sources */,
 				F6348D681EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift in Sources */,
+				F644D2DB1EF2AA0E0037746B /* SettingsTableViewController.swift in Sources */,
 				F6ACBDAE1EEFF3E900472AA3 /* CookBookCollectionViewController.swift in Sources */,
 				F65C60501EEC439D008D7F0C /* ResourceHandler.swift in Sources */,
 				F64F26841EE5867B00711189 /* MarketOfferHandler.swift in Sources */,

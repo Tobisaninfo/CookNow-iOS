@@ -53,7 +53,6 @@
 		F6F789551EF17126009E7323 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F789541EF17126009E7323 /* Utils.swift */; };
 		F6F789571EF17C24009E7323 /* RecipeStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F789561EF17C24009E7323 /* RecipeStepViewController.swift */; };
 		F6F7895A1EF17FD6009E7323 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F789591EF17FD6009E7323 /* RecipeViewController.swift */; };
-		F6F7895C1EF197C7009E7323 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6F7895B1EF197C7009E7323 /* 1.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,7 +138,6 @@
 		F6F789541EF17126009E7323 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F6F789561EF17C24009E7323 /* RecipeStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeStepViewController.swift; sourceTree = "<group>"; };
 		F6F789591EF17FD6009E7323 /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
-		F6F7895B1EF197C7009E7323 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,7 +328,6 @@
 				F6F1EC851EDD7C9B004383D2 /* LaunchScreen.storyboard */,
 				F6F1EC881EDD7C9B004383D2 /* Info.plist */,
 				F6F1EC801EDD7C9B004383D2 /* CookNow.xcdatamodeld */,
-				F6F7895B1EF197C7009E7323 /* 1.jpg */,
 			);
 			path = CookNow;
 			sourceTree = "<group>";
@@ -479,7 +476,6 @@
 				F65C605B1EEC5AE3008D7F0C /* ShoppingTableViewCell.xib in Resources */,
 				F6F789511EF16C05009E7323 /* RecipeCollectionViewCell.xib in Resources */,
 				F6F1EC841EDD7C9B004383D2 /* Assets.xcassets in Resources */,
-				F6F7895C1EF197C7009E7323 /* 1.jpg in Resources */,
 				F6F1EC7F1EDD7C9B004383D2 /* Main.storyboard in Resources */,
 				F65C60631EEC656B008D7F0C /* PantryCollectionViewCell.xib in Resources */,
 			);

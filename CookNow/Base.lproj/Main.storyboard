@@ -114,35 +114,6 @@
             </objects>
             <point key="canvasLocation" x="1454" y="1361"/>
         </scene>
-        <!--Home-->
-        <scene sceneID="72z-Ai-Se9">
-            <objects>
-                <viewController id="hbf-Zb-57j" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5iW-ck-Apf"/>
-                        <viewControllerLayoutGuide type="bottom" id="8vn-vs-9rO"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="I2h-4F-JnX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vfh-G0-G6Y">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="YFP-46-USj" kind="show" identifier="recipeWeekSegue" id="V2k-7U-cDG"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Home" id="0gn-1G-uAw"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kSl-Q1-1kF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="828" y="-616.64167916041981"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vni-T5-5bF">
             <objects>
@@ -176,12 +147,61 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="hbf-Zb-57j" kind="relationship" relationship="rootViewController" id="hgk-R6-WFB"/>
+                        <segue destination="dza-pY-euy" kind="relationship" relationship="rootViewController" id="yIM-vy-c5H"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4d-Pf-QpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-111.2" y="-616.64167916041981"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="aKH-cH-0nG">
+            <objects>
+                <collectionViewController id="dza-pY-euy" customClass="HomeCollectionViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="4aP-Lt-Bef">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CqA-CV-1Ne">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TitleHeander" id="b5s-yM-H8s" customClass="TitleCollectionReusableView" customModule="CookNow" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2E-Xz-ahb">
+                                    <rect key="frame" x="8" y="15" width="359" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="E2E-Xz-ahb" firstAttribute="trailing" secondItem="b5s-yM-H8s" secondAttribute="trailingMargin" id="SmG-X0-88Y"/>
+                                <constraint firstItem="E2E-Xz-ahb" firstAttribute="leading" secondItem="b5s-yM-H8s" secondAttribute="leadingMargin" id="V7Z-6W-Mhv"/>
+                                <constraint firstItem="E2E-Xz-ahb" firstAttribute="centerY" secondItem="b5s-yM-H8s" secondAttribute="centerY" id="Xwn-8x-Z4f"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="titleLabel" destination="E2E-Xz-ahb" id="yb2-bE-4Z3"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="dza-pY-euy" id="TQB-7v-rk6"/>
+                            <outlet property="delegate" destination="dza-pY-euy" id="QHf-NB-1Sz"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Home" id="FvU-zu-Kmj"/>
+                    <connections>
+                        <segue destination="YFP-46-USj" kind="show" identifier="planRecipeSegue" id="Svq-ix-W0a"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j31-2S-aCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="646" y="-617"/>
         </scene>
         <!--Pantry-->
         <scene sceneID="6UG-sp-EaQ">
@@ -338,7 +358,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RvE-Rd-xT3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3295.1999999999998" y="373.76311844077964"/>
+            <point key="canvasLocation" x="2356" y="374"/>
         </scene>
         <!--Title-->
         <scene sceneID="Bju-AQ-OLP">
@@ -406,6 +426,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="3hf-qX-6Tc"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="descriptionTextView" destination="rgS-Kc-Zgs" id="hpn-km-kL4"/>
                         <outlet property="imageView" destination="kiV-ew-HA2" id="MNp-iX-eUu"/>
                     </connections>
                 </viewController>
@@ -616,11 +637,11 @@
                                         <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uvc-Dz-LQg" id="YbM-qd-FZk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="no lactose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sqV-ud-MWh">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="44"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -633,11 +654,11 @@
                                         <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Njp-HJ-dA8" id="UHK-JR-Tg3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="vegetarian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xkT-vo-Hdd">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="44"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -650,11 +671,11 @@
                                         <rect key="frame" x="0.0" y="144" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hzb-J4-HHX" id="3Rq-nk-26v">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="vegan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3O4-I1-WC3">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="44"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>

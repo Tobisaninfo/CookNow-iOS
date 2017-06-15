@@ -10,6 +10,12 @@
 		F60743E01EE4A58C00D1C75C /* IngredientProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */; };
 		F6348D681EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */; };
 		F644D2DB1EF2AA0E0037746B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644D2DA1EF2AA0E0037746B /* SettingsTableViewController.swift */; };
+		F64DAB3D1EF2EF9B002343BF /* PlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64DAB3B1EF2EF9B002343BF /* PlanCollectionViewCell.swift */; };
+		F64DAB3E1EF2EF9B002343BF /* PlanCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F64DAB3C1EF2EF9B002343BF /* PlanCollectionViewCell.xib */; };
+		F64DAB411EF2F01B002343BF /* PlanItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64DAB3F1EF2F01B002343BF /* PlanItemCollectionViewCell.swift */; };
+		F64DAB421EF2F01B002343BF /* PlanItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F64DAB401EF2F01B002343BF /* PlanItemCollectionViewCell.xib */; };
+		F64DAB441EF2F233002343BF /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64DAB431EF2F233002343BF /* HomeCollectionViewController.swift */; };
+		F64DAB461EF2F72C002343BF /* TitleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64DAB451EF2F72C002343BF /* TitleCollectionReusableView.swift */; };
 		F64F26781EE57BFA00711189 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26771EE57BFA00711189 /* Item.swift */; };
 		F64F267A1EE5804B00711189 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26791EE5804B00711189 /* Unit.swift */; };
 		F64F267C1EE5833A00711189 /* IngredientHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F267B1EE5833A00711189 /* IngredientHandler.swift */; };
@@ -91,6 +97,12 @@
 		F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientProperty.swift; sourceTree = "<group>"; };
 		F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIngredientOptionMenuViewController.swift; sourceTree = "<group>"; };
 		F644D2DA1EF2AA0E0037746B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		F64DAB3B1EF2EF9B002343BF /* PlanCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewCell.swift; sourceTree = "<group>"; };
+		F64DAB3C1EF2EF9B002343BF /* PlanCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlanCollectionViewCell.xib; sourceTree = "<group>"; };
+		F64DAB3F1EF2F01B002343BF /* PlanItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		F64DAB401EF2F01B002343BF /* PlanItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlanItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		F64DAB431EF2F233002343BF /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
+		F64DAB451EF2F72C002343BF /* TitleCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleCollectionReusableView.swift; sourceTree = "<group>"; };
 		F64F26771EE57BFA00711189 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F64F26791EE5804B00711189 /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		F64F267B1EE5833A00711189 /* IngredientHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientHandler.swift; sourceTree = "<group>"; };
@@ -176,6 +188,18 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		F64DAB381EF2EF6F002343BF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F64DAB431EF2F233002343BF /* HomeCollectionViewController.swift */,
+				F64DAB3B1EF2EF9B002343BF /* PlanCollectionViewCell.swift */,
+				F64DAB3C1EF2EF9B002343BF /* PlanCollectionViewCell.xib */,
+				F64DAB3F1EF2F01B002343BF /* PlanItemCollectionViewCell.swift */,
+				F64DAB401EF2F01B002343BF /* PlanItemCollectionViewCell.xib */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
 		F64F267F1EE5844600711189 /* Ingredient */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +234,7 @@
 			children = (
 				F6D7FABB1EF0468B001DD906 /* Cells */,
 				F6ACBDAC1EEFF39300472AA3 /* Collections */,
+				F64DAB381EF2EF6F002343BF /* Home */,
 				F65C605F1EEC652B008D7F0C /* Pantry */,
 				F6F789581EF17C27009E7323 /* Recipe */,
 				F644D2D71EF2A9D70037746B /* Settings */,
@@ -300,6 +325,7 @@
 				F6E107111EEDFD33007D82CC /* AddCollectionViewCell.swift */,
 				F6E107121EEDFD33007D82CC /* AddCollectionViewCell.xib */,
 				F6D7FABE1EF058F1001DD906 /* SearchBarCollectionReusableView.swift */,
+				F64DAB451EF2F72C002343BF /* TitleCollectionReusableView.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -487,8 +513,10 @@
 				F65C605B1EEC5AE3008D7F0C /* ShoppingTableViewCell.xib in Resources */,
 				F6F789511EF16C05009E7323 /* RecipeCollectionViewCell.xib in Resources */,
 				F6F1EC841EDD7C9B004383D2 /* Assets.xcassets in Resources */,
+				F64DAB421EF2F01B002343BF /* PlanItemCollectionViewCell.xib in Resources */,
 				F6F1EC7F1EDD7C9B004383D2 /* Main.storyboard in Resources */,
 				F65C60631EEC656B008D7F0C /* PantryCollectionViewCell.xib in Resources */,
+				F64DAB3E1EF2EF9B002343BF /* PlanCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +546,7 @@
 				F64F267E1EE583E000711189 /* MarketHandler.swift in Sources */,
 				F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */,
 				F6E107131EEDFD33007D82CC /* AddCollectionViewCell.swift in Sources */,
+				F64DAB441EF2F233002343BF /* HomeCollectionViewController.swift in Sources */,
 				F6348D681EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift in Sources */,
 				F644D2DB1EF2AA0E0037746B /* SettingsTableViewController.swift in Sources */,
 				F6ACBDAE1EEFF3E900472AA3 /* CookBookCollectionViewController.swift in Sources */,
@@ -530,6 +559,8 @@
 				F6ACBDB21EEFF42F00472AA3 /* CookBookCollectionViewCell.swift in Sources */,
 				F6AE62D01EE0780D00D8E0DF /* Recipe.swift in Sources */,
 				F66F5CE91EE34CB70060491F /* Ingredient.swift in Sources */,
+				F64DAB411EF2F01B002343BF /* PlanItemCollectionViewCell.swift in Sources */,
+				F64DAB3D1EF2EF9B002343BF /* PlanCollectionViewCell.swift in Sources */,
 				F65A09041EEF2B0100F136F9 /* ScannerViewController.swift in Sources */,
 				F65C605E1EEC6528008D7F0C /* PantryCollectionViewController.swift in Sources */,
 				F6F1EC821EDD7C9B004383D2 /* CookNow.xcdatamodeld in Sources */,
@@ -539,6 +570,7 @@
 				F6F789571EF17C24009E7323 /* RecipeStepViewController.swift in Sources */,
 				F66F5CEB1EE34D210060491F /* IngredientUse.swift in Sources */,
 				F64F26861EE5869800711189 /* MarketOffer.swift in Sources */,
+				F64DAB461EF2F72C002343BF /* TitleCollectionReusableView.swift in Sources */,
 				F6F789551EF17126009E7323 /* Utils.swift in Sources */,
 				F64F267C1EE5833A00711189 /* IngredientHandler.swift in Sources */,
 				F6F789531EF16CBD009E7323 /* RecipeCollectionViewController.swift in Sources */,

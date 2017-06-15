@@ -11,6 +11,7 @@ import UIKit
 class RecipeViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var shareButton: UIButton!
     
     override func viewDidLoad() {
@@ -24,6 +25,10 @@ class RecipeViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        descriptionTextView.setContentOffset(CGPoint.zero, animated: true)
     }
     
 //    private var backgroundImage: UIImage?

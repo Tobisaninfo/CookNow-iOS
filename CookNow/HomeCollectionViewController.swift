@@ -1,20 +1,21 @@
 //
-//  RecipeCollectionViewController.swift
+//  HomeCollectionViewController.swift
 //  CookNow
 //
-//  Created by Tobias on 14.06.17.
+//  Created by Tobias on 15.06.17.
 //  Copyright © 2017 Tobias. All rights reserved.
 //
 
 import UIKit
 
-class RecipeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    private let reuseIdentifier = "Cell"
+class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+
+    private let planReuseIdentifier = "PlanCell"
+    private let itemReuseIdentifier = "ItemCell"
+
     private let columnCount = 2
     
-    var recipeBook: RecipeBook?
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +23,10 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UINib(nibName: "RecipeCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(UINib(nibName: "PlanCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: planReuseIdentifier)
+        self.collectionView!.register(UINib(nibName: "PlanItemCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: itemReuseIdentifier)
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,31 +48,52 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 20
+        if section == 0 {
+            return 1
+        } else {
+            return 10
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        if indexPath.section == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: planReuseIdentifier, for: indexPath)
+            
+            if let cell = cell as? PlanCollectionViewCell {
+                cell.homeViewController = self
+            }
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemReuseIdentifier, for: indexPath)
+        
+            // Configure the cell
+        
+            return cell
+        }
+    }
     
-        if let cell = cell as? RecipeCollectionViewCell {
-            cell.nameLabel.text = "Nudelauflauf"
-            DispatchQueue.global().async {
-                if let image = ResourceHandler.loadImage(scope: .recipe, id: 1)
-                {
-                    DispatchQueue.main.sync {
-                        cell.imageView.image = image
-                    }
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if (kind == UICollectionElementKindSectionHeader) {
+            let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "TitleHeander", for: indexPath)
+            if let headerView = headerView as? TitleCollectionReusableView {
+                if indexPath.section == 0 {
+                    headerView.titleLabel.text = "Weekly Plan"
+                } else if indexPath.section == 1 {
+                    headerView.titleLabel.text = "Tipps"
                 }
             }
+            return headerView
         }
-    
-        return cell
+        
+        return UICollectionReusableView()
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -76,13 +101,16 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
             return CGSize()
         }
         
-        let viewWidth =  collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right - flowLayout.minimumInteritemSpacing * CGFloat(columnCount - 1)
-        let itemSize = viewWidth / CGFloat(columnCount)
-        return CGSize(width: itemSize, height: itemSize)
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "recipeCollectionSegue", sender: self)
+        if indexPath.section == 0 {
+            let viewWidth =  collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right
+            return CGSize(width: viewWidth, height: 125)
+        } else if indexPath.section == 1 {
+            let viewWidth =  collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right - flowLayout.minimumInteritemSpacing * CGFloat(columnCount - 1)
+            let itemSize = viewWidth / CGFloat(columnCount)
+            return CGSize(width: itemSize, height: itemSize)
+        } else {
+            return CGSize()
+        }
     }
     
     // MARK: UICollectionViewDelegate

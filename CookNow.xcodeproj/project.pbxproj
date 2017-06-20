@@ -34,6 +34,14 @@
 		F66F5CE91EE34CB70060491F /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66F5CE81EE34CB70060491F /* Ingredient.swift */; };
 		F66F5CEB1EE34D210060491F /* IngredientUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66F5CEA1EE34D210060491F /* IngredientUse.swift */; };
 		F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D63441EE0A44800921E86 /* HttpUtils.swift */; };
+		F69D67F61EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D67F41EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.swift */; };
+		F69D67F71EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69D67F51EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.xib */; };
+		F69D67FB1EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D67F91EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.swift */; };
+		F69D67FC1EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69D67FA1EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.xib */; };
+		F69D67FF1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D67FD1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.swift */; };
+		F69D68001EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69D67FE1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.xib */; };
+		F69D68041EF9A03400DF2007 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D68031EF9A03400DF2007 /* RecipeViewController.swift */; };
+		F69D68051EF9A1BC00DF2007 /* RecipeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F789521EF16CBD009E7323 /* RecipeCollectionViewController.swift */; };
 		F6ACBDAE1EEFF3E900472AA3 /* CookBookCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ACBDAD1EEFF3E900472AA3 /* CookBookCollectionViewController.swift */; };
 		F6ACBDB21EEFF42F00472AA3 /* CookBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ACBDB01EEFF42F00472AA3 /* CookBookCollectionViewCell.swift */; };
 		F6ACBDB31EEFF42F00472AA3 /* CookBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6ACBDB11EEFF42F00472AA3 /* CookBookCollectionViewCell.xib */; };
@@ -56,10 +64,8 @@
 		F6F1EC9D1EDD7C9B004383D2 /* CookNowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F1EC9C1EDD7C9B004383D2 /* CookNowUITests.swift */; };
 		F6F789501EF16C05009E7323 /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F7894E1EF16C05009E7323 /* RecipeCollectionViewCell.swift */; };
 		F6F789511EF16C05009E7323 /* RecipeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6F7894F1EF16C05009E7323 /* RecipeCollectionViewCell.xib */; };
-		F6F789531EF16CBD009E7323 /* RecipeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F789521EF16CBD009E7323 /* RecipeCollectionViewController.swift */; };
 		F6F789551EF17126009E7323 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F789541EF17126009E7323 /* Utils.swift */; };
 		F6F789571EF17C24009E7323 /* RecipeStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F789561EF17C24009E7323 /* RecipeStepViewController.swift */; };
-		F6F7895A1EF17FD6009E7323 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F789591EF17FD6009E7323 /* RecipeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +127,13 @@
 		F66F5CE81EE34CB70060491F /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		F66F5CEA1EE34D210060491F /* IngredientUse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientUse.swift; sourceTree = "<group>"; };
 		F68D63441EE0A44800921E86 /* HttpUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpUtils.swift; sourceTree = "<group>"; };
+		F69D67F41EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		F69D67F51EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeViewImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		F69D67F91EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		F69D67FA1EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeViewInfoCollectionViewCell.xib; sourceTree = "<group>"; };
+		F69D67FD1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewIngredientsCollectionViewCell.swift; sourceTree = "<group>"; };
+		F69D67FE1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeViewIngredientsCollectionViewCell.xib; sourceTree = "<group>"; };
+		F69D68031EF9A03400DF2007 /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		F6ACBDAD1EEFF3E900472AA3 /* CookBookCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookBookCollectionViewController.swift; sourceTree = "<group>"; };
 		F6ACBDB01EEFF42F00472AA3 /* CookBookCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookBookCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6ACBDB11EEFF42F00472AA3 /* CookBookCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CookBookCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -151,7 +164,6 @@
 		F6F789521EF16CBD009E7323 /* RecipeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewController.swift; sourceTree = "<group>"; };
 		F6F789541EF17126009E7323 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F6F789561EF17C24009E7323 /* RecipeStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeStepViewController.swift; sourceTree = "<group>"; };
-		F6F789591EF17FD6009E7323 /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +275,19 @@
 				F6D7FAC21EF05993001DD906 /* ProductSearchCollectionViewController.swift */,
 			);
 			name = Pantry;
+			sourceTree = "<group>";
+		};
+		F69D67F81EF99E2100DF2007 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F69D67F41EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.swift */,
+				F69D67F51EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.xib */,
+				F69D67F91EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.swift */,
+				F69D67FA1EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.xib */,
+				F69D67FD1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.swift */,
+				F69D67FE1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.xib */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		F6ACBDAC1EEFF39300472AA3 /* Collections */ = {
@@ -390,8 +415,9 @@
 		F6F789581EF17C27009E7323 /* Recipe */ = {
 			isa = PBXGroup;
 			children = (
+				F69D67F81EF99E2100DF2007 /* Cell */,
 				F6F789561EF17C24009E7323 /* RecipeStepViewController.swift */,
-				F6F789591EF17FD6009E7323 /* RecipeViewController.swift */,
+				F69D68031EF9A03400DF2007 /* RecipeViewController.swift */,
 			);
 			name = Recipe;
 			sourceTree = "<group>";
@@ -514,6 +540,9 @@
 				F6F789511EF16C05009E7323 /* RecipeCollectionViewCell.xib in Resources */,
 				F6F1EC841EDD7C9B004383D2 /* Assets.xcassets in Resources */,
 				F64DAB421EF2F01B002343BF /* PlanItemCollectionViewCell.xib in Resources */,
+				F69D67FC1EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.xib in Resources */,
+				F69D67F71EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.xib in Resources */,
+				F69D68001EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.xib in Resources */,
 				F6F1EC7F1EDD7C9B004383D2 /* Main.storyboard in Resources */,
 				F65C60631EEC656B008D7F0C /* PantryCollectionViewCell.xib in Resources */,
 				F64DAB3E1EF2EF9B002343BF /* PlanCollectionViewCell.xib in Resources */,
@@ -541,8 +570,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F69D68051EF9A1BC00DF2007 /* RecipeCollectionViewController.swift in Sources */,
 				F65C60621EEC656B008D7F0C /* PantryCollectionViewCell.swift in Sources */,
 				F65C60531EEC4D0D008D7F0C /* ShoppingViewController.swift in Sources */,
+				F69D68041EF9A03400DF2007 /* RecipeViewController.swift in Sources */,
 				F64F267E1EE583E000711189 /* MarketHandler.swift in Sources */,
 				F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */,
 				F6E107131EEDFD33007D82CC /* AddCollectionViewCell.swift in Sources */,
@@ -551,7 +582,9 @@
 				F644D2DB1EF2AA0E0037746B /* SettingsTableViewController.swift in Sources */,
 				F6ACBDAE1EEFF3E900472AA3 /* CookBookCollectionViewController.swift in Sources */,
 				F65C60501EEC439D008D7F0C /* ResourceHandler.swift in Sources */,
+				F69D67FB1EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.swift in Sources */,
 				F64F26841EE5867B00711189 /* MarketOfferHandler.swift in Sources */,
+				F69D67FF1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.swift in Sources */,
 				F65C605A1EEC5AE3008D7F0C /* ShoppingTableViewCell.swift in Sources */,
 				F6AE62CC1EE0779C00D8E0DF /* RecipeHandler.swift in Sources */,
 				F6F1EC7C1EDD7C9B004383D2 /* ViewController.swift in Sources */,
@@ -564,8 +597,8 @@
 				F65A09041EEF2B0100F136F9 /* ScannerViewController.swift in Sources */,
 				F65C605E1EEC6528008D7F0C /* PantryCollectionViewController.swift in Sources */,
 				F6F1EC821EDD7C9B004383D2 /* CookNow.xcdatamodeld in Sources */,
+				F69D67F61EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.swift in Sources */,
 				F64F26781EE57BFA00711189 /* Item.swift in Sources */,
-				F6F7895A1EF17FD6009E7323 /* RecipeViewController.swift in Sources */,
 				F6F1EC7A1EDD7C9B004383D2 /* AppDelegate.swift in Sources */,
 				F6F789571EF17C24009E7323 /* RecipeStepViewController.swift in Sources */,
 				F66F5CEB1EE34D210060491F /* IngredientUse.swift in Sources */,
@@ -573,7 +606,6 @@
 				F64DAB461EF2F72C002343BF /* TitleCollectionReusableView.swift in Sources */,
 				F6F789551EF17126009E7323 /* Utils.swift in Sources */,
 				F64F267C1EE5833A00711189 /* IngredientHandler.swift in Sources */,
-				F6F789531EF16CBD009E7323 /* RecipeCollectionViewController.swift in Sources */,
 				F64F267A1EE5804B00711189 /* Unit.swift in Sources */,
 				F6D7FAC31EF05993001DD906 /* ProductSearchCollectionViewController.swift in Sources */,
 				F6AE62D81EE09B6F00D8E0DF /* Step.swift in Sources */,

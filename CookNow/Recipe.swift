@@ -11,30 +11,24 @@ import Foundation
 class Recipe {
     
     let name: String
-    let description: String
-    
     let steps: [Step]
-    
-    let ingredients: [IngredientUse]
-    
     let time: Int
     let difficulty: Int
     
-    init(name: String, description: String, steps: [Step], ingredients: [IngredientUse], time: Int, difficulty: Int) {
+    init(name: String, steps: [Step], time: Int, difficulty: Int) {
         self.name = name
-        self.description = description
         self.steps = steps
-        self.ingredients = ingredients
         self.time = time
         self.difficulty = difficulty
+    }
+    
+    var ingredients: [IngredientUse] {
+        return steps.flatMap { return $0.ingredients }
     }
     
     class func fromJson(jsonData: JsonObject) -> Recipe? {
         // Base Data
         guard let name = jsonData["name"] as? String else {
-            return nil
-        }
-        guard let description = jsonData["description"] as? String else {
             return nil
         }
         guard let time = jsonData["time"] as? Int else {
@@ -56,18 +50,7 @@ class Recipe {
         }
         // Sort steps into right order
         steps.sort {$0.order < $1.order }
-        
-        // Ingredients
-        guard let ingredientData = jsonData["ingredients"] as? JsonArray else {
-            return nil
-        }
-        var ingredients: [IngredientUse] = []
-        for item in ingredientData {
-            if let ingredientUse = IngredientUse.fromJson(jsonData: item) {
-                ingredients.append(ingredientUse)
-            }
-        }
 
-        return Recipe(name: name, description: description, steps: steps, ingredients: ingredients, time: time, difficulty: difficulty)
+        return Recipe(name: name, steps: steps, time: time, difficulty: difficulty)
     }
 }

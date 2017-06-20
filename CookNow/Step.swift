@@ -14,12 +14,15 @@ class Step {
     let order: Int
     let content: String
     
+    let ingredients: [IngredientUse]
+    
     let items: [Item]
     
-    init(id: Int, order: Int, content: String, items: [Item]) {
+    init(id: Int, order: Int, content: String, ingredients: [IngredientUse], items: [Item]) {
         self.id = id
         self.order = order
         self.content = content
+        self.ingredients = ingredients
         self.items = items
     }
     
@@ -43,6 +46,18 @@ class Step {
                 items.append(item)
             }
         }
-        return Step(id: id, order: order, content: content, items: items)
+        
+        // Ingredients
+        guard let ingredientData = jsonData["ingredients"] as? JsonArray else {
+            return nil
+        }
+        var ingredients: [IngredientUse] = []
+        for item in ingredientData {
+            if let ingredientUse = IngredientUse.fromJson(jsonData: item) {
+                ingredients.append(ingredientUse)
+            }
+        }
+        
+        return Step(id: id, order: order, content: content, ingredients: ingredients, items: items)
     }
 }

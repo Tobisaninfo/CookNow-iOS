@@ -14,6 +14,8 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
     private let infoCellIdentifier = "infoCell"
     private let ingredientCellIdentifier = "ingredientCell"
     
+    var recipe: Recipe?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,7 +25,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         // Register cell classes
         self.collectionView!.register(UINib(nibName: "RecipeViewImageCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: imageCellIdentifier)
         self.collectionView!.register(UINib(nibName: "RecipeViewInfoCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: infoCellIdentifier)
-        self.collectionView!.register(UINib(nibName: "RecipeViewIngredientsCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: ingredientCellIdentifier)
+        self.collectionView!.register(UINib(nibName: "RecipeViewIngredientCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: ingredientCellIdentifier)
         
         // Do any additional setup after loading the view.
     }
@@ -52,8 +54,11 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 3
+        if let ingredientCount = recipe?.ingredients.count {
+            return 2 + ingredientCount
+        } else {
+            return 2
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -65,6 +70,12 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ingredientCellIdentifier, for: indexPath)
+            if let ingredient = recipe?.ingredients[indexPath.row - 2] {
+                if let cell = cell as? RecipeViewIngredientCollectionViewCell {
+                    cell.amountLabel.text = "\(ingredient.amount) \(ingredient.ingredient.unit)"
+                    cell.ingredientLabel.text = ingredient.ingredient.name
+                }
+            }
             return cell
         }
     }
@@ -80,7 +91,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         } else if indexPath.row == 1 {
             return CGSize(width: viewWidth, height: 60)
         } else if indexPath.row == 2 {
-            return CGSize(width: viewWidth, height: 200)
+            return CGSize(width: viewWidth, height: 21)
         }
         return CGSize.zero
     }

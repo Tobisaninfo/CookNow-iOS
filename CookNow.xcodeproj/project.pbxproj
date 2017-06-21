@@ -38,8 +38,8 @@
 		F69D67F71EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69D67F51EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.xib */; };
 		F69D67FB1EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D67F91EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.swift */; };
 		F69D67FC1EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69D67FA1EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.xib */; };
-		F69D67FF1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D67FD1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.swift */; };
-		F69D68001EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69D67FE1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.xib */; };
+		F69D67FF1EF99F7100DF2007 /* RecipeViewIngredientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D67FD1EF99F7100DF2007 /* RecipeViewIngredientCollectionViewCell.swift */; };
+		F69D68001EF99F7100DF2007 /* RecipeViewIngredientCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69D67FE1EF99F7100DF2007 /* RecipeViewIngredientCollectionViewCell.xib */; };
 		F69D68041EF9A03400DF2007 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D68031EF9A03400DF2007 /* RecipeViewController.swift */; };
 		F69D68051EF9A1BC00DF2007 /* RecipeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F789521EF16CBD009E7323 /* RecipeCollectionViewController.swift */; };
 		F6ACBDAE1EEFF3E900472AA3 /* CookBookCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ACBDAD1EEFF3E900472AA3 /* CookBookCollectionViewController.swift */; };
@@ -131,8 +131,8 @@
 		F69D67F51EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeViewImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		F69D67F91EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		F69D67FA1EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeViewInfoCollectionViewCell.xib; sourceTree = "<group>"; };
-		F69D67FD1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewIngredientsCollectionViewCell.swift; sourceTree = "<group>"; };
-		F69D67FE1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeViewIngredientsCollectionViewCell.xib; sourceTree = "<group>"; };
+		F69D67FD1EF99F7100DF2007 /* RecipeViewIngredientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewIngredientCollectionViewCell.swift; sourceTree = "<group>"; };
+		F69D67FE1EF99F7100DF2007 /* RecipeViewIngredientCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeViewIngredientCollectionViewCell.xib; sourceTree = "<group>"; };
 		F69D68031EF9A03400DF2007 /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		F6ACBDAD1EEFF3E900472AA3 /* CookBookCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookBookCollectionViewController.swift; sourceTree = "<group>"; };
 		F6ACBDB01EEFF42F00472AA3 /* CookBookCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookBookCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -284,8 +284,8 @@
 				F69D67F51EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.xib */,
 				F69D67F91EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.swift */,
 				F69D67FA1EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.xib */,
-				F69D67FD1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.swift */,
-				F69D67FE1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.xib */,
+				F69D67FD1EF99F7100DF2007 /* RecipeViewIngredientCollectionViewCell.swift */,
+				F69D67FE1EF99F7100DF2007 /* RecipeViewIngredientCollectionViewCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -542,7 +542,7 @@
 				F64DAB421EF2F01B002343BF /* PlanItemCollectionViewCell.xib in Resources */,
 				F69D67FC1EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.xib in Resources */,
 				F69D67F71EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.xib in Resources */,
-				F69D68001EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.xib in Resources */,
+				F69D68001EF99F7100DF2007 /* RecipeViewIngredientCollectionViewCell.xib in Resources */,
 				F6F1EC7F1EDD7C9B004383D2 /* Main.storyboard in Resources */,
 				F65C60631EEC656B008D7F0C /* PantryCollectionViewCell.xib in Resources */,
 				F64DAB3E1EF2EF9B002343BF /* PlanCollectionViewCell.xib in Resources */,
@@ -584,7 +584,7 @@
 				F65C60501EEC439D008D7F0C /* ResourceHandler.swift in Sources */,
 				F69D67FB1EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.swift in Sources */,
 				F64F26841EE5867B00711189 /* MarketOfferHandler.swift in Sources */,
-				F69D67FF1EF99F7100DF2007 /* RecipeViewIngredientsCollectionViewCell.swift in Sources */,
+				F69D67FF1EF99F7100DF2007 /* RecipeViewIngredientCollectionViewCell.swift in Sources */,
 				F65C605A1EEC5AE3008D7F0C /* ShoppingTableViewCell.swift in Sources */,
 				F6AE62CC1EE0779C00D8E0DF /* RecipeHandler.swift in Sources */,
 				F6F1EC7C1EDD7C9B004383D2 /* ViewController.swift in Sources */,

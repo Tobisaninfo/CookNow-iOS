@@ -8,9 +8,10 @@
 
 import UIKit
 
-class RecipeViewIngredientsCollectionViewCell: UICollectionViewCell {
+class RecipeViewIngredientCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var container: UIStackView!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var ingredientLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

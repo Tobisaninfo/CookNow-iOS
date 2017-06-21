@@ -30,3 +30,12 @@ class IngredientUse {
         return IngredientUse(ingredient: ingredient, amount: amount)
     }
 }
+
+extension IngredientUse {
+    var amountFormatted: String {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .decimal
+        return formatter.string(from: amount as NSNumber) ?? ""
+    }
+}

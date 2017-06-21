@@ -10,7 +10,7 @@ import Foundation
 
 enum Unit: Int {
     case Tuete = 1
-    case Strueck
+    case Stueck
     case ML
     case G
     case Prise

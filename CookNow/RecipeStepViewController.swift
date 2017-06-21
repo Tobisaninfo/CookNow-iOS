@@ -23,26 +23,34 @@ class RecipeStepViewController: UIViewController, UIPageViewControllerDataSource
     var currentIndex: Int?
     private var pendingIndex: Int?
     
+    var recipe: Recipe?
+    
     // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Setup the pages
-        let page1: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "stepViewController")
-        let page2: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "stepViewController")
-        let page3: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "stepViewController")
-        let page4: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "finishStepViewController")
-        pages.append(page1)
-        pages.append(page2)
-        pages.append(page3)
-        pages.append(page4)
+        if let recipe = recipe {
+            for step in recipe.steps {
+                let page: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "stepViewController")
+                if let page = page as? StepViewController {
+                    page.step = step
+                }
+                pages.append(page)
+            }
+        }
+        
+        let endPage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "finishStepViewController")
+        pages.append(endPage)
         
         // Create the page container
         pageContainer = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         pageContainer.delegate = self
         pageContainer.dataSource = self
-        pageContainer.setViewControllers([page1], direction: .forward, animated: false, completion: nil)
+        if let first = pages.first {
+            pageContainer.setViewControllers([first], direction: .forward, animated: false, completion: nil)
+        }
         
         // Add it to the view
         view.addSubview(pageContainer.view)

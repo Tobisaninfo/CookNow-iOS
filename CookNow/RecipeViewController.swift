@@ -13,11 +13,24 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
     private let imageCellIdentifier = "imageCell"
     private let infoCellIdentifier = "infoCell"
     private let ingredientCellIdentifier = "ingredientCell"
+    private let startCellIdentifier = "startCell"
     
-    var recipe: Recipe?
+    var recipe: Recipe? {
+        didSet {
+            if let collectionView = self.collectionView {
+                DispatchQueue.main.sync {
+                    collectionView.reloadData()
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        DispatchQueue.global().async {
+            self.recipe = RecipeHandler.get(id: 1)
+        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -26,6 +39,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         self.collectionView!.register(UINib(nibName: "RecipeViewImageCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: imageCellIdentifier)
         self.collectionView!.register(UINib(nibName: "RecipeViewInfoCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: infoCellIdentifier)
         self.collectionView!.register(UINib(nibName: "RecipeViewIngredientCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: ingredientCellIdentifier)
+        self.collectionView!.register(UINib(nibName: "RecipeViewStartButtonCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: startCellIdentifier)
         
         // Do any additional setup after loading the view.
     }
@@ -35,15 +49,17 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         // Dispose of any resources that can be recreated.
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "recipeStepSegue" {
+            if let destinationViewController = segue.destination as? RecipeStepViewController {
+                destinationViewController.recipe = recipe
+            }
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -55,24 +71,46 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let ingredientCount = recipe?.ingredients.count {
-            return 2 + ingredientCount
+            return 3 + ingredientCount
         } else {
-            return 2
+            return 3
         }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: imageCellIdentifier, for: indexPath)
+            if let recipe = recipe, let cell = cell as? RecipeViewImageCollectionViewCell {
+                cell.nameLabel.text = recipe.name
+                DispatchQueue.global().async {
+                    if let image = ResourceHandler.loadImage(scope: .recipe, id: recipe.id) {
+                        DispatchQueue.main.sync {
+                            cell.imageView.image = image.gradient()
+                        }
+                    }
+                }
+            }
             return cell
         } else if indexPath.row == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: infoCellIdentifier, for: indexPath)
+            if let recipe = recipe, let cell = cell as? RecipeViewInfoCollectionViewCell {
+                let difficultyTest = NSLocalizedString("Difficulty.\(recipe.difficulty)", comment: "Difficulty")
+                let text = "\(difficultyTest) • \(recipe.time) min • \(1.32) €"
+                cell.infoLabel.text = text
+            }
+            return cell
+        } else if let recipe = recipe, indexPath.row == 2 + recipe.ingredients.count {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: startCellIdentifier, for: indexPath)
+            if let cell = cell as? RecipeViewStartButtonCollectionViewCell {
+                cell.rootViewController = self
+            }
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ingredientCellIdentifier, for: indexPath)
             if let ingredient = recipe?.ingredients[indexPath.row - 2] {
                 if let cell = cell as? RecipeViewIngredientCollectionViewCell {
-                    cell.amountLabel.text = "\(ingredient.amount) \(ingredient.ingredient.unit)"
+                    let unitText = NSLocalizedString("Unit.\(ingredient.ingredient.unit)", comment: "Unit")
+                    cell.amountLabel.text = "\(ingredient.amountFormatted) \(unitText)"
                     cell.ingredientLabel.text = ingredient.ingredient.name
                 }
             }
@@ -89,42 +127,11 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         if indexPath.row == 0 {
             return CGSize(width: viewWidth, height: 200)
         } else if indexPath.row == 1 {
-            return CGSize(width: viewWidth, height: 60)
-        } else if indexPath.row == 2 {
+            return CGSize(width: viewWidth, height: 55)
+        } else if let recipe = recipe, indexPath.row == 2 + recipe.ingredients.count {
+            return CGSize(width: viewWidth, height: 30)
+        } else {
             return CGSize(width: viewWidth, height: 21)
         }
-        return CGSize.zero
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }

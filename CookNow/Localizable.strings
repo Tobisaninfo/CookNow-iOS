@@ -1,0 +1,19 @@
+/* 
+  Localization.strings
+  CookNow
+
+  Created by Tobias on 21.06.17.
+  Copyright © 2017 Tobias. All rights reserved.
+*/
+"Difficulty.1"="easy";
+"Difficulty.2"="normal";
+"Difficulty.3"="hard";
+
+"Unit.Tuete"="Tüte";
+"Unit.Stueck"="Stück";
+"Unit.ML"="ml";
+"Unit.G"="g";
+"Unit.Priese"="Priese";
+"Unit.EL"="EL";
+"Unit.TL"="TL";
+"Unit.Ohne"="";

@@ -18,26 +18,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7U-tU-Kym">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="easy • 12 min • 3,20 €" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7U-tU-Kym">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ud4-kR-FE8">
-                        <rect key="frame" x="110.5" y="20" width="154" height="30"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ud4-kR-FE8">
+                        <rect key="frame" x="115.5" y="20" width="144" height="30"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Al-HD-qWV">
-                                <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="0.0" y="0.0" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2e-c7-Suu">
-                                <rect key="frame" x="54" y="0.0" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="54" y="0.0" width="40" height="30"/>
+                                <state key="normal" title="Share"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePg-U2-3mu">
-                                <rect key="frame" x="108" y="0.0" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="114" y="0.0" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
                             </button>
                         </subviews>
                     </stackView>
@@ -51,6 +51,9 @@
                 <constraint firstItem="Q7U-tU-Kym" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="hDz-le-wai"/>
             </constraints>
             <size key="customSize" width="375" height="55"/>
+            <connections>
+                <outlet property="infoLabel" destination="Q7U-tU-Kym" id="6jU-X5-CIH"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="31.5"/>
         </collectionViewCell>
     </objects>

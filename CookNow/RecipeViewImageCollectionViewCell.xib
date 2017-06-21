@@ -24,13 +24,13 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCK-dx-d8t">
                         <rect key="frame" x="20" y="159" width="335" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GF2-y0-qQC">
                         <rect key="frame" x="20" y="130" width="335" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -48,7 +48,9 @@
                 <constraint firstItem="GF2-y0-qQC" firstAttribute="centerX" secondItem="dQl-Jy-DEJ" secondAttribute="centerX" id="rgD-Yv-FAE"/>
             </constraints>
             <connections>
+                <outlet property="detailLabel" destination="YCK-dx-d8t" id="636-QQ-uLW"/>
                 <outlet property="imageView" destination="dQl-Jy-DEJ" id="2LG-b6-k4o"/>
+                <outlet property="nameLabel" destination="GF2-y0-qQC" id="KUO-kU-dfz"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="54"/>
         </collectionViewCell>

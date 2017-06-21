@@ -1,1 +1,2 @@
 github "theadam/SwiftClient" ~> 3.0.1
+github "pkluz/PKHUD" ~> 4.0

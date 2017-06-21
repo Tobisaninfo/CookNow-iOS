@@ -11,15 +11,10 @@ import UIKit
 class RecipeViewImageCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        DispatchQueue.global().async {
-            if let image = ResourceHandler.loadImage(scope: .recipe, id: 1) {
-                DispatchQueue.main.sync {
-                    self.imageView.image = image
-                }
-            }
-        }
     }
 }

@@ -81,7 +81,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: imageCellIdentifier, for: indexPath)
             if let recipe = recipe, let cell = cell as? RecipeViewImageCollectionViewCell {
-                cell.nameLabel.text = recipe.name
+                cell.setText(text: recipe.name)
                 DispatchQueue.global().async {
                     if let image = ResourceHandler.loadImage(scope: .recipe, id: recipe.id) {
                         DispatchQueue.main.sync {
@@ -95,7 +95,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: infoCellIdentifier, for: indexPath)
             if let recipe = recipe, let cell = cell as? RecipeViewInfoCollectionViewCell {
                 let difficultyTest = NSLocalizedString("Difficulty.\(recipe.difficulty)", comment: "Difficulty")
-                let text = "\(difficultyTest) • \(recipe.time) min • \(1.32) €"
+                let text = "\(difficultyTest) • \(recipe.time) min • \(recipe.priceFormatted)"
                 cell.infoLabel.text = text
             }
             return cell
@@ -125,7 +125,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         
         let viewWidth =  collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right
         if indexPath.row == 0 {
-            return CGSize(width: viewWidth, height: 200)
+            return CGSize(width: viewWidth, height: 250)
         } else if indexPath.row == 1 {
             return CGSize(width: viewWidth, height: 55)
         } else if let recipe = recipe, indexPath.row == 2 + recipe.ingredients.count {

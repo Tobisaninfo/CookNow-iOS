@@ -17,4 +17,14 @@ class RecipeViewImageCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    func setText(text: String, secondText: String? = nil) {
+        if let secondText = secondText {
+            nameLabel.text = text
+            detailLabel.text = secondText
+        } else {
+            nameLabel.text = ""
+            detailLabel.text = text
+        }
+    }
 }

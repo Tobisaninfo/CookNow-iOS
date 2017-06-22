@@ -28,6 +28,11 @@ class Recipe {
         return steps.flatMap { return $0.ingredients }
     }
     
+    var price: Double {
+        let prices = ingredients.map({return $0.price})
+        return prices.reduce(0, +)
+    }
+    
     class func fromJson(jsonData: JsonObject) -> Recipe? {
         // Base Data
         guard let id = jsonData["id"] as? Int else {
@@ -57,5 +62,14 @@ class Recipe {
         steps.sort {$0.order < $1.order }
 
         return Recipe(id: id, name: name, steps: steps, time: time, difficulty: difficulty)
+    }
+}
+
+extension Recipe {
+    var priceFormatted: String {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        return formatter.string(from: price as NSNumber) ?? ""
     }
 }

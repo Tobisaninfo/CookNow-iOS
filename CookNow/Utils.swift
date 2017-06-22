@@ -27,7 +27,7 @@ extension UIImage {
         
         let gradient = CGGradient(colorsSpace: colorSpace, colors: colors, locations: locations)
         
-        let startPoint = CGPoint(x: self.size.width/2, y: 0)
+        let startPoint = CGPoint(x: self.size.width/2, y: self.size.height / 2)
         let endPoint = CGPoint(x: self.size.width/2, y: self.size.height)
         
         context!.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: UInt32(0)))

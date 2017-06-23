@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-
+import PKHUD
 
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
@@ -78,9 +78,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     // MARK: - AVCaptureMetadataOutputObjectsDelegate Methods
+    
+    private var isProcessing: Bool = false
     
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         
@@ -94,9 +95,36 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
         if supportedCodeTypes.contains(metadataObj.type) {
-            if metadataObj.stringValue != nil {
-                print(metadataObj.stringValue)
+            if metadataObj.stringValue != nil && !isProcessing {
+                let code = metadataObj.stringValue
 
+                isProcessing = true
+                HUD.show(.progress)
+                
+                DispatchQueue.global().async {
+                    if let barcode = IngredientHanler.barcode(code: code!) {
+                        if let ingredient = barcode.ingredient {
+                            DispatchQueue.main.async {
+                                HUD.flash(.labeledSuccess(title: nil, subtitle: ingredient.name), delay: 2.0) { success in
+                                    self.isProcessing = false
+                                }
+                            }
+                            _ = PantryItem.add(id: ingredient.id, withAmount: barcode.amount)
+                        } else {
+                            DispatchQueue.main.async {
+                                HUD.flash(.error, delay: 2.0) { success in
+                                    self.isProcessing = false
+                                }
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            HUD.flash(.error, delay: 2.0) { success in
+                                self.isProcessing = false
+                            }
+                        }
+                    }
+                }
             }
         }
     }

@@ -9,40 +9,31 @@
 import UIKit
 import CoreData
 
-class ProductSearchCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class ProductSearchCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, UISearchBarDelegate {
 
     private let reuseIdentifier = "Cell"
     private let columnCount = 3
 
     private var ingredients: [Ingredient]?
-    var pantryViewController: PantryCollectionViewController?
     
     private var activityIndicator: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
         self.collectionView!.register(UINib(nibName: "PantryCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
-        // Do any additional setup after loading the view.
-        
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ingredients?.count ?? 0
@@ -55,12 +46,10 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
             if let ingredient = ingredients?[indexPath.row] {
                 cell.nameLabel.text = ingredient.name
                 
-                DispatchQueue.global().async {
-                    if let image = ResourceHandler.loadImage(scope: .ingredient, id: 1) {
-                        DispatchQueue.main.sync {
-                            cell.animate(image: image)
-                        }
-                    }
+                loadImage(forIndex: indexPath)
+                
+                if let image = ResourceHandler.getImage(scope: .ingredient, id: ingredient.id) {
+                    cell.imageView.image = image
                 }
             }
         }
@@ -104,6 +93,8 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
         }
     }
 
+    // MARK: - CollectionView Deletage Methods
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
             return CGSize()
@@ -119,10 +110,12 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
             let alert = UIAlertController(title: "Add Product", message: "Enter amount of \(ingredient.name)", preferredStyle: .alert)
             
             alert.addTextField { (textField) in
-                textField.placeholder = "350 \(ingredient.unit)"
+                let unitString = NSLocalizedString("Unit.\(ingredient.unit)", comment: "Unit")
+                let placeholderText = NSLocalizedString("Alert.Ingredient.Add", comment: "Alert.Ingredient.Add")
+                textField.placeholder = String(format: placeholderText, unitString)
             }
             
-            alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (_) in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Alert.Add", comment: "Alert.Add"), style: .default, handler: { [weak alert] (_) in
                 if let textField = alert?.textFields![0] {
                     if let amountText = textField.text {
                         if let amount = Double(amountText) {
@@ -131,17 +124,41 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
                     }
                 }
             }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) -> Void in }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Alert.Cancel", comment: "Alert.Cancel"), style: .destructive, handler: { (action) -> Void in }))
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: - Prefetch
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            loadImage(forIndex: indexPath)
+        }
+    }
+    
+    private var tasks: [IndexPath] = []
+    
+    func loadImage(forIndex indexPath: IndexPath) {
+        if !tasks.contains(indexPath) {
+            if let index = ingredients?[indexPath.row ] {
+                tasks.append(indexPath)
+                
+                DispatchQueue.global().async {
+                    _ = ResourceHandler.loadImage(scope: .ingredient, id: Int(index.id))
+                    DispatchQueue.main.async {
+                        self.collectionView?.reloadItems(at: [indexPath])
+                        self.tasks.remove(at: self.tasks.index(of: indexPath)!)
+                    }
+                }
+            }
         }
     }
     
     
     // MARK: - Save
+    
     func save(ingredient: Ingredient, withAmount amount: Double) {
-        if let item = PantryItem.add(id: ingredient.id, withAmount: amount) {
-            pantryViewController?.items?.append(item)
-        }
+        _ = PantryItem.add(id: ingredient.id, withAmount: amount)
     }
-
 }

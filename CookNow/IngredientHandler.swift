@@ -40,4 +40,17 @@ class IngredientHanler {
         
         return ingredients
     }
+    
+    class func barcode(code: String) -> Barcode? {
+        var barcode: Barcode? = nil
+
+        HttpUtils.get(url: "/barcode/?ean=\(code)", callback: {
+            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? JsonObject {
+                if let json = jsonData {
+                    barcode = Barcode.fromJson(json: json)
+                }
+            }
+        })
+        return barcode
+    }
 }

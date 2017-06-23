@@ -53,6 +53,7 @@
 		F6AE62D81EE09B6F00D8E0DF /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AE62D71EE09B6F00D8E0DF /* Step.swift */; };
 		F6D7FABF1EF058F1001DD906 /* SearchBarCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7FABE1EF058F1001DD906 /* SearchBarCollectionReusableView.swift */; };
 		F6D7FAC31EF05993001DD906 /* ProductSearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7FAC21EF05993001DD906 /* ProductSearchCollectionViewController.swift */; };
+		F6DD794E1EFDBA4F001A86F5 /* Barcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD794D1EFDBA4F001A86F5 /* Barcode.swift */; };
 		F6E107131EEDFD33007D82CC /* AddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E107111EEDFD33007D82CC /* AddCollectionViewCell.swift */; };
 		F6E107141EEDFD33007D82CC /* AddCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6E107121EEDFD33007D82CC /* AddCollectionViewCell.xib */; };
 		F6F1EC7A1EDD7C9B004383D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F1EC791EDD7C9B004383D2 /* AppDelegate.swift */; };
@@ -153,6 +154,7 @@
 		F6AE62D71EE09B6F00D8E0DF /* Step.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		F6D7FABE1EF058F1001DD906 /* SearchBarCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarCollectionReusableView.swift; sourceTree = "<group>"; };
 		F6D7FAC21EF05993001DD906 /* ProductSearchCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductSearchCollectionViewController.swift; sourceTree = "<group>"; };
+		F6DD794D1EFDBA4F001A86F5 /* Barcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Barcode.swift; sourceTree = "<group>"; };
 		F6E107111EEDFD33007D82CC /* AddCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6E107121EEDFD33007D82CC /* AddCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCollectionViewCell.xib; sourceTree = "<group>"; };
 		F6F1EC761EDD7C9B004383D2 /* CookNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +238,7 @@
 				F66F5CEA1EE34D210060491F /* IngredientUse.swift */,
 				F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */,
 				F64F26791EE5804B00711189 /* Unit.swift */,
+				F6DD794D1EFDBA4F001A86F5 /* Barcode.swift */,
 			);
 			name = Ingredient;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				F6F1EC7A1EDD7C9B004383D2 /* AppDelegate.swift in Sources */,
 				F6F789571EF17C24009E7323 /* RecipeStepViewController.swift in Sources */,
 				F66F5CEB1EE34D210060491F /* IngredientUse.swift in Sources */,
+				F6DD794E1EFDBA4F001A86F5 /* Barcode.swift in Sources */,
 				F64F26861EE5869800711189 /* MarketOffer.swift in Sources */,
 				F64DAB461EF2F72C002343BF /* TitleCollectionReusableView.swift in Sources */,
 				F6F789551EF17126009E7323 /* Utils.swift in Sources */,

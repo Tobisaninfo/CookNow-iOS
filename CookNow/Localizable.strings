@@ -5,9 +5,9 @@
   Created by Tobias on 21.06.17.
   Copyright © 2017 Tobias. All rights reserved.
 */
-"Difficulty.1"="easy";
-"Difficulty.2"="normal";
-"Difficulty.3"="hard";
+"Difficulty.1"="Einfach";
+"Difficulty.2"="Normal";
+"Difficulty.3"="Schwer";
 
 "Unit.Tuete"="Tüte";
 "Unit.Stueck"="Stück";
@@ -17,3 +17,8 @@
 "Unit.EL"="EL";
 "Unit.TL"="TL";
 "Unit.Ohne"="";
+
+"Alert.Add"="Hinzufügen";
+"Alert.Cancel"="Abbrechen";
+
+"Alert.Ingredient.Add"="350 %@";

@@ -23,41 +23,22 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
         // Register cell classes
         self.collectionView!.register(UINib(nibName: "PantryCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: pantryReuseIdentifier)
         self.collectionView!.register(UINib(nibName: "AddCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: addReuseIdentifier)
-        
-        items = loadPantryItems()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.items = PantryItem.list()
         self.collectionView?.reloadData()
     }
-    
-    
-    func loadPantryItems() -> [PantryItem]? {
-        if let delegate = UIApplication.shared.delegate as? AppDelegate {
-            do {
-                return try delegate.persistentContainer.viewContext.fetch(NSFetchRequest(entityName: "PantryItem")) as? [PantryItem]
-            } catch {
-                print(error)
-            }
-        }
-        return nil
-    }
-
     
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? AddIngredientOptionMenuViewController {
             vc.collectionViewController = self
-        }
-        
-        if let vc = segue.destination as? ProductSearchCollectionViewController {
-            vc.pantryViewController = self
         }
     }
     
@@ -121,7 +102,7 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
         if !tasks.contains(indexPath) {
             if let index = items?[indexPath.row - 1] {
                 tasks.append(indexPath)
-                print("Prefetch \(indexPath)")
+                
                 DispatchQueue.global().async {
                     _ = ResourceHandler.loadImage(scope: .ingredient, id: Int(index.ingredientID))
                     DispatchQueue.main.async {

@@ -28,15 +28,10 @@ class ResourceHandler {
         }
     }
     
+    private static var cache: [Scope:[Int:UIImage]] = [.recipe:[:], .ingredient:[:], .market:[:]]
+    
     class func getImage(scope: Scope, id: Int) -> UIImage? {
-        let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] as String
-        let folder = URL(fileURLWithPath: path).appendingPathComponent(scope.url())
-        let localUrl = folder.appendingPathComponent("\(id).jpg")
-        
-        if let data = try? Data(contentsOf: localUrl) {
-            return UIImage(data: data)
-        }
-        return nil
+        return cache[scope]?[id]
     }
     
     class func loadImage(scope: Scope, id: Int) -> UIImage? {
@@ -45,7 +40,9 @@ class ResourceHandler {
         let localUrl = folder.appendingPathComponent("\(id).jpg")
         
         if let data = try? Data(contentsOf: localUrl) {
-            return UIImage(data: data)
+            let image = UIImage(data: data)
+            cache[scope]?[id] = image
+            return image
         } else {
             try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true, attributes: nil)
         }
@@ -59,7 +56,9 @@ class ResourceHandler {
                         print(error)
                     }
                     print("Load Image: \(url)")
-                    return UIImage(data: data)
+                    let image = UIImage(data: data)
+                    cache[scope]?[id] = image
+                    return image
                 }
             }
         }

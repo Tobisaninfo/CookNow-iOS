@@ -10,7 +10,17 @@ import Foundation
 
 class IngredientHanler {
     
+    private static var cache: [Int:Ingredient] = [:]
+    
+    class func getLocal(id: Int) -> Ingredient? {
+        return cache[id]
+    }
+    
     class func get(id: Int) -> Ingredient? {
+        if let local = getLocal(id: id) {
+            return local
+        }
+        
         var ingredient: Ingredient? = nil
         
         HttpUtils.get(url: "/ingredient/\(id)", callback: {
@@ -20,6 +30,7 @@ class IngredientHanler {
                 }
             }
         })
+        cache[id] = ingredient
         return ingredient
     }
     

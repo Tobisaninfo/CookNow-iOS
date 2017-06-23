@@ -63,15 +63,18 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pantryReuseIdentifier, for: indexPath) as! PantryCollectionViewCell
             
             if let item = items?[indexPath.row - 1] {
-                if let ingredient = IngredientHanler.get(id: Int(item.ingredientID)) {
-                    loadImage(forIndex: indexPath)
-                    
-                    if let item = ResourceHandler.getImage(scope: .ingredient, id: ingredient.id) {
-                        cell.animate(image: item)
-                    }
+                if let item = ResourceHandler.getImage(scope: .ingredient, id: Int(item.ingredientID)) {
+                    cell.imageView.image = item
+                } else {
+                    self.loadData(forIndex: indexPath)
+                }
+                
+                if let ingredient = IngredientHanler.getLocal(id: Int(item.ingredientID)) {
                     let unitText = NSLocalizedString("Unit.\(ingredient.unit)", comment: "Unit")
                     cell.nameLabel.text = ingredient.name
                     cell.amountLabel.text = "\(item.amount) \(unitText)"
+                } else {
+                    self.loadData(forIndex: indexPath)
                 }
             }
             
@@ -92,22 +95,23 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
     // MARK: - CollectionView Prefetch Data
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
-            loadImage(forIndex: indexPath)
+            if indexPath.row != 0 {
+                loadData(forIndex: indexPath)
+            }
         }
     }
     
-    private var tasks: [IndexPath] = []
+    private var tasks: [Int] = []
     
-    func loadImage(forIndex indexPath: IndexPath) {
-        if !tasks.contains(indexPath) {
-            if let index = items?[indexPath.row - 1] {
-                tasks.append(indexPath)
-                
+    func loadData(forIndex indexPath: IndexPath) {
+        if !tasks.contains(indexPath.row) {
+            if let item = items?[indexPath.row - 1] {
+                tasks.append(indexPath.row)
                 DispatchQueue.global().async {
-                    _ = ResourceHandler.loadImage(scope: .ingredient, id: Int(index.ingredientID))
+                    _ = ResourceHandler.loadImage(scope: .ingredient, id: Int(item.ingredientID))
+                    _ = IngredientHanler.get(id: Int(item.ingredientID))
                     DispatchQueue.main.async {
                         self.collectionView?.reloadItems(at: [indexPath])
-                        self.tasks.remove(at: self.tasks.index(of: indexPath)!)
                     }
                 }
             }

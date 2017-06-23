@@ -18,6 +18,7 @@ extension PantryItem {
                 if let item = NSManagedObject(entity: entity, insertInto: context) as? PantryItem {
                     item.ingredientID = Int32(id)
                     item.amount = amount
+                    return item
                 }
             }
         }

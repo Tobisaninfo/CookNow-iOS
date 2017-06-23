@@ -28,6 +28,17 @@ class ResourceHandler {
         }
     }
     
+    class func getImage(scope: Scope, id: Int) -> UIImage? {
+        let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] as String
+        let folder = URL(fileURLWithPath: path).appendingPathComponent(scope.url())
+        let localUrl = folder.appendingPathComponent("\(id).jpg")
+        
+        if let data = try? Data(contentsOf: localUrl) {
+            return UIImage(data: data)
+        }
+        return nil
+    }
+    
     class func loadImage(scope: Scope, id: Int) -> UIImage? {
         let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] as String
         let folder = URL(fileURLWithPath: path).appendingPathComponent(scope.url())

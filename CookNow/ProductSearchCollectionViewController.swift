@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ProductSearchCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
@@ -14,6 +15,7 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
     private let columnCount = 3
 
     private var ingredients: [Ingredient]?
+    var pantryViewController: PantryCollectionViewController?
     
     private var activityIndicator: UIActivityIndicatorView?
     
@@ -35,26 +37,14 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return ingredients?.count ?? 0
     }
 
@@ -79,7 +69,6 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
         if (kind == UICollectionElementKindSectionHeader) {
             let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchBarHeader", for: indexPath)
             
@@ -135,8 +124,10 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
             
             alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (_) in
                 if let textField = alert?.textFields![0] {
-                    if let amount = textField.text {
-                        print("Add Ingredient with amount: \(amount)")
+                    if let amountText = textField.text {
+                        if let amount = Double(amountText) {
+                            self.save(ingredient: ingredient, withAmount: amount)
+                        }
                     }
                 }
             }))
@@ -145,35 +136,12 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
         }
     }
     
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    // MARK: - Save
+    func save(ingredient: Ingredient, withAmount amount: Double) {
+        if let item = PantryItem.add(id: ingredient.id, withAmount: amount) {
+            pantryViewController?.items?.append(item)
+        }
     }
-    */
 
 }

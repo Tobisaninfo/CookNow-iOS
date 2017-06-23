@@ -240,6 +240,7 @@
                         <connections>
                             <outlet property="dataSource" destination="MhV-jZ-Tvs" id="2u2-kM-35c"/>
                             <outlet property="delegate" destination="MhV-jZ-Tvs" id="xEV-xM-sTs"/>
+                            <outlet property="prefetchDataSource" destination="MhV-jZ-Tvs" id="dm9-Kc-xGt"/>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Pantry" id="8U0-DG-yG4"/>

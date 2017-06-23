@@ -7,36 +7,57 @@
 //
 
 import UIKit
+import CoreData
 
-class PantryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AddCollectionViewCellDelegate {
+class PantryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, AddCollectionViewCellDelegate {
     
     private let pantryReuseIdentifier = "pantryCell"
     private let addReuseIdentifier = "pantryAddCell"
     private let columnCount = 3
     
+    var items: [PantryItem]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
         self.collectionView!.register(UINib(nibName: "PantryCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: pantryReuseIdentifier)
         self.collectionView!.register(UINib(nibName: "AddCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: addReuseIdentifier)
+        
+        items = loadPantryItems()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.collectionView?.reloadData()
+    }
+    
+    
+    func loadPantryItems() -> [PantryItem]? {
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            do {
+                return try delegate.persistentContainer.viewContext.fetch(NSFetchRequest(entityName: "PantryItem")) as? [PantryItem]
+            } catch {
+                print(error)
+            }
+        }
+        return nil
+    }
 
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? AddIngredientOptionMenuViewController {
             vc.collectionViewController = self
+        }
+        
+        if let vc = segue.destination as? ProductSearchCollectionViewController {
+            vc.pantryViewController = self
         }
     }
     
@@ -44,14 +65,12 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 30
+        return (items?.count ?? 0) + 1 // add Cell
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -62,17 +81,18 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pantryReuseIdentifier, for: indexPath) as! PantryCollectionViewCell
             
-            DispatchQueue.global().async {
-                if let image = ResourceHandler.loadImage(scope: .ingredient, id: 1) {
-                    DispatchQueue.main.sync {
-                        cell.animate(image: image)
+            if let item = items?[indexPath.row - 1] {
+                if let ingredient = IngredientHanler.get(id: Int(item.ingredientID)) {
+                    loadImage(forIndex: indexPath)
+                    
+                    if let item = ResourceHandler.getImage(scope: .ingredient, id: ingredient.id) {
+                        cell.animate(image: item)
                     }
+                    let unitText = NSLocalizedString("Unit.\(ingredient.unit)", comment: "Unit")
+                    cell.nameLabel.text = ingredient.name
+                    cell.amountLabel.text = "\(item.amount) \(unitText)"
                 }
             }
-            
-            cell.nameLabel.text = "Apfel"
-            cell.amountLabel.text = "3 Stück"
-            // Configure the cell
             
             return cell
         }
@@ -88,39 +108,34 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
         return CGSize(width: itemSize, height: itemSize)
     }
     
+    // MARK: - CollectionView Prefetch Data
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            loadImage(forIndex: indexPath)
+        }
+    }
+    
+    private var tasks: [IndexPath] = []
+    
+    func loadImage(forIndex indexPath: IndexPath) {
+        if !tasks.contains(indexPath) {
+            if let index = items?[indexPath.row - 1] {
+                tasks.append(indexPath)
+                print("Prefetch \(indexPath)")
+                DispatchQueue.global().async {
+                    _ = ResourceHandler.loadImage(scope: .ingredient, id: Int(index.ingredientID))
+                    DispatchQueue.main.async {
+                        self.collectionView?.reloadItems(at: [indexPath])
+                        self.tasks.remove(at: self.tasks.index(of: indexPath)!)
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: - Utils
+    
     func onAction() {
         performSegue(withIdentifier: "addIngredient", sender: self)
     }
-
-    // MARK: UICollectionViewDelegate
-    
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }

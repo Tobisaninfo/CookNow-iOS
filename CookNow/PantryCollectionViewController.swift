@@ -19,7 +19,9 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
         // Register cell classes
         self.collectionView!.register(UINib(nibName: "PantryCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: pantryReuseIdentifier)
         self.collectionView!.register(UINib(nibName: "AddCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: addReuseIdentifier)
@@ -64,7 +66,7 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
             
             if let item = items?[indexPath.row - 1] {
                 if let item = ResourceHandler.getImage(scope: .ingredient, id: Int(item.ingredientID)) {
-                    cell.imageView.image = item.gradient()
+                    cell.imageView.image = item
                 } else {
                     self.loadData(forIndex: indexPath)
                 }
@@ -82,6 +84,12 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? PantryCollectionViewCell {
+            cell.editing = isEditing
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
             return CGSize()
@@ -93,6 +101,7 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
     }
     
     // MARK: - CollectionView Prefetch Data
+    
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             if indexPath.row != 0 {
@@ -108,7 +117,9 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
             if let item = items?[indexPath.row - 1] {
                 tasks.append(indexPath.row)
                 DispatchQueue.global().async {
-                    _ = ResourceHandler.loadImage(scope: .ingredient, id: Int(item.ingredientID))
+                    _ = ResourceHandler.loadImage(scope: .ingredient, id: Int(item.ingredientID)) {
+                        return $0?.gradient()
+                    }
                     _ = IngredientHanler.get(id: Int(item.ingredientID))
                     DispatchQueue.main.async {
                         self.collectionView?.reloadItems(at: [indexPath])
@@ -116,6 +127,40 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
                 }
             }
         }
+    }
+    
+    // MARK: - Edit
+
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        self.collectionView?.allowsMultipleSelection = editing
+        if let indexPaths = self.collectionView?.indexPathsForVisibleItems {
+            for indexPath in indexPaths {
+                self.collectionView?.deselectItem(at: indexPath, animated: false)
+                if let cell = self.collectionView?.cellForItem(at: indexPath) as? PantryCollectionViewCell {
+                    cell.editing = editing
+                }
+            }
+        }
+        
+        if editing {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteHandler(_:)))
+        } else {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+    }
+    
+    func deleteHandler(_ sender: Any) {
+        if let indexPaths = self.collectionView?.indexPathsForSelectedItems, let items = self.items {
+            for indexPath in indexPaths {
+                items[indexPath.row - 1].delete()
+            }
+            
+            self.items = PantryItem.list()
+            self.collectionView?.deleteItems(at: indexPaths)
+        }
+        self.setEditing(false, animated: true)
     }
     
     // MARK: - Utils

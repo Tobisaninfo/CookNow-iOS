@@ -145,7 +145,9 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
                 tasks.append(indexPath)
                 
                 DispatchQueue.global().async {
-                    _ = ResourceHandler.loadImage(scope: .ingredient, id: Int(index.id))
+                    _ = ResourceHandler.loadImage(scope: .ingredient, id: Int(index.id)) {
+                        return $0?.gradient()
+                    }
                     DispatchQueue.main.async {
                         self.collectionView?.reloadItems(at: [indexPath])
                         self.tasks.remove(at: self.tasks.index(of: indexPath)!)

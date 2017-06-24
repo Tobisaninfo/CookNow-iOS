@@ -34,13 +34,20 @@ class ResourceHandler {
         return cache[scope]?[id]
     }
     
-    class func loadImage(scope: Scope, id: Int) -> UIImage? {
+    class func setImage(scope: Scope, id: Int, image: UIImage) {
+        cache[scope]?[id] = image
+    }
+    
+    class func loadImage(scope: Scope, id: Int, handler: ((UIImage?) -> UIImage?)? = nil) -> UIImage? {
         let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] as String
         let folder = URL(fileURLWithPath: path).appendingPathComponent(scope.url())
         let localUrl = folder.appendingPathComponent("\(id).jpg")
         
         if let data = try? Data(contentsOf: localUrl) {
-            let image = UIImage(data: data)
+            var image = UIImage(data: data)
+            if let handler = handler {
+                image = handler(image)
+            }
             cache[scope]?[id] = image
             return image
         } else {
@@ -56,7 +63,10 @@ class ResourceHandler {
                         print(error)
                     }
                     print("Load Image: \(url)")
-                    let image = UIImage(data: data)
+                    var image = UIImage(data: data)
+                    if let handler = handler {
+                        image = handler(image)
+                    }
                     cache[scope]?[id] = image
                     return image
                 }

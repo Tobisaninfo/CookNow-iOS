@@ -33,6 +33,10 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bUN-0j-OIq">
+                        <rect key="frame" x="60" y="60" width="40" height="40"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
@@ -51,6 +55,7 @@
                 <outlet property="amountLabel" destination="xPA-IE-Qui" id="AdV-Dl-0vL"/>
                 <outlet property="imageView" destination="aPt-aC-xkK" id="IEe-tT-ovf"/>
                 <outlet property="nameLabel" destination="HlS-GA-HO7" id="Ka1-rQ-B5K"/>
+                <outlet property="selectImageView" destination="bUN-0j-OIq" id="YGK-SR-9O0"/>
             </connections>
             <point key="canvasLocation" x="67" y="82"/>
         </collectionViewCell>

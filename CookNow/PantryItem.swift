@@ -30,6 +30,13 @@ extension PantryItem {
         return nil
     }
     
+    func delete() {
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            let context = delegate.persistentContainer.viewContext
+            context.delete(self)
+        }
+    }
+    
     class func list() -> [PantryItem]? {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             do {

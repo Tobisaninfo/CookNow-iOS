@@ -1,26 +1,24 @@
 //
-//  PantryItem.swift
+//  RecipeBook.swift
 //  CookNow
 //
-//  Created by Tobias on 23.06.17.
+//  Created by Tobias on 24.06.17.
 //  Copyright © 2017 Tobias. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-extension PantryItem {
+extension RecipeBook {
+    private static let className = String(describing: RecipeBook.self)
     
-    private static let className = String(describing: PantryItem.self)
-    
-    class func add(id: Int, withAmount amount: Double) -> PantryItem? {
+    class func add(name: String) -> RecipeBook? {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             let context = delegate.persistentContainer.viewContext
             if let entity = NSEntityDescription.entity(forEntityName: className, in: context) {
-                if let item = NSManagedObject(entity: entity, insertInto: context) as? PantryItem {
-                    item.ingredientID = Int32(id)
-                    item.amount = amount
-                    
+                if let item = NSManagedObject(entity: entity, insertInto: context) as? RecipeBook {
+                    item.name = name
+                
                     delegate.saveContext()
                     
                     return item
@@ -38,14 +36,15 @@ extension PantryItem {
         }
     }
     
-    class func list() -> [PantryItem]? {
+    class func list() -> [RecipeBook]? {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             do {
-                return try delegate.persistentContainer.viewContext.fetch(NSFetchRequest(entityName: className)) as? [PantryItem]
+                return try delegate.persistentContainer.viewContext.fetch(NSFetchRequest(entityName: className)) as? [RecipeBook]
             } catch {
                 print(error)
             }
         }
         return nil
     }
+
 }

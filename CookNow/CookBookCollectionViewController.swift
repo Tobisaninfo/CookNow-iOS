@@ -16,45 +16,34 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
     
     private let columnCount = 2
     
+    private var items: [RecipeBook]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
 
         // Register cell classes
         self.collectionView!.register(UINib(nibName: "CookBookCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
         self.collectionView!.register(UINib(nibName: "AddCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: addReuseIdentifier)
-        
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        items = RecipeBook.list()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 5
+        return (items?.count ?? 0) + 1 // Add Cell
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -68,28 +57,37 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
             if let cell = cell as? CookBookCollectionViewCell {
-                cell.titleLabel.text = "Nudelrezepte"
-                DispatchQueue.global().async {
-                    if let image = ResourceHandler.loadImage(scope: .recipe, id: 1) {
-                        DispatchQueue.main.sync {
-                            cell.imageHeader.image = image
+                if let item = items?[indexPath.row - 1] {
+                    cell.titleLabel.text = item.name
+                
+                    if let recipes = item.recipes {
+                        if recipes.count > 0, let item = recipes.object(at: 0) as? RecipeRef {
+                            if let image = ResourceHandler.getImage(scope: .recipe, id: Int(item.id)) {
+                                cell.imageHeader.image = image
+                            } else {
+                                loadData(forIndex: indexPath)
+                            }
                         }
-                    }
-                    if let image = ResourceHandler.loadImage(scope: .recipe, id: 2) {
-                        DispatchQueue.main.sync {
-                            cell.imageFooter[0].image = image
+                        if recipes.count > 1, let item = recipes.object(at: 1) as? RecipeRef {
+                            if let image = ResourceHandler.getImage(scope: .recipe, id: Int(item.id)) {
+                                cell.imageFooter[0].image = image
+                            } else {
+                                loadData(forIndex: indexPath)
+                            }
                         }
-                    }
-                    
-                    if let image = ResourceHandler.loadImage(scope: .recipe, id: 3) {
-                        DispatchQueue.main.sync {
-                            cell.imageFooter[1].image = image
+                        if recipes.count > 2, let item = recipes.object(at: 2) as? RecipeRef {
+                            if let image = ResourceHandler.getImage(scope: .recipe, id: Int(item.id)) {
+                                cell.imageFooter[1].image = image
+                            } else {
+                                loadData(forIndex: indexPath)
+                            }
                         }
-                    }
-                    
-                    if let image = ResourceHandler.loadImage(scope: .recipe, id: 4) {
-                        DispatchQueue.main.sync {
-                            cell.imageFooter[2].image = image
+                        if recipes.count > 3, let item = recipes.object(at: 3) as? RecipeRef {
+                            if let image = ResourceHandler.getImage(scope: .recipe, id: Int(item.id)) {
+                                cell.imageFooter[2].image = image
+                            } else {
+                                loadData(forIndex: indexPath)
+                            }
                         }
                     }
                 }
@@ -97,6 +95,132 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
             return cell
         }
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? PantryCollectionViewCell {
+            cell.editing = isEditing
+        }
+    }
+
+    // MARK: - Layout
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
+            return CGSize()
+        }
+        
+        let viewWidth =  collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right - flowLayout.minimumInteritemSpacing * CGFloat(columnCount - 1)
+        let itemSize = viewWidth / CGFloat(columnCount)
+        return CGSize(width: itemSize, height: itemSize)
+    }
+    
+    // MARK: - CollectionView Prefetch Data
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if indexPath.row != 0 {
+                loadData(forIndex: indexPath)
+            }
+        }
+    }
+    
+    private var tasks: [Int] = []
+    
+    private func loadData(forIndex indexPath: IndexPath) {
+        if !tasks.contains(indexPath.row) {
+            if let item = items?[indexPath.row - 1] {
+                tasks.append(indexPath.row)
+                
+                DispatchQueue.global().async {
+                    if let recipes = item.recipes {
+                        if recipes.count > 0 {
+                            if let item = recipes.object(at: 0) as? RecipeRef {
+                                _ = ResourceHandler.loadImage(scope: .recipe, id: Int(item.id))
+                            }
+                        }
+                        if recipes.count > 1 {
+                            if let item = recipes.object(at: 1) as? RecipeRef {
+                                _ = ResourceHandler.loadImage(scope: .recipe, id: Int(item.id))
+                            }
+                        }
+                        if recipes.count > 2 {
+                            if let item = recipes.object(at: 2) as? RecipeRef {
+                                _ = ResourceHandler.loadImage(scope: .recipe, id: Int(item.id))
+                            }
+                        }
+                        if recipes.count > 3 {
+                            if let item = recipes.object(at: 3) as? RecipeRef {
+                                _ = ResourceHandler.loadImage(scope: .recipe, id: Int(item.id))
+                            }
+                        }
+                        DispatchQueue.main.async {
+                            self.collectionView?.reloadItems(at: [indexPath])
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: - Edit
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        self.collectionView?.allowsMultipleSelection = editing
+        if let indexPaths = self.collectionView?.indexPathsForVisibleItems {
+            for indexPath in indexPaths {
+                self.collectionView?.deselectItem(at: indexPath, animated: false)
+                if let cell = self.collectionView?.cellForItem(at: indexPath) as? CookBookCollectionViewCell {
+                    cell.editing = editing
+                }
+            }
+        }
+        
+        if editing {
+            self.navigationController?.isToolbarHidden = false
+            var items = [UIBarButtonItem]()
+            items.append(UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteHandler(_:))))
+            self.navigationController?.toolbar.items = items
+        } else {
+            self.navigationController?.isToolbarHidden = true
+        }
+    }
+    
+    func deleteHandler(_ sender: Any) {
+        if let indexPaths = self.collectionView?.indexPathsForSelectedItems, let items = self.items {
+            for indexPath in indexPaths {
+                items[indexPath.row - 1].delete()
+            }
+            
+            self.items = RecipeBook.list()
+            self.collectionView?.deleteItems(at: indexPaths)
+        }
+        self.setEditing(false, animated: true)
+    }
+    
+    // MARK: - Navigation
+    
+    private var selectedCookBook: Int?
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if !isEditing {
+            if indexPath.row != 0 { // row == 0 --> add button
+                selectedCookBook = indexPath.row - 1
+                performSegue(withIdentifier: "recipeCollectionSegue", sender: self)
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? RecipeCollectionViewController {
+            if let index = selectedCookBook {
+                destinationViewController.recipeBook = items?[index]
+            }
+        }
+    }
+    
+    // MARK: - Event Handler
     
     func onAction() {
         let alert = UIAlertController(title: "Add CookBook", message: "Enter a name.", preferredStyle: .alert)
@@ -108,67 +232,14 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (_) in
             if let textField = alert?.textFields![0] {
                 if let name = textField.text {
-                    print("CookBook: \(name)")
+                    if let recipeBook = RecipeBook.add(name: name) {
+                        self.items?.append(recipeBook)
+                        self.collectionView?.reloadData()
+                    }
                 }
             }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) -> Void in }))
         self.present(alert, animated: true, completion: nil)
     }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
-            return CGSize()
-        }
-        
-        let viewWidth =  collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right - flowLayout.minimumInteritemSpacing * CGFloat(columnCount - 1)
-        let itemSize = viewWidth / CGFloat(columnCount)
-        return CGSize(width: itemSize, height: itemSize)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row != 0 { // row == 0 --> add button
-            performSegue(withIdentifier: "recipeCollectionSegue", sender: self)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "recipeCollectionSegue" {
-            if let destinationViewController = segue.destination as? RecipeCollectionViewController {
-                destinationViewController.recipeBook = nil
-            }
-        }
-    }
-    
-    // MARK: UICollectionViewDelegate
-    
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }

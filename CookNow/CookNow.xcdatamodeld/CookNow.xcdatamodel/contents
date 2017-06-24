@@ -13,9 +13,9 @@
         <attribute name="recipeID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="RecipeBook" representedClassName="RecipeBook" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="recipes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeRef" inverseName="recipeBook" inverseEntity="RecipeRef" syncable="YES"/>
+        <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="RecipeRef" inverseName="recipeBook" inverseEntity="RecipeRef" syncable="YES"/>
     </entity>
     <entity name="RecipeRef" representedClassName="RecipeRef" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>

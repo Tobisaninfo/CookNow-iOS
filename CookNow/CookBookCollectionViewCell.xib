@@ -49,6 +49,13 @@
                             <constraint firstAttribute="width" secondItem="rvF-FZ-EDW" secondAttribute="height" multiplier="1:1" id="SlY-XI-Ovl"/>
                         </constraints>
                     </imageView>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ebc-cx-LqR">
+                        <rect key="frame" x="110" y="110" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="fiN-lE-MT4"/>
+                            <constraint firstAttribute="width" constant="40" id="tkQ-dL-rmq"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
@@ -61,7 +68,9 @@
                 <constraint firstItem="rvF-FZ-EDW" firstAttribute="leading" secondItem="Uxk-aY-hGd" secondAttribute="trailing" constant="7" id="Prb-6x-sef"/>
                 <constraint firstItem="Uxk-aY-hGd" firstAttribute="top" secondItem="KMI-tx-fRN" secondAttribute="bottom" constant="8" id="RBs-sG-KUH"/>
                 <constraint firstAttribute="trailing" secondItem="rvF-FZ-EDW" secondAttribute="trailing" id="TTK-aN-D1m"/>
+                <constraint firstItem="ebc-cx-LqR" firstAttribute="trailing" secondItem="fGV-bl-yvl" secondAttribute="trailing" id="bCv-L6-XEZ"/>
                 <constraint firstItem="S0D-rn-6dj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fSU-gM-pAB"/>
+                <constraint firstItem="ebc-cx-LqR" firstAttribute="bottom" secondItem="fGV-bl-yvl" secondAttribute="bottom" id="iWY-Rn-8Q1"/>
                 <constraint firstItem="KMI-tx-fRN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lP8-og-17k"/>
                 <constraint firstItem="Uxk-aY-hGd" firstAttribute="leading" secondItem="S0D-rn-6dj" secondAttribute="trailing" constant="8" id="moh-Zz-b0q"/>
                 <constraint firstItem="S0D-rn-6dj" firstAttribute="width" secondItem="rvF-FZ-EDW" secondAttribute="width" id="qS1-NU-oZC"/>
@@ -71,6 +80,7 @@
             </constraints>
             <connections>
                 <outlet property="imageHeader" destination="KMI-tx-fRN" id="2ls-9f-C7x"/>
+                <outlet property="selectImageView" destination="ebc-cx-LqR" id="tyL-kL-Axs"/>
                 <outlet property="titleLabel" destination="fGV-bl-yvl" id="s8Y-2h-Thf"/>
                 <outletCollection property="imageFooter" destination="S0D-rn-6dj" collectionClass="NSMutableArray" id="SOW-Uk-Ke6"/>
                 <outletCollection property="imageFooter" destination="Uxk-aY-hGd" collectionClass="NSMutableArray" id="7Ij-XI-mbF"/>

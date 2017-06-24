@@ -20,7 +20,7 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         // Register cell classes
         self.collectionView!.register(UINib(nibName: "PantryCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: pantryReuseIdentifier)
@@ -145,9 +145,12 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
         }
         
         if editing {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteHandler(_:)))
+            self.navigationController?.isToolbarHidden = false
+            var items = [UIBarButtonItem]()
+            items.append(UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteHandler(_:))))
+            self.navigationController?.toolbar.items = items
         } else {
-            self.navigationItem.rightBarButtonItem = nil
+            self.navigationController?.isToolbarHidden = true
         }
     }
     

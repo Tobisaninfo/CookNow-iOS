@@ -64,7 +64,7 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
             
             if let item = items?[indexPath.row - 1] {
                 if let item = ResourceHandler.getImage(scope: .ingredient, id: Int(item.ingredientID)) {
-                    cell.imageView.image = item
+                    cell.imageView.image = item.gradient()
                 } else {
                     self.loadData(forIndex: indexPath)
                 }

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import TBEmptyDataSet
 
-class RecipeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class RecipeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, TBEmptyDataSetDelegate, TBEmptyDataSetDataSource {
 
     private let reuseIdentifier = "Cell"
     private let columnCount = 2
@@ -18,6 +19,10 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Setup Placeholder
+        self.collectionView?.emptyDataSetDelegate = self
+        self.collectionView?.emptyDataSetDataSource = self
+        
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         // Register cell classes
@@ -66,7 +71,15 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
         return CGSize(width: itemSize, height: itemSize)
     }
     
+    
+    // MARK: - Placeholder
+
+    func titleForEmptyDataSet(in scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(string: "No Recipes")
+    }
+    
     // MARK: - Edit
+    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         

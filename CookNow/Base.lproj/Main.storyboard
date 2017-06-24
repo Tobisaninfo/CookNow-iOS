@@ -362,7 +362,7 @@
             </objects>
             <point key="canvasLocation" x="2356" y="374"/>
         </scene>
-        <!--Recipe Step View Controller-->
+        <!--Recipe-->
         <scene sceneID="f9d-eP-8ez">
             <objects>
                 <viewController id="qna-ZX-vTd" customClass="RecipeStepViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
@@ -386,6 +386,13 @@
                             <constraint firstItem="HNh-nM-KV9" firstAttribute="centerX" secondItem="lhb-MD-XW7" secondAttribute="centerX" id="f8N-Kp-brw"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Recipe" id="YRz-D0-P1c">
+                        <barButtonItem key="rightBarButtonItem" title="Speak" id="FWJ-GP-Hc5">
+                            <connections>
+                                <segue destination="s9i-p2-rwO" kind="presentation" modalTransitionStyle="crossDissolve" id="CDC-ZF-Igl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="pageControl" destination="HNh-nM-KV9" id="MGs-DI-EfA"/>
                     </connections>
@@ -454,6 +461,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HM0-RK-IWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4809" y="332"/>
+        </scene>
+        <!--Speech View Controller-->
+        <scene sceneID="qNd-iA-BlX">
+            <objects>
+                <viewController id="s9i-p2-rwO" customClass="SpeechViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rcu-Sc-q7n"/>
+                        <viewControllerLayoutGuide type="bottom" id="iLM-OJ-mv8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YDV-R6-b6U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="acg-ZA-hee">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8d-Ep-lRp">
+                                <rect key="frame" x="0.0" y="320" width="375" height="347"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="eUj-wZ-fTR">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="347"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHx-ho-ZSw">
+                                            <rect key="frame" x="123" y="110" width="128" height="128"/>
+                                            <state key="normal" image="mic-icon"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="WHx-ho-ZSw" firstAttribute="centerX" secondItem="eUj-wZ-fTR" secondAttribute="centerX" id="qPM-nP-myP"/>
+                                        <constraint firstItem="WHx-ho-ZSw" firstAttribute="centerY" secondItem="eUj-wZ-fTR" secondAttribute="centerY" id="zDE-5N-fxO"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBL-NN-KhI">
+                                <rect key="frame" x="22" y="20" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backHandle:" destination="s9i-p2-rwO" eventType="touchUpInside" id="eNV-VB-dog"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="acg-ZA-hee" secondAttribute="trailing" id="1cg-AP-fa1"/>
+                            <constraint firstItem="acg-ZA-hee" firstAttribute="top" secondItem="YDV-R6-b6U" secondAttribute="top" id="GA7-sC-dck"/>
+                            <constraint firstItem="DBL-NN-KhI" firstAttribute="top" secondItem="rcu-Sc-q7n" secondAttribute="bottom" id="JQ0-K2-NEd"/>
+                            <constraint firstItem="J8d-Ep-lRp" firstAttribute="top" secondItem="rcu-Sc-q7n" secondAttribute="bottom" constant="300" id="RaU-8f-3OY"/>
+                            <constraint firstItem="acg-ZA-hee" firstAttribute="bottom" secondItem="iLM-OJ-mv8" secondAttribute="top" id="Wk9-aZ-g7o"/>
+                            <constraint firstItem="DBL-NN-KhI" firstAttribute="leading" secondItem="YDV-R6-b6U" secondAttribute="leadingMargin" constant="6" id="lYL-0m-lVE"/>
+                            <constraint firstItem="J8d-Ep-lRp" firstAttribute="bottom" secondItem="iLM-OJ-mv8" secondAttribute="top" id="oBB-5M-mJv"/>
+                            <constraint firstItem="J8d-Ep-lRp" firstAttribute="leading" secondItem="acg-ZA-hee" secondAttribute="leading" id="tXT-YX-zcX"/>
+                            <constraint firstItem="acg-ZA-hee" firstAttribute="leading" secondItem="YDV-R6-b6U" secondAttribute="leading" id="wlk-vW-uHF"/>
+                            <constraint firstItem="J8d-Ep-lRp" firstAttribute="trailing" secondItem="acg-ZA-hee" secondAttribute="trailing" id="x1l-bF-DFl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="acg-ZA-hee" id="zz7-AX-NTI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="akL-G5-uKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4016.8000000000002" y="1453.2233883058473"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6iV-Cb-wN1">
@@ -758,6 +828,9 @@
             <point key="canvasLocation" x="-114.40000000000001" y="33.733133433283363"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mic-icon" width="128" height="128"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="eOx-Rb-VXR"/>
     </inferredMetricsTieBreakers>

@@ -39,6 +39,7 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
     
     override func viewWillAppear(_ animated: Bool) {
         items = RecipeBook.list()
+        self.collectionView?.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

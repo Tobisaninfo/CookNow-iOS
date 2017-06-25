@@ -105,14 +105,28 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
     }
     
     func deleteHandler(_ sender: Any) {
-        
+        if let indexPaths = self.collectionView?.indexPathsForSelectedItems, let recipes = recipeBook?.recipes {
+            var temp = [RecipeRef]()
+            for indexPath in indexPaths {
+                temp.append(recipes.object(at: indexPath.row) as! RecipeRef)
+            }
+            for recipe in temp {
+                recipeBook?.removeFromRecipes(recipe)
+                recipe.delete()
+            }
+            self.collectionView?.deleteItems(at: indexPaths)
+        }
+        self.setEditing(false, animated: true)
+
     }
     
     
     // MARK: - Navigation
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "recipeCollectionSegue", sender: self)
+        if !isEditing {
+            performSegue(withIdentifier: "recipeCollectionSegue", sender: self)
+        }
     }
 
 }

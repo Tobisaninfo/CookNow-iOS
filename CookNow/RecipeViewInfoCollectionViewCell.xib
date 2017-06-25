@@ -38,6 +38,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePg-U2-3mu">
                                 <rect key="frame" x="114" y="0.0" width="30" height="30"/>
                                 <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addHandler:" destination="gTV-IL-0wX" eventType="touchUpInside" id="JhQ-qa-ebQ"/>
+                                </connections>
                             </button>
                         </subviews>
                     </stackView>
@@ -52,6 +55,7 @@
             </constraints>
             <size key="customSize" width="375" height="55"/>
             <connections>
+                <outlet property="addButton" destination="ePg-U2-3mu" id="Xvo-S9-hrh"/>
                 <outlet property="infoLabel" destination="Q7U-tU-Kym" id="6jU-X5-CIH"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="31.5"/>

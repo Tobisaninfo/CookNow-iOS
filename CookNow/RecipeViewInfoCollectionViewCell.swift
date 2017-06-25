@@ -11,10 +11,15 @@ import UIKit
 class RecipeViewInfoCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var addButton: UIButton!
+    
+    weak var parentViewController: RecipeViewController?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
+    @IBAction func addHandler(_ sender: UIButton) {
+        parentViewController?.addHandler(sender)
+    }
 }

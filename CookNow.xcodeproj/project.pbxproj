@@ -11,6 +11,10 @@
 		F607CA9C1F003E79008D77CF /* MarketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607CA9A1F003E79008D77CF /* MarketCollectionViewCell.swift */; };
 		F607CA9D1F003E79008D77CF /* MarketCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F607CA9B1F003E79008D77CF /* MarketCollectionViewCell.xib */; };
 		F607CA9F1F004564008D77CF /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607CA9E1F004564008D77CF /* AboutViewController.swift */; };
+		F607CAA91F004D20008D77CF /* RecipeAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F607CAA81F004D20008D77CF /* RecipeAddViewController.m */; };
+		F607CAB01F005599008D77CF /* AddRecipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F607CAAE1F005599008D77CF /* AddRecipeTableViewCell.m */; };
+		F607CAB11F005599008D77CF /* AddRecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F607CAAF1F005599008D77CF /* AddRecipeTableViewCell.xib */; };
+		F607CAB31F005962008D77CF /* RecipeRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607CAB21F005962008D77CF /* RecipeRef.swift */; };
 		F6348D681EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */; };
 		F63896F01EFE84BE00FF533B /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63896EF1EFE84BE00FF533B /* SpeechViewController.swift */; };
 		F644D2DB1EF2AA0E0037746B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644D2DA1EF2AA0E0037746B /* SettingsTableViewController.swift */; };
@@ -126,6 +130,13 @@
 		F607CA9A1F003E79008D77CF /* MarketCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketCollectionViewCell.swift; sourceTree = "<group>"; };
 		F607CA9B1F003E79008D77CF /* MarketCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketCollectionViewCell.xib; sourceTree = "<group>"; };
 		F607CA9E1F004564008D77CF /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		F607CAA61F004D20008D77CF /* CookNow-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CookNow-Bridging-Header.h"; sourceTree = "<group>"; };
+		F607CAA71F004D20008D77CF /* RecipeAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeAddViewController.h; sourceTree = "<group>"; };
+		F607CAA81F004D20008D77CF /* RecipeAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeAddViewController.m; sourceTree = "<group>"; };
+		F607CAAD1F005599008D77CF /* AddRecipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRecipeTableViewCell.h; sourceTree = "<group>"; };
+		F607CAAE1F005599008D77CF /* AddRecipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRecipeTableViewCell.m; sourceTree = "<group>"; };
+		F607CAAF1F005599008D77CF /* AddRecipeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRecipeTableViewCell.xib; sourceTree = "<group>"; };
+		F607CAB21F005962008D77CF /* RecipeRef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeRef.swift; sourceTree = "<group>"; };
 		F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIngredientOptionMenuViewController.swift; sourceTree = "<group>"; };
 		F63896EF1EFE84BE00FF533B /* SpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
 		F644D2DA1EF2AA0E0037746B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -353,6 +364,7 @@
 			children = (
 				F6A79BAA1EFD720400B84B21 /* PantryItem.swift */,
 				F6AAC5A71EFEF7F800068C33 /* RecipeBook.swift */,
+				F607CAB21F005962008D77CF /* RecipeRef.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -363,6 +375,9 @@
 				F6ACBDAF1EEFF40B00472AA3 /* Cells */,
 				F6ACBDAD1EEFF3E900472AA3 /* CookBookCollectionViewController.swift */,
 				F6F789521EF16CBD009E7323 /* RecipeCollectionViewController.swift */,
+				F607CAA71F004D20008D77CF /* RecipeAddViewController.h */,
+				F607CAA81F004D20008D77CF /* RecipeAddViewController.m */,
+				F607CAA61F004D20008D77CF /* CookNow-Bridging-Header.h */,
 			);
 			name = Collections;
 			sourceTree = "<group>";
@@ -378,6 +393,9 @@
 				F6ACBDB11EEFF42F00472AA3 /* CookBook4CollectionViewCell.xib */,
 				F6F7894E1EF16C05009E7323 /* RecipeCollectionViewCell.swift */,
 				F6F7894F1EF16C05009E7323 /* RecipeCollectionViewCell.xib */,
+				F607CAAD1F005599008D77CF /* AddRecipeTableViewCell.h */,
+				F607CAAE1F005599008D77CF /* AddRecipeTableViewCell.m */,
+				F607CAAF1F005599008D77CF /* AddRecipeTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -568,6 +586,7 @@
 					F6F1EC751EDD7C9B004383D2 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = GSS77QYM85;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					F6F1EC8C1EDD7C9B004383D2 = {
@@ -612,6 +631,7 @@
 				F6E107141EEDFD33007D82CC /* AddCollectionViewCell.xib in Resources */,
 				F6BD7A901EFFC80D003AA67D /* CookBook2CollectionViewCell.xib in Resources */,
 				F6BD7A8E1EFFC7B3003AA67D /* CookBook3CollectionViewCell.xib in Resources */,
+				F607CAB11F005599008D77CF /* AddRecipeTableViewCell.xib in Resources */,
 				F6BD7A921EFFC836003AA67D /* CookBook1CollectionViewCell.xib in Resources */,
 				F6F1EC871EDD7C9B004383D2 /* LaunchScreen.storyboard in Resources */,
 				F6ACBDB31EEFF42F00472AA3 /* CookBook4CollectionViewCell.xib in Resources */,
@@ -662,6 +682,7 @@
 				F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */,
 				F6E107131EEDFD33007D82CC /* AddCollectionViewCell.swift in Sources */,
 				F64DAB441EF2F233002343BF /* HomeCollectionViewController.swift in Sources */,
+				F607CAB01F005599008D77CF /* AddRecipeTableViewCell.m in Sources */,
 				F607CA9F1F004564008D77CF /* AboutViewController.swift in Sources */,
 				F6348D681EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift in Sources */,
 				F644D2DB1EF2AA0E0037746B /* SettingsTableViewController.swift in Sources */,
@@ -685,6 +706,7 @@
 				F65A09041EEF2B0100F136F9 /* ScannerViewController.swift in Sources */,
 				F63896F01EFE84BE00FF533B /* SpeechViewController.swift in Sources */,
 				F65C605E1EEC6528008D7F0C /* PantryCollectionViewController.swift in Sources */,
+				F607CAA91F004D20008D77CF /* RecipeAddViewController.m in Sources */,
 				F6F1EC821EDD7C9B004383D2 /* CookNow.xcdatamodeld in Sources */,
 				F69D67F61EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.swift in Sources */,
 				F64F26781EE57BFA00711189 /* Item.swift in Sources */,
@@ -694,6 +716,7 @@
 				F6DD794E1EFDBA4F001A86F5 /* Barcode.swift in Sources */,
 				F64F26861EE5869800711189 /* MarketOffer.swift in Sources */,
 				F64DAB461EF2F72C002343BF /* TitleCollectionReusableView.swift in Sources */,
+				F607CAB31F005962008D77CF /* RecipeRef.swift in Sources */,
 				F6F789551EF17126009E7323 /* Utils.swift in Sources */,
 				F64F267C1EE5833A00711189 /* IngredientHandler.swift in Sources */,
 				F6FA3A681EFAF5920074744A /* BorderButton.swift in Sources */,
@@ -857,7 +880,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = GSS77QYM85;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -868,6 +893,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.tobias.CookNow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CookNow/CookNow-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -876,7 +903,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = GSS77QYM85;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -887,6 +916,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.tobias.CookNow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CookNow/CookNow-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

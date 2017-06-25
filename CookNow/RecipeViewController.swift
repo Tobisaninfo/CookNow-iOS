@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecipeViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class RecipeViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, RecipeAddViewControllerDelegate {
 
     private let imageCellIdentifier = "imageCell"
     private let infoCellIdentifier = "infoCell"
@@ -96,12 +96,13 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
                 let difficultyTest = NSLocalizedString("Difficulty.\(recipe.difficulty)", comment: "Difficulty")
                 let text = "\(difficultyTest) • \(recipe.time) min • \(recipe.priceFormatted)"
                 cell.infoLabel.text = text
+                cell.parentViewController = self
             }
             return cell
         } else if let recipe = recipe, indexPath.row == 2 + recipe.ingredients.count {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: startCellIdentifier, for: indexPath)
             if let cell = cell as? RecipeViewStartButtonCollectionViewCell {
-                cell.rootViewController = self
+                cell.parentViewController = self
             }
             return cell
         } else {
@@ -131,6 +132,21 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
             return CGSize(width: viewWidth, height: 30)
         } else {
             return CGSize(width: viewWidth, height: 21)
+        }
+    }
+    
+    // MARK: - Event Handler
+    func addHandler(_ sender: UIButton) {
+        let controller = RecipeAddViewController(title: "Add Recipe", message: "Choose a recipe book", preferredStyle: .alert)
+        controller.setData(RecipeBook.list()!.map({return $0.name!}))
+        controller.delegate = self
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    func didSelect(_ index: Int) {
+        let recipeBook = RecipeBook.list()![index]
+        if let recipe = recipe, let image = ResourceHandler.getImage(scope: .recipe, id: recipe.id) {
+            _ = RecipeRef.add(id: recipe.id, name: recipe.name, image: image, toBook: recipeBook)
         }
     }
 }

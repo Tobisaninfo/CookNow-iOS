@@ -10,7 +10,7 @@ import UIKit
 
 class RecipeViewStartButtonCollectionViewCell: UICollectionViewCell {
 
-    weak var rootViewController: UIViewController?
+    weak var parentViewController: UIViewController?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,7 +18,7 @@ class RecipeViewStartButtonCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func startHander(_ sender: UIButton) {
-        rootViewController?.performSegue(withIdentifier: "recipeStepSegue", sender: self)
+        parentViewController?.performSegue(withIdentifier: "recipeStepSegue", sender: self)
     }
 
 }

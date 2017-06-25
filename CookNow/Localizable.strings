@@ -22,3 +22,7 @@
 "Alert.Cancel"="Abbrechen";
 
 "Alert.Ingredient.Add"="350 %@";
+
+"Alert.CookBook.Add.Title"="Neues Kochbuch";
+"Alert.CookBook.Add.Description"="Gib einen Namen für dieses Kochbuch ein.";
+"Alert.CookBook.Add.Placeholder"="Name des Kochbuches";

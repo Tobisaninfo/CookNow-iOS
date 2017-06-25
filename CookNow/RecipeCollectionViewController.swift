@@ -23,6 +23,7 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
         self.collectionView?.emptyDataSetDelegate = self
         self.collectionView?.emptyDataSetDataSource = self
         
+        self.title = recipeBook?.name
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         // Register cell classes

@@ -82,31 +82,23 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
                         cell.titleLabel.text = item.name
                         
                         if recipes.count > 0, let item = recipes.object(at: 0) as? RecipeRef {
-                            if let image = ResourceHandler.getImage(scope: .recipe, id: Int(item.id)) {
-                                cell.imageHeader.image = image
-                            } else {
-                                loadData(forIndex: indexPath)
+                            if let data = item.image as Data? {
+                                cell.imageHeader.image = UIImage(data: data)
                             }
                         }
                         if recipes.count > 1, let item = recipes.object(at: 1) as? RecipeRef {
-                            if let image = ResourceHandler.getImage(scope: .recipe, id: Int(item.id)) {
-                                cell.imageFooter[0].image = image
-                            } else {
-                                loadData(forIndex: indexPath)
+                            if let data = item.image as Data? {
+                                cell.imageFooter[0].image = UIImage(data: data)
                             }
                         }
                         if recipes.count > 2, let item = recipes.object(at: 2) as? RecipeRef {
-                            if let image = ResourceHandler.getImage(scope: .recipe, id: Int(item.id)) {
-                                cell.imageFooter[1].image = image
-                            } else {
-                                loadData(forIndex: indexPath)
+                            if let data = item.image as Data? {
+                                cell.imageFooter[1].image = UIImage(data: data)
                             }
                         }
                         if recipes.count > 3, let item = recipes.object(at: 3) as? RecipeRef {
-                            if let image = ResourceHandler.getImage(scope: .recipe, id: Int(item.id)) {
-                                cell.imageFooter[2].image = image
-                            } else {
-                                loadData(forIndex: indexPath)
+                            if let data = item.image as Data? {
+                                cell.imageFooter[2].image = UIImage(data: data)
                             }
                         }
                     }
@@ -135,54 +127,6 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
         let viewWidth =  collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right - flowLayout.minimumInteritemSpacing * CGFloat(columnCount - 1)
         let itemSize = viewWidth / CGFloat(columnCount)
         return CGSize(width: itemSize, height: itemSize)
-    }
-    
-    // MARK: - CollectionView Prefetch Data
-    
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            if indexPath.row != 0 {
-                loadData(forIndex: indexPath)
-            }
-        }
-    }
-    
-    private var tasks: [Int] = []
-    
-    private func loadData(forIndex indexPath: IndexPath) {
-        if !tasks.contains(indexPath.row) {
-            if let item = items?[indexPath.row - 1] {
-                tasks.append(indexPath.row)
-                
-                DispatchQueue.global().async {
-                    if let recipes = item.recipes {
-                        if recipes.count > 0 {
-                            if let item = recipes.object(at: 0) as? RecipeRef {
-                                _ = ResourceHandler.loadImage(scope: .recipe, id: Int(item.id))
-                            }
-                        }
-                        if recipes.count > 1 {
-                            if let item = recipes.object(at: 1) as? RecipeRef {
-                                _ = ResourceHandler.loadImage(scope: .recipe, id: Int(item.id))
-                            }
-                        }
-                        if recipes.count > 2 {
-                            if let item = recipes.object(at: 2) as? RecipeRef {
-                                _ = ResourceHandler.loadImage(scope: .recipe, id: Int(item.id))
-                            }
-                        }
-                        if recipes.count > 3 {
-                            if let item = recipes.object(at: 3) as? RecipeRef {
-                                _ = ResourceHandler.loadImage(scope: .recipe, id: Int(item.id))
-                            }
-                        }
-                        DispatchQueue.main.async {
-                            self.collectionView?.reloadItems(at: [indexPath])
-                        }
-                    }
-                }
-            }
-        }
     }
     
     // MARK: - Edit
@@ -246,13 +190,13 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
     // MARK: - Event Handler
     
     func onAction() {
-        let alert = UIAlertController(title: "Add CookBook", message: "Enter a name.", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Alert.CookBook.Add.Title", comment: "Add CookBook"), message: NSLocalizedString("Alert.CookBook.Add.Description", comment: "Enter a name"), preferredStyle: .alert)
         
         alert.addTextField { (textField) in
-            textField.placeholder = "Cook Book Name"
+            textField.placeholder = NSLocalizedString("Alert.CookBook.Add.Placeholder", comment: "Cook Book Name")
         }
-        
-        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (_) in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Alert.Cancel", comment: "Cancel"), style: .destructive, handler: { (action) -> Void in }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Alert.Add", comment: "Add"), style: .default, handler: { [weak alert] (_) in
             if let textField = alert?.textFields![0] {
                 if let name = textField.text {
                     if let recipeBook = RecipeBook.add(name: name) {
@@ -262,7 +206,6 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
                 }
             }
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) -> Void in }))
         self.present(alert, animated: true, completion: nil)
     }
 }

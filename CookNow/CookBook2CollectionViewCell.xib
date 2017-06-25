@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ma8-wo-UOc" customClass="CookBookCollectionViewCell" customModule="CookNow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LV8-Bs-tsK">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="66"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="LV8-Bs-tsK" secondAttribute="height" multiplier="25:11" id="NA7-Tn-hQu"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fbs-fQ-jop">
+                        <rect key="frame" x="0.0" y="74" width="150" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="Xxa-Ke-CDE"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSZ-FN-IIg">
+                        <rect key="frame" x="0.0" y="129" width="150" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I2T-SK-vlB">
+                        <rect key="frame" x="110" y="110" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="BpJ-JD-8gc"/>
+                            <constraint firstAttribute="height" constant="40" id="b86-1p-ZKM"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Fbs-fQ-jop" firstAttribute="trailing" secondItem="BSZ-FN-IIg" secondAttribute="trailing" id="91H-d1-sOp"/>
+                <constraint firstItem="Fbs-fQ-jop" firstAttribute="top" secondItem="LV8-Bs-tsK" secondAttribute="bottom" constant="8" symbolic="YES" id="9ll-g6-xjF"/>
+                <constraint firstItem="I2T-SK-vlB" firstAttribute="bottom" secondItem="BSZ-FN-IIg" secondAttribute="bottom" id="Axm-aJ-uJl"/>
+                <constraint firstItem="BSZ-FN-IIg" firstAttribute="top" secondItem="Fbs-fQ-jop" secondAttribute="bottom" constant="10" id="ByI-0R-M41"/>
+                <constraint firstItem="BSZ-FN-IIg" firstAttribute="leading" secondItem="ma8-wo-UOc" secondAttribute="leading" id="RK0-Ac-lfp"/>
+                <constraint firstAttribute="trailing" secondItem="BSZ-FN-IIg" secondAttribute="trailing" id="Tmk-9K-hHC"/>
+                <constraint firstItem="Fbs-fQ-jop" firstAttribute="leading" secondItem="BSZ-FN-IIg" secondAttribute="leading" id="XwP-D8-KPh"/>
+                <constraint firstItem="LV8-Bs-tsK" firstAttribute="leading" secondItem="ma8-wo-UOc" secondAttribute="leading" id="aie-CI-9eW"/>
+                <constraint firstItem="LV8-Bs-tsK" firstAttribute="top" secondItem="ma8-wo-UOc" secondAttribute="top" id="bdZ-91-mbk"/>
+                <constraint firstItem="I2T-SK-vlB" firstAttribute="trailing" secondItem="BSZ-FN-IIg" secondAttribute="trailing" id="okl-in-2fo"/>
+                <constraint firstAttribute="trailing" secondItem="LV8-Bs-tsK" secondAttribute="trailing" id="yMm-Nm-uuj"/>
+            </constraints>
+            <connections>
+                <outlet property="imageHeader" destination="LV8-Bs-tsK" id="GYa-1n-Qrn"/>
+                <outlet property="selectImageView" destination="I2T-SK-vlB" id="xJb-WO-Ljf"/>
+                <outlet property="titleLabel" destination="BSZ-FN-IIg" id="W6R-Q9-REV"/>
+                <outletCollection property="imageFooter" destination="Fbs-fQ-jop" collectionClass="NSMutableArray" id="iXu-5Q-4rz"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

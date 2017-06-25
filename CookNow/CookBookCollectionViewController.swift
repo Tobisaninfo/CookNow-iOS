@@ -11,7 +11,11 @@ import UIKit
 
 class CookBookCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AddCollectionViewCellDelegate {
 
-    private let reuseIdentifier = "Cell"
+    private let reuseIdentifier0 = "Cell0"
+    private let reuseIdentifier1 = "Cell1"
+    private let reuseIdentifier2 = "Cell2"
+    private let reuseIdentifier3 = "Cell3"
+    private let reuseIdentifier4 = "Cell4"
     private let addReuseIdentifier = "AddCell"
     
     private let columnCount = 2
@@ -24,7 +28,12 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
         self.navigationItem.rightBarButtonItem = self.editButtonItem
 
         // Register cell classes
-        self.collectionView!.register(UINib(nibName: "CookBookCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(UINib(nibName: "CookBook0CollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier0)
+        self.collectionView!.register(UINib(nibName: "CookBook1CollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier1)
+        self.collectionView!.register(UINib(nibName: "CookBook2CollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier2)
+        self.collectionView!.register(UINib(nibName: "CookBook3CollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier3)
+        self.collectionView!.register(UINib(nibName: "CookBook4CollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier4)
+        
         self.collectionView!.register(UINib(nibName: "AddCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: addReuseIdentifier)
     }
     
@@ -54,13 +63,24 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
             }
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        
-            if let cell = cell as? CookBookCollectionViewCell {
-                if let item = items?[indexPath.row - 1] {
-                    cell.titleLabel.text = item.name
-                
-                    if let recipes = item.recipes {
+            if let item = items?[indexPath.row - 1] {
+                if let recipes = item.recipes {
+                    var cell: UICollectionViewCell
+                    if recipes.count == 1 {
+                        cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier1, for: indexPath)
+                    } else if recipes.count == 2 {
+                        cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath)
+                    } else if recipes.count == 3 {
+                        cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier3, for: indexPath)
+                    } else if recipes.count >= 4 {
+                        cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier4, for: indexPath)
+                    } else {
+                        cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier0, for: indexPath)
+                    }
+                    
+                    if let cell = cell as? CookBookCollectionViewCell {
+                        cell.titleLabel.text = item.name
+                        
                         if recipes.count > 0, let item = recipes.object(at: 0) as? RecipeRef {
                             if let image = ResourceHandler.getImage(scope: .recipe, id: Int(item.id)) {
                                 cell.imageHeader.image = image
@@ -90,8 +110,11 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
                             }
                         }
                     }
+                    return cell
                 }
             }
+            // Fallback, should never be called
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier0, for: indexPath)
             return cell
         }
     }

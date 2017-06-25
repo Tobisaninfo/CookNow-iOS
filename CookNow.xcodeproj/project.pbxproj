@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F60743E01EE4A58C00D1C75C /* IngredientProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */; };
+		F607CA9C1F003E79008D77CF /* MarketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607CA9A1F003E79008D77CF /* MarketCollectionViewCell.swift */; };
+		F607CA9D1F003E79008D77CF /* MarketCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F607CA9B1F003E79008D77CF /* MarketCollectionViewCell.xib */; };
+		F607CA9F1F004564008D77CF /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607CA9E1F004564008D77CF /* AboutViewController.swift */; };
 		F6348D681EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */; };
 		F63896F01EFE84BE00FF533B /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63896EF1EFE84BE00FF533B /* SpeechViewController.swift */; };
 		F644D2DB1EF2AA0E0037746B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644D2DA1EF2AA0E0037746B /* SettingsTableViewController.swift */; };
@@ -120,6 +123,9 @@
 
 /* Begin PBXFileReference section */
 		F60743DF1EE4A58C00D1C75C /* IngredientProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientProperty.swift; sourceTree = "<group>"; };
+		F607CA9A1F003E79008D77CF /* MarketCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketCollectionViewCell.swift; sourceTree = "<group>"; };
+		F607CA9B1F003E79008D77CF /* MarketCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketCollectionViewCell.xib; sourceTree = "<group>"; };
+		F607CA9E1F004564008D77CF /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIngredientOptionMenuViewController.swift; sourceTree = "<group>"; };
 		F63896EF1EFE84BE00FF533B /* SpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
 		F644D2DA1EF2AA0E0037746B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -239,7 +245,10 @@
 		F644D2D71EF2A9D70037746B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				F607CA9A1F003E79008D77CF /* MarketCollectionViewCell.swift */,
+				F607CA9B1F003E79008D77CF /* MarketCollectionViewCell.xib */,
 				F644D2DA1EF2AA0E0037746B /* SettingsTableViewController.swift */,
+				F607CA9E1F004564008D77CF /* AboutViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -402,6 +411,7 @@
 		F6AE62D11EE0792200D8E0DF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F6AAC5AA1EFF02ED00068C33 /* TBEmptyDataSet.framework */,
 				F6FA3A641EFAF3730074744A /* PKHUD.framework */,
 				F6AE62D21EE0793900D8E0DF /* SwiftClient.framework */,
 			);
@@ -422,7 +432,6 @@
 		F6F1EC6D1EDD7C9B004383D2 = {
 			isa = PBXGroup;
 			children = (
-				F6AAC5AA1EFF02ED00068C33 /* TBEmptyDataSet.framework */,
 				F6F1EC781EDD7C9B004383D2 /* CookNow */,
 				F6F1EC901EDD7C9B004383D2 /* CookNowTests */,
 				F6F1EC9B1EDD7C9B004383D2 /* CookNowUITests */,
@@ -608,6 +617,7 @@
 				F6ACBDB31EEFF42F00472AA3 /* CookBook4CollectionViewCell.xib in Resources */,
 				F65C605B1EEC5AE3008D7F0C /* ShoppingTableViewCell.xib in Resources */,
 				F6F789511EF16C05009E7323 /* RecipeCollectionViewCell.xib in Resources */,
+				F607CA9D1F003E79008D77CF /* MarketCollectionViewCell.xib in Resources */,
 				F6F1EC841EDD7C9B004383D2 /* Assets.xcassets in Resources */,
 				F64DAB421EF2F01B002343BF /* PlanItemCollectionViewCell.xib in Resources */,
 				F6FA3A6A1EFAF9F30074744A /* Localizable.strings in Resources */,
@@ -652,6 +662,7 @@
 				F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */,
 				F6E107131EEDFD33007D82CC /* AddCollectionViewCell.swift in Sources */,
 				F64DAB441EF2F233002343BF /* HomeCollectionViewController.swift in Sources */,
+				F607CA9F1F004564008D77CF /* AboutViewController.swift in Sources */,
 				F6348D681EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift in Sources */,
 				F644D2DB1EF2AA0E0037746B /* SettingsTableViewController.swift in Sources */,
 				F6A79BAB1EFD720400B84B21 /* PantryItem.swift in Sources */,
@@ -691,6 +702,7 @@
 				F6AE62D81EE09B6F00D8E0DF /* Step.swift in Sources */,
 				F6D7FABF1EF058F1001DD906 /* SearchBarCollectionReusableView.swift in Sources */,
 				F60743E01EE4A58C00D1C75C /* IngredientProperty.swift in Sources */,
+				F607CA9C1F003E79008D77CF /* MarketCollectionViewCell.swift in Sources */,
 				F64F26821EE5848400711189 /* Market.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

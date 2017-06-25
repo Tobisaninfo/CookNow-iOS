@@ -26,3 +26,5 @@
 "Alert.CookBook.Add.Title"="Neues Kochbuch";
 "Alert.CookBook.Add.Description"="Gib einen Namen für dieses Kochbuch ein.";
 "Alert.CookBook.Add.Placeholder"="Name des Kochbuches";
+
+"About"="Rechtliche Hinweise: Wir speichern keine Dateien serverseitig.\nDie Verwendeten Supermarktangebote stammen von den jeweiligen Supermärkten direkt und werden durch die App nur neu aufbereitet.\nVerwendetet Bibliotheken: TBEmptyDataSet, PKHUD, SwiftClient";

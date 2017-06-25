@@ -8,129 +8,115 @@
 
 import UIKit
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    private let reuseIdentifier = "MarketCell"
+    
     @IBOutlet weak var lactoseCell: UITableViewCell!
     @IBOutlet weak var vegetarianCell: UITableViewCell!
     @IBOutlet weak var veganCell: UITableViewCell!
     @IBOutlet weak var eggCell: UITableViewCell!
     
-    @IBOutlet weak var marketCell: UIView!
-    @IBOutlet var marketImages: [UIImageView]!
+    @IBOutlet weak var marketCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        // Market Image tap Listener
-        for view in marketImages {
-            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(onMaketSelect(tap:)))
-            tapRecognizer.numberOfTapsRequired = 1
-            view.isUserInteractionEnabled = true
-            view.addGestureRecognizer(tapRecognizer)
-        }
         
         // load content
         DispatchQueue.global().async {
-            let image1 = ResourceHandler.loadImage(scope: .market, id: 1)
-            let image2 = ResourceHandler.loadImage(scope: .market, id: 2)
-            let image3 = ResourceHandler.loadImage(scope: .market, id: 3)
+            self.markets = MarketHandler.list()
             DispatchQueue.main.sync {
-                self.marketImages[0].image = image1
-                self.marketImages[1].image = image2
-                self.marketImages[2].image = image3
+                self.marketCollectionView.reloadData()
             }
         }
+        
+        // Intial settings
+        let userDefaults = UserDefaults.standard
+        lactoseCell.accessoryType = userDefaults.bool(forKey: "pref-lactose") ? .checkmark : .none
+        vegetarianCell.accessoryType = userDefaults.bool(forKey: "pref-vegetarian") ? .checkmark : .none
+        veganCell.accessoryType = userDefaults.bool(forKey: "pref-vegan") ? .checkmark : .none
+        eggCell.accessoryType = userDefaults.bool(forKey: "pref-egg") ? .checkmark : .none
+        
+        // Setup CollectionView
+        self.marketCollectionView.register(UINib(nibName: "MarketCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - Table View Handler
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selectedCell = tableView.cellForRow(at: indexPath) {
             if selectedCell == lactoseCell {
-                triggerCell(cell: lactoseCell)
+                let newState = triggerCell(cell: lactoseCell)
+                UserDefaults.standard.set(newState, forKey: "pref-lactose")
             } else if selectedCell == vegetarianCell {
-                triggerCell(cell: vegetarianCell)
+                let newState = triggerCell(cell: vegetarianCell)
+                UserDefaults.standard.set(newState, forKey: "pref-vegetarian")
             } else if selectedCell == veganCell {
-                triggerCell(cell: veganCell)
+                let newState = triggerCell(cell: veganCell)
+                UserDefaults.standard.set(newState, forKey: "pref-vegan")
             } else if selectedCell == eggCell {
-                triggerCell(cell: eggCell)
+                let newState = triggerCell(cell: eggCell)
+                UserDefaults.standard.set(newState, forKey: "pref-egg")
             }
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    func onMaketSelect(tap: UITapGestureRecognizer) {
-        let location = tap.location(in: marketCell)
-        for market in marketImages {
-            if market.frame.contains(location) {
-                market.layer.borderColor = UIColor.red.cgColor
-                market.layer.borderWidth = 2
-            } else {
-                market.layer.borderWidth = 0
-            }
-        }
-    }
 
-    func triggerCell(cell: UITableViewCell) {
+    func triggerCell(cell: UITableViewCell) -> Bool {
         if cell.accessoryType == .checkmark {
             cell.accessoryType = .none
+            return false
         } else {
             cell.accessoryType = .checkmark
+            return true
         }
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    // MARK: - Market CollectionView
+    
+    private var markets: [Market] = []
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return markets.count
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        if let cell = cell as? MarketCollectionViewCell {
+            let marketID = UserDefaults.standard.integer(forKey: "market")
+            if marketID == markets[indexPath.row].id {
+                cell.isSelected = true
+            }
+            DispatchQueue.global().async {
+                if let image = ResourceHandler.loadImage(scope: .market, id: self.markets[indexPath.row].id) {
+                    DispatchQueue.main.async {
+                        cell.imageView.image = image
+                    }
+                }
+            }
+        }
+        return cell
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let marekt = markets[indexPath.row]
+        UserDefaults.standard.set(marekt.id, forKey: "market")
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
+            return CGSize()
+        }
+        
+        let viewHeight =  collectionView.frame.height - flowLayout.sectionInset.top - flowLayout.sectionInset.bottom
+        return CGSize(width: viewHeight, height: viewHeight)
     }
-    */
-
 }

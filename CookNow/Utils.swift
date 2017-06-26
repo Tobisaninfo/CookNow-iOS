@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIImage {
-    func gradient() -> UIImage {
+    func gradient(start: CGFloat = 0.5, end: CGFloat = 1) -> UIImage {
         
         UIGraphicsBeginImageContext(self.size)
         let context = UIGraphicsGetCurrentContext()
@@ -27,8 +27,8 @@ extension UIImage {
         
         let gradient = CGGradient(colorsSpace: colorSpace, colors: colors, locations: locations)
         
-        let startPoint = CGPoint(x: self.size.width/2, y: self.size.height / 2)
-        let endPoint = CGPoint(x: self.size.width/2, y: self.size.height)
+        let startPoint = CGPoint(x: self.size.width/2, y: self.size.height * start)
+        let endPoint = CGPoint(x: self.size.width/2, y: self.size.height * end)
         
         context!.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: UInt32(0)))
         

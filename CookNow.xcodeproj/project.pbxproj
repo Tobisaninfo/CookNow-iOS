@@ -377,7 +377,6 @@
 				F6F789521EF16CBD009E7323 /* RecipeCollectionViewController.swift */,
 				F607CAA71F004D20008D77CF /* RecipeAddViewController.h */,
 				F607CAA81F004D20008D77CF /* RecipeAddViewController.m */,
-				F607CAA61F004D20008D77CF /* CookNow-Bridging-Header.h */,
 			);
 			name = Collections;
 			sourceTree = "<group>";
@@ -477,6 +476,7 @@
 				F6F1EC791EDD7C9B004383D2 /* AppDelegate.swift */,
 				F6F1EC7B1EDD7C9B004383D2 /* ViewController.swift */,
 				F6F789541EF17126009E7323 /* Utils.swift */,
+				F607CAA61F004D20008D77CF /* CookNow-Bridging-Header.h */,
 				F6F1EC7D1EDD7C9B004383D2 /* Main.storyboard */,
 				F6F1EC831EDD7C9B004383D2 /* Assets.xcassets */,
 				F6F1EC851EDD7C9B004383D2 /* LaunchScreen.storyboard */,

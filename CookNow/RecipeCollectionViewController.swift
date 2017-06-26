@@ -52,7 +52,7 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
             if let recipe = recipeBook?.recipes?.object(at: indexPath.row) as? RecipeRef {
                 cell.nameLabel.text = recipe.name
                 if let data = recipe.image as Data? {
-                    cell.imageView.image = UIImage(data: data)
+                    cell.imageView.image = UIImage(data: data)?.gradient()
                 }
             }
         }

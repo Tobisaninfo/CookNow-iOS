@@ -41,7 +41,8 @@
     alertTableView  = [[UITableView alloc]initWithFrame:rect];
     alertTableView.delegate = self;
     alertTableView.dataSource = self;
-    alertTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    alertTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     [alertTableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     [alertTableView registerNib:[UINib nibWithNibName:@"AddRecipeTableViewCell" bundle: NSBundle.mainBundle] forCellReuseIdentifier:@"Cell"];
     
@@ -52,9 +53,8 @@
     [alertTableView setUserInteractionEnabled:YES];
     [alertTableView setAllowsSelection:YES];
     [self setValue:controller forKey:@"contentViewController"];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-        
-    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {}];
     [self addAction:cancelAction];
 }
 

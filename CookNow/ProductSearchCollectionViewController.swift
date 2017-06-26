@@ -45,11 +45,12 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
         if let cell = cell as? PantryCollectionViewCell {
             if let ingredient = ingredients?[indexPath.row] {
                 cell.nameLabel.text = ingredient.name
-                
-                loadImage(forIndex: indexPath)
+                cell.amountLabel.text = ""
                 
                 if let image = ResourceHandler.getImage(scope: .ingredient, id: ingredient.id) {
                     cell.imageView.image = image
+                } else {
+                    loadImage(forIndex: indexPath)
                 }
             }
         }
@@ -74,9 +75,8 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
         if let text = searchBar.text {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
             DispatchQueue.global().async {
-                self.ingredients = IngredientHanler.list()
                 self.ingredients = IngredientHanler.list().filter() {
-                    $0.name.hasPrefix(text)
+                    $0.name.lowercased().hasPrefix(text.lowercased())
                 }
                 DispatchQueue.main.sync {
                     self.collectionView?.reloadData()
@@ -146,7 +146,7 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
                 
                 DispatchQueue.global().async {
                     _ = ResourceHandler.loadImage(scope: .ingredient, id: Int(index.id)) {
-                        return $0?.gradient()
+                        return $0?.gradient(start: 0.25)
                     }
                     DispatchQueue.main.async {
                         self.collectionView?.reloadItems(at: [indexPath])

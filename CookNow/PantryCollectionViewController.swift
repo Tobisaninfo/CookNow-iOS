@@ -65,8 +65,8 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pantryReuseIdentifier, for: indexPath) as! PantryCollectionViewCell
             
             if let item = items?[indexPath.row - 1] {
-                if let item = ResourceHandler.getImage(scope: .ingredient, id: Int(item.ingredientID)) {
-                    cell.imageView.image = item
+                if let image = ResourceHandler.getImage(scope: .ingredient, id: Int(item.ingredientID)) {
+                    cell.imageView.image = image
                 } else {
                     self.loadData(forIndex: indexPath)
                 }
@@ -76,6 +76,8 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
                     cell.nameLabel.text = ingredient.name
                     cell.amountLabel.text = "\(item.amount) \(unitText)"
                 } else {
+                    cell.nameLabel.text = ""
+                    cell.amountLabel.text = ""
                     self.loadData(forIndex: indexPath)
                 }
             }
@@ -118,7 +120,7 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
                 tasks.append(indexPath.row)
                 DispatchQueue.global().async {
                     _ = ResourceHandler.loadImage(scope: .ingredient, id: Int(item.ingredientID)) {
-                        return $0?.gradient()
+                        return $0?.gradient(start: 0.25)
                     }
                     _ = IngredientHanler.get(id: Int(item.ingredientID))
                     DispatchQueue.main.async {

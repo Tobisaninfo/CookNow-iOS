@@ -30,11 +30,14 @@ class RecipeStepViewController: UIViewController, UIPageViewControllerDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         // Setup the pages
         if let recipe = recipe {
             for step in recipe.steps {
                 let page: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "stepViewController")
                 if let page = page as? StepViewController {
+                    page.recipeID = recipe.id
                     page.step = step
                 }
                 pages.append(page)
@@ -53,7 +56,10 @@ class RecipeStepViewController: UIViewController, UIPageViewControllerDataSource
         }
         
         // Add it to the view
+        self.addChildViewController(pageContainer)
         view.addSubview(pageContainer.view)
+        
+        //pageContainer.didMove(toParentViewController: self)
         
         // Configure our custom pageControl
         view.bringSubview(toFront: pageControl)

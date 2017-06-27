@@ -41,8 +41,8 @@ class IngredientHanler {
             if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? JsonArray {
                 if let json = jsonData {
                     for item in json {
-                        if let recipe = Ingredient.fromJson(jsonData: item) {
-                            ingredients.append(recipe)
+                        if let ingredient = Ingredient.fromJson(jsonData: item) {
+                            ingredients.append(ingredient)
                         }
                     }
                 }

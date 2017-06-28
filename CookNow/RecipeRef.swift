@@ -32,12 +32,8 @@ extension RecipeRef {
         }
         return nil
     }
-    
+
     func delete() {
-        if let delegate = UIApplication.shared.delegate as? AppDelegate {
-            let context = delegate.persistentContainer.viewContext
-            context.delete(self)
-            delegate.saveContext()
-        }
+        CoreDataUtils.delete(object: self)
     }
 }

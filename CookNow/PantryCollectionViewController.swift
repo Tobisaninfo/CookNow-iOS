@@ -114,7 +114,7 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
     
     private var tasks: [Int] = []
     
-    func loadData(forIndex indexPath: IndexPath) {
+    private func loadData(forIndex indexPath: IndexPath) {
         if !tasks.contains(indexPath.row) {
             if let item = items?[indexPath.row - 1] {
                 tasks.append(indexPath.row)

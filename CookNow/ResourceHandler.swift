@@ -31,11 +31,15 @@ class ResourceHandler {
     private static var cache: [Scope:[Int:UIImage]] = [.recipe:[:], .ingredient:[:], .market:[:]]
     
     class func getImage(scope: Scope, id: Int) -> UIImage? {
-        return cache[scope]?[id]
+        if let image = cache[scope]?[id] {
+            return image
+        }
+        return nil
     }
     
     class func setImage(scope: Scope, id: Int, image: UIImage) {
         cache[scope]?[id] = image
+        print("Set Image: \(scope).\(id) = \(image)")
     }
     
     class func loadImage(scope: Scope, id: Int, handler: ((UIImage?) -> UIImage?)? = nil) -> UIImage? {
@@ -48,7 +52,9 @@ class ResourceHandler {
             if let handler = handler {
                 image = handler(image)
             }
-            cache[scope]?[id] = image
+            if let image = image {
+                setImage(scope: .recipe, id: id, image: image)
+            }
             return image
         } else {
             try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true, attributes: nil)
@@ -67,7 +73,9 @@ class ResourceHandler {
                     if let handler = handler {
                         image = handler(image)
                     }
-                    cache[scope]?[id] = image
+                    if let image = image {
+                        setImage(scope: .recipe, id: id, image: image)
+                    }
                     return image
                 }
             }

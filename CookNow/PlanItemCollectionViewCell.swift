@@ -18,14 +18,6 @@ class PlanItemCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        DispatchQueue.global().async {
-            if let image = ResourceHandler.loadImage(scope: .recipe, id: 1) {
-                DispatchQueue.main.sync {
-                    self.recipeImage.image = image
-                }
-            }
-        }
     }
 
 }

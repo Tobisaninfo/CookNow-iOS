@@ -17,10 +17,8 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
     
     var recipe: Recipe? {
         didSet {
-            if let collectionView = self.collectionView {
-                DispatchQueue.main.sync {
-                    collectionView.reloadData()
-                }
+            if let collectionView = self.collectionView, isViewLoaded {
+                collectionView.reloadData()
             }
         }
     }
@@ -28,20 +26,11 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DispatchQueue.global().async {
-            self.recipe = RecipeHandler.get(id: 1)
-        }
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
         // Register cell classes
         self.collectionView!.register(UINib(nibName: "RecipeViewImageCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: imageCellIdentifier)
         self.collectionView!.register(UINib(nibName: "RecipeViewInfoCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: infoCellIdentifier)
         self.collectionView!.register(UINib(nibName: "RecipeViewIngredientCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: ingredientCellIdentifier)
         self.collectionView!.register(UINib(nibName: "RecipeViewStartButtonCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: startCellIdentifier)
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

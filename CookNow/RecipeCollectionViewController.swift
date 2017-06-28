@@ -123,9 +123,20 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
     
     // MARK: - Navigation
     
+    private var selectedIndex: IndexPath?
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditing {
+            selectedIndex = indexPath
             performSegue(withIdentifier: "recipeCollectionSegue", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? RecipeViewController {
+            if let index = selectedIndex?.row, let recipe = recipeBook?.recipes?.object(at: index) as? RecipeRef {
+                destinationViewController.recipe = RecipeHandler.get(id: Int(recipe.id))
+            }
         }
     }
 

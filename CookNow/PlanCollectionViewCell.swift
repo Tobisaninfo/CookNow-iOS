@@ -8,13 +8,11 @@
 
 import UIKit
 
-class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching {
+class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     private let cellReuseIdentifier = "Cell"
     
     private var planItems: [PlanItem]?
-    private var images: [Int: UIImage] = [:] // IndexPath.Row : Image
-    private var recipes: [Int: Recipe] = [:] //IndexPath.Row : Recipe
     
     weak var homeViewController: HomeCollectionViewController?
     
@@ -29,7 +27,6 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
         
         planCollectionView.delegate = self
         planCollectionView.dataSource = self
-        planCollectionView.prefetchDataSource = self
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -42,16 +39,15 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = planCollectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
-        if let cell = cell as? PlanItemCollectionViewCell {
-            if let recipe = recipes[indexPath.row] {
-                cell.nameLabel.text = recipe.name
-            } else {
-                self.loadData(forIndex: indexPath)
-            }
-            if let image = images[indexPath.row] {
-                cell.recipeImage.image = image
-            } else {
-                self.loadData(forIndex: indexPath)
+        if let cell = cell as? PlanItemCollectionViewCell, let item = planItems?[indexPath.row] {
+            DispatchQueue.global().async {
+                let image = ResourceHandler.loadImage(scope: .recipe, id: Int(item.recipeID))
+                let recipe = RecipeHandler.get(id: Int(item.recipeID))
+                
+                DispatchQueue.main.sync {
+                    cell.nameLabel.text = recipe?.name
+                    cell.recipeImage.image = image
+                }
             }
         }
         return cell
@@ -64,33 +60,9 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
     // MARK: - Navigation
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        homeViewController?.selectedRecipe = recipes[indexPath.row]
-        homeViewController?.performSegue(withIdentifier: "planRecipeSegue", sender: homeViewController)
-    }
-
-    // MARK: - Prefetching
-    
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            loadData(forIndex: indexPath)
-        }
-    }
-    
-    private var tasks: [Int] = []
-    
-    private func loadData(forIndex indexPath: IndexPath) {
-        if !tasks.contains(indexPath.row) {
-            if let item = planItems?[indexPath.row] {
-                tasks.append(indexPath.row)
-                DispatchQueue.global().async {
-                    self.images[indexPath.row] = ResourceHandler.loadImage(scope: .recipe, id: Int(item.recipeID))
-                    self.recipes[indexPath.row] = RecipeHandler.get(id: Int(item.recipeID))
-                    
-                    DispatchQueue.main.sync {
-                        self.planCollectionView?.reloadItems(at: [indexPath])
-                    }
-                }
-            }
+        if let id = planItems?[indexPath.row].recipeID {
+            homeViewController?.selectedRecipe = Int(id)
+            homeViewController?.performSegue(withIdentifier: "planRecipeSegue", sender: homeViewController)
         }
     }
 

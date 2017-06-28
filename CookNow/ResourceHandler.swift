@@ -39,7 +39,6 @@ class ResourceHandler {
     
     class func setImage(scope: Scope, id: Int, image: UIImage) {
         cache[scope]?[id] = image
-        print("Set Image: \(scope).\(id) = \(image)")
     }
     
     class func loadImage(scope: Scope, id: Int, handler: ((UIImage?) -> UIImage?)? = nil) -> UIImage? {

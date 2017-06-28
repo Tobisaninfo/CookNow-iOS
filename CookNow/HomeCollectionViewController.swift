@@ -37,12 +37,12 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     
     // MARK: - Navigation
     
-    var selectedRecipe: Recipe?
+    var selectedRecipe: Int?
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationViewControler = segue.destination as? RecipeViewController {
-            destinationViewControler.recipe = selectedRecipe
+        if let destinationViewControler = segue.destination as? RecipeViewController, let id = selectedRecipe {
+            destinationViewControler.recipe = RecipeHandler.get(id: id)
         }
     }
 

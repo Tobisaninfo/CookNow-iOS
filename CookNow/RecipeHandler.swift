@@ -10,7 +10,12 @@ import Foundation
 
 class RecipeHandler {
 
+    private static var cache = [Int:Recipe]()
+    
     class func get(id: Int) -> Recipe? {
+        if let recipe = cache[id] {
+            return recipe
+        }
         var recipe: Recipe? = nil
         
         HttpUtils.get(url: "/recipe/\(id)", callback: {
@@ -20,6 +25,9 @@ class RecipeHandler {
                 }
             }
         })
+        if let recipe = recipe {
+            cache[id] = recipe
+        }
         return recipe
     }
     

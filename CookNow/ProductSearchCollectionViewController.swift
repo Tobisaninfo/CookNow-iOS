@@ -47,7 +47,6 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
                 cell.nameLabel.text = ingredient.name
                 cell.amountLabel.text = ""
                 
-                
                 DispatchQueue.global().async {
                     if let image = ResourceHandler.loadImage(scope: .ingredient, id: Int(ingredient.id), handler: { return $0?.gradient(start: 0.25) }) {
                         DispatchQueue.main.async {

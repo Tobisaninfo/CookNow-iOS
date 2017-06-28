@@ -139,6 +139,9 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationViewController = segue.destination as? RecipeViewController {
             if let index = selectedIndex?.row, let recipe = recipeBook?.recipes?.object(at: index) as? RecipeRef {
+                if let data = recipe.image as Data? {
+                    destinationViewController.image = UIImage(data: data)
+                }
                 destinationViewController.recipe = RecipeHandler.get(id: Int(recipe.id))
             }
         }

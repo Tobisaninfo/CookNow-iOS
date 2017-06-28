@@ -11,15 +11,20 @@ import CoreData
 
 class PlanGenerator {
     
-    class func nextRecipe() -> PlanItem? {
+    class func nextRecipe(postion: Int) -> PlanItem? {
         let recipeList = RecipeHandler.list()
         if let currentPlan = PlanItem.list(), let rating = rating() {
             let possibleRecipes = recipeList.filter() {
                 return !contains(recipe: $0, inPlan: currentPlan) && !contains(recipe: $0, inNegativeRating: rating)
             }
-            let randomIndex = Int(arc4random_uniform(UInt32(possibleRecipes.count)))
-            let recipe = possibleRecipes[randomIndex]
-            return PlanItem.add(recipe: recipe, index: recipeList.count)
+            
+            if possibleRecipes.count > 0 {
+                let randomIndex = Int(arc4random_uniform(UInt32(possibleRecipes.count)))
+                let recipe = possibleRecipes[randomIndex]
+                return PlanItem.add(recipe: recipe, order: postion)
+            } else {
+                Rating.list()?.forEach({ $0.delete() })
+            }
         }
         return nil
     }

@@ -11,13 +11,29 @@ import UIKit
 class PlanItemCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var recipeImage: UIImageView!
-    @IBOutlet weak var topImage: UIImageView!
-    @IBOutlet weak var flopImage: UIImageView!
+    @IBOutlet weak var topButton: UIButton!
+    @IBOutlet weak var flopButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     
+    var planCollectionViewCell: PlanCollectionViewCell?
+    var planItem: PlanItem?
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
+    @IBAction func topHandler(_ sender: UIButton) {
+        if let planItem = planItem {
+            Rating.top(recipe: planItem)
+        }
+    }
+    
+    @IBAction func flopHandler(_ sender: UIButton) {
+        if let planItem = planItem {
+            Rating.flop(recipe: planItem)
+            let index = Int(planItem.order)
+            planItem.delete()
+            planCollectionViewCell?.replaceItem(index: index)
+        }
+    }
 }

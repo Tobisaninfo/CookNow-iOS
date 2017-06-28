@@ -23,11 +23,17 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
         
         self.planCollectionView.register(UINib(nibName: "PlanItemCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: cellReuseIdentifier)
 
-        self.planItems = PlanItem.getCurrentPlan()?.sorted(by: {$0.order < $1.order})
+        loadData()
         
         planCollectionView.delegate = self
         planCollectionView.dataSource = self
     }
+
+    private func loadData() {
+        self.planItems = PlanItem.getCurrentPlan()?.sorted(by: {$0.order < $1.order})
+    }
+    
+    // MARK: -CollectionView Deletage
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -47,6 +53,9 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
                 DispatchQueue.main.sync {
                     cell.nameLabel.text = recipe?.name
                     cell.recipeImage.image = image
+                    
+                    cell.planItem = item
+                    cell.planCollectionViewCell = self
                 }
             }
         }
@@ -55,6 +64,11 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 125, height: 125)
+    }
+    
+    func replaceItem(index: Int) {
+        loadData()
+        planCollectionView.reloadItems(at: [IndexPath(row: index - 1, section: 0)])
     }
     
     // MARK: - Navigation

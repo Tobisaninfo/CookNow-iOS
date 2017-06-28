@@ -15,13 +15,8 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
     private let ingredientCellIdentifier = "ingredientCell"
     private let startCellIdentifier = "startCell"
     
-    var recipe: Recipe? {
-        didSet {
-            if let collectionView = self.collectionView, isViewLoaded {
-                collectionView.reloadData()
-            }
-        }
-    }
+    var recipe: Recipe?
+    var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +33,9 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        self.collectionView?.reloadData()
+    }
     
     // MARK: - Navigation
 
@@ -56,7 +54,6 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let ingredientCount = recipe?.ingredients.count {
             return 3 + ingredientCount
@@ -70,13 +67,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: imageCellIdentifier, for: indexPath)
             if let recipe = recipe, let cell = cell as? RecipeViewImageCollectionViewCell {
                 cell.setText(text: recipe.name)
-                DispatchQueue.global().async {
-                    if let image = ResourceHandler.loadImage(scope: .recipe, id: recipe.id) {
-                        DispatchQueue.main.sync {
-                            cell.imageView.image = image.gradient()
-                        }
-                    }
-                }
+                cell.imageView.image = image?.gradient()
             }
             return cell
         } else if indexPath.row == 1 {

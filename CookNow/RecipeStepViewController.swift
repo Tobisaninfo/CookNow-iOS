@@ -99,4 +99,11 @@ class RecipeStepViewController: UIViewController, UIPageViewControllerDataSource
             }
         }
     }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? SpeechViewController {
+            destinationViewController.recipe = recipe
+        }
+    }
 }

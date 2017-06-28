@@ -35,7 +35,13 @@ class StepViewController: UIViewController {
     
     func setContent() {
         if isViewLoaded, let step = step, let recipeID = recipeID {
-            imageView.image = ResourceHandler.getImage(scope: .recipe, id: recipeID)
+            DispatchQueue.global().async {
+                if let image = ResourceHandler.loadImage(scope: .recipe, id: recipeID) {
+                    DispatchQueue.main.async {
+                        self.imageView.image = image
+                    }
+                }
+            }
             ingredientLabel.text = step.ingredients.map({return $0.ingredient.name}).reduce("", concatString)
             itemsLabel.text = step.items.map({return $0.name}).reduce("", concatString)
             contentView.text = step.content

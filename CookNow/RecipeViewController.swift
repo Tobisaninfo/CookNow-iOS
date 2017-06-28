@@ -134,8 +134,12 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
     
     func didSelect(_ index: Int) {
         let recipeBook = RecipeBook.list()![index]
-        if let recipe = recipe, let image = ResourceHandler.getImage(scope: .recipe, id: recipe.id) {
-            _ = RecipeRef.add(id: recipe.id, name: recipe.name, image: image, toBook: recipeBook)
+        if let recipe = recipe {
+            DispatchQueue.global().async {
+                if let image = ResourceHandler.loadImage(scope: .recipe, id: recipe.id) {
+                    _ = RecipeRef.add(id: recipe.id, name: recipe.name, image: image, toBook: recipeBook)
+                }
+            }
         }
     }
 }

@@ -12,11 +12,32 @@ class SpeechViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    var recipe: Recipe? {
+        didSet {
+            setImage()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        imageView.image = ResourceHandler.getImage(scope: .recipe, id: 1)
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setImage()
+    }
+    
+    func setImage() {
+        if let id = recipe?.id {
+            DispatchQueue.global().async {
+                if let image = ResourceHandler.loadImage(scope: .recipe, id: id) {
+                    DispatchQueue.main.async {
+                        self.imageView?.image = image
+                    }
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

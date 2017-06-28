@@ -34,6 +34,10 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
         super.didReceiveMemoryWarning()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.collectionView?.reloadData()
+    }
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

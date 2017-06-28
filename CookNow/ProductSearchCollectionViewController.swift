@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ProductSearchCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, UISearchBarDelegate {
+class ProductSearchCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
     private let reuseIdentifier = "Cell"
     private let columnCount = 3
@@ -47,10 +47,13 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
                 cell.nameLabel.text = ingredient.name
                 cell.amountLabel.text = ""
                 
-                if let image = ResourceHandler.getImage(scope: .ingredient, id: ingredient.id) {
-                    cell.imageView.image = image
-                } else {
-                    loadImage(forIndex: indexPath)
+                
+                DispatchQueue.global().async {
+                    if let image = ResourceHandler.loadImage(scope: .ingredient, id: Int(ingredient.id), handler: { return $0?.gradient(start: 0.25) }) {
+                        DispatchQueue.main.async {
+                            cell.imageView.image = image
+                        }
+                    }
                 }
             }
         }
@@ -128,35 +131,6 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
-    // MARK: - Prefetch
-    
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            loadImage(forIndex: indexPath)
-        }
-    }
-    
-    private var tasks: [IndexPath] = []
-    
-    func loadImage(forIndex indexPath: IndexPath) {
-        if !tasks.contains(indexPath) {
-            if let index = ingredients?[indexPath.row ] {
-                tasks.append(indexPath)
-                
-                DispatchQueue.global().async {
-                    _ = ResourceHandler.loadImage(scope: .ingredient, id: Int(index.id)) {
-                        return $0?.gradient(start: 0.25)
-                    }
-                    DispatchQueue.main.async {
-                        self.collectionView?.reloadItems(at: [indexPath])
-                        self.tasks.remove(at: self.tasks.index(of: indexPath)!)
-                    }
-                }
-            }
-        }
-    }
-    
     
     // MARK: - Save
     

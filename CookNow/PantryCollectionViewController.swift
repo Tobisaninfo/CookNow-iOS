@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class PantryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, AddCollectionViewCellDelegate {
+class PantryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, AddCollectionViewCellDelegate {
     
     private let pantryReuseIdentifier = "pantryCell"
     private let addReuseIdentifier = "pantryAddCell"
@@ -65,20 +65,26 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pantryReuseIdentifier, for: indexPath) as! PantryCollectionViewCell
             
             if let item = items?[indexPath.row - 1] {
-                if let image = ResourceHandler.getImage(scope: .ingredient, id: Int(item.ingredientID)) {
-                    cell.imageView.image = image
-                } else {
-                    self.loadData(forIndex: indexPath)
-                }
                 
-                if let ingredient = IngredientHanler.getLocal(id: Int(item.ingredientID)) {
-                    let unitText = NSLocalizedString("Unit.\(ingredient.unit)", comment: "Unit")
-                    cell.nameLabel.text = ingredient.name
-                    cell.amountLabel.text = "\(item.amount) \(unitText)"
-                } else {
-                    cell.nameLabel.text = ""
-                    cell.amountLabel.text = ""
-                    self.loadData(forIndex: indexPath)
+                DispatchQueue.global().async {
+                    let image = ResourceHandler.loadImage(scope: .ingredient, id: Int(item.ingredientID)) {
+                        return $0?.gradient(start: 0.25)
+                    }
+                    let ingredient = IngredientHanler.get(id: Int(item.ingredientID))
+                    DispatchQueue.main.async {
+                        if let image = image {
+                            cell.imageView.image = image
+                        }
+                        
+                        if let ingredient = ingredient {
+                            let unitText = NSLocalizedString("Unit.\(ingredient.unit)", comment: "Unit")
+                            cell.nameLabel.text = ingredient.name
+                            cell.amountLabel.text = "\(item.amount) \(unitText)"
+                        } else {
+                            cell.nameLabel.text = ""
+                            cell.amountLabel.text = ""
+                        }
+                    }
                 }
             }
             
@@ -101,36 +107,7 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
         let itemSize = viewWidth / CGFloat(columnCount)
         return CGSize(width: itemSize, height: itemSize)
     }
-    
-    // MARK: - CollectionView Prefetch Data
-    
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            if indexPath.row != 0 {
-                loadData(forIndex: indexPath)
-            }
-        }
-    }
-    
-    private var tasks: [Int] = []
-    
-    private func loadData(forIndex indexPath: IndexPath) {
-        if !tasks.contains(indexPath.row) {
-            if let item = items?[indexPath.row - 1] {
-                tasks.append(indexPath.row)
-                DispatchQueue.global().async {
-                    _ = ResourceHandler.loadImage(scope: .ingredient, id: Int(item.ingredientID)) {
-                        return $0?.gradient(start: 0.25)
-                    }
-                    _ = IngredientHanler.get(id: Int(item.ingredientID))
-                    DispatchQueue.main.async {
-                        self.collectionView?.reloadItems(at: [indexPath])
-                    }
-                }
-            }
-        }
-    }
-    
+
     // MARK: - Edit
 
     override func setEditing(_ editing: Bool, animated: Bool) {

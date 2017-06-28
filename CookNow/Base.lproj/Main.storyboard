@@ -240,7 +240,6 @@
                         <connections>
                             <outlet property="dataSource" destination="MhV-jZ-Tvs" id="2u2-kM-35c"/>
                             <outlet property="delegate" destination="MhV-jZ-Tvs" id="xEV-xM-sTs"/>
-                            <outlet property="prefetchDataSource" destination="MhV-jZ-Tvs" id="dm9-Kc-xGt"/>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Pantry" id="8U0-DG-yG4"/>
@@ -353,7 +352,6 @@
                         <connections>
                             <outlet property="dataSource" destination="gVy-q9-9xz" id="K9w-oa-FpD"/>
                             <outlet property="delegate" destination="gVy-q9-9xz" id="U2l-ov-ZDV"/>
-                            <outlet property="prefetchDataSource" destination="gVy-q9-9xz" id="yHg-hO-gjA"/>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Add Product" id="5tk-I5-xhc"/>

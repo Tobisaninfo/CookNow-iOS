@@ -26,6 +26,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xx2-Rw-ONm">
                                 <rect key="frame" x="16" y="582" width="343" height="30"/>
                                 <state key="normal" title="Remove Done"/>
+                                <connections>
+                                    <action selector="doneHandler:" destination="MO2-cL-wPY" eventType="touchUpInside" id="iYh-Tt-Ma2"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NG1-1j-rhW">
                                 <rect key="frame" x="0.0" y="64" width="375" height="510"/>

@@ -12,11 +12,11 @@ class ShoppingViewController: UIViewController, UITableViewDataSource, UITableVi
 
     @IBOutlet weak var tableView: UITableView!
     
+    private var shoppingItems: [[ShoppingItem]]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.contentInset.top = 20
-        //tableView.contentInset.bottom = 100
-        // Do any additional setup after loading the view.
+
         tableView.register(UINib(nibName: "ShoppingTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "shoppingCell")
     }
 
@@ -25,38 +25,49 @@ class ShoppingViewController: UIViewController, UITableViewDataSource, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        shoppingItems = ShoppingItemController.group(shoppingItems: ShoppingItemController.missingItemsForWeeklyPlan())
+        tableView.reloadData()
     }
-    */
+
+    // MARK: - TableViewDelegate
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return shoppingItems?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingCell", for: indexPath) as! ShoppingTableViewCell
-        cell.nameLabel?.text = "Schokolade"
-        cell.descriptionLabel?.text = "500g"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingCell", for: indexPath)
+        if let cell = cell as? ShoppingTableViewCell, let item = shoppingItems?[indexPath.row] {
+            if let unit = Unit(rawValue: Int(item[0].unit)) {
+                
+                let unitText = NSLocalizedString("Unit.\(unit)", comment: "Unit")
+                let amount = item.map({$0.amount}).reduce(0, {$0 + $1})
+                
+                cell.nameLabel?.text = item[0].name
+                cell.descriptionLabel?.text = "\(amount) \(unitText)"
+                cell.accessoryType = item[0].done ? .checkmark : .none
+            }
+        }
         return cell
     }
 
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if let type = tableView.cellForRow(at: indexPath)?.accessoryType {
+        if let type = tableView.cellForRow(at: indexPath)?.accessoryType , let item = shoppingItems?[indexPath.row] {
             if type == .checkmark {
+                item.forEach({$0.done = false})
                 tableView.cellForRow(at: indexPath)?.accessoryType = .none
             } else {
+                item.forEach({$0.done = true})
                 tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            }
+            
+            if let delegate = UIApplication.shared.delegate as? AppDelegate {
+                delegate.saveContext()
             }
         }
         return indexPath
@@ -64,5 +75,20 @@ class ShoppingViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // MARK: - Event Handler
+    @IBAction func doneHandler(_ sender: UIButton) {
+        if let shoppingItems = shoppingItems {
+            for item in shoppingItems {
+                if item[0].done {
+                    // Add to panty
+                    item.forEach({ _ = $0.addToPantry() })
+                    item.forEach({ $0.delete() })
+                }
+            }
+            self.shoppingItems = ShoppingItemController.group(shoppingItems: ShoppingItemController.missingItemsForWeeklyPlan())
+            self.tableView.reloadData()
+        }
     }
 }

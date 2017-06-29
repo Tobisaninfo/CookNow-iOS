@@ -14,6 +14,19 @@ extension PantryItem {
     private static let className = String(describing: PantryItem.self)
     
     class func add(id: Int, withAmount amount: Double) -> PantryItem? {
+        if let list = list() {
+            for item in list {
+                if Int(item.ingredientID) == id {
+                    item.amount = item.amount + amount
+                    
+                    if let delegate = UIApplication.shared.delegate as? AppDelegate {
+                        delegate.saveContext()
+                        return item
+                    }
+                }
+            }
+        }
+        
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             let context = delegate.persistentContainer.viewContext
             if let entity = NSEntityDescription.entity(forEntityName: className, in: context) {

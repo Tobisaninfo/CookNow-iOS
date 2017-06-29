@@ -23,11 +23,19 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="recipeBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeBook" inverseName="recipes" inverseEntity="RecipeBook" syncable="YES"/>
     </entity>
+    <entity name="ShoppingItem" representedClassName="ShoppingItem" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="done" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unit" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <elements>
         <element name="PantryItem" positionX="0" positionY="81" width="128" height="75"/>
         <element name="PlanItem" positionX="-9" positionY="72" width="128" height="75"/>
         <element name="Rating" positionX="27" positionY="108" width="128" height="75"/>
         <element name="RecipeBook" positionX="-45" positionY="0" width="128" height="90"/>
         <element name="RecipeRef" positionX="-18" positionY="27" width="128" height="103"/>
+        <element name="ShoppingItem" positionX="-9" positionY="72" width="128" height="120"/>
     </elements>
 </model>

@@ -28,3 +28,6 @@
 "Alert.CookBook.Add.Placeholder"="Name des Kochbuches";
 
 "About"="Rechtliche Hinweise: Wir speichern keine Dateien serverseitig.\nDie Verwendeten Supermarktangebote stammen von den jeweiligen Supermärkten direkt und werden durch die App nur neu aufbereitet.\nVerwendetet Bibliotheken: TBEmptyDataSet, PKHUD, SwiftClient";
+
+"Setting.Clear.Plan"="Cleared Plan";
+"Setting.Clear.Rating"="Cleared Rating";

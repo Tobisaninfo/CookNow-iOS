@@ -73,8 +73,12 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
     }
     
     func replceItemByObserver(notification: Notification) {
-        if let index = notification.object as? Int {
-            replaceItem(index: index)
+        DispatchQueue.main.async {
+            if let index = notification.object as? Int {
+                self.replaceItem(index: index)
+            } else {
+                self.replaceItem(index: -1)
+            }
         }
     }
     

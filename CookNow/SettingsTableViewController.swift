@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class SettingsTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -63,6 +64,23 @@ class SettingsTableViewController: UITableViewController, UICollectionViewDelega
                 UserDefaults.standard.set(newState, forKey: "pref-egg")
             }
         }
+        
+        if indexPath.section == 3 {
+            // Remove Rating
+            if indexPath.row == 0 {
+                Rating.list()?.forEach({$0.delete()})
+                HUD.flash(.labeledSuccess(title: NSLocalizedString("Setting.Clear.Rating", comment: "Rating"), subtitle: nil), delay: 1.0) // TODO Localize
+            } else if indexPath.row == 1 {
+                HUD.show(.progress)
+                DispatchQueue.global().async {
+                    PlanGenerator.newPlan()
+                    DispatchQueue.main.async {
+                        HUD.flash(.labeledSuccess(title: NSLocalizedString("Setting.Clear.Plan", comment: "Plan"), subtitle: nil), delay: 1.0) // TODO Localize
+                    }
+                }
+            }
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 

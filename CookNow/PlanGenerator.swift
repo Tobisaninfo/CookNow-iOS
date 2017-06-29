@@ -45,6 +45,15 @@ class PlanGenerator {
         return nil
     }
     
+    class func newPlan() {
+        PlanItem.list()?.forEach({
+            let index = Int($0.order)
+            $0.delete()
+            _ = nextRecipe(position: index)
+        })
+        NotificationCenter.default.post(name: NewPlanItem, object: nil)
+    }
+    
     class func createNewItem(for item: PlanItem) {
         let index = Int(item.order)
         item.delete()

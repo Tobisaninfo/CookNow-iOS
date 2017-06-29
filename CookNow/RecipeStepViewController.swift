@@ -45,7 +45,10 @@ class RecipeStepViewController: UIViewController, UIPageViewControllerDataSource
         }
         
         let endPage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "finishStepViewController")
-        pages.append(endPage)
+        if let endPage = endPage as? FinishViewController {
+            endPage.recipe = recipe
+            pages.append(endPage)
+        }
         
         // Create the page container
         pageContainer = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)

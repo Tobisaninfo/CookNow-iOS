@@ -18,8 +18,14 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
     
     @IBOutlet weak var planCollectionView: UICollectionView!
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(replceItemByObserver(notification:)), name: PlanGenerator.NewPlanItem, object: nil)
         
         self.planCollectionView.register(UINib(nibName: "PlanItemCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: cellReuseIdentifier)
 
@@ -66,9 +72,20 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
         return CGSize(width: 125, height: 125)
     }
     
+    func replceItemByObserver(notification: Notification) {
+        if let index = notification.object as? Int {
+            replaceItem(index: index)
+        }
+    }
+    
     func replaceItem(index: Int) {
         loadData()
-        planCollectionView.reloadItems(at: [IndexPath(row: index - 1, section: 0)])
+        let viewIndex = index - 1
+        if viewIndex < 7 && viewIndex >= 0 {
+            planCollectionView.reloadItems(at: [IndexPath(row: viewIndex, section: 0)])
+        } else {
+            planCollectionView.reloadData()
+        }
     }
     
     // MARK: - Navigation

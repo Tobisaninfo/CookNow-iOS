@@ -21,9 +21,4 @@ class CookNowTests: XCTestCase {
         super.tearDown()
     }
     
-    func testRecipeDetailGet() {
-        let recipe = RecipeHandler.getRecipe(id: 1)
-        XCTAssertFalse(recipe == nil)
-    }
-    
 }

@@ -55,7 +55,7 @@ extension PlanItem {
             }
             
             while plan.count < 7 {
-                if let newItem = PlanGenerator.nextRecipe(postion: nextNumber()) {
+                if let newItem = PlanGenerator.nextRecipe(position: nextNumber()) {
                     plan.append(newItem)
                 }
             }
@@ -66,6 +66,16 @@ extension PlanItem {
     
     func delete() {
         CoreDataUtils.delete(object: self)
-        
+    }
+    
+    class func find(recipe: Recipe) -> PlanItem? {
+        if let list = list() {
+            for item in list {
+                if Int(item.recipeID) == recipe.id {
+                    return item
+                }
+            }
+        }
+        return nil
     }
 }

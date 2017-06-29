@@ -43,6 +43,18 @@ extension PantryItem {
         return nil
     }
     
+    func delete(amount: Double) {
+        if self.amount <= amount {
+            delete()
+        } else {
+            self.amount = self.amount - amount
+            
+            if let delegate = UIApplication.shared.delegate as? AppDelegate {
+                delegate.saveContext()
+            }
+        }
+    }
+    
     func delete() {
         CoreDataUtils.delete(object: self)
     }
@@ -53,6 +65,19 @@ extension PantryItem {
                 return try delegate.persistentContainer.viewContext.fetch(NSFetchRequest(entityName: className)) as? [PantryItem]
             } catch {
                 print(error)
+            }
+        }
+        return nil
+    }
+}
+
+extension PantryItem {
+    class func find(ingredient: Ingredient) -> PantryItem? {
+        if let list = list() {
+            for item in list {
+                if Int(item.ingredientID) == ingredient.id {
+                    return item
+                }
             }
         }
         return nil

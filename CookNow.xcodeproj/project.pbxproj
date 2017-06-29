@@ -32,6 +32,9 @@
 		F64F26841EE5867B00711189 /* MarketOfferHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26831EE5867B00711189 /* MarketOfferHandler.swift */; };
 		F64F26861EE5869800711189 /* MarketOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F26851EE5869800711189 /* MarketOffer.swift */; };
 		F65A09041EEF2B0100F136F9 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A09031EEF2B0100F136F9 /* ScannerViewController.swift */; };
+		F65AD3991F053DED0000960C /* ShoppingItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65AD3981F053DED0000960C /* ShoppingItemController.swift */; };
+		F65AD39D1F05413D0000960C /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65AD39C1F05413D0000960C /* ShoppingItem.swift */; };
+		F65AD39F1F0585900000960C /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65AD39E1F0585900000960C /* FinishViewController.swift */; };
 		F65C60501EEC439D008D7F0C /* ResourceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C604F1EEC439D008D7F0C /* ResourceHandler.swift */; };
 		F65C60531EEC4D0D008D7F0C /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C60521EEC4D0D008D7F0C /* ShoppingViewController.swift */; };
 		F65C605A1EEC5AE3008D7F0C /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C60581EEC5AE3008D7F0C /* ShoppingTableViewCell.swift */; };
@@ -157,6 +160,9 @@
 		F64F26831EE5867B00711189 /* MarketOfferHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketOfferHandler.swift; sourceTree = "<group>"; };
 		F64F26851EE5869800711189 /* MarketOffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketOffer.swift; sourceTree = "<group>"; };
 		F65A09031EEF2B0100F136F9 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		F65AD3981F053DED0000960C /* ShoppingItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingItemController.swift; sourceTree = "<group>"; };
+		F65AD39C1F05413D0000960C /* ShoppingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
+		F65AD39E1F0585900000960C /* FinishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
 		F65C604F1EEC439D008D7F0C /* ResourceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceHandler.swift; sourceTree = "<group>"; };
 		F65C60521EEC4D0D008D7F0C /* ShoppingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
 		F65C60581EEC5AE3008D7F0C /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
@@ -312,6 +318,24 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		F65AD3971F053DCD0000960C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F667A5A81F03A20B003406E4 /* PlanGenerator.swift */,
+				F65AD3981F053DED0000960C /* ShoppingItemController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		F65AD3A01F0585950000960C /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				F6FA3A621EFAED2C0074744A /* StepViewController.swift */,
+				F65AD39E1F0585900000960C /* FinishViewController.swift */,
+			);
+			name = Page;
+			sourceTree = "<group>";
+		};
 		F65C60511EEC4CEC008D7F0C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +398,7 @@
 				F67A589E1F044E80009D85B9 /* Rating.swift */,
 				F6AAC5A71EFEF7F800068C33 /* RecipeBook.swift */,
 				F607CAB21F005962008D77CF /* RecipeRef.swift */,
+				F65AD39C1F05413D0000960C /* ShoppingItem.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -426,11 +451,10 @@
 			children = (
 				F64F267F1EE5844600711189 /* Ingredient */,
 				F64F26801EE5845B00711189 /* Market */,
+				F6AAC5A91EFEF81500068C33 /* CoreData */,
 				F64F26771EE57BFA00711189 /* Item.swift */,
 				F6AE62CF1EE0780D00D8E0DF /* Recipe.swift */,
 				F6AE62D71EE09B6F00D8E0DF /* Step.swift */,
-				F667A5A81F03A20B003406E4 /* PlanGenerator.swift */,
-				F6AAC5A91EFEF81500068C33 /* CoreData */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -480,6 +504,7 @@
 		F6F1EC781EDD7C9B004383D2 /* CookNow */ = {
 			isa = PBXGroup;
 			children = (
+				F65AD3971F053DCD0000960C /* Controller */,
 				F6AE62CD1EE077FB00D8E0DF /* Model */,
 				F6AE62CA1EE0778200D8E0DF /* NetworkHandle */,
 				F65C60511EEC4CEC008D7F0C /* ViewController */,
@@ -518,9 +543,9 @@
 			isa = PBXGroup;
 			children = (
 				F69D67F81EF99E2100DF2007 /* Cell */,
+				F65AD3A01F0585950000960C /* Page */,
 				F6F789561EF17C24009E7323 /* RecipeStepViewController.swift */,
 				F69D68031EF9A03400DF2007 /* RecipeViewController.swift */,
-				F6FA3A621EFAED2C0074744A /* StepViewController.swift */,
 			);
 			name = Recipe;
 			sourceTree = "<group>";
@@ -687,6 +712,7 @@
 				F65C60621EEC656B008D7F0C /* PantryCollectionViewCell.swift in Sources */,
 				F667A5AB1F03A6FD003406E4 /* PlanItem.swift in Sources */,
 				F65C60531EEC4D0D008D7F0C /* ShoppingViewController.swift in Sources */,
+				F65AD39F1F0585900000960C /* FinishViewController.swift in Sources */,
 				F69D68041EF9A03400DF2007 /* RecipeViewController.swift in Sources */,
 				F64F267E1EE583E000711189 /* MarketHandler.swift in Sources */,
 				F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */,
@@ -694,6 +720,7 @@
 				F64DAB441EF2F233002343BF /* HomeCollectionViewController.swift in Sources */,
 				F607CAB01F005599008D77CF /* AddRecipeTableViewCell.m in Sources */,
 				F607CA9F1F004564008D77CF /* AboutViewController.swift in Sources */,
+				F65AD39D1F05413D0000960C /* ShoppingItem.swift in Sources */,
 				F6348D681EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift in Sources */,
 				F644D2DB1EF2AA0E0037746B /* SettingsTableViewController.swift in Sources */,
 				F6A79BAB1EFD720400B84B21 /* PantryItem.swift in Sources */,
@@ -734,6 +761,7 @@
 				F64F267A1EE5804B00711189 /* Unit.swift in Sources */,
 				F6D7FAC31EF05993001DD906 /* ProductSearchCollectionViewController.swift in Sources */,
 				F6AE62D81EE09B6F00D8E0DF /* Step.swift in Sources */,
+				F65AD3991F053DED0000960C /* ShoppingItemController.swift in Sources */,
 				F6D7FABF1EF058F1001DD906 /* SearchBarCollectionReusableView.swift in Sources */,
 				F667A5AD1F03A7C9003406E4 /* CoreDataUtils.swift in Sources */,
 				F60743E01EE4A58C00D1C75C /* IngredientProperty.swift in Sources */,

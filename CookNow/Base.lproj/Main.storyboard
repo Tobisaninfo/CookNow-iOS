@@ -532,10 +532,10 @@
             </objects>
             <point key="canvasLocation" x="4016.8000000000002" y="1453.2233883058473"/>
         </scene>
-        <!--View Controller-->
+        <!--Finish View Controller-->
         <scene sceneID="6iV-Cb-wN1">
             <objects>
-                <viewController storyboardIdentifier="finishStepViewController" id="0tr-9H-jAt" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="finishStepViewController" id="0tr-9H-jAt" customClass="FinishViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gKy-Dw-XQQ"/>
                         <viewControllerLayoutGuide type="bottom" id="1tj-VO-SEx"/>
@@ -547,6 +547,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PiK-YF-hef">
                                 <rect key="frame" x="137" y="417" width="101" height="30"/>
                                 <state key="normal" title="Finish Cooking"/>
+                                <connections>
+                                    <action selector="finishButton:" destination="0tr-9H-jAt" eventType="touchUpInside" id="YjD-rg-qkk"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hvv-pT-0vo">
                                 <rect key="frame" x="87" y="157" width="200" height="200"/>
@@ -571,6 +574,10 @@
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="finishButton" destination="PiK-YF-hef" id="Qhg-hQ-KHe"/>
+                        <outlet property="imageView" destination="Hvv-pT-0vo" id="a0u-3t-eY1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSe-Am-nf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -73,3 +73,25 @@ extension Recipe {
         return formatter.string(from: price as NSNumber) ?? ""
     }
 }
+
+extension Recipe {
+    func done() {
+        for ingredient in ingredients {
+            if let pantryItem = PantryItem.find(ingredient: ingredient.ingredient) {
+                pantryItem.delete(amount: ingredient.amount)
+            }
+        }
+    }
+    
+    func hasAllIngredients() -> Bool {
+        for ingredient in ingredients {
+            guard let pantryItem = PantryItem.find(ingredient: ingredient.ingredient) else {
+                return false
+            }
+            if pantryItem.amount < ingredient.amount {
+                return false
+            }
+        }
+        return true
+    }
+}

@@ -30,9 +30,10 @@ class PlanItemCollectionViewCell: UICollectionViewCell {
     
     @IBAction func flopHandler(_ sender: UIButton) {
         if let planItem = planItem {
-            Rating.flop(recipe: planItem)
             let index = Int(planItem.order)
-            planItem.delete()
+            
+            Rating.flop(recipe: planItem)
+            PlanGenerator.createNewItem(for: planItem)
             planCollectionViewCell?.replaceItem(index: index)
         }
     }

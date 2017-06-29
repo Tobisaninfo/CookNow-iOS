@@ -11,7 +11,9 @@ import CoreData
 
 class PlanGenerator {
     
-    class func nextRecipe(postion: Int) -> PlanItem? {
+    static let NewPlanItem = Notification.Name("NewPlanItem")
+    
+    class func nextRecipe(position: Int) -> PlanItem? {
         let recipeList = RecipeHandler.list()
         if let currentPlan = PlanItem.list(), let rating = rating() {
             
@@ -19,11 +21,11 @@ class PlanGenerator {
                 return !contains(recipe: $0, inPlan: currentPlan) && contains(recipe: $0, inPositiveRating: rating)
             }
             
-            if Int(arc4random_uniform(2)) < 1 || positivRecipes.count > 10 {
+            if Int(arc4random_uniform(2)) < 1 && positivRecipes.count > 10 {
                 if positivRecipes.count > 0 {
                     let randomIndex = Int(arc4random_uniform(UInt32(positivRecipes.count)))
                     let recipe = positivRecipes[randomIndex]
-                    return PlanItem.add(recipe: recipe, order: postion)
+                    return PlanItem.add(recipe: recipe, order: position)
                 } else {
                     Rating.list()?.forEach({ $0.delete() })
                 }
@@ -34,13 +36,21 @@ class PlanGenerator {
                 if possibleRecipes.count > 0 {
                     let randomIndex = Int(arc4random_uniform(UInt32(possibleRecipes.count)))
                     let recipe = possibleRecipes[randomIndex]
-                    return PlanItem.add(recipe: recipe, order: postion)
+                    return PlanItem.add(recipe: recipe, order: position)
                 } else {
                     Rating.list()?.forEach({ $0.delete() })
                 }
             }
         }
         return nil
+    }
+    
+    class func createNewItem(for item: PlanItem) {
+        let index = Int(item.order)
+        item.delete()
+        _ = nextRecipe(position: index)
+        
+        NotificationCenter.default.post(name: NewPlanItem, object: index)
     }
     
     private class func rating() -> [Rating]? {

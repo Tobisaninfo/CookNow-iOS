@@ -14,16 +14,30 @@ class PlanGenerator {
     class func nextRecipe(postion: Int) -> PlanItem? {
         let recipeList = RecipeHandler.list()
         if let currentPlan = PlanItem.list(), let rating = rating() {
-            let possibleRecipes = recipeList.filter() {
-                return !contains(recipe: $0, inPlan: currentPlan) && !contains(recipe: $0, inNegativeRating: rating)
+            
+            let positivRecipes = recipeList.filter() {
+                return !contains(recipe: $0, inPlan: currentPlan) && contains(recipe: $0, inPositiveRating: rating)
             }
             
-            if possibleRecipes.count > 0 {
-                let randomIndex = Int(arc4random_uniform(UInt32(possibleRecipes.count)))
-                let recipe = possibleRecipes[randomIndex]
-                return PlanItem.add(recipe: recipe, order: postion)
+            if Int(arc4random_uniform(2)) < 1 || positivRecipes.count > 10 {
+                if positivRecipes.count > 0 {
+                    let randomIndex = Int(arc4random_uniform(UInt32(positivRecipes.count)))
+                    let recipe = positivRecipes[randomIndex]
+                    return PlanItem.add(recipe: recipe, order: postion)
+                } else {
+                    Rating.list()?.forEach({ $0.delete() })
+                }
             } else {
-                Rating.list()?.forEach({ $0.delete() })
+                let possibleRecipes = recipeList.filter() {
+                    return !contains(recipe: $0, inPlan: currentPlan) && !contains(recipe: $0, inNegativeRating: rating)
+                }
+                if possibleRecipes.count > 0 {
+                    let randomIndex = Int(arc4random_uniform(UInt32(possibleRecipes.count)))
+                    let recipe = possibleRecipes[randomIndex]
+                    return PlanItem.add(recipe: recipe, order: postion)
+                } else {
+                    Rating.list()?.forEach({ $0.delete() })
+                }
             }
         }
         return nil
@@ -52,6 +66,15 @@ class PlanGenerator {
     private class func contains(recipe: Recipe, inNegativeRating rating: [Rating]) -> Bool {
         for item in rating {
             if Int(item.recipeID) == recipe.id && item.rating < 0 {
+                return true
+            }
+        }
+        return false
+    }
+    
+    private class func contains(recipe: Recipe, inPositiveRating rating: [Rating]) -> Bool {
+        for item in rating {
+            if Int(item.recipeID) == recipe.id && item.rating > 0 {
                 return true
             }
         }

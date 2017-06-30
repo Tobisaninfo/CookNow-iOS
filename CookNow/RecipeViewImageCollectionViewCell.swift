@@ -14,8 +14,18 @@ class RecipeViewImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     
+    @IBOutlet weak var checkImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    func setIngredientsAvailble(available: Bool) {
+        if available {
+            checkImageView.backgroundColor = UIColor.green
+        } else {
+            checkImageView.backgroundColor = UIColor.clear
+        }
     }
     
     func setText(text: String, secondText: String? = nil) {

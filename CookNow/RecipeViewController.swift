@@ -68,6 +68,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
             if let recipe = recipe, let cell = cell as? RecipeViewImageCollectionViewCell {
                 cell.setText(text: recipe.name)
                 cell.imageView.image = image?.gradient()
+                cell.setIngredientsAvailble(available: recipe.hasAllIngredients())
             }
             return cell
         } else if indexPath.row == 1 {

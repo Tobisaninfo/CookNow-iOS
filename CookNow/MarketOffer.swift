@@ -9,6 +9,15 @@
 import Foundation
 
 class MarketOffer {
+    
+    static let MarketOfferUpdate = Notification.Name("MarketOfferUpdate")
+
+    static var offers: [MarketOffer] = [] {
+        didSet {
+            NotificationCenter.default.post(name: MarketOfferUpdate, object: self)
+        }
+    }
+    
     let name: String
     let price: Double
     let expires: Date

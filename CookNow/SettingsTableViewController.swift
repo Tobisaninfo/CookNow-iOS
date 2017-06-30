@@ -125,8 +125,11 @@ class SettingsTableViewController: UITableViewController, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let marekt = markets[indexPath.row]
-        UserDefaults.standard.set(marekt.id, forKey: "market")
+        let market = markets[indexPath.row]
+        UserDefaults.standard.set(market.id, forKey: "market")
+        DispatchQueue.global().async {
+            MarketOffer.offers = MarketOfferHandler.list(market: market)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

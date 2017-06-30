@@ -39,7 +39,7 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
         self.planItems = PlanItem.getCurrentPlan()?.sorted(by: {$0.order < $1.order})
     }
     
-    // MARK: -CollectionView Deletage
+    // MARK: - CollectionView Deletage
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -85,7 +85,6 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
             planCollectionView.reloadItems(at: [IndexPath(row: viewIndex, section: 0)])
         } else {
             planCollectionView.reloadData()
-            print("Reload data")
         }
     }
     

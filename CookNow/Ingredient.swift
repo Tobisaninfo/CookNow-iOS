@@ -55,3 +55,17 @@ class Ingredient {
         return cache[id]
     }
 }
+
+extension Ingredient {
+    func hasOffer() -> Bool {
+        var isOffer = false
+        for offer in MarketOffer.offers {
+            for word in offer.name.components(separatedBy: " ") {
+                if (word as NSString).scoreAgainst(name) > 0.9 {
+                    isOffer = true
+                }
+            }
+        }
+        return isOffer
+    }
+}

@@ -9,6 +9,7 @@
 import Foundation
 
 class MarketOfferHandler {
+    
     class func list(market: Market) -> [MarketOffer] {
         var offers: [MarketOffer] = []
         
@@ -23,7 +24,6 @@ class MarketOfferHandler {
                 }
             }
         })
-        
         return offers
     }
 }

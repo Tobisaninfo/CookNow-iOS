@@ -19,13 +19,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Butter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="et6-6g-1Kz">
-                        <rect key="frame" x="112" y="0.0" width="243" height="20.5"/>
+                        <rect key="frame" x="112" y="0.0" width="228" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 g" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pe-pa-dFp">
-                        <rect key="frame" x="20" y="0.0" width="84" height="20.5"/>
+                        <rect key="frame" x="20" y="0.0" width="84" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="84" id="Tmi-YC-9sT"/>
                         </constraints>
@@ -33,19 +33,29 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KXE-hl-zPO">
+                        <rect key="frame" x="348" y="0.0" width="20" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="3Ce-Cl-YOR"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="4pe-pa-dFp" firstAttribute="baseline" secondItem="et6-6g-1Kz" secondAttribute="baseline" id="H4D-6W-Iin"/>
                 <constraint firstItem="et6-6g-1Kz" firstAttribute="leading" secondItem="4pe-pa-dFp" secondAttribute="trailing" constant="8" id="MXB-wB-inT"/>
                 <constraint firstItem="4pe-pa-dFp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="cAp-e9-0br"/>
-                <constraint firstAttribute="trailing" secondItem="et6-6g-1Kz" secondAttribute="trailing" constant="20" id="e9H-71-TnV"/>
+                <constraint firstItem="KXE-hl-zPO" firstAttribute="leading" secondItem="et6-6g-1Kz" secondAttribute="trailing" constant="8" id="gbo-r1-0qQ"/>
                 <constraint firstItem="4pe-pa-dFp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="uNB-W1-bJS"/>
+                <constraint firstItem="KXE-hl-zPO" firstAttribute="bottom" secondItem="et6-6g-1Kz" secondAttribute="bottom" id="vjd-Cw-U3L"/>
+                <constraint firstItem="KXE-hl-zPO" firstAttribute="top" secondItem="et6-6g-1Kz" secondAttribute="top" id="xes-u6-5bI"/>
+                <constraint firstAttribute="trailing" secondItem="KXE-hl-zPO" secondAttribute="trailing" constant="7" id="zOB-JM-E3b"/>
             </constraints>
             <size key="customSize" width="375" height="25"/>
             <connections>
                 <outlet property="amountLabel" destination="4pe-pa-dFp" id="YGk-d7-rbu"/>
                 <outlet property="ingredientLabel" destination="et6-6g-1Kz" id="HnV-ub-rC1"/>
+                <outlet property="offerImageView" destination="KXE-hl-zPO" id="GXH-Yo-ABI"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="-33.5"/>
         </collectionViewCell>

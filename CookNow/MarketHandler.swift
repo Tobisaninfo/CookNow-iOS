@@ -9,6 +9,16 @@
 import Foundation
 
 class MarketHandler {
+    
+    class func get(id: Int) -> Market? {
+        for market in list() {
+            if market.id == id {
+                return market
+            }
+        }
+        return nil
+    }
+    
     class func list() -> [Market] {
         var markets: [Market] = []
         HttpUtils.get(url: "/market/", callback: {

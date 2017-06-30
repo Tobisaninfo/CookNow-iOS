@@ -12,6 +12,7 @@ class RecipeViewIngredientCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var ingredientLabel: UILabel!
+    @IBOutlet weak var offerImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

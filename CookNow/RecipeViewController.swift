@@ -26,6 +26,12 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         self.collectionView!.register(UINib(nibName: "RecipeViewInfoCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: infoCellIdentifier)
         self.collectionView!.register(UINib(nibName: "RecipeViewIngredientCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: ingredientCellIdentifier)
         self.collectionView!.register(UINib(nibName: "RecipeViewStartButtonCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: startCellIdentifier)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(marketOfferDidUpdate(notification:)), name: MarketOffer.MarketOfferUpdate, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,6 +99,10 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
                     let unitText = NSLocalizedString("Unit.\(ingredient.ingredient.unit)", comment: "Unit")
                     cell.amountLabel.text = "\(ingredient.amountFormatted) \(unitText)"
                     cell.ingredientLabel.text = ingredient.ingredient.name
+                                        
+                    // Check offer
+                    
+                    cell.offerImageView.backgroundColor = ingredient.ingredient.hasOffer() ? UIColor.red : UIColor.clear
                 }
             }
             return cell
@@ -113,6 +123,14 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
             return CGSize(width: viewWidth, height: 30)
         } else {
             return CGSize(width: viewWidth, height: 21)
+        }
+    }
+    
+    // MARK: - Observer
+    
+    func marketOfferDidUpdate(notification: Notification) {
+        DispatchQueue.main.async {
+            self.collectionView?.reloadData()
         }
     }
     

@@ -7,16 +7,22 @@
 //
 
 import UIKit
+import TBEmptyDataSet
 
-class ShoppingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ShoppingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TBEmptyDataSetDelegate, TBEmptyDataSetDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
     private var shoppingItems: [[ShoppingItem]]?
     
+    private var loadingData = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.emptyDataSetDelegate = self
+        tableView.emptyDataSetDataSource = self
+        
         tableView.register(UINib(nibName: "ShoppingTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "shoppingCell")
     }
 
@@ -26,8 +32,16 @@ class ShoppingViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        shoppingItems = ShoppingItemController.group(shoppingItems: ShoppingItemController.missingItemsForWeeklyPlan())
-        tableView.reloadData()
+        loadingData = true
+        
+        DispatchQueue.global().async {
+            self.shoppingItems = ShoppingItemController.group(shoppingItems: ShoppingItemController.missingItemsForWeeklyPlan())
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.loadingData = false
+                self.tableView.updateEmptyDataSetIfNeeded()
+            }
+        }
     }
 
     // MARK: - TableViewDelegate
@@ -75,6 +89,21 @@ class ShoppingViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // MARK: - Placeholder
+    
+    func titleForEmptyDataSet(in scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(string: "No items") // TODO Localize
+    }
+    
+    func customViewForEmptyDataSet(in scrollView: UIScrollView) -> UIView? {
+        if loadingData {
+            let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            activityIndicator.startAnimating()
+            return activityIndicator
+        }
+        return nil
     }
     
     // MARK: - Event Handler

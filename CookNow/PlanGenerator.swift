@@ -54,12 +54,14 @@ class PlanGenerator {
         NotificationCenter.default.post(name: NewPlanItem, object: nil)
     }
     
-    class func createNewItem(for item: PlanItem) {
+    class func createNewItem(for item: PlanItem, withNotificaiton notification: Bool = false) {
         let index = Int(item.order)
         item.delete()
         _ = nextRecipe(position: index)
         
-        NotificationCenter.default.post(name: NewPlanItem, object: index)
+        if notification {
+            NotificationCenter.default.post(name: NewPlanItem, object: index)
+        }
     }
     
     private class func rating() -> [Rating]? {

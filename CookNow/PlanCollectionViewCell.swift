@@ -74,11 +74,7 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
     
     func replceItemByObserver(notification: Notification) {
         DispatchQueue.main.async {
-            if let index = notification.object as? Int {
-                self.replaceItem(index: index)
-            } else {
-                self.replaceItem(index: -1)
-            }
+            self.replaceItem(index: -1)
         }
     }
     
@@ -89,6 +85,7 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
             planCollectionView.reloadItems(at: [IndexPath(row: viewIndex, section: 0)])
         } else {
             planCollectionView.reloadData()
+            print("Reload data")
         }
     }
     

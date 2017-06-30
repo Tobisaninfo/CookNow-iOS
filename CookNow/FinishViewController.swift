@@ -30,7 +30,7 @@ class FinishViewController: UIViewController {
             
             // Remove from weekly plan
             if let planItem = PlanItem.find(recipe: recipe) {
-                PlanGenerator.createNewItem(for: planItem)
+                PlanGenerator.createNewItem(for: planItem, withNotificaiton: true)
             }
             self.parent?.navigationController?.popViewController(animated: true)
         }

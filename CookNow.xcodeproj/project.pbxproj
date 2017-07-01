@@ -47,6 +47,7 @@
 		F667A5AB1F03A6FD003406E4 /* PlanItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F667A5AA1F03A6FD003406E4 /* PlanItem.swift */; };
 		F667A5AD1F03A7C9003406E4 /* CoreDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F667A5AC1F03A7C9003406E4 /* CoreDataUtils.swift */; };
 		F66CBE9C1F081FB10019C41B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66CBE9B1F081FB10019C41B /* CameraViewController.swift */; };
+		F66CBE9E1F082A210019C41B /* SpeechRecognitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66CBE9D1F082A210019C41B /* SpeechRecognitionController.swift */; };
 		F66F5CE91EE34CB70060491F /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66F5CE81EE34CB70060491F /* Ingredient.swift */; };
 		F66F5CEB1EE34D210060491F /* IngredientUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66F5CEA1EE34D210060491F /* IngredientUse.swift */; };
 		F67A589F1F044E80009D85B9 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A589E1F044E80009D85B9 /* Rating.swift */; };
@@ -178,6 +179,7 @@
 		F667A5AA1F03A6FD003406E4 /* PlanItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanItem.swift; sourceTree = "<group>"; };
 		F667A5AC1F03A7C9003406E4 /* CoreDataUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataUtils.swift; sourceTree = "<group>"; };
 		F66CBE9B1F081FB10019C41B /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		F66CBE9D1F082A210019C41B /* SpeechRecognitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionController.swift; sourceTree = "<group>"; };
 		F66F5CE81EE34CB70060491F /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		F66F5CEA1EE34D210060491F /* IngredientUse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientUse.swift; sourceTree = "<group>"; };
 		F67A589E1F044E80009D85B9 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				F667A5A81F03A20B003406E4 /* PlanGenerator.swift */,
 				F65AD3981F053DED0000960C /* ShoppingItemController.swift */,
 				F63D1A2A1F07E7100042DE07 /* BarcodeController.swift */,
+				F66CBE9D1F082A210019C41B /* SpeechRecognitionController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 				F69D67F61EF99E1C00DF2007 /* RecipeViewImageCollectionViewCell.swift in Sources */,
 				F64F26781EE57BFA00711189 /* Item.swift in Sources */,
 				F6F1EC7A1EDD7C9B004383D2 /* AppDelegate.swift in Sources */,
+				F66CBE9E1F082A210019C41B /* SpeechRecognitionController.swift in Sources */,
 				F6F789571EF17C24009E7323 /* RecipeStepViewController.swift in Sources */,
 				F667A5A91F03A20B003406E4 /* PlanGenerator.swift in Sources */,
 				F66F5CEB1EE34D210060491F /* IngredientUse.swift in Sources */,

@@ -8,9 +8,11 @@
 
 import UIKit
 
-class SpeechViewController: UIViewController {
+class SpeechViewController: UIViewController, SpeechRecognitionDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
+    
+    var speechRecognition: SpeechRecognitionController?
     
     var recipe: Recipe? {
         didSet {
@@ -21,11 +23,19 @@ class SpeechViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        speechRecognition = SpeechRecognitionController()
+        speechRecognition?.delegate = self
+        speechRecognition?.setup()
+        
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         setImage()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        speechRecognition?.stop()
     }
     
     func setImage() {
@@ -46,17 +56,14 @@ class SpeechViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func speechDidRecognize() {
+        
     }
-    */
 
     
+    @IBAction func speechButtonHandler(_ sender: UIButton) {
+        speechRecognition?.start()
+    }
     
     @IBAction func backHandle(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)

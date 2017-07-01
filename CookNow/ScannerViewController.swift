@@ -10,119 +10,41 @@ import UIKit
 import AVFoundation
 import PKHUD
 
-class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class ScannerViewController: BarcodeController, BarcodeControllerDelegate {
     
     @IBOutlet weak var flashlightButton: UIButton!
-    
-    var captureDevice: AVCaptureDevice?
-    var captureSession:AVCaptureSession?
-    var videoPreviewLayer:AVCaptureVideoPreviewLayer?
-    
-    let supportedCodeTypes = [AVMetadataObjectTypeUPCECode,
-                              AVMetadataObjectTypeCode39Code,
-                              AVMetadataObjectTypeCode39Mod43Code,
-                              AVMetadataObjectTypeCode93Code,
-                              AVMetadataObjectTypeCode128Code,
-                              AVMetadataObjectTypeEAN8Code,
-                              AVMetadataObjectTypeEAN13Code,
-                              AVMetadataObjectTypeAztecCode,
-                              AVMetadataObjectTypePDF417Code]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video as the media type parameter.
-        captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        delegate = self
         
-        do {
-            // Get an instance of the AVCaptureDeviceInput class using the previous device object.
-            let input = try AVCaptureDeviceInput(device: captureDevice)
-            
-            // Initialize the captureSession object.
-            captureSession = AVCaptureSession()
-            
-            // Set the input device on the capture session.
-            captureSession?.addInput(input)
-            
-            // Initialize a AVCaptureMetadataOutput object and set it as the output device to the capture session.
-            let captureMetadataOutput = AVCaptureMetadataOutput()
-            captureSession?.addOutput(captureMetadataOutput)
-            
-            // Set delegate and use the default dispatch queue to execute the call back
-            captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            captureMetadataOutput.metadataObjectTypes = supportedCodeTypes
-            
-            // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
-            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
-            videoPreviewLayer?.frame = view.layer.bounds
-            view.layer.addSublayer(videoPreviewLayer!)
-            
-            // Start video capture.
-            captureSession?.startRunning()
-            
-            view.bringSubview(toFront: flashlightButton)
-        } catch {
-            // If any error occurs, simply print it out and don't continue any more.
-            print(error)
-            // TODO handle user error
-            return
-        }
+        view.bringSubview(toFront: flashlightButton)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        captureSession?.stopRunning()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - AVCaptureMetadataOutputObjectsDelegate Methods
-    
-    private var isProcessing: Bool = false
-    
-    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+    func barcodeDidDetect(code: String, frame: CGRect) {
+        HUD.show(.progress)
         
-        // Check if the metadataObjects array is not nil and it contains at least one object.
-        if metadataObjects == nil || metadataObjects.count == 0 {
-            print("No QR/barcode is detected")
-            return
-        }
-        
-        // Get the metadata object.
-        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
-        
-        if supportedCodeTypes.contains(metadataObj.type) {
-            if metadataObj.stringValue != nil && !isProcessing {
-                let code = metadataObj.stringValue
-
-                isProcessing = true
-                HUD.show(.progress)
-                
-                DispatchQueue.global().async {
-                    if let barcode = IngredientHanler.barcode(code: code!) {
-                        if let ingredient = barcode.ingredient {
-                            DispatchQueue.main.async {
-                                HUD.flash(.labeledSuccess(title: nil, subtitle: ingredient.name), delay: 2.0) { success in
-                                    self.isProcessing = false
-                                }
-                            }
-                            _ = PantryItem.add(id: ingredient.id, withAmount: barcode.amount)
-                        } else {
-                            DispatchQueue.main.async {
-                                HUD.flash(.error, delay: 2.0) { success in
-                                    self.isProcessing = false
-                                }
-                            }
+        DispatchQueue.global().async {
+            if let barcode = IngredientHanler.barcode(code: code) {
+                if let ingredient = barcode.ingredient {
+                    DispatchQueue.main.async {
+                        HUD.flash(.labeledSuccess(title: nil, subtitle: ingredient.name), delay: 2.0) { success in
+                            self.finishReding(code: code)
                         }
-                    } else {
-                        DispatchQueue.main.async {
-                            HUD.flash(.error, delay: 2.0) { success in
-                                self.isProcessing = false
-                            }
+                    }
+                    _ = PantryItem.add(id: ingredient.id, withAmount: barcode.amount)
+                } else {
+                    DispatchQueue.main.async {
+                        HUD.flash(.error, delay: 2.0) { success in
+                            self.finishReding(code: code)
                         }
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    HUD.flash(.error, delay: 2.0) { success in
+                        self.finishReding(code: code)
                     }
                 }
             }
@@ -132,23 +54,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     private var flashOn = false
     
     @IBAction func flashlightHandler(_ sender: Any) {
-        if let captureDevice = self.captureDevice {
-            if captureDevice.hasFlash && captureDevice.hasTorch {
-                do {
-                    try captureDevice.lockForConfiguration()
-                    
-                    if flashOn {
-                        captureDevice.torchMode = AVCaptureTorchMode.off
-                    } else {
-                        try captureDevice.setTorchModeOnWithLevel(AVCaptureMaxAvailableTorchLevel)
-                    }
-                    flashOn = !flashOn
-                    captureDevice.unlockForConfiguration()
-                } catch {
-                    // TODO handle user error
-                    print(error)
-                }
-            }
-        }
+        isTourchEnable = !isTourchEnable
     }
 }

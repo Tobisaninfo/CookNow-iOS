@@ -10,7 +10,13 @@ import UIKit
 import Speech
 
 protocol SpeechRecognitionDelegate {
-    func speechDidRecognize()
+    func speechDidRecognize(result: SFSpeechRecognitionResult)
+}
+
+enum SpeechRecognitionControllerState {
+    case listening
+    case ready
+    case unauthorized
 }
 
 class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
@@ -22,9 +28,12 @@ class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
+    
     private var recorder: AVAudioRecorder?
     private var lowPassResults: Double = 0
     private var levelTimer: Timer!
+    
+    private(set) var state: SpeechRecognitionControllerState = .unauthorized
     
     func setup() -> Bool {
         speechRecognizer?.delegate = self
@@ -45,6 +54,9 @@ class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
                 print("Speech recognition not yet authorized")
             }
         }
+        if success {
+            state = .ready
+        }
         return success
     }
     
@@ -62,9 +74,9 @@ class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
         } catch {
             print("audioSession properties weren't set because of an error.")
         }
-        
+
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-        
+
         guard let inputNode = audioEngine.inputNode else {
             print("Audio engine has no input node")
             return
@@ -75,24 +87,17 @@ class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
             return
         }
         
-        recognitionRequest.shouldReportPartialResults = true
         recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
-            
-            var isFinal = false
-            
-            if result != nil {
-                
-                print(result?.bestTranscription.formattedString ?? "")
-                isFinal = (result?.isFinal)!
-            }
-            
-            if error != nil || isFinal {
-                print("finish")
-                self.audioEngine.stop()
-                inputNode.removeTap(onBus: 0)
-                
-                self.recognitionRequest = nil
-                self.recognitionTask = nil
+            if let result = result {
+                if error != nil || result.isFinal {
+                    self.delegate?.speechDidRecognize(result: result)
+                    
+                    self.audioEngine.stop()
+                    inputNode.removeTap(onBus: 0)
+                    
+                    self.recognitionRequest = nil
+                    self.recognitionTask = nil
+                }
             }
         })
         
@@ -125,16 +130,34 @@ class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
         
         do {
             try audioEngine.start()
+            state = .listening
         } catch {
             print("audioEngine couldn't start because of an error.")
         }
     }
     
     func stop() {
-        audioEngine.stop()
         recognitionRequest?.endAudio()
+        if let node = audioEngine.inputNode {
+            node.removeTap(onBus: 0)
+        }
+        audioEngine.stop()
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayback)
+            try audioSession.setMode(AVAudioSessionModeSpokenAudio)
+            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+        } catch {
+            print("audioSession properties weren't set because of an error.")
+        }
         recorder?.stop()
         levelTimer.invalidate()
+        state = .ready
+    }
+    
+    func cancel() {
+        recognitionTask?.cancel()
+        self.stop()
     }
     
     private var counter = 0

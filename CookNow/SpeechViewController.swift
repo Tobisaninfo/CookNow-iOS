@@ -7,25 +7,31 @@
 //
 
 import UIKit
+import Speech
+import AVFoundation
 
 class SpeechViewController: UIViewController, SpeechRecognitionDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     
-    var speechRecognition: SpeechRecognitionController?
+    let speechRecognition = SpeechRecognitionController()
+    var speechProcesscor: SpeechProcescor?
+    var speechSynthesizer: SpeechSynthesizer?
     
     var recipe: Recipe? {
         didSet {
-            setImage()
+            if let recipe = recipe {
+                speechProcesscor = SpeechProcescor(recipe: recipe)
+                setImage()
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        speechRecognition = SpeechRecognitionController()
-        speechRecognition?.delegate = self
-        speechRecognition?.setup()
+        speechRecognition.delegate = self
+        _ = speechRecognition.setup()
         
         // Do any additional setup after loading the view.
     }
@@ -35,7 +41,7 @@ class SpeechViewController: UIViewController, SpeechRecognitionDelegate {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        speechRecognition?.stop()
+        speechRecognition.cancel()
     }
     
     func setImage() {
@@ -56,13 +62,34 @@ class SpeechViewController: UIViewController, SpeechRecognitionDelegate {
     }
     
 
-    func speechDidRecognize() {
-        
+    func speechDidRecognize(result: SFSpeechRecognitionResult) {
+        print(result.bestTranscription.formattedString)
+        if let speechProcesscor = speechProcesscor {
+            if let result = speechProcesscor.execute(transcript: result.bestTranscription) {
+                print(result)
+
+                
+                let utterance = AVSpeechUtterance(string: result)
+                utterance.voice = AVSpeechSynthesisVoice(language: "de-DE")
+                
+                let synthesizer = AVSpeechSynthesizer()
+                synthesizer.speak(utterance)
+            }
+        }
     }
 
     
     @IBAction func speechButtonHandler(_ sender: UIButton) {
-        speechRecognition?.start()
+        if speechRecognition.state == .listening {
+            speechRecognition.stop()
+        } else {
+            if let speechSynthesizer = speechSynthesizer {
+                if speechSynthesizer.state == .running {
+                    speechSynthesizer.cancel()
+                }
+            }
+            speechRecognition.start()
+        }
     }
     
     @IBAction func backHandle(_ sender: UIButton) {

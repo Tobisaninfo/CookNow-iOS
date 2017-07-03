@@ -15,6 +15,7 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
     private let columnCount = 3
 
     private var ingredients: [Ingredient]?
+    private var filteredIngredients: [Ingredient] = []
     
     private let searchBar = UISearchBar()
     var searchButton: UIBarButtonItem!
@@ -28,6 +29,18 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
         
         searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonHandler))
         self.navigationItem.rightBarButtonItem = searchButton
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        DispatchQueue.global().async {
+            self.ingredients = IngredientHanler.list()
+            if let ingredients = self.ingredients {
+                self.filteredIngredients = ingredients
+            }
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                self.collectionView?.reloadData()
+            }
+        }
         
         self.collectionView!.register(UINib(nibName: "PantryCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
     }
@@ -43,22 +56,21 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ingredients?.count ?? 0
+        return filteredIngredients.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
         if let cell = cell as? PantryCollectionViewCell {
-            if let ingredient = ingredients?[indexPath.row] {
-                cell.nameLabel.text = ingredient.name
-                cell.amountLabel.text = ""
-                
-                DispatchQueue.global().async {
-                    if let image = ResourceHandler.loadImage(scope: .ingredient, id: Int(ingredient.id), handler: { return $0?.gradient(start: 0.25) }) {
-                        DispatchQueue.main.async {
-                            cell.imageView.image = image
-                        }
+            let ingredient = filteredIngredients[indexPath.row]
+            cell.nameLabel.text = ingredient.name
+            cell.amountLabel.text = ""
+            
+            DispatchQueue.global().async {
+                if let image = ResourceHandler.loadImage(scope: .ingredient, id: Int(ingredient.id), handler: { return $0?.gradient(start: 0.25) }) {
+                    DispatchQueue.main.async {
+                        cell.imageView.image = image
                     }
                 }
             }
@@ -96,15 +108,9 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            DispatchQueue.global().async {
-                self.ingredients = IngredientHanler.list().filter() {
-                    $0.name.lowercased().hasPrefix(text.lowercased())
-                }
-                DispatchQueue.main.sync {
-                    self.collectionView?.reloadData()
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                }
+            if let filtered =  self.ingredients?.filter({ $0.name.lowercased().hasPrefix(text.lowercased()) }) {
+                self.filteredIngredients = filtered
+                self.collectionView?.reloadData()
             }
         }
     }
@@ -133,27 +139,26 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let ingredient = ingredients?[indexPath.row] {
-            let alert = UIAlertController(title: "Add Product", message: "Enter amount of \(ingredient.name)", preferredStyle: .alert)
-            
-            alert.addTextField { (textField) in
-                let unitString = NSLocalizedString("Unit.\(ingredient.unit)", comment: "Unit")
-                let placeholderText = NSLocalizedString("Alert.Ingredient.Add", comment: "Alert.Ingredient.Add")
-                textField.placeholder = String(format: placeholderText, unitString)
-            }
-            
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Alert.Add", comment: "Alert.Add"), style: .default, handler: { [weak alert] (_) in
-                if let textField = alert?.textFields![0] {
-                    if let amountText = textField.text {
-                        if let amount = Double(amountText) {
-                            self.save(ingredient: ingredient, withAmount: amount)
-                        }
+        let ingredient = filteredIngredients[indexPath.row]
+        let alert = UIAlertController(title: "Add Product", message: "Enter amount of \(ingredient.name)", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            let unitString = NSLocalizedString("Unit.\(ingredient.unit)", comment: "Unit")
+            let placeholderText = NSLocalizedString("Alert.Ingredient.Add", comment: "Alert.Ingredient.Add")
+            textField.placeholder = String(format: placeholderText, unitString)
+        }
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Alert.Add", comment: "Alert.Add"), style: .default, handler: { [weak alert] (_) in
+            if let textField = alert?.textFields![0] {
+                if let amountText = textField.text {
+                    if let amount = Double(amountText) {
+                        self.save(ingredient: ingredient, withAmount: amount)
                     }
                 }
-            }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Alert.Cancel", comment: "Alert.Cancel"), style: .destructive, handler: { (action) -> Void in }))
-            self.present(alert, animated: true, completion: nil)
-        }
+            }
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Alert.Cancel", comment: "Alert.Cancel"), style: .destructive, handler: { (action) -> Void in }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Save

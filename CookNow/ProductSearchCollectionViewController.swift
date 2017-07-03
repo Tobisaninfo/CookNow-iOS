@@ -16,13 +16,20 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
 
     private var ingredients: [Ingredient]?
     
-    private var activityIndicator: UIActivityIndicatorView?
+    private let searchBar = UISearchBar()
+    var searchButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        searchBar.delegate = self
+        searchBar.searchBarStyle = .minimal
+        searchBar.showsCancelButton = true
+        
+        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonHandler))
+        self.navigationItem.rightBarButtonItem = searchButton
+        
         self.collectionView!.register(UINib(nibName: "PantryCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier)
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,19 +66,33 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
     
         return cell
     }
+
+    //MARK: - Search
     
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if (kind == UICollectionElementKindSectionHeader) {
-            let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchBarHeader", for: indexPath)
-            
-            return headerView
-        }
-        
-        return UICollectionReusableView()
-        
+    @IBAction func searchButtonHandler(_ sender: UIBarButtonItem) {
+        showSearchBar()
     }
     
-    //MARK: - Search
+    func showSearchBar() {
+        navigationItem.setRightBarButton(nil, animated: true)
+        navigationItem.titleView = searchBar
+        searchBar.alpha = 0
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.searchBar.alpha = 1
+        }, completion: { finished in
+            self.searchBar.becomeFirstResponder()
+        })
+    }
+    
+    func hideSearchBar() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchBar.alpha = 0.0
+        }, completion: { finished in
+            self.navigationItem.titleView = nil
+            self.navigationItem.setRightBarButton(self.searchButton, animated: true)
+        })
+    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text {
@@ -93,6 +114,10 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
             self.ingredients = nil
             self.collectionView?.reloadData()
         }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        hideSearchBar()
     }
 
     // MARK: - CollectionView Deletage Methods

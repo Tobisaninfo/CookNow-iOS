@@ -354,28 +354,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fdJ-LY-Jym">
                             <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="50" height="44"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells/>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchBarHeader" id="Sqf-qD-P0H" customClass="SearchBarCollectionReusableView" customModule="CookNow" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search Product" translatesAutoresizingMaskIntoConstraints="NO" id="GHH-aR-CAw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="gVy-q9-9xz" id="Zak-nk-ZCy"/>
-                                    </connections>
-                                </searchBar>
-                            </subviews>
-                            <connections>
-                                <outlet property="searchbar" destination="GHH-aR-CAw" id="VVd-tN-GjU"/>
-                            </connections>
-                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="gVy-q9-9xz" id="K9w-oa-FpD"/>
                             <outlet property="delegate" destination="gVy-q9-9xz" id="U2l-ov-ZDV"/>

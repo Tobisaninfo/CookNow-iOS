@@ -521,9 +521,14 @@
                                                 <action selector="speechButtonHandler:" destination="s9i-p2-rwO" eventType="touchUpInside" id="1Cd-8i-M3n"/>
                                             </connections>
                                         </button>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Fr3-Td-NBw">
+                                            <rect key="frame" x="169" y="156" width="37" height="37"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Fr3-Td-NBw" firstAttribute="centerX" secondItem="WHx-ho-ZSw" secondAttribute="centerX" id="4lP-Rj-53L"/>
                                         <constraint firstItem="WHx-ho-ZSw" firstAttribute="centerX" secondItem="eUj-wZ-fTR" secondAttribute="centerX" id="qPM-nP-myP"/>
+                                        <constraint firstItem="Fr3-Td-NBw" firstAttribute="centerY" secondItem="WHx-ho-ZSw" secondAttribute="centerY" id="uow-YB-DCr"/>
                                         <constraint firstItem="WHx-ho-ZSw" firstAttribute="centerY" secondItem="eUj-wZ-fTR" secondAttribute="centerY" id="zDE-5N-fxO"/>
                                     </constraints>
                                 </view>
@@ -552,7 +557,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityView" destination="Fr3-Td-NBw" id="STl-pt-q0D"/>
                         <outlet property="imageView" destination="acg-ZA-hee" id="zz7-AX-NTI"/>
+                        <outlet property="micButton" destination="WHx-ho-ZSw" id="Se8-dI-b7g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="akL-G5-uKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -702,7 +709,7 @@
                             <tableViewSection headerTitle="Dietary Restrictions" id="S0U-2j-xnP">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="sqV-ud-MWh" style="IBUITableViewCellStyleDefault" id="uvc-Dz-LQg">
-                                        <rect key="frame" x="0.0" y="55" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uvc-Dz-LQg" id="YbM-qd-FZk">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>

@@ -14,12 +14,18 @@ enum SpeechSynthesizerState {
     case ready
 }
 
+protocol SpeechSynthesizerDelegate {
+    func synthesizerDidEnd()
+}
+
 class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate {
     
     private let voice = AVSpeechSynthesisVoice.speechVoices().first(where: { $0.name == "Anna" })
     private let speechSynthesizer = AVSpeechSynthesizer()
     
     private(set) var state: SpeechSynthesizerState = .ready
+    
+    var delegate: SpeechSynthesizerDelegate?
     
     override init() {
         super.init()
@@ -38,5 +44,6 @@ class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate {
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         state = .ready
+        delegate?.synthesizerDidEnd()
     }
 }

@@ -10,13 +10,15 @@ import UIKit
 import Speech
 import AVFoundation
 
-class SpeechViewController: UIViewController, SpeechRecognitionDelegate {
+class SpeechViewController: UIViewController, SpeechRecognitionDelegate, SpeechSynthesizerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var micButton: UIButton!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     let speechRecognition = SpeechRecognitionController()
     var speechProcesscor: SpeechProcescor?
-    var speechSynthesizer: SpeechSynthesizer?
+    var speechSynthesizer = SpeechSynthesizer()
     
     var recipe: Recipe? {
         didSet {
@@ -31,7 +33,10 @@ class SpeechViewController: UIViewController, SpeechRecognitionDelegate {
         super.viewDidLoad()
         
         speechRecognition.delegate = self
+        speechSynthesizer.delegate = self
         _ = speechRecognition.setup()
+        
+        activityView.isHidden = true
         
         // Do any additional setup after loading the view.
     }
@@ -63,32 +68,35 @@ class SpeechViewController: UIViewController, SpeechRecognitionDelegate {
     
 
     func speechDidRecognize(result: SFSpeechRecognitionResult) {
+        micButton.setImage(#imageLiteral(resourceName: "mic-icon"), for: .normal)
+        micButton.isHidden = true
+        activityView.isHidden = false
+        
         print(result.bestTranscription.formattedString)
         if let speechProcesscor = speechProcesscor {
             if let result = speechProcesscor.execute(transcript: result.bestTranscription) {
-                print(result)
-
-                
-                let utterance = AVSpeechUtterance(string: result)
-                utterance.voice = AVSpeechSynthesisVoice(language: "de-DE")
-                
-                let synthesizer = AVSpeechSynthesizer()
-                synthesizer.speak(utterance)
+                speechSynthesizer.speak(text: result)
+            } else {
+                micButton.setImage(#imageLiteral(resourceName: "mic-icon"), for: .normal)
             }
         }
     }
 
+    func synthesizerDidEnd() {
+        micButton.isHidden = false
+        activityView.isHidden = true
+    }
     
     @IBAction func speechButtonHandler(_ sender: UIButton) {
         if speechRecognition.state == .listening {
             speechRecognition.stop()
+            micButton.setImage(#imageLiteral(resourceName: "mic-icon"), for: .normal)
         } else {
-            if let speechSynthesizer = speechSynthesizer {
-                if speechSynthesizer.state == .running {
-                    speechSynthesizer.cancel()
-                }
+            if speechSynthesizer.state == .running {
+                speechSynthesizer.cancel()
             }
             speechRecognition.start()
+            micButton.setImage(#imageLiteral(resourceName: "mic-icon-on"), for: .normal)
         }
     }
     

@@ -20,22 +20,37 @@ class SpeechProcescor {
     
     init(recipe: Recipe) {
         self.recipe = recipe
-        self.processors.append(currentIngredinent)
+        self.processors.append(getIngredinent(transcription:))
+        self.processors.append(getDescription(transcription:))
     }
     
-    func execute(transcript: SFTranscription) -> String? {
+    func execute(transcript: SFTranscription) -> String {
         for processor in processors {
             if let result = processor(transcript) {
                 return result
             }
         }
-        return nil
+        return "Ich verstehe \(transcript.formattedString) nicht"
     }
     
-    func currentIngredinent(transcription: SFTranscription) -> String? {
+    func getIngredinent(transcription: SFTranscription) -> String? {
         // Check transcription
-        if !contains(transcription: transcription, keywords: "welche", "zutaten") {
+        if !contains(transcription: transcription, keywords: "welche", "zutaten") &&
+            !contains(transcription: transcription, keywords: "welche", "zutat") &&
+            !contains(transcription: transcription, keywords: "was", "zutaten") &&
+            !contains(transcription: transcription, keywords: "was", "zutat") {
             return nil
+        }
+        
+        // Which step
+        if contains(transcription: transcription, keywords: "nächste") ||
+            contains(transcription: transcription, keywords: "danach") {
+            currentStep = currentStep + 1
+        }
+        
+        if contains(transcription: transcription, keywords: "zurück") ||
+            contains(transcription: transcription, keywords: "davor") {
+            currentStep = currentStep - 1
         }
         
         // Create Feedback
@@ -45,8 +60,35 @@ class SpeechProcescor {
                 result = result + "\(ingredientUse.amountFormatted) \(ingredientUse.ingredient.unit) \(ingredientUse.ingredient.name), "
             }
             return result
+        } else {
+            return "Es gibt keine weiteren Schritte"
         }
-        return nil
+    }
+    
+    func getDescription(transcription: SFTranscription) -> String? {
+        if !contains(transcription: transcription, keywords: "was", "machen") &&
+            !contains(transcription: transcription, keywords: "was", "schritt") &&
+            !contains(transcription: transcription, keywords: "welcher", "schritt") &&
+            !contains(transcription: transcription, keywords: "was", "tun") {
+            return nil
+        }
+        
+        if contains(transcription: transcription, keywords: "nächste") ||
+            contains(transcription: transcription, keywords: "danach") {
+            currentStep = currentStep + 1
+        }
+        
+        if contains(transcription: transcription, keywords: "zurück") ||
+            contains(transcription: transcription, keywords: "davor") {
+            currentStep = currentStep - 1
+        }
+        
+        // Create Feedback
+        if currentStep < recipe.steps.count {
+            return recipe.steps[currentStep].content
+        } else {
+            return "Es gibt keine weiteren Schritte"
+        }
     }
     
     private func contains(transcription: SFTranscription, keywords: String...) -> Bool {

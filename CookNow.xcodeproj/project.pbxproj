@@ -337,10 +337,10 @@
 		F65AD3971F053DCD0000960C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F6F261BA1F096300008220FE /* Speech */,
 				F667A5A81F03A20B003406E4 /* PlanGenerator.swift */,
 				F65AD3981F053DED0000960C /* ShoppingItemController.swift */,
 				F63D1A2A1F07E7100042DE07 /* BarcodeController.swift */,
-				F6F261BA1F096300008220FE /* Speech */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

@@ -47,6 +47,7 @@ class SpeechViewController: UIViewController, SpeechRecognitionDelegate, SpeechS
     
     override func viewDidDisappear(_ animated: Bool) {
         speechRecognition.cancel()
+        speechSynthesizer.cancel()
     }
     
     func setImage() {
@@ -72,19 +73,22 @@ class SpeechViewController: UIViewController, SpeechRecognitionDelegate, SpeechS
         micButton.isHidden = true
         activityView.isHidden = false
         
-        print(result.bestTranscription.formattedString)
-        if let speechProcesscor = speechProcesscor {
-            if let result = speechProcesscor.execute(transcript: result.bestTranscription) {
-                speechSynthesizer.speak(text: result)
+        DispatchQueue.global().async {
+            print(result.bestTranscription.formattedString)
+            if let speechProcesscor = self.speechProcesscor {
+                let result = speechProcesscor.execute(transcript: result.bestTranscription)
+                self.speechSynthesizer.speak(text: result)
             } else {
-                micButton.setImage(#imageLiteral(resourceName: "mic-icon"), for: .normal)
+                self.synthesizerDidEnd()
             }
         }
     }
 
     func synthesizerDidEnd() {
-        micButton.isHidden = false
-        activityView.isHidden = true
+        DispatchQueue.main.async {
+            self.micButton.isHidden = false
+            self.activityView.isHidden = true
+        }
     }
     
     @IBAction func speechButtonHandler(_ sender: UIButton) {

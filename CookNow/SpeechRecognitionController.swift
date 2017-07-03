@@ -31,7 +31,7 @@ class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
     
     private var recorder: AVAudioRecorder?
     private var lowPassResults: Double = 0
-    private var levelTimer: Timer!
+    private var levelTimer: Timer?
     
     private(set) var state: SpeechRecognitionControllerState = .unauthorized
     
@@ -151,7 +151,7 @@ class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
             print("audioSession properties weren't set because of an error.")
         }
         recorder?.stop()
-        levelTimer.invalidate()
+        levelTimer?.invalidate()
         state = .ready
     }
     

@@ -20,8 +20,8 @@ protocol SpeechSynthesizerDelegate {
 
 class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate {
     
-    private let voice = AVSpeechSynthesisVoice.speechVoices().first(where: { $0.name == "Anna" })
-    private let speechSynthesizer = AVSpeechSynthesizer()
+    private let voice = AVSpeechSynthesisVoice.speechVoices().first(where: { $0.name == "Anna (Enhanced)" })
+    private var speechSynthesizer: AVSpeechSynthesizer?
     
     private(set) var state: SpeechSynthesizerState = .ready
     
@@ -29,17 +29,19 @@ class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate {
     
     override init() {
         super.init()
-        speechSynthesizer.delegate = self
     }
     
     func speak(text: String) {
         let speechUtterance = AVSpeechUtterance(string: text)
         speechUtterance.voice = voice
-        speechSynthesizer.speak(speechUtterance)
+        
+        speechSynthesizer = AVSpeechSynthesizer()
+        speechSynthesizer?.delegate = self
+        speechSynthesizer?.speak(speechUtterance)
     }
     
     func cancel() {
-        speechSynthesizer.stopSpeaking(at: .immediate)
+        speechSynthesizer?.stopSpeaking(at: .immediate)
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {

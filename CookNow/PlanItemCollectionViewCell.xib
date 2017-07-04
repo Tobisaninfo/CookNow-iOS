@@ -27,16 +27,16 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91K-HW-uaF">
-                        <rect key="frame" x="4" y="146" width="30" height="30"/>
-                        <state key="normal" title="Top"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91K-HW-uaF">
+                        <rect key="frame" x="5" y="170" width="25" height="25"/>
+                        <state key="normal" image="Thumbsup"/>
                         <connections>
                             <action selector="topHandler:" destination="gTV-IL-0wX" eventType="touchUpInside" id="K2K-W8-UFa"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eu3-dY-uQo">
-                        <rect key="frame" x="166" y="146" width="30" height="30"/>
-                        <state key="normal" title="Flop"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eu3-dY-uQo">
+                        <rect key="frame" x="170" y="170" width="25" height="25"/>
+                        <state key="normal" image="Thumbsdown"/>
                         <connections>
                             <action selector="flopHandler:" destination="gTV-IL-0wX" eventType="touchUpInside" id="RLy-dO-cen"/>
                         </connections>
@@ -46,15 +46,15 @@
             <constraints>
                 <constraint firstItem="os1-Nd-caP" firstAttribute="trailing" secondItem="7oT-vH-MZ4" secondAttribute="trailing" id="22r-n3-QrI"/>
                 <constraint firstItem="os1-Nd-caP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8x6-hx-d5p"/>
-                <constraint firstItem="91K-HW-uaF" firstAttribute="leading" secondItem="7oT-vH-MZ4" secondAttribute="leading" constant="4" id="Dam-P5-V5N"/>
+                <constraint firstItem="eu3-dY-uQo" firstAttribute="top" secondItem="91K-HW-uaF" secondAttribute="top" id="9ql-pO-9hs"/>
+                <constraint firstItem="7oT-vH-MZ4" firstAttribute="top" secondItem="91K-HW-uaF" secondAttribute="bottom" constant="5" id="BnA-Sc-pqd"/>
                 <constraint firstAttribute="trailing" secondItem="os1-Nd-caP" secondAttribute="trailing" id="HbG-oy-Zf8"/>
                 <constraint firstAttribute="bottom" secondItem="7oT-vH-MZ4" secondAttribute="bottom" id="JW4-zq-rdc"/>
-                <constraint firstItem="eu3-dY-uQo" firstAttribute="trailing" secondItem="7oT-vH-MZ4" secondAttribute="trailing" constant="-4" id="N0w-5D-p0D"/>
-                <constraint firstItem="91K-HW-uaF" firstAttribute="baseline" secondItem="eu3-dY-uQo" secondAttribute="baseline" id="SKe-O4-N6w"/>
+                <constraint firstAttribute="trailing" secondItem="eu3-dY-uQo" secondAttribute="trailing" constant="5" id="Xkg-Yz-sh0"/>
+                <constraint firstItem="91K-HW-uaF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="hZo-rP-Tzz"/>
                 <constraint firstAttribute="bottom" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="20" id="qMG-kt-Be0"/>
                 <constraint firstItem="os1-Nd-caP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rIg-kH-XDj"/>
                 <constraint firstItem="os1-Nd-caP" firstAttribute="leading" secondItem="7oT-vH-MZ4" secondAttribute="leading" id="sQz-Hx-t3f"/>
-                <constraint firstItem="91K-HW-uaF" firstAttribute="bottom" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="-4" id="ylR-h8-D9a"/>
             </constraints>
             <connections>
                 <outlet property="flopButton" destination="eu3-dY-uQo" id="tXM-0I-Uuy"/>
@@ -64,4 +64,8 @@
             </connections>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="Thumbsdown" width="25" height="25"/>
+        <image name="Thumbsup" width="25" height="25"/>
+    </resources>
 </document>

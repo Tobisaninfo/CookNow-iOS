@@ -27,30 +27,30 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O9Z-Xs-hr3">
-                        <rect key="frame" x="56" y="60" width="40" height="40"/>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MfQ-qS-pPg">
+                        <rect key="frame" x="72" y="72" width="25" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="12k-Vh-HGs"/>
-                            <constraint firstAttribute="height" constant="40" id="j9c-bx-oQR"/>
+                            <constraint firstAttribute="width" constant="25" id="7ag-vs-rP0"/>
+                            <constraint firstAttribute="height" constant="25" id="AMK-VE-3xF"/>
                         </constraints>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="MfQ-qS-pPg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="72" id="Ngr-lI-2pL"/>
+                <constraint firstItem="MfQ-qS-pPg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="72" id="Srg-nT-3ky"/>
                 <constraint firstItem="DAs-1Y-BIF" firstAttribute="leading" secondItem="PGL-Re-jAk" secondAttribute="leading" constant="4" id="YbN-kv-Qce"/>
                 <constraint firstItem="PGL-Re-jAk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Zru-8b-n3Z"/>
-                <constraint firstItem="O9Z-Xs-hr3" firstAttribute="trailing" secondItem="DAs-1Y-BIF" secondAttribute="trailing" id="jfE-3f-xY0"/>
                 <constraint firstAttribute="bottom" secondItem="PGL-Re-jAk" secondAttribute="bottom" id="lAe-Sh-Rij"/>
                 <constraint firstItem="DAs-1Y-BIF" firstAttribute="trailing" secondItem="PGL-Re-jAk" secondAttribute="trailing" constant="-4" id="t4L-PP-WhA"/>
                 <constraint firstAttribute="trailing" secondItem="PGL-Re-jAk" secondAttribute="trailing" id="toO-96-igz"/>
                 <constraint firstItem="DAs-1Y-BIF" firstAttribute="bottom" secondItem="PGL-Re-jAk" secondAttribute="bottom" constant="-4" id="tu6-Iz-Dkt"/>
-                <constraint firstItem="O9Z-Xs-hr3" firstAttribute="bottom" secondItem="PGL-Re-jAk" secondAttribute="bottom" id="u5O-az-ncO"/>
                 <constraint firstItem="PGL-Re-jAk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="uHW-eI-bH7"/>
             </constraints>
             <connections>
                 <outlet property="imageView" destination="PGL-Re-jAk" id="eKQ-4V-Wlz"/>
                 <outlet property="nameLabel" destination="DAs-1Y-BIF" id="JhV-ku-bZA"/>
-                <outlet property="selectImageView" destination="O9Z-Xs-hr3" id="aNX-dT-PYL"/>
+                <outlet property="selectImageView" destination="MfQ-qS-pPg" id="P31-Fh-TLd"/>
             </connections>
         </collectionViewCell>
     </objects>

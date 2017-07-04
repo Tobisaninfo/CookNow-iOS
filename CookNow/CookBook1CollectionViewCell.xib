@@ -30,28 +30,28 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iYm-Br-t2f">
-                        <rect key="frame" x="110" y="110" width="40" height="40"/>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="udu-aO-KNv">
+                        <rect key="frame" x="120" y="120" width="25" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="XYo-xq-rkN"/>
-                            <constraint firstAttribute="height" constant="40" id="pzw-GH-h2G"/>
+                            <constraint firstAttribute="height" constant="25" id="6sV-Kr-zvv"/>
+                            <constraint firstAttribute="width" constant="25" id="d9c-xv-5jc"/>
                         </constraints>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="iYm-Br-t2f" firstAttribute="trailing" secondItem="PFb-er-FNW" secondAttribute="trailing" id="76h-ju-Y2J"/>
+                <constraint firstAttribute="trailing" secondItem="udu-aO-KNv" secondAttribute="trailing" constant="5" id="2a7-Re-vDU"/>
                 <constraint firstItem="PFb-er-FNW" firstAttribute="leading" secondItem="jX9-Kr-054" secondAttribute="leading" id="A1t-Y7-P7k"/>
-                <constraint firstItem="Gqe-Hd-Jkx" firstAttribute="trailing" secondItem="iYm-Br-t2f" secondAttribute="trailing" id="LvE-HG-Fsn"/>
+                <constraint firstItem="udu-aO-KNv" firstAttribute="top" secondItem="Gqe-Hd-Jkx" secondAttribute="bottom" constant="1" id="Jau-Nx-gOb"/>
                 <constraint firstItem="Gqe-Hd-Jkx" firstAttribute="leading" secondItem="PFb-er-FNW" secondAttribute="leading" id="Uhp-Wg-Qux"/>
                 <constraint firstItem="Gqe-Hd-Jkx" firstAttribute="top" secondItem="jX9-Kr-054" secondAttribute="top" id="mXG-BP-E2b"/>
                 <constraint firstAttribute="trailing" secondItem="PFb-er-FNW" secondAttribute="trailing" id="nR7-Lk-SMl"/>
                 <constraint firstItem="PFb-er-FNW" firstAttribute="top" secondItem="Gqe-Hd-Jkx" secondAttribute="bottom" constant="10" id="tcl-lk-lHV"/>
-                <constraint firstItem="iYm-Br-t2f" firstAttribute="bottom" secondItem="PFb-er-FNW" secondAttribute="bottom" id="zrr-hS-MWp"/>
+                <constraint firstItem="Gqe-Hd-Jkx" firstAttribute="trailing" secondItem="PFb-er-FNW" secondAttribute="trailing" id="uWo-xm-bwo"/>
             </constraints>
             <connections>
                 <outlet property="imageHeader" destination="Gqe-Hd-Jkx" id="E7f-pj-YlR"/>
-                <outlet property="selectImageView" destination="iYm-Br-t2f" id="fNY-Wb-4v8"/>
+                <outlet property="selectImageView" destination="udu-aO-KNv" id="HoA-0I-Yym"/>
                 <outlet property="titleLabel" destination="PFb-er-FNW" id="dBk-Rb-BeI"/>
             </connections>
         </collectionViewCell>

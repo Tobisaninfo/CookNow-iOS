@@ -25,18 +25,20 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ud4-kR-FE8">
-                        <rect key="frame" x="115.5" y="20" width="144" height="30"/>
+                        <rect key="frame" x="99.5" y="20" width="176" height="30"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Al-HD-qWV">
                                 <rect key="frame" x="0.0" y="0.0" width="34" height="30"/>
                                 <state key="normal" title="Save"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2e-c7-Suu">
-                                <rect key="frame" x="54" y="0.0" width="40" height="30"/>
-                                <state key="normal" title="Share"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2e-c7-Suu">
+                                <rect key="frame" x="54" y="0.0" width="72" height="30"/>
+                                <state key="normal" title="Share" image="Share">
+                                    <color key="titleColor" red="0.94509803920000002" green="0.76862745099999996" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePg-U2-3mu">
-                                <rect key="frame" x="114" y="0.0" width="30" height="30"/>
+                                <rect key="frame" x="146" y="0.0" width="30" height="30"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
                                     <action selector="addHandler:" destination="gTV-IL-0wX" eventType="touchUpInside" id="JhQ-qa-ebQ"/>
@@ -61,4 +63,7 @@
             <point key="canvasLocation" x="33.5" y="31.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="Share" width="25" height="25"/>
+    </resources>
 </document>

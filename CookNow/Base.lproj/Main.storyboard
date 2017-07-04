@@ -63,7 +63,7 @@
         <scene sceneID="Jcm-XI-x1c">
             <objects>
                 <collectionViewController id="vBG-Ov-m5g" customClass="CookBookCollectionViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="3lk-f4-y7o">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="3lk-f4-y7o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,7 +92,7 @@
         <scene sceneID="qCw-HJ-2T8">
             <objects>
                 <collectionViewController id="MR7-Qk-joR" customClass="RecipeCollectionViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8gv-ld-ZK3">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="8gv-ld-ZK3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,6 +125,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.94509803921568625" green="0.76862745098039209" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="Syt-qT-cQA" kind="relationship" relationship="viewControllers" id="KOS-f4-an1"/>
@@ -142,7 +147,7 @@
         <scene sceneID="iA9-m0-SkQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Syt-qT-cQA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="yPI-My-FbU"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="Tab-Home" selectedImage="Tab-Home-Selected" id="yPI-My-FbU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hK6-97-Gbx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -198,7 +203,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Home" id="FvU-zu-Kmj">
-                        <barButtonItem key="leftBarButtonItem" systemItem="camera" id="19F-9B-CE9">
+                        <barButtonItem key="leftBarButtonItem" image="Camera" id="19F-9B-CE9">
                             <connections>
                                 <segue destination="tES-2T-NJo" kind="show" id="KCM-Pm-28L"/>
                             </connections>
@@ -216,7 +221,7 @@
         <scene sceneID="6UG-sp-EaQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rtp-MC-7Iz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Pantry" id="CP1-Fb-5Nl"/>
+                    <tabBarItem key="tabBarItem" title="Pantry" image="Tab-Pantry" selectedImage="Tab-Pantry-Slected" id="CP1-Fb-5Nl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oyr-AI-hH5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -235,7 +240,7 @@
         <scene sceneID="Gsy-FP-m1B">
             <objects>
                 <collectionViewController id="MhV-jZ-Tvs" customClass="PantryCollectionViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="EoE-Bu-jDm">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="EoE-Bu-jDm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -348,7 +353,7 @@
         <scene sceneID="dtU-yp-W5g">
             <objects>
                 <collectionViewController id="gVy-q9-9xz" customClass="ProductSearchCollectionViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="x2h-p0-WYj">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="x2h-p0-WYj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -395,7 +400,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Recipe" id="YRz-D0-P1c">
-                        <barButtonItem key="rightBarButtonItem" title="Speak" id="FWJ-GP-Hc5">
+                        <barButtonItem key="rightBarButtonItem" image="Microphone" id="FWJ-GP-Hc5">
                             <connections>
                                 <segue destination="s9i-p2-rwO" kind="presentation" modalTransitionStyle="crossDissolve" id="CDC-ZF-Igl"/>
                             </connections>
@@ -498,8 +503,8 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHx-ho-ZSw">
-                                            <rect key="frame" x="123" y="110" width="128" height="128"/>
-                                            <state key="normal" image="mic-icon"/>
+                                            <rect key="frame" x="174.5" y="161.5" width="25" height="25"/>
+                                            <state key="normal" image="Microphone"/>
                                             <connections>
                                                 <action selector="speechButtonHandler:" destination="s9i-p2-rwO" eventType="touchUpInside" id="1Cd-8i-M3n"/>
                                             </connections>
@@ -568,8 +573,11 @@
                                     <action selector="finishButton:" destination="0tr-9H-jAt" eventType="touchUpInside" id="YjD-rg-qkk"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hvv-pT-0vo">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ok" translatesAutoresizingMaskIntoConstraints="NO" id="Hvv-pT-0vo">
                                 <rect key="frame" x="87" y="157" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="N1G-cW-3Zt"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="That's it:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfD-Qe-cXK">
                                 <rect key="frame" x="154" y="397" width="66" height="21"/>
@@ -612,10 +620,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0a-B2-DpL">
-                                <rect key="frame" x="21" y="72" width="37" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0a-B2-DpL">
+                                <rect key="frame" x="27" y="75" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Flash"/>
+                                <state key="normal" image="Flash"/>
                                 <connections>
                                     <action selector="flashlightHandler:" destination="vm4-vm-Ncd" eventType="touchUpInside" id="yzz-JL-w0a"/>
                                 </connections>
@@ -636,7 +644,7 @@
         <scene sceneID="zQ9-KI-RIm">
             <objects>
                 <collectionViewController id="yIJ-wE-VmR" customClass="RecipeViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="j1L-e2-iZ9">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="j1L-e2-iZ9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -665,7 +673,7 @@
         <scene sceneID="czb-SH-tLc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9LF-MI-2JL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Collections" id="ell-RE-2rj"/>
+                    <tabBarItem key="tabBarItem" title="Collections" image="Tab-Collections" selectedImage="Tab-Collections-Selected" id="ell-RE-2rj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BdR-Uo-i4I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -920,7 +928,7 @@
         <scene sceneID="5Y3-84-XT0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dol-fK-SYb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="NDY-YA-EQR"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Tab-Settings" selectedImage="Tab-Settings-Selected" id="NDY-YA-EQR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rqI-PH-EDK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -939,7 +947,7 @@
         <scene sceneID="lO9-Iu-UG3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5we-qs-Qxz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shopping" id="xtf-Ua-niw"/>
+                    <tabBarItem key="tabBarItem" title="Shopping" image="Tab-Shopping" selectedImage="Tab-Shopping-Selected" id="xtf-Ua-niw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xBq-U5-NSZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -956,9 +964,23 @@
         </scene>
     </scenes>
     <resources>
-        <image name="mic-icon" width="128" height="128"/>
+        <image name="Camera" width="25" height="25"/>
+        <image name="Flash" width="25" height="25"/>
+        <image name="Microphone" width="25" height="25"/>
+        <image name="Ok" width="25" height="25"/>
+        <image name="Tab-Collections" width="25" height="25"/>
+        <image name="Tab-Collections-Selected" width="25" height="25"/>
+        <image name="Tab-Home" width="25" height="25"/>
+        <image name="Tab-Home-Selected" width="25" height="25"/>
+        <image name="Tab-Pantry" width="25" height="25"/>
+        <image name="Tab-Pantry-Slected" width="25" height="25"/>
+        <image name="Tab-Settings" width="25" height="25"/>
+        <image name="Tab-Settings-Selected" width="25" height="25"/>
+        <image name="Tab-Shopping" width="25" height="25"/>
+        <image name="Tab-Shopping-Selected" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="eOx-Rb-VXR"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.94509803920000002" green="0.76862745099999996" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

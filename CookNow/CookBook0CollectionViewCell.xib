@@ -24,29 +24,29 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aKS-fs-Nhi">
-                        <rect key="frame" x="110" y="110" width="40" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="40" id="L90-gN-WCo"/>
-                            <constraint firstAttribute="height" constant="40" id="spu-0g-wVZ"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Recipes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJu-CZ-MuN">
-                        <rect key="frame" x="32.5" y="65" width="86" height="21"/>
+                        <rect key="frame" x="32" y="65" width="86" height="21"/>
                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aKS-fs-Nhi">
+                        <rect key="frame" x="120" y="120" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="bfY-gI-Uuc"/>
+                            <constraint firstAttribute="width" constant="25" id="tjp-ch-kZb"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="yBa-UM-VLb" secondAttribute="bottom" id="0v1-d9-htf"/>
                 <constraint firstItem="iJu-CZ-MuN" firstAttribute="centerX" secondItem="yBa-UM-VLb" secondAttribute="centerX" id="3fk-Lr-YDk"/>
-                <constraint firstItem="aKS-fs-Nhi" firstAttribute="trailing" secondItem="yBa-UM-VLb" secondAttribute="trailing" id="DKB-HE-dZ0"/>
                 <constraint firstAttribute="trailing" secondItem="yBa-UM-VLb" secondAttribute="trailing" id="IS0-d1-kov"/>
                 <constraint firstItem="yBa-UM-VLb" firstAttribute="leading" secondItem="EQy-Iw-mBA" secondAttribute="leading" id="K8v-72-1vs"/>
                 <constraint firstItem="iJu-CZ-MuN" firstAttribute="centerY" secondItem="EQy-Iw-mBA" secondAttribute="centerY" id="VSP-Lb-ypn"/>
-                <constraint firstItem="aKS-fs-Nhi" firstAttribute="top" secondItem="iJu-CZ-MuN" secondAttribute="bottom" constant="24" id="om0-lt-9pH"/>
-                <constraint firstItem="aKS-fs-Nhi" firstAttribute="bottom" secondItem="yBa-UM-VLb" secondAttribute="bottom" id="zhc-Yt-8PS"/>
+                <constraint firstAttribute="bottom" secondItem="aKS-fs-Nhi" secondAttribute="bottom" constant="5" id="c8U-Dc-2dz"/>
+                <constraint firstAttribute="trailing" secondItem="aKS-fs-Nhi" secondAttribute="trailing" constant="5" id="mVO-nS-Tth"/>
             </constraints>
             <connections>
                 <outlet property="selectImageView" destination="aKS-fs-Nhi" id="sIX-RL-95F"/>

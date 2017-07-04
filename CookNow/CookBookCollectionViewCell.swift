@@ -24,19 +24,16 @@ class CookBookCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        selectImageView.backgroundColor = UIColor.green
+        selectImageView.image = #imageLiteral(resourceName: "Unchecked")
     }
     
     override var isSelected: Bool {
         didSet {
             if editing {
                 if isSelected {
-                    selectImageView.image = nil
-                    selectImageView.backgroundColor = UIColor.red
+                    selectImageView.image = #imageLiteral(resourceName: "Checked")
                 } else {
-                    selectImageView.image = nil
-                    selectImageView.backgroundColor = UIColor.green
+                    selectImageView.image = #imageLiteral(resourceName: "Unchecked")
                 }
             }
         }

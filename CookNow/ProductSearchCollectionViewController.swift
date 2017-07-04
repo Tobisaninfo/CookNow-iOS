@@ -27,7 +27,7 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
         searchBar.searchBarStyle = .minimal
         searchBar.showsCancelButton = true
         
-        searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "Search"), style: .plain, target: self, action: #selector(searchBarSearchButtonClicked(_:)))
+        searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "Search"), style: .plain, target: self, action: #selector(searchButtonHandler(_:)))
         self.navigationItem.rightBarButtonItem = searchButton
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true

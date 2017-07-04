@@ -58,7 +58,7 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
                 
                 DispatchQueue.main.sync {
                     cell.nameLabel.text = recipe?.name
-                    cell.recipeImage.image = image
+                    cell.recipeImage.image = image?.gradient()
                     
                     cell.planItem = item
                     cell.planCollectionViewCell = self

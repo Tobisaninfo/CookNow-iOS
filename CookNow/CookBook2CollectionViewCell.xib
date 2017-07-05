@@ -32,31 +32,31 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSZ-FN-IIg">
-                        <rect key="frame" x="0.0" y="129" width="150" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="0.0" y="129" width="150" height="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QjY-3V-KvM">
-                        <rect key="frame" x="120" y="120" width="25" height="25"/>
+                        <rect key="frame" x="120" y="5" width="25" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="25" id="11u-mp-jan"/>
-                            <constraint firstAttribute="width" constant="25" id="v5e-iD-xGJ"/>
+                            <constraint firstAttribute="height" constant="25" id="0ia-LX-nFl"/>
+                            <constraint firstAttribute="width" constant="25" id="xSe-v7-DRd"/>
                         </constraints>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="QjY-3V-KvM" firstAttribute="top" secondItem="ma8-wo-UOc" secondAttribute="top" constant="5" id="89U-pW-xgD"/>
                 <constraint firstItem="Fbs-fQ-jop" firstAttribute="trailing" secondItem="BSZ-FN-IIg" secondAttribute="trailing" id="91H-d1-sOp"/>
                 <constraint firstItem="Fbs-fQ-jop" firstAttribute="top" secondItem="LV8-Bs-tsK" secondAttribute="bottom" constant="8" symbolic="YES" id="9ll-g6-xjF"/>
                 <constraint firstItem="BSZ-FN-IIg" firstAttribute="top" secondItem="Fbs-fQ-jop" secondAttribute="bottom" constant="10" id="ByI-0R-M41"/>
-                <constraint firstItem="QjY-3V-KvM" firstAttribute="top" secondItem="Fbs-fQ-jop" secondAttribute="bottom" constant="1" id="OeZ-vP-Euv"/>
                 <constraint firstItem="BSZ-FN-IIg" firstAttribute="leading" secondItem="ma8-wo-UOc" secondAttribute="leading" id="RK0-Ac-lfp"/>
                 <constraint firstAttribute="trailing" secondItem="BSZ-FN-IIg" secondAttribute="trailing" id="Tmk-9K-hHC"/>
                 <constraint firstItem="Fbs-fQ-jop" firstAttribute="leading" secondItem="BSZ-FN-IIg" secondAttribute="leading" id="XwP-D8-KPh"/>
                 <constraint firstItem="LV8-Bs-tsK" firstAttribute="leading" secondItem="ma8-wo-UOc" secondAttribute="leading" id="aie-CI-9eW"/>
                 <constraint firstItem="LV8-Bs-tsK" firstAttribute="top" secondItem="ma8-wo-UOc" secondAttribute="top" id="bdZ-91-mbk"/>
-                <constraint firstAttribute="trailing" secondItem="QjY-3V-KvM" secondAttribute="trailing" constant="5" id="ohB-zF-HPJ"/>
+                <constraint firstAttribute="trailing" secondItem="QjY-3V-KvM" secondAttribute="trailing" constant="5" id="nec-og-wVS"/>
                 <constraint firstAttribute="trailing" secondItem="LV8-Bs-tsK" secondAttribute="trailing" id="yMm-Nm-uuj"/>
             </constraints>
             <connections>

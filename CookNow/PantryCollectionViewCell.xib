@@ -22,22 +22,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 ml" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPA-IE-Qui">
-                        <rect key="frame" x="5" y="78" width="43" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <rect key="frame" x="5" y="83" width="33" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Milch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlS-GA-HO7">
-                        <rect key="frame" x="5" y="58" width="89" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Milch" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlS-GA-HO7">
+                        <rect key="frame" x="5" y="70" width="89" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bUN-0j-OIq">
-                        <rect key="frame" x="70" y="70" width="25" height="25"/>
+                        <rect key="frame" x="70" y="5" width="25" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="25" id="lrU-oZ-Cw4"/>
-                            <constraint firstAttribute="height" constant="25" id="wGQ-s7-akh"/>
+                            <constraint firstAttribute="height" constant="25" id="3VE-bO-xeM"/>
+                            <constraint firstAttribute="width" constant="25" id="zut-XF-KnH"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -45,12 +45,12 @@
             <constraints>
                 <constraint firstItem="HlS-GA-HO7" firstAttribute="leading" secondItem="xPA-IE-Qui" secondAttribute="leading" id="60l-Gw-5zu"/>
                 <constraint firstAttribute="bottom" secondItem="xPA-IE-Qui" secondAttribute="bottom" constant="5" id="BMa-J6-Fhg"/>
-                <constraint firstAttribute="trailing" secondItem="bUN-0j-OIq" secondAttribute="trailing" constant="5" id="LTE-5C-9qe"/>
+                <constraint firstItem="bUN-0j-OIq" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="QPo-9A-D42"/>
                 <constraint firstItem="aPt-aC-xkK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="SB1-bS-prn"/>
                 <constraint firstAttribute="trailing" secondItem="aPt-aC-xkK" secondAttribute="trailing" id="SkY-JN-5Ey"/>
                 <constraint firstItem="HlS-GA-HO7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="WXO-oU-NYq"/>
                 <constraint firstAttribute="trailing" secondItem="HlS-GA-HO7" secondAttribute="trailing" constant="6" id="Xjz-un-xQS"/>
-                <constraint firstItem="bUN-0j-OIq" firstAttribute="bottom" secondItem="xPA-IE-Qui" secondAttribute="bottom" id="YnU-eD-P1G"/>
+                <constraint firstAttribute="trailing" secondItem="bUN-0j-OIq" secondAttribute="trailing" constant="5" id="cZ5-by-fdE"/>
                 <constraint firstItem="xPA-IE-Qui" firstAttribute="top" secondItem="HlS-GA-HO7" secondAttribute="bottom" constant="-1" id="fRf-vj-Bfc"/>
                 <constraint firstItem="aPt-aC-xkK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gMw-4P-9YL"/>
                 <constraint firstAttribute="bottom" secondItem="aPt-aC-xkK" secondAttribute="bottom" id="kPJ-xw-DbZ"/>

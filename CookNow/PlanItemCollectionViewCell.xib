@@ -12,30 +12,33 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PlanItemCollectionViewCell" customModule="CookNow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="os1-Nd-caP">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="180"/>
+                        <rect key="frame" x="0.0" y="0.0" width="125" height="85"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="85" id="huw-SH-2ba"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oT-vH-MZ4">
-                        <rect key="frame" x="0.0" y="200" width="200" height="0.0"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oT-vH-MZ4">
+                        <rect key="frame" x="5" y="89" width="115" height="16"/>
                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91K-HW-uaF">
-                        <rect key="frame" x="5" y="170" width="25" height="25"/>
+                        <rect key="frame" x="5" y="55" width="25" height="25"/>
                         <state key="normal" image="Thumbsup"/>
                         <connections>
                             <action selector="topHandler:" destination="gTV-IL-0wX" eventType="touchUpInside" id="K2K-W8-UFa"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eu3-dY-uQo">
-                        <rect key="frame" x="170" y="170" width="25" height="25"/>
+                        <rect key="frame" x="95" y="55" width="25" height="25"/>
                         <state key="normal" image="Thumbsdown"/>
                         <connections>
                             <action selector="flopHandler:" destination="gTV-IL-0wX" eventType="touchUpInside" id="RLy-dO-cen"/>
@@ -44,17 +47,16 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="os1-Nd-caP" firstAttribute="trailing" secondItem="7oT-vH-MZ4" secondAttribute="trailing" id="22r-n3-QrI"/>
+                <constraint firstItem="os1-Nd-caP" firstAttribute="trailing" secondItem="7oT-vH-MZ4" secondAttribute="trailing" constant="5" id="22r-n3-QrI"/>
                 <constraint firstItem="os1-Nd-caP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8x6-hx-d5p"/>
-                <constraint firstItem="eu3-dY-uQo" firstAttribute="top" secondItem="91K-HW-uaF" secondAttribute="top" id="9ql-pO-9hs"/>
-                <constraint firstItem="7oT-vH-MZ4" firstAttribute="top" secondItem="91K-HW-uaF" secondAttribute="bottom" constant="5" id="BnA-Sc-pqd"/>
+                <constraint firstItem="eu3-dY-uQo" firstAttribute="top" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="-30" id="FxM-lg-gZS"/>
                 <constraint firstAttribute="trailing" secondItem="os1-Nd-caP" secondAttribute="trailing" id="HbG-oy-Zf8"/>
-                <constraint firstAttribute="bottom" secondItem="7oT-vH-MZ4" secondAttribute="bottom" id="JW4-zq-rdc"/>
+                <constraint firstItem="91K-HW-uaF" firstAttribute="top" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="-30" id="MxP-KD-S9J"/>
+                <constraint firstItem="7oT-vH-MZ4" firstAttribute="top" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="4" id="T1O-Gy-ZMB"/>
                 <constraint firstAttribute="trailing" secondItem="eu3-dY-uQo" secondAttribute="trailing" constant="5" id="Xkg-Yz-sh0"/>
                 <constraint firstItem="91K-HW-uaF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="hZo-rP-Tzz"/>
-                <constraint firstAttribute="bottom" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="20" id="qMG-kt-Be0"/>
                 <constraint firstItem="os1-Nd-caP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rIg-kH-XDj"/>
-                <constraint firstItem="os1-Nd-caP" firstAttribute="leading" secondItem="7oT-vH-MZ4" secondAttribute="leading" id="sQz-Hx-t3f"/>
+                <constraint firstItem="os1-Nd-caP" firstAttribute="leading" secondItem="7oT-vH-MZ4" secondAttribute="leading" constant="-5" id="sQz-Hx-t3f"/>
             </constraints>
             <connections>
                 <outlet property="flopButton" destination="eu3-dY-uQo" id="tXM-0I-Uuy"/>
@@ -62,6 +64,7 @@
                 <outlet property="recipeImage" destination="os1-Nd-caP" id="XiA-8z-xGc"/>
                 <outlet property="topButton" destination="91K-HW-uaF" id="Tus-eq-EZA"/>
             </connections>
+            <point key="canvasLocation" x="35.5" y="53.5"/>
         </collectionViewCell>
     </objects>
     <resources>

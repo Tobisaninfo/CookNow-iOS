@@ -106,6 +106,10 @@ class ShoppingViewController: UIViewController, UITableViewDataSource, UITableVi
         return nil
     }
     
+    func verticalOffsetForEmptyDataSet(in scrollView: UIScrollView) -> CGFloat {
+        return -15.0
+    }
+    
     // MARK: - Event Handler
     @IBAction func doneHandler(_ sender: UIButton) {
         if let shoppingItems = shoppingItems {

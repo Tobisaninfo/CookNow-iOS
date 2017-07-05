@@ -25,25 +25,25 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFb-er-FNW">
-                        <rect key="frame" x="0.0" y="129" width="150" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="0.0" y="129" width="150" height="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="udu-aO-KNv">
-                        <rect key="frame" x="120" y="120" width="25" height="25"/>
+                        <rect key="frame" x="120" y="5" width="25" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="25" id="6sV-Kr-zvv"/>
-                            <constraint firstAttribute="width" constant="25" id="d9c-xv-5jc"/>
+                            <constraint firstAttribute="height" constant="25" id="boi-2W-Fmp"/>
+                            <constraint firstAttribute="width" constant="25" id="ibn-Oj-efD"/>
                         </constraints>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="udu-aO-KNv" secondAttribute="trailing" constant="5" id="2a7-Re-vDU"/>
                 <constraint firstItem="PFb-er-FNW" firstAttribute="leading" secondItem="jX9-Kr-054" secondAttribute="leading" id="A1t-Y7-P7k"/>
-                <constraint firstItem="udu-aO-KNv" firstAttribute="top" secondItem="Gqe-Hd-Jkx" secondAttribute="bottom" constant="1" id="Jau-Nx-gOb"/>
                 <constraint firstItem="Gqe-Hd-Jkx" firstAttribute="leading" secondItem="PFb-er-FNW" secondAttribute="leading" id="Uhp-Wg-Qux"/>
+                <constraint firstAttribute="trailing" secondItem="udu-aO-KNv" secondAttribute="trailing" constant="5" id="V7b-LJ-iPd"/>
+                <constraint firstItem="udu-aO-KNv" firstAttribute="top" secondItem="jX9-Kr-054" secondAttribute="top" constant="5" id="jx0-DT-V6d"/>
                 <constraint firstItem="Gqe-Hd-Jkx" firstAttribute="top" secondItem="jX9-Kr-054" secondAttribute="top" id="mXG-BP-E2b"/>
                 <constraint firstAttribute="trailing" secondItem="PFb-er-FNW" secondAttribute="trailing" id="nR7-Lk-SMl"/>
                 <constraint firstItem="PFb-er-FNW" firstAttribute="top" secondItem="Gqe-Hd-Jkx" secondAttribute="bottom" constant="10" id="tcl-lk-lHV"/>

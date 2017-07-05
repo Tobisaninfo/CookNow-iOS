@@ -23,9 +23,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xx2-Rw-ONm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xx2-Rw-ONm" customClass="BorderButton" customModule="CookNow" customModuleProvider="target">
                                 <rect key="frame" x="16" y="582" width="343" height="30"/>
-                                <state key="normal" title="Remove Done"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.76862745099999996" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Remove Done">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="doneHandler:" destination="MO2-cL-wPY" eventType="touchUpInside" id="iYh-Tt-Ma2"/>
                                 </connections>
@@ -63,7 +77,7 @@
         <scene sceneID="Jcm-XI-x1c">
             <objects>
                 <collectionViewController id="vBG-Ov-m5g" customClass="CookBookCollectionViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="3lk-f4-y7o">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="3lk-f4-y7o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,7 +106,7 @@
         <scene sceneID="qCw-HJ-2T8">
             <objects>
                 <collectionViewController id="MR7-Qk-joR" customClass="RecipeCollectionViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="8gv-ld-ZK3">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8gv-ld-ZK3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -174,7 +188,7 @@
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells/>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TitleHeander" id="b5s-yM-H8s" customClass="TitleCollectionReusableView" customModule="CookNow" customModuleProvider="target">
@@ -240,15 +254,15 @@
         <scene sceneID="Gsy-FP-m1B">
             <objects>
                 <collectionViewController id="MhV-jZ-Tvs" customClass="PantryCollectionViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="EoE-Bu-jDm">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="EoE-Bu-jDm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KCe-E2-u8Q">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="KCe-E2-u8Q">
                             <size key="itemSize" width="100" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                            <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                         </collectionViewFlowLayout>
                         <cells/>
                         <connections>
@@ -353,15 +367,15 @@
         <scene sceneID="dtU-yp-W5g">
             <objects>
                 <collectionViewController id="gVy-q9-9xz" customClass="ProductSearchCollectionViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="x2h-p0-WYj">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="x2h-p0-WYj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fdJ-LY-Jym">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="fdJ-LY-Jym">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                         </collectionViewFlowLayout>
                         <cells/>
                         <connections>
@@ -402,7 +416,7 @@
                     <navigationItem key="navigationItem" title="Recipe" id="YRz-D0-P1c">
                         <barButtonItem key="rightBarButtonItem" image="Microphone" id="FWJ-GP-Hc5">
                             <connections>
-                                <segue destination="s9i-p2-rwO" kind="presentation" modalTransitionStyle="crossDissolve" id="CDC-ZF-Igl"/>
+                                <segue destination="s9i-p2-rwO" kind="show" id="CDC-ZF-Igl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -445,7 +459,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZd-9a-9jq">
-                                <rect key="frame" x="8" y="297" width="359" height="340"/>
+                                <rect key="frame" x="8" y="297" width="359" height="318"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -459,7 +473,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="tGY-wo-Lcu" secondAttribute="trailing" constant="-16" id="Afm-iy-UeG"/>
                             <constraint firstItem="tGY-wo-Lcu" firstAttribute="leading" secondItem="Sqr-9E-JQ7" secondAttribute="leadingMargin" constant="-16" id="DHo-V7-biB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="njZ-MX-DiB" secondAttribute="trailing" constant="8" id="GUW-4a-f0b"/>
-                            <constraint firstItem="NYg-lk-WlP" firstAttribute="top" secondItem="YZd-9a-9jq" secondAttribute="bottom" constant="30" id="J0g-hF-tuI"/>
+                            <constraint firstItem="NYg-lk-WlP" firstAttribute="top" secondItem="YZd-9a-9jq" secondAttribute="bottom" constant="52" id="J0g-hF-tuI"/>
                             <constraint firstItem="YZd-9a-9jq" firstAttribute="top" secondItem="qc4-tp-Qp4" secondAttribute="bottom" constant="8" id="WnP-6T-oEw"/>
                             <constraint firstItem="njZ-MX-DiB" firstAttribute="top" secondItem="tGY-wo-Lcu" secondAttribute="bottom" constant="8" id="eln-uT-QmM"/>
                             <constraint firstItem="qc4-tp-Qp4" firstAttribute="leading" secondItem="Sqr-9E-JQ7" secondAttribute="leadingMargin" constant="-8" id="jvr-0A-g0q"/>
@@ -479,9 +493,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HM0-RK-IWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4809" y="332"/>
+            <point key="canvasLocation" x="4808.8000000000002" y="331.48425787106447"/>
         </scene>
-        <!--Speech View Controller-->
+        <!--Recipe-->
         <scene sceneID="qNd-iA-BlX">
             <objects>
                 <viewController id="s9i-p2-rwO" customClass="SpeechViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
@@ -494,23 +508,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="acg-ZA-hee">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8d-Ep-lRp">
-                                <rect key="frame" x="0.0" y="320" width="375" height="347"/>
+                                <rect key="frame" x="0.0" y="314" width="375" height="304"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="eUj-wZ-fTR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="347"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="304"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHx-ho-ZSw">
-                                            <rect key="frame" x="174.5" y="161.5" width="25" height="25"/>
-                                            <state key="normal" image="Microphone"/>
+                                            <rect key="frame" x="112" y="77.5" width="150" height="150"/>
+                                            <state key="normal" image="Microphone-Filled-Large"/>
                                             <connections>
                                                 <action selector="speechButtonHandler:" destination="s9i-p2-rwO" eventType="touchUpInside" id="1Cd-8i-M3n"/>
                                             </connections>
                                         </button>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Fr3-Td-NBw">
-                                            <rect key="frame" x="169" y="156" width="37" height="37"/>
+                                            <rect key="frame" x="169" y="134.5" width="37" height="37"/>
                                         </activityIndicatorView>
                                     </subviews>
                                     <constraints>
@@ -522,28 +536,20 @@
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBL-NN-KhI">
-                                <rect key="frame" x="22" y="20" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="backHandle:" destination="s9i-p2-rwO" eventType="touchUpInside" id="eNV-VB-dog"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="acg-ZA-hee" secondAttribute="trailing" id="1cg-AP-fa1"/>
                             <constraint firstItem="acg-ZA-hee" firstAttribute="top" secondItem="YDV-R6-b6U" secondAttribute="top" id="GA7-sC-dck"/>
-                            <constraint firstItem="DBL-NN-KhI" firstAttribute="top" secondItem="rcu-Sc-q7n" secondAttribute="bottom" id="JQ0-K2-NEd"/>
-                            <constraint firstItem="J8d-Ep-lRp" firstAttribute="top" secondItem="rcu-Sc-q7n" secondAttribute="bottom" constant="300" id="RaU-8f-3OY"/>
+                            <constraint firstItem="J8d-Ep-lRp" firstAttribute="top" secondItem="rcu-Sc-q7n" secondAttribute="bottom" constant="250" id="RaU-8f-3OY"/>
                             <constraint firstItem="acg-ZA-hee" firstAttribute="bottom" secondItem="iLM-OJ-mv8" secondAttribute="top" id="Wk9-aZ-g7o"/>
-                            <constraint firstItem="DBL-NN-KhI" firstAttribute="leading" secondItem="YDV-R6-b6U" secondAttribute="leadingMargin" constant="6" id="lYL-0m-lVE"/>
                             <constraint firstItem="J8d-Ep-lRp" firstAttribute="bottom" secondItem="iLM-OJ-mv8" secondAttribute="top" id="oBB-5M-mJv"/>
                             <constraint firstItem="J8d-Ep-lRp" firstAttribute="leading" secondItem="acg-ZA-hee" secondAttribute="leading" id="tXT-YX-zcX"/>
                             <constraint firstItem="acg-ZA-hee" firstAttribute="leading" secondItem="YDV-R6-b6U" secondAttribute="leading" id="wlk-vW-uHF"/>
                             <constraint firstItem="J8d-Ep-lRp" firstAttribute="trailing" secondItem="acg-ZA-hee" secondAttribute="trailing" id="x1l-bF-DFl"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Recipe" id="8dP-oq-Ez3"/>
                     <connections>
                         <outlet property="activityView" destination="Fr3-Td-NBw" id="STl-pt-q0D"/>
                         <outlet property="imageView" destination="acg-ZA-hee" id="zz7-AX-NTI"/>
@@ -576,7 +582,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ok" translatesAutoresizingMaskIntoConstraints="NO" id="Hvv-pT-0vo">
                                 <rect key="frame" x="87" y="157" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="N1G-cW-3Zt"/>
+                                    <constraint firstAttribute="height" constant="200" id="fXg-IQ-fUk"/>
+                                    <constraint firstAttribute="width" constant="200" id="r6b-2a-ivu"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="That's it:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfD-Qe-cXK">
@@ -588,14 +595,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Hvv-pT-0vo" firstAttribute="top" secondItem="gKy-Dw-XQQ" secondAttribute="bottom" constant="93" id="6qY-eh-PaJ"/>
-                            <constraint firstItem="1tj-VO-SEx" firstAttribute="top" secondItem="PiK-YF-hef" secondAttribute="bottom" constant="220" id="7gN-oD-BUq"/>
-                            <constraint firstItem="Hvv-pT-0vo" firstAttribute="centerX" secondItem="pfD-Qe-cXK" secondAttribute="centerX" id="9bd-YG-Zei"/>
-                            <constraint firstItem="Hvv-pT-0vo" firstAttribute="centerX" secondItem="azg-fh-EnF" secondAttribute="centerX" id="BU5-a3-8ox"/>
-                            <constraint firstItem="Hvv-pT-0vo" firstAttribute="leading" secondItem="azg-fh-EnF" secondAttribute="leadingMargin" constant="71" id="LdK-xc-Nls"/>
-                            <constraint firstItem="pfD-Qe-cXK" firstAttribute="top" secondItem="Hvv-pT-0vo" secondAttribute="bottom" constant="40" id="h07-YE-WPj"/>
-                            <constraint firstItem="pfD-Qe-cXK" firstAttribute="centerX" secondItem="PiK-YF-hef" secondAttribute="centerX" id="hTz-SD-SyP"/>
-                            <constraint firstItem="PiK-YF-hef" firstAttribute="top" secondItem="Hvv-pT-0vo" secondAttribute="bottom" constant="60" id="v4m-ce-o6d"/>
+                            <constraint firstItem="Hvv-pT-0vo" firstAttribute="centerX" secondItem="azg-fh-EnF" secondAttribute="centerX" id="5ys-dO-zDb"/>
+                            <constraint firstItem="PiK-YF-hef" firstAttribute="centerX" secondItem="pfD-Qe-cXK" secondAttribute="centerX" id="JwY-pl-kp5"/>
+                            <constraint firstItem="PiK-YF-hef" firstAttribute="top" secondItem="pfD-Qe-cXK" secondAttribute="bottom" constant="-1" id="Jxo-9r-ywp"/>
+                            <constraint firstItem="pfD-Qe-cXK" firstAttribute="centerX" secondItem="Hvv-pT-0vo" secondAttribute="centerX" id="aCH-jN-gcm"/>
+                            <constraint firstItem="pfD-Qe-cXK" firstAttribute="top" secondItem="Hvv-pT-0vo" secondAttribute="bottom" constant="40" id="quS-ZH-9ea"/>
+                            <constraint firstItem="Hvv-pT-0vo" firstAttribute="top" secondItem="gKy-Dw-XQQ" secondAttribute="bottom" constant="93" id="tLi-9P-paU"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -644,7 +649,7 @@
         <scene sceneID="zQ9-KI-RIm">
             <objects>
                 <collectionViewController id="yIJ-wE-VmR" customClass="RecipeViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="j1L-e2-iZ9">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="j1L-e2-iZ9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -967,6 +972,7 @@
         <image name="Camera" width="25" height="25"/>
         <image name="Flash" width="25" height="25"/>
         <image name="Microphone" width="25" height="25"/>
+        <image name="Microphone-Filled-Large" width="150" height="150"/>
         <image name="Ok" width="25" height="25"/>
         <image name="Tab-Collections" width="25" height="25"/>
         <image name="Tab-Collections-Selected" width="25" height="25"/>

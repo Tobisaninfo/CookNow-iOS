@@ -38,8 +38,8 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGV-bl-yvl">
-                        <rect key="frame" x="0.0" y="129" width="150" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="0.0" y="129" width="150" height="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -50,16 +50,15 @@
                         </constraints>
                     </imageView>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="83L-Ou-gem">
-                        <rect key="frame" x="120" y="120" width="25" height="25"/>
+                        <rect key="frame" x="120" y="5" width="25" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="25" id="89K-AN-4yG"/>
-                            <constraint firstAttribute="width" constant="25" id="XTr-tU-BIz"/>
+                            <constraint firstAttribute="width" constant="25" id="PyC-lL-zSQ"/>
+                            <constraint firstAttribute="height" constant="25" id="qFV-VY-Jqq"/>
                         </constraints>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="83L-Ou-gem" firstAttribute="top" secondItem="rvF-FZ-EDW" secondAttribute="bottom" constant="1" id="2UB-FL-oYu"/>
                 <constraint firstAttribute="trailing" secondItem="fGV-bl-yvl" secondAttribute="trailing" id="5P7-9Z-eew"/>
                 <constraint firstItem="rvF-FZ-EDW" firstAttribute="top" secondItem="KMI-tx-fRN" secondAttribute="bottom" constant="8" id="7RR-XS-4Qv"/>
                 <constraint firstItem="KMI-tx-fRN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="A5z-hf-OuO"/>
@@ -71,11 +70,12 @@
                 <constraint firstAttribute="trailing" secondItem="rvF-FZ-EDW" secondAttribute="trailing" id="TTK-aN-D1m"/>
                 <constraint firstItem="S0D-rn-6dj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fSU-gM-pAB"/>
                 <constraint firstItem="KMI-tx-fRN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lP8-og-17k"/>
+                <constraint firstAttribute="trailing" secondItem="83L-Ou-gem" secondAttribute="trailing" constant="5" id="lR5-hc-8dH"/>
                 <constraint firstItem="Uxk-aY-hGd" firstAttribute="leading" secondItem="S0D-rn-6dj" secondAttribute="trailing" constant="8" id="moh-Zz-b0q"/>
-                <constraint firstAttribute="trailing" secondItem="83L-Ou-gem" secondAttribute="trailing" constant="5" id="oXL-CR-HFc"/>
                 <constraint firstItem="S0D-rn-6dj" firstAttribute="width" secondItem="rvF-FZ-EDW" secondAttribute="width" id="qS1-NU-oZC"/>
                 <constraint firstItem="fGV-bl-yvl" firstAttribute="top" secondItem="S0D-rn-6dj" secondAttribute="bottom" constant="10" id="s4Z-yl-CxG"/>
                 <constraint firstItem="S0D-rn-6dj" firstAttribute="width" secondItem="Uxk-aY-hGd" secondAttribute="width" id="tVi-Ql-6jx"/>
+                <constraint firstItem="83L-Ou-gem" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="yHe-n5-kMw"/>
                 <constraint firstItem="S0D-rn-6dj" firstAttribute="top" secondItem="Uxk-aY-hGd" secondAttribute="top" id="zhc-IZ-DYp"/>
             </constraints>
             <connections>

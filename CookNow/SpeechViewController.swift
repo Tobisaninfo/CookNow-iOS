@@ -103,8 +103,4 @@ class SpeechViewController: UIViewController, SpeechRecognitionDelegate, SpeechS
             micButton.setImage(#imageLiteral(resourceName: "Microphone-Filled"), for: .normal)
         }
     }
-    
-    @IBAction func backHandle(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
 }

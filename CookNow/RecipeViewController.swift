@@ -72,7 +72,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: imageCellIdentifier, for: indexPath)
             if let recipe = recipe, let cell = cell as? RecipeViewImageCollectionViewCell {
-                cell.setText(text: recipe.name)
+                cell.nameLabel.text = recipe.name
                 cell.imageView.image = image?.gradient()
                 cell.setIngredientsAvailble(available: recipe.hasAllIngredients())
             }
@@ -118,7 +118,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         if indexPath.row == 0 {
             return CGSize(width: viewWidth, height: 250)
         } else if indexPath.row == 1 {
-            return CGSize(width: viewWidth, height: 55)
+            return CGSize(width: viewWidth, height: 60)
         } else if let recipe = recipe, indexPath.row == 2 + recipe.ingredients.count {
             return CGSize(width: viewWidth, height: 30)
         } else {

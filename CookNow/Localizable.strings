@@ -1,33 +1,33 @@
-/* 
-  Localization.strings
-  CookNow
+/*
+ Localization.strings
+ CookNow
+ 
+ Created by Tobias on 21.06.17.
+ Copyright © 2017 Tobias. All rights reserved.
+ */
+"Difficulty.1"="Simple";
+"Difficulty.2"="Medium";
+"Difficulty.3"="Hard";
 
-  Created by Tobias on 21.06.17.
-  Copyright © 2017 Tobias. All rights reserved.
-*/
-"Difficulty.1"="Einfach";
-"Difficulty.2"="Normal";
-"Difficulty.3"="Schwer";
-
-"Unit.Tuete"="Tüte";
-"Unit.Stueck"="Stück";
+"Unit.Tuete"="Packet";
+"Unit.Stueck"="Piece";
 "Unit.ML"="ml";
 "Unit.G"="g";
-"Unit.Priese"="Priese";
-"Unit.EL"="EL";
-"Unit.TL"="TL";
+"Unit.Priese"="Pinch";
+"Unit.EL"="tbsp.";
+"Unit.TL"="tsp.";
 "Unit.Ohne"="";
 
-"Alert.Add"="Hinzufügen";
-"Alert.Cancel"="Abbrechen";
+"Alert.Add"="Add";
+"Alert.Cancel"="Cancel";
 
 "Alert.Ingredient.Add"="350 %@";
 
-"Alert.CookBook.Add.Title"="Neues Kochbuch";
-"Alert.CookBook.Add.Description"="Gib einen Namen für dieses Kochbuch ein.";
-"Alert.CookBook.Add.Placeholder"="Name des Kochbuches";
+"Alert.CookBook.Add.Title"="New Collection";
+"Alert.CookBook.Add.Description"="Enter a title for this collection";
+"Alert.CookBook.Add.Placeholder"="Collection Title";
 
-"About"="Rechtliche Hinweise: Wir speichern keine Dateien serverseitig.\nDie Verwendeten Supermarktangebote stammen von den jeweiligen Supermärkten direkt und werden durch die App nur neu aufbereitet.\nVerwendetet Bibliotheken: TBEmptyDataSet, PKHUD, SwiftClient";
+"About"="No data is saved on our servers.\nWeekly offers  are fetched from the respective supermarkets and are only processed within this app.\nLibraries used: TBEmptyDataSet, PKHUD, SwiftClient";
 
 "Setting.Clear.Plan"="Cleared Plan";
 "Setting.Clear.Rating"="Cleared Rating";

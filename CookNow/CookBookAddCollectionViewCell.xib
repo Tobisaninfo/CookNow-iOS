@@ -18,10 +18,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXt-iX-Idr" customClass="BorderButton" customModule="CookNow" customModuleProvider="target">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXt-iX-Idr" customClass="BorderButton" customModule="CookNow" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="123"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                        <state key="normal" title="+"/>
+                        <state key="normal" image="Add"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                 <color key="value" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -47,4 +46,7 @@
             </constraints>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="Add" width="25" height="25"/>
+    </resources>
 </document>

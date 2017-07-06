@@ -106,9 +106,9 @@ class BarcodeController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
                         try captureDevice.lockForConfiguration()
                         
                         if isTourchEnable {
-                            captureDevice.torchMode = AVCaptureTorchMode.off
-                        } else {
                             try captureDevice.setTorchModeOnWithLevel(AVCaptureMaxAvailableTorchLevel)
+                        } else {
+                            captureDevice.torchMode = AVCaptureTorchMode.off
                         }
                         captureDevice.unlockForConfiguration()
                     } catch {

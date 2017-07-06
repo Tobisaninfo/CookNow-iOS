@@ -29,9 +29,11 @@ class ResourceHandler {
     }
 
     class func loadImage(scope: Scope, id: Int, handler: ((UIImage?) -> UIImage?)? = nil) -> UIImage? {
+        let fileSuffix = scope == .market ? "png" : "jpg"
+        
         let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] as String
         let folder = URL(fileURLWithPath: path).appendingPathComponent(scope.url())
-        let localUrl = folder.appendingPathComponent("\(id).jpg")
+        let localUrl = folder.appendingPathComponent("\(id).\(fileSuffix)")
         
         if let data = try? Data(contentsOf: localUrl) {
             var image = UIImage(data: data)
@@ -44,7 +46,7 @@ class ResourceHandler {
         }
         
         if let host = Bundle.main.infoDictionary?["Host"] as? String {
-            if let url = URL(string: host + "/res/\(scope.url())/\(id).jpg") {
+            if let url = URL(string: host + "/res/\(scope.url())/\(id).\(fileSuffix)") {
                 if let data = try? Data(contentsOf: url) {
                     do {
                         try data.write(to: localUrl)

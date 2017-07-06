@@ -30,18 +30,24 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91K-HW-uaF">
-                        <rect key="frame" x="5" y="75" width="25" height="25"/>
-                        <state key="normal" image="Thumbsup"/>
-                        <connections>
-                            <action selector="topHandler:" destination="gTV-IL-0wX" eventType="touchUpInside" id="K2K-W8-UFa"/>
-                        </connections>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eu3-dY-uQo">
-                        <rect key="frame" x="95" y="75" width="25" height="25"/>
+                        <rect key="frame" x="102" y="82" width="18" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="y4X-f0-EsC"/>
+                        </constraints>
                         <state key="normal" image="Thumbsdown"/>
                         <connections>
                             <action selector="flopHandler:" destination="gTV-IL-0wX" eventType="touchUpInside" id="RLy-dO-cen"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91K-HW-uaF">
+                        <rect key="frame" x="6" y="82" width="18" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="TwT-Ad-9TQ"/>
+                        </constraints>
+                        <state key="normal" image="Thumbsup"/>
+                        <connections>
+                            <action selector="topHandler:" destination="gTV-IL-0wX" eventType="touchUpInside" id="K2K-W8-UFa"/>
                         </connections>
                     </button>
                 </subviews>
@@ -49,14 +55,14 @@
             <constraints>
                 <constraint firstItem="os1-Nd-caP" firstAttribute="trailing" secondItem="7oT-vH-MZ4" secondAttribute="trailing" constant="5" id="22r-n3-QrI"/>
                 <constraint firstItem="os1-Nd-caP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8x6-hx-d5p"/>
-                <constraint firstItem="eu3-dY-uQo" firstAttribute="top" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="-30" id="FxM-lg-gZS"/>
+                <constraint firstItem="eu3-dY-uQo" firstAttribute="top" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="-23" id="FxM-lg-gZS"/>
                 <constraint firstAttribute="trailing" secondItem="os1-Nd-caP" secondAttribute="trailing" id="HbG-oy-Zf8"/>
-                <constraint firstItem="91K-HW-uaF" firstAttribute="top" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="-30" id="MxP-KD-S9J"/>
+                <constraint firstItem="91K-HW-uaF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="6" id="NJY-D2-QyM"/>
                 <constraint firstItem="7oT-vH-MZ4" firstAttribute="top" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="4" id="T1O-Gy-ZMB"/>
                 <constraint firstAttribute="trailing" secondItem="eu3-dY-uQo" secondAttribute="trailing" constant="5" id="Xkg-Yz-sh0"/>
-                <constraint firstItem="91K-HW-uaF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="hZo-rP-Tzz"/>
                 <constraint firstItem="os1-Nd-caP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rIg-kH-XDj"/>
                 <constraint firstItem="os1-Nd-caP" firstAttribute="leading" secondItem="7oT-vH-MZ4" secondAttribute="leading" constant="-5" id="sQz-Hx-t3f"/>
+                <constraint firstItem="91K-HW-uaF" firstAttribute="top" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="-23" id="w4y-IN-hhZ"/>
             </constraints>
             <connections>
                 <outlet property="flopButton" destination="eu3-dY-uQo" id="tXM-0I-Uuy"/>
@@ -68,7 +74,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="Thumbsdown" width="25" height="25"/>
-        <image name="Thumbsup" width="25" height="25"/>
+        <image name="Thumbsdown" width="18" height="18"/>
+        <image name="Thumbsup" width="18" height="18"/>
     </resources>
 </document>

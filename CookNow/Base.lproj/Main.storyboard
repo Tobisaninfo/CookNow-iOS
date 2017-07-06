@@ -233,7 +233,7 @@
         <scene sceneID="6UG-sp-EaQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rtp-MC-7Iz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Pantry" image="Tab-Pantry" selectedImage="Tab-Pantry-Slected" id="CP1-Fb-5Nl"/>
+                    <tabBarItem key="tabBarItem" title="Pantry" image="Tab-Pantry" selectedImage="Tab-Pantry-Selected" id="CP1-Fb-5Nl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oyr-AI-hH5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -571,21 +571,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PiK-YF-hef">
-                                <rect key="frame" x="137" y="417" width="101" height="30"/>
+                                <rect key="frame" x="137" y="367" width="101" height="30"/>
                                 <state key="normal" title="Finish Cooking"/>
                                 <connections>
                                     <action selector="finishButton:" destination="0tr-9H-jAt" eventType="touchUpInside" id="YjD-rg-qkk"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ok" translatesAutoresizingMaskIntoConstraints="NO" id="Hvv-pT-0vo">
-                                <rect key="frame" x="87" y="157" width="200" height="200"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Done" translatesAutoresizingMaskIntoConstraints="NO" id="Hvv-pT-0vo">
+                                <rect key="frame" x="112" y="157" width="150" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="fXg-IQ-fUk"/>
-                                    <constraint firstAttribute="width" constant="200" id="r6b-2a-ivu"/>
+                                    <constraint firstAttribute="height" constant="150" id="fXg-IQ-fUk"/>
+                                    <constraint firstAttribute="width" constant="150" id="r6b-2a-ivu"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="That's it:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfD-Qe-cXK">
-                                <rect key="frame" x="154" y="397" width="66" height="21"/>
+                                <rect key="frame" x="154" y="347" width="66" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -703,7 +703,7 @@
                             <tableViewSection headerTitle="Dietary Restrictions" id="S0U-2j-xnP">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="sqV-ud-MWh" style="IBUITableViewCellStyleDefault" id="uvc-Dz-LQg">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uvc-Dz-LQg" id="YbM-qd-FZk">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -720,7 +720,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="xkT-vo-Hdd" style="IBUITableViewCellStyleDefault" id="Njp-HJ-dA8">
-                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Njp-HJ-dA8" id="UHK-JR-Tg3">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -737,7 +737,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="3O4-I1-WC3" style="IBUITableViewCellStyleDefault" id="Hzb-J4-HHX">
-                                        <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="144" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hzb-J4-HHX" id="3Rq-nk-26v">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -754,7 +754,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="eZd-Et-u6K" style="IBUITableViewCellStyleDefault" id="YC9-cD-fIG">
-                                        <rect key="frame" x="0.0" y="187.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="188" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YC9-cD-fIG" id="zP4-UO-STW">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -775,10 +775,10 @@
                             <tableViewSection headerTitle="Preferred Supermarket" id="2CP-Fc-pY7">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="kje-dh-YSn">
-                                        <rect key="frame" x="0.0" y="287.5" width="375" height="100"/>
+                                        <rect key="frame" x="0.0" y="288" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kje-dh-YSn" id="am1-fD-YOR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vpb-yT-eXl">
@@ -810,10 +810,10 @@
                             <tableViewSection headerTitle="Information" id="aDh-zi-4ER">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="iiR-sk-HDx">
-                                        <rect key="frame" x="0.0" y="443.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="444" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iiR-sk-HDx" id="CEV-Jl-ayW">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Abount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oT-Aq-dAo">
@@ -834,10 +834,10 @@
                             <tableViewSection headerTitle="Applicationdata" id="UJ1-eR-WPF">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="NiV-yE-ROE">
-                                        <rect key="frame" x="0.0" y="543.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="544" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NiV-yE-ROE" id="uiC-I8-H8u">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Reset Recipe Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ar1-w1-ZLz">
@@ -851,10 +851,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="LOG-Z5-rLT">
-                                        <rect key="frame" x="0.0" y="587.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="588" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LOG-Z5-rLT" id="r5Z-qu-G9v">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Reset Weekly Plan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuW-tn-QLp">
@@ -968,17 +968,17 @@
     </scenes>
     <resources>
         <image name="Camera" width="25" height="25"/>
+        <image name="Done" width="150" height="150"/>
         <image name="Flash" width="25" height="25"/>
         <image name="Microphone" width="25" height="25"/>
         <image name="Microphone-Filled-Large" width="150" height="150"/>
-        <image name="Ok" width="25" height="25"/>
         <image name="Pencil" width="25" height="25"/>
         <image name="Tab-Collections" width="25" height="25"/>
         <image name="Tab-Collections-Selected" width="25" height="25"/>
         <image name="Tab-Home" width="25" height="25"/>
         <image name="Tab-Home-Selected" width="25" height="25"/>
         <image name="Tab-Pantry" width="25" height="25"/>
-        <image name="Tab-Pantry-Slected" width="25" height="25"/>
+        <image name="Tab-Pantry-Selected" width="25" height="25"/>
         <image name="Tab-Settings" width="25" height="25"/>
         <image name="Tab-Settings-Selected" width="25" height="25"/>
         <image name="Tab-Shopping" width="25" height="25"/>

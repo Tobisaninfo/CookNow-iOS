@@ -23,4 +23,8 @@ class RecipeViewInfoCollectionViewCell: UICollectionViewCell {
     @IBAction func addHandler(_ sender: UIButton) {
         parentViewController?.addHandler(sender)
     }
+    
+    @IBAction func shareHandler(_ sender: UIButton) {
+        parentViewController?.shareHandler(sender)
+    }
 }

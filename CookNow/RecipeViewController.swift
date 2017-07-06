@@ -142,6 +142,14 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         self.present(controller, animated: true, completion: nil)
     }
     
+    func shareHandler(_ sender: UIButton) {
+        if let recipe = recipe, let image = image {
+            let vc = UIActivityViewController(activityItems: [recipe.name, image], applicationActivities: [])
+            present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    // Delegate for adding to collection
     func didSelect(_ index: Int) {
         let recipeBook = RecipeBook.list()![index]
         if let recipe = recipe {

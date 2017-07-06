@@ -11,7 +11,8 @@ import UIKit
 class RecipeViewInfoCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     
     weak var parentViewController: RecipeViewController?
     

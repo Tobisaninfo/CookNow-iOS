@@ -34,7 +34,7 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
         self.collectionView!.register(UINib(nibName: "CookBook3CollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier3)
         self.collectionView!.register(UINib(nibName: "CookBook4CollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: reuseIdentifier4)
         
-        self.collectionView!.register(UINib(nibName: "AddCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: addReuseIdentifier)
+        self.collectionView!.register(UINib(nibName: "CookBookAddCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: addReuseIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {

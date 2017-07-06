@@ -19,13 +19,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gqe-Hd-Jkx">
-                        <rect key="frame" x="0.0" y="0.0" width="150" height="119"/>
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="125"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="119" id="BDK-fF-0wk"/>
+                            <constraint firstAttribute="height" constant="125" id="BDK-fF-0wk"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFb-er-FNW">
-                        <rect key="frame" x="0.0" y="129" width="150" height="16"/>
+                        <rect key="frame" x="0.0" y="130" width="150" height="16"/>
                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -46,7 +46,7 @@
                 <constraint firstItem="udu-aO-KNv" firstAttribute="top" secondItem="jX9-Kr-054" secondAttribute="top" constant="5" id="jx0-DT-V6d"/>
                 <constraint firstItem="Gqe-Hd-Jkx" firstAttribute="top" secondItem="jX9-Kr-054" secondAttribute="top" id="mXG-BP-E2b"/>
                 <constraint firstAttribute="trailing" secondItem="PFb-er-FNW" secondAttribute="trailing" id="nR7-Lk-SMl"/>
-                <constraint firstItem="PFb-er-FNW" firstAttribute="top" secondItem="Gqe-Hd-Jkx" secondAttribute="bottom" constant="10" id="tcl-lk-lHV"/>
+                <constraint firstItem="PFb-er-FNW" firstAttribute="top" secondItem="Gqe-Hd-Jkx" secondAttribute="bottom" constant="5" id="tcl-lk-lHV"/>
                 <constraint firstItem="Gqe-Hd-Jkx" firstAttribute="trailing" secondItem="PFb-er-FNW" secondAttribute="trailing" id="uWo-xm-bwo"/>
             </constraints>
             <connections>

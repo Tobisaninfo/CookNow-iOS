@@ -105,7 +105,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         
         if indexPath.section == 0 {
             let viewWidth =  collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right
-            return CGSize(width: viewWidth, height: 125)
+            return CGSize(width: viewWidth, height: 145)
         } else if indexPath.section == 1 {
             let viewWidth =  collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right - flowLayout.minimumInteritemSpacing * CGFloat(columnCount - 1)
             let itemSize = viewWidth / CGFloat(columnCount)

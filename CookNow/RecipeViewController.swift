@@ -118,11 +118,11 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         if indexPath.row == 0 {
             return CGSize(width: viewWidth, height: 250)
         } else if indexPath.row == 1 {
-            return CGSize(width: viewWidth, height: 60)
+            return CGSize(width: viewWidth, height: 65)
         } else if let recipe = recipe, indexPath.row == 2 + recipe.ingredients.count {
             return CGSize(width: viewWidth, height: 30)
         } else {
-            return CGSize(width: viewWidth, height: 21)
+            return CGSize(width: viewWidth, height: 17)
         }
     }
     

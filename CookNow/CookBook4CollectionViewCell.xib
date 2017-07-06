@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,27 +27,28 @@
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S0D-rn-6dj">
-                        <rect key="frame" x="0.0" y="74" width="45" height="45"/>
+                        <rect key="frame" x="0.0" y="69" width="48" height="56"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="S0D-rn-6dj" secondAttribute="height" multiplier="1:1" id="os3-OH-tCu"/>
+                            <constraint firstAttribute="height" constant="56" id="Zw3-ZH-quI"/>
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uxk-aY-hGd">
-                        <rect key="frame" x="53" y="74" width="45" height="45"/>
+                        <rect key="frame" x="51" y="69" width="48" height="56"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="Uxk-aY-hGd" secondAttribute="height" multiplier="1:1" id="7N2-xn-Qml"/>
+                            <constraint firstAttribute="height" constant="56" id="97R-mW-AtA"/>
+                            <constraint firstAttribute="width" constant="48" id="Kh3-82-eok"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGV-bl-yvl">
-                        <rect key="frame" x="0.0" y="129" width="150" height="16"/>
+                        <rect key="frame" x="0.0" y="126" width="150" height="16"/>
                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rvF-FZ-EDW">
-                        <rect key="frame" x="105" y="74" width="45" height="45"/>
+                        <rect key="frame" x="102" y="69" width="49" height="56"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="rvF-FZ-EDW" secondAttribute="height" multiplier="1:1" id="SlY-XI-Ovl"/>
+                            <constraint firstAttribute="height" constant="56" id="eaE-u9-OXx"/>
                         </constraints>
                     </imageView>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="83L-Ou-gem">
@@ -59,24 +61,25 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="Uxk-aY-hGd" firstAttribute="top" secondItem="rvF-FZ-EDW" secondAttribute="top" id="0Jy-rg-PtN"/>
+                <constraint firstItem="Uxk-aY-hGd" firstAttribute="centerX" secondItem="fGV-bl-yvl" secondAttribute="centerX" id="2om-Qs-A50"/>
                 <constraint firstAttribute="trailing" secondItem="fGV-bl-yvl" secondAttribute="trailing" id="5P7-9Z-eew"/>
-                <constraint firstItem="rvF-FZ-EDW" firstAttribute="top" secondItem="KMI-tx-fRN" secondAttribute="bottom" constant="8" id="7RR-XS-4Qv"/>
                 <constraint firstItem="KMI-tx-fRN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="A5z-hf-OuO"/>
-                <constraint firstItem="S0D-rn-6dj" firstAttribute="leading" secondItem="KMI-tx-fRN" secondAttribute="leading" id="Buf-Ac-9HT"/>
+                <constraint firstItem="S0D-rn-6dj" firstAttribute="leading" secondItem="fGV-bl-yvl" secondAttribute="leading" id="Csh-rp-3kO"/>
+                <constraint firstItem="S0D-rn-6dj" firstAttribute="bottom" secondItem="Uxk-aY-hGd" secondAttribute="bottom" id="Enq-P2-SCx"/>
                 <constraint firstItem="fGV-bl-yvl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="HFp-vk-tq0"/>
+                <constraint firstItem="rvF-FZ-EDW" firstAttribute="leading" secondItem="Uxk-aY-hGd" secondAttribute="trailing" constant="3" id="N1X-i0-87Q"/>
                 <constraint firstAttribute="trailing" secondItem="KMI-tx-fRN" secondAttribute="trailing" id="OgB-6w-nLP"/>
-                <constraint firstItem="rvF-FZ-EDW" firstAttribute="leading" secondItem="Uxk-aY-hGd" secondAttribute="trailing" constant="7" id="Prb-6x-sef"/>
-                <constraint firstItem="Uxk-aY-hGd" firstAttribute="top" secondItem="KMI-tx-fRN" secondAttribute="bottom" constant="8" id="RBs-sG-KUH"/>
-                <constraint firstAttribute="trailing" secondItem="rvF-FZ-EDW" secondAttribute="trailing" id="TTK-aN-D1m"/>
-                <constraint firstItem="S0D-rn-6dj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fSU-gM-pAB"/>
+                <constraint firstItem="S0D-rn-6dj" firstAttribute="top" secondItem="Uxk-aY-hGd" secondAttribute="top" id="SLy-2k-DOZ"/>
+                <constraint firstItem="Uxk-aY-hGd" firstAttribute="bottom" secondItem="rvF-FZ-EDW" secondAttribute="bottom" id="Uy2-cV-LXj"/>
+                <constraint firstAttribute="trailing" secondItem="rvF-FZ-EDW" secondAttribute="trailing" constant="-1" id="kGY-z4-DUV"/>
                 <constraint firstItem="KMI-tx-fRN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lP8-og-17k"/>
                 <constraint firstAttribute="trailing" secondItem="83L-Ou-gem" secondAttribute="trailing" constant="5" id="lR5-hc-8dH"/>
-                <constraint firstItem="Uxk-aY-hGd" firstAttribute="leading" secondItem="S0D-rn-6dj" secondAttribute="trailing" constant="8" id="moh-Zz-b0q"/>
-                <constraint firstItem="S0D-rn-6dj" firstAttribute="width" secondItem="rvF-FZ-EDW" secondAttribute="width" id="qS1-NU-oZC"/>
-                <constraint firstItem="fGV-bl-yvl" firstAttribute="top" secondItem="S0D-rn-6dj" secondAttribute="bottom" constant="10" id="s4Z-yl-CxG"/>
-                <constraint firstItem="S0D-rn-6dj" firstAttribute="width" secondItem="Uxk-aY-hGd" secondAttribute="width" id="tVi-Ql-6jx"/>
+                <constraint firstItem="fGV-bl-yvl" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottomMargin" id="svb-dk-zA6"/>
+                <constraint firstItem="S0D-rn-6dj" firstAttribute="top" secondItem="KMI-tx-fRN" secondAttribute="bottom" constant="3" id="vWt-WU-Ab2"/>
+                <constraint firstItem="Uxk-aY-hGd" firstAttribute="leading" secondItem="S0D-rn-6dj" secondAttribute="trailing" constant="3" id="xZp-qg-mYp"/>
                 <constraint firstItem="83L-Ou-gem" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="yHe-n5-kMw"/>
-                <constraint firstItem="S0D-rn-6dj" firstAttribute="top" secondItem="Uxk-aY-hGd" secondAttribute="top" id="zhc-IZ-DYp"/>
+                <constraint firstItem="fGV-bl-yvl" firstAttribute="top" secondItem="S0D-rn-6dj" secondAttribute="bottom" constant="1" id="yt4-GW-FtH"/>
             </constraints>
             <connections>
                 <outlet property="imageHeader" destination="KMI-tx-fRN" id="2ls-9f-C7x"/>

@@ -69,7 +69,7 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 125, height: 125)
+        return CGSize(width: 125, height: 145)
     }
     
     func replceItemByObserver(notification: Notification) {

@@ -55,8 +55,12 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
         if let cell = cell as? RecipeCollectionViewCell {
             if let recipe = recipeBook?.recipes?.object(at: indexPath.row) as? RecipeRef {
                 cell.nameLabel.text = recipe.name
-                if let data = recipe.image as Data? {
-                    cell.imageView.image = UIImage(data: data)?.gradient()
+                DispatchQueue.global().async {
+                    if let data = recipe.image as Data?, let image = UIImage(data: data)?.gradient() {
+                        DispatchQueue.main.async {
+                            cell.animateImage(image: image)
+                        }
+                    }
                 }
             }
         }
@@ -75,7 +79,6 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
         let itemSize = viewWidth / CGFloat(columnCount)
         return CGSize(width: itemSize, height: itemSize)
     }
-    
     
     // MARK: - Placeholder
 

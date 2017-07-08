@@ -38,5 +38,10 @@ class RecipeCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-
+    
+    func animateImage(image: UIImage) {
+        UIView.transition(with: imageView, duration: 1, options: .transitionCrossDissolve, animations: {
+            self.imageView.image = image
+        }, completion: nil)
+    }
 }

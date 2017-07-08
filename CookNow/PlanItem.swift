@@ -19,6 +19,7 @@ extension PlanItem {
                 if let item = NSManagedObject(entity: entity, insertInto: context) as? PlanItem {
                     item.recipeID = Int32(recipe.id)
                     item.order = Int32(order)
+                    item.name = recipe.name
                     
                     delegate.saveContext()
                     

@@ -38,5 +38,16 @@ class CookBookCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-
+    
+    func animateImage(image: UIImage, forIndex index: Int) {
+        let imageView: UIImageView!
+        if index == 0 {
+            imageView = imageHeader
+        } else {
+            imageView = imageFooter[index - 1]
+        }
+        UIView.transition(with: imageView, duration:1, options: .transitionCrossDissolve, animations: {
+            imageView.image = image
+        }, completion: nil)
+    }
 }

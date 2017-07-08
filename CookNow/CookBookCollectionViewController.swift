@@ -82,24 +82,34 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
                     if let cell = cell as? CookBookCollectionViewCell {
                         cell.titleLabel.text = item.name
                         
-                        if recipes.count > 0, let item = recipes.object(at: 0) as? RecipeRef {
-                            if let data = item.image as Data? {
-                                cell.imageHeader.image = UIImage(data: data)
+                        DispatchQueue.global().async {
+                            if recipes.count > 0, let item = recipes.object(at: 0) as? RecipeRef {
+                                if let data = item.image as Data?, let image = UIImage(data: data) {
+                                    DispatchQueue.main.async {
+                                        cell.animateImage(image: image, forIndex: 0)
+                                    }
+                                }
                             }
-                        }
-                        if recipes.count > 1, let item = recipes.object(at: 1) as? RecipeRef {
-                            if let data = item.image as Data? {
-                                cell.imageFooter[0].image = UIImage(data: data)
+                            if recipes.count > 1, let item = recipes.object(at: 1) as? RecipeRef {
+                                if let data = item.image as Data?, let image = UIImage(data: data) {
+                                    DispatchQueue.main.async {
+                                        cell.animateImage(image: image, forIndex: 1)
+                                    }
+                                }
                             }
-                        }
-                        if recipes.count > 2, let item = recipes.object(at: 2) as? RecipeRef {
-                            if let data = item.image as Data? {
-                                cell.imageFooter[1].image = UIImage(data: data)
+                            if recipes.count > 2, let item = recipes.object(at: 2) as? RecipeRef {
+                                if let data = item.image as Data?, let image = UIImage(data: data) {
+                                    DispatchQueue.main.async {
+                                        cell.animateImage(image: image, forIndex: 2)
+                                    }
+                                }
                             }
-                        }
-                        if recipes.count > 3, let item = recipes.object(at: 3) as? RecipeRef {
-                            if let data = item.image as Data? {
-                                cell.imageFooter[2].image = UIImage(data: data)
+                            if recipes.count > 3, let item = recipes.object(at: 3) as? RecipeRef {
+                                if let data = item.image as Data?, let image = UIImage(data: data) {
+                                    DispatchQueue.main.async {
+                                        cell.animateImage(image: image, forIndex: 3)
+                                    }
+                                }
                             }
                         }
                     }

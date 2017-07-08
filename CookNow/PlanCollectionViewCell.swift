@@ -52,18 +52,20 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = planCollectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
         if let cell = cell as? PlanItemCollectionViewCell, let item = planItems?[indexPath.row] {
+            
+            cell.recipeImage.image = nil
+            cell.nameLabel.text = item.name
+            
             DispatchQueue.global().async {
-                let image = ResourceHandler.loadImage(scope: .recipe, id: Int(item.recipeID))
-                let recipe = RecipeHandler.get(id: Int(item.recipeID))
+                let image = ResourceHandler.loadImage(scope: .recipe, id: Int(item.recipeID))?.gradient()
                 
                 DispatchQueue.main.sync {
-                    cell.nameLabel.text = recipe?.name
-                    cell.recipeImage.image = image?.gradient()
-                    
-                    cell.planItem = item
-                    cell.planCollectionViewCell = self
+                    cell.recipeImage.image = image
                 }
             }
+            
+            cell.planItem = item
+            cell.planCollectionViewCell = self
         }
         return cell
     }

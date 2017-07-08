@@ -29,8 +29,7 @@
 
 "About"="No data is saved on our servers.\nWeekly offers  are fetched from the respective supermarkets and are only processed within this app.\nLibraries used: TBEmptyDataSet, PKHUD, SwiftClient";
 
-"Setting.Clear.Plan"="Cleared Plan";
-"Setting.Clear.Rating"="Cleared Rating";
+"Settings.Restriction.Update"="Update Plan";
 
 "Settings.Infortmation"="Information";
 "Settings.Supermarket"="Preferred Supermarket";

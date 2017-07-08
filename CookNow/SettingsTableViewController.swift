@@ -86,6 +86,14 @@ class SettingsTableViewController: UITableViewController {
                 // Save Settings
                 let property = IngredientProperty.properties[indexPath.row]
                 UserDefaults.standard.set(selected, forKey: "Property.\(property.id)")
+                
+                HUD.show(.labeledProgress(title: NSLocalizedString("Settings.Restriction.Update", comment: "Plan Update"), subtitle: nil))
+                DispatchQueue.global().async {
+                    PlanGenerator.newPlan()
+                    DispatchQueue.main.async {
+                        HUD.hide(animated: true)
+                    }
+                }
             }
         } else if indexPath.section == 2 {
             self.performSegue(withIdentifier: aboutSegueIdentifer, sender: self)

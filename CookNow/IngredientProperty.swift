@@ -8,7 +8,7 @@
 
 import Foundation
 
-class IngredientProperty {
+class IngredientProperty: Comparable {
     
     let id: Int
     let name: String
@@ -34,5 +34,13 @@ class IngredientProperty {
         }
         
         return IngredientProperty(id: id, name: name)
+    }
+    
+    static func < (lhs: IngredientProperty, rhs: IngredientProperty) -> Bool {
+        return lhs.id < rhs.id
+    }
+    
+    static func == (lhs: IngredientProperty, rhs: IngredientProperty) -> Bool {
+        return lhs.id == rhs.id
     }
 }

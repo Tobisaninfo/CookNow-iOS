@@ -14,8 +14,11 @@ class PlanGenerator {
     static let NewPlanItem = Notification.Name("NewPlanItem")
     
     class func nextRecipe(position: Int) -> PlanItem? {
-        let recipeList = RecipeHandler.list()
-        if let currentPlan = PlanItem.list(), let rating = rating() {
+        if let currentPlan = PlanItem.list(), let rating = Rating.list() {
+            let userProperties = getUserProperties()
+            
+            // Get all positive recipes
+            let recipeList = RecipeHandler.list()
             
             let positivRecipes = recipeList.filter() {
                 return !contains(recipe: $0, inPlan: currentPlan) && contains(recipe: $0, inPositiveRating: rating)
@@ -30,12 +33,22 @@ class PlanGenerator {
                     Rating.list()?.forEach({ $0.delete() })
                 }
             } else {
+                // Filter all available recipes
                 let possibleRecipes = recipeList.filter() {
-                    return !contains(recipe: $0, inPlan: currentPlan) && !contains(recipe: $0, inNegativeRating: rating)
+                    return !contains(recipe: $0, inPlan: currentPlan)
+                        && !contains(recipe: $0, inNegativeRating: rating)
                 }
+                
+                let recipeListFiltered = possibleRecipes.filter({
+                    checkProperties(recipe: $0, userProperties: userProperties)
+                })
+                
+                // If not recipe is available, use all recipes unfiltered
+                let usedList = recipeListFiltered.count == 0 ? possibleRecipes : recipeListFiltered
+                
                 if possibleRecipes.count > 0 {
-                    let randomIndex = Int(arc4random_uniform(UInt32(possibleRecipes.count)))
-                    let recipe = possibleRecipes[randomIndex]
+                    let randomIndex = Int(arc4random_uniform(UInt32(usedList.count)))
+                    let recipe = usedList[randomIndex]
                     return PlanItem.add(recipe: recipe, order: position)
                 } else {
                     Rating.list()?.forEach({ $0.delete() })
@@ -64,15 +77,28 @@ class PlanGenerator {
         }
     }
     
-    private class func rating() -> [Rating]? {
-        if let delegate = UIApplication.shared.delegate as? AppDelegate {
-            do {
-                return try delegate.persistentContainer.viewContext.fetch(NSFetchRequest(entityName: "Rating")) as? [Rating]
-            } catch {
-                print(error)
+    // Getter
+    private class func getUserProperties() -> [IngredientProperty] {
+        var properties = [IngredientProperty]()
+        for property in IngredientProperty.properties {
+            if UserDefaults.standard.bool(forKey: "Property.\(property.id)") {
+                properties.append(property)
             }
         }
-        return nil
+        return properties
+    }
+    
+    // MARK: - Check Methods
+    
+    private class func checkProperties(recipe: Recipe, userProperties: [IngredientProperty]) -> Bool {
+        for ingredient in recipe.ingredients {
+            for userProperty in userProperties {
+                if !ingredient.ingredient.properties.contains(userProperty) {
+                    return false
+                }
+            }
+        }
+        return true
     }
     
     private class func contains(recipe: Recipe, inPlan plan: [PlanItem]) -> Bool {

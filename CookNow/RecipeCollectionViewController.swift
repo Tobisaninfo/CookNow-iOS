@@ -33,7 +33,7 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         self.collectionView?.reloadData()
     }
@@ -55,6 +55,7 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
         if let cell = cell as? RecipeCollectionViewCell {
             if let recipe = recipeBook?.recipes?.object(at: indexPath.row) as? RecipeRef {
                 cell.nameLabel.text = recipe.name
+                cell.imageView.image = nil
                 DispatchQueue.global().async {
                     if let data = recipe.image as Data?, let image = UIImage(data: data)?.gradient() {
                         DispatchQueue.main.async {

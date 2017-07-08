@@ -66,6 +66,8 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
             
             if let item = items?[indexPath.row - 1] {
                 
+                cell.imageView.image = nil
+                
                 DispatchQueue.global().async {
                     let image = ResourceHandler.loadImage(scope: .ingredient, id: Int(item.ingredientID)) {
                         return $0?.gradient(start: 0.25)

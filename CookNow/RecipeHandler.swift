@@ -31,6 +31,24 @@ class RecipeHandler {
         return recipe
     }
     
+    class func list(ingredientID: Int) -> [Recipe] {
+        var recipes: [Recipe] = []
+        
+        HttpUtils.get(url: "/recipe/?ingredient=\(ingredientID)", callback: {
+            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? JsonArray {
+                if let json = jsonData {
+                    for item in json {
+                        if let recipe = Recipe.fromJson(jsonData: item) {
+                            recipes.append(recipe)
+                        }
+                    }
+                }
+            }
+        })
+        
+        return recipes
+    }
+    
     class func list() -> [Recipe] {
         var recipes: [Recipe] = []
         

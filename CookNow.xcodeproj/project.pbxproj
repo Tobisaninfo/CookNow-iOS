@@ -38,6 +38,8 @@
 		F65AD3991F053DED0000960C /* ShoppingItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65AD3981F053DED0000960C /* ShoppingItemController.swift */; };
 		F65AD39D1F05413D0000960C /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65AD39C1F05413D0000960C /* ShoppingItem.swift */; };
 		F65AD39F1F0585900000960C /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65AD39E1F0585900000960C /* FinishViewController.swift */; };
+		F65BE6661F116D9E00ECC30C /* CameraItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65BE6641F116D9E00ECC30C /* CameraItemView.swift */; };
+		F65BE6671F116D9E00ECC30C /* CameraItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F65BE6651F116D9E00ECC30C /* CameraItemView.xib */; };
 		F65C60501EEC439D008D7F0C /* ResourceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C604F1EEC439D008D7F0C /* ResourceHandler.swift */; };
 		F65C60531EEC4D0D008D7F0C /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C60521EEC4D0D008D7F0C /* ShoppingViewController.swift */; };
 		F65C605A1EEC5AE3008D7F0C /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C60581EEC5AE3008D7F0C /* ShoppingTableViewCell.swift */; };
@@ -177,6 +179,8 @@
 		F65AD3981F053DED0000960C /* ShoppingItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingItemController.swift; sourceTree = "<group>"; };
 		F65AD39C1F05413D0000960C /* ShoppingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
 		F65AD39E1F0585900000960C /* FinishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
+		F65BE6641F116D9E00ECC30C /* CameraItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraItemView.swift; sourceTree = "<group>"; };
+		F65BE6651F116D9E00ECC30C /* CameraItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraItemView.xib; sourceTree = "<group>"; };
 		F65C604F1EEC439D008D7F0C /* ResourceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceHandler.swift; sourceTree = "<group>"; };
 		F65C60521EEC4D0D008D7F0C /* ShoppingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
 		F65C60581EEC5AE3008D7F0C /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
@@ -439,6 +443,8 @@
 			isa = PBXGroup;
 			children = (
 				F66CBE9B1F081FB10019C41B /* CameraViewController.swift */,
+				F65BE6641F116D9E00ECC30C /* CameraItemView.swift */,
+				F65BE6651F116D9E00ECC30C /* CameraItemView.xib */,
 			);
 			name = Camera;
 			sourceTree = "<group>";
@@ -751,6 +757,7 @@
 				F6BD7A941EFFC998003AA67D /* CookBook0CollectionViewCell.xib in Resources */,
 				F65C60631EEC656B008D7F0C /* PantryCollectionViewCell.xib in Resources */,
 				F6FA3A611EFAEA280074744A /* RecipeViewStartButtonCollectionViewCell.xib in Resources */,
+				F65BE6671F116D9E00ECC30C /* CameraItemView.xib in Resources */,
 				F64DAB3E1EF2EF9B002343BF /* PlanCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -810,6 +817,7 @@
 				F6FA3A631EFAED2C0074744A /* StepViewController.swift in Sources */,
 				F6FA3A601EFAEA280074744A /* RecipeViewStartButtonCollectionViewCell.swift in Sources */,
 				F64DAB411EF2F01B002343BF /* PlanItemCollectionViewCell.swift in Sources */,
+				F65BE6661F116D9E00ECC30C /* CameraItemView.swift in Sources */,
 				F64DAB3D1EF2EF9B002343BF /* PlanCollectionViewCell.swift in Sources */,
 				F64116F11F10EC5F00C56490 /* IngredientPropertyHandler.swift in Sources */,
 				F67A589F1F044E80009D85B9 /* Rating.swift in Sources */,

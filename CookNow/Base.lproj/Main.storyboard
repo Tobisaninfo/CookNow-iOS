@@ -356,6 +356,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="yIJ-wE-VmR" kind="show" identifier="RecipeViewSegue" id="RxR-Ao-hkW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQ7-Ai-ape" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -703,12 +706,12 @@
             <objects>
                 <tableViewController id="yGS-sC-Sgo" customClass="SettingsTableViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="StC-ON-fnw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="restrictionCell" id="fHZ-cr-Itl">
-                                <rect key="frame" x="0.0" y="55" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fHZ-cr-Itl" id="8iv-5h-gCp">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -716,7 +719,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="marketTableCell" rowHeight="100" id="HhK-O6-qmR" customClass="MarketTableTableViewCell" customModule="CookNow" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="99" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HhK-O6-qmR" id="Vrh-H0-PGQ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
@@ -746,7 +749,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="aboutCell" id="Y3e-Mq-554">
-                                <rect key="frame" x="0.0" y="199" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="200" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y3e-Mq-554" id="z9U-Vd-HlY">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
@@ -774,8 +777,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="5G9-rB-W3c"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="800"/>
                     <connections>
                         <segue destination="zCt-GV-FrW" kind="show" identifier="aboutSegue" id="AoO-az-7xA"/>
                     </connections>
@@ -793,11 +794,11 @@
                         <viewControllerLayoutGuide type="bottom" id="y1c-zQ-bPj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9yR-Ud-ruC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DwM-za-gWj">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -879,7 +880,7 @@
         <image name="Tab-Shopping-Selected" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pWa-oL-sMo"/>
+        <segue reference="RxR-Ao-hkW"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.94509803920000002" green="0.76862745099999996" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

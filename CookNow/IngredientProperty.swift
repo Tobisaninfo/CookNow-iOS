@@ -8,14 +8,31 @@
 
 import Foundation
 
-enum IngredientProperty : Int {
-    case Vegan = 1
-    case Vegetarian
+class IngredientProperty {
     
-    static func fromJson(jsonData: JsonObject) -> IngredientProperty? {
+    let id: Int
+    let name: String
+    
+    init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+    }
+    
+    static var properties: [IngredientProperty] = []
+    
+    class func fromJson(jsonData: JsonObject) -> IngredientProperty? {
         guard let id = jsonData["id"] as? Int else {
             return nil
         }
-        return IngredientProperty(rawValue: id)
+        for property in properties {
+            if property.id == id {
+                return property
+            }
+        }
+        guard let name = jsonData["name"] as? String else {
+            return nil
+        }
+        
+        return IngredientProperty(id: id, name: name)
     }
 }

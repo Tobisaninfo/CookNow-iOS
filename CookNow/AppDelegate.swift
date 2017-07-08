@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // Load Global Data
+        // Load Offers
         DispatchQueue.global().async {
             let marketID = UserDefaults.standard.integer(forKey: "market")
                 if marketID != 0 {
@@ -26,6 +26,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     MarketOffer.offers = MarketOfferHandler.list(market: market)
                 }
             }
+        }
+        
+        // Load Markets
+        DispatchQueue.global().async {
+            Market.markets = MarketHandler.list()
+        }
+        
+        // Load Properties
+        DispatchQueue.global().async {
+            IngredientProperty.properties = IngredientPropertyHandler.list().sorted(by: {$0.name < $1.name})
         }
         
         return true

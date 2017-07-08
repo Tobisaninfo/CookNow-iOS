@@ -9,6 +9,9 @@
 import Foundation
 
 class Market {
+    
+    static var markets: [Market] = []
+    
     let id: Int
     let name: String
     

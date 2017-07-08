@@ -18,6 +18,8 @@
 		F6348D681EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */; };
 		F63896F01EFE84BE00FF533B /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63896EF1EFE84BE00FF533B /* SpeechViewController.swift */; };
 		F63D1A2B1F07E7100042DE07 /* BarcodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63D1A2A1F07E7100042DE07 /* BarcodeController.swift */; };
+		F64116EF1F10E61300C56490 /* MarketTableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64116EE1F10E61300C56490 /* MarketTableTableViewCell.swift */; };
+		F64116F11F10EC5F00C56490 /* IngredientPropertyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64116F01F10EC5F00C56490 /* IngredientPropertyHandler.swift */; };
 		F644D2DB1EF2AA0E0037746B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644D2DA1EF2AA0E0037746B /* SettingsTableViewController.swift */; };
 		F64DAB3D1EF2EF9B002343BF /* PlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64DAB3B1EF2EF9B002343BF /* PlanCollectionViewCell.swift */; };
 		F64DAB3E1EF2EF9B002343BF /* PlanCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F64DAB3C1EF2EF9B002343BF /* PlanCollectionViewCell.xib */; };
@@ -155,6 +157,8 @@
 		F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIngredientOptionMenuViewController.swift; sourceTree = "<group>"; };
 		F63896EF1EFE84BE00FF533B /* SpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
 		F63D1A2A1F07E7100042DE07 /* BarcodeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeController.swift; sourceTree = "<group>"; };
+		F64116EE1F10E61300C56490 /* MarketTableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketTableTableViewCell.swift; sourceTree = "<group>"; };
+		F64116F01F10EC5F00C56490 /* IngredientPropertyHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientPropertyHandler.swift; sourceTree = "<group>"; };
 		F644D2DA1EF2AA0E0037746B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		F64DAB3B1EF2EF9B002343BF /* PlanCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewCell.swift; sourceTree = "<group>"; };
 		F64DAB3C1EF2EF9B002343BF /* PlanCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlanCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -285,9 +289,18 @@
 			name = Speech;
 			sourceTree = "<group>";
 		};
+		F64116EC1F10E5DC00C56490 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				F64116EE1F10E61300C56490 /* MarketTableTableViewCell.swift */,
+			);
+			name = TableCell;
+			sourceTree = "<group>";
+		};
 		F644D2D71EF2A9D70037746B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				F64116EC1F10E5DC00C56490 /* TableCell */,
 				F607CA9A1F003E79008D77CF /* MarketCollectionViewCell.swift */,
 				F607CA9B1F003E79008D77CF /* MarketCollectionViewCell.xib */,
 				F644D2DA1EF2AA0E0037746B /* SettingsTableViewController.swift */,
@@ -480,6 +493,7 @@
 			children = (
 				F68D63441EE0A44800921E86 /* HttpUtils.swift */,
 				F64F267B1EE5833A00711189 /* IngredientHandler.swift */,
+				F64116F01F10EC5F00C56490 /* IngredientPropertyHandler.swift */,
 				F64F267D1EE583E000711189 /* MarketHandler.swift */,
 				F6AE62CB1EE0779C00D8E0DF /* RecipeHandler.swift */,
 				F64F26831EE5867B00711189 /* MarketOfferHandler.swift */,
@@ -797,6 +811,7 @@
 				F6FA3A601EFAEA280074744A /* RecipeViewStartButtonCollectionViewCell.swift in Sources */,
 				F64DAB411EF2F01B002343BF /* PlanItemCollectionViewCell.swift in Sources */,
 				F64DAB3D1EF2EF9B002343BF /* PlanCollectionViewCell.swift in Sources */,
+				F64116F11F10EC5F00C56490 /* IngredientPropertyHandler.swift in Sources */,
 				F67A589F1F044E80009D85B9 /* Rating.swift in Sources */,
 				F65A09041EEF2B0100F136F9 /* ScannerViewController.swift in Sources */,
 				F63896F01EFE84BE00FF533B /* SpeechViewController.swift in Sources */,
@@ -814,6 +829,7 @@
 				F64F26861EE5869800711189 /* MarketOffer.swift in Sources */,
 				F64DAB461EF2F72C002343BF /* TitleCollectionReusableView.swift in Sources */,
 				F607CAB31F005962008D77CF /* RecipeRef.swift in Sources */,
+				F64116EF1F10E61300C56490 /* MarketTableTableViewCell.swift in Sources */,
 				F6F789551EF17126009E7323 /* Utils.swift in Sources */,
 				F64F267C1EE5833A00711189 /* IngredientHandler.swift in Sources */,
 				F6FA3A681EFAF5920074744A /* BorderButton.swift in Sources */,

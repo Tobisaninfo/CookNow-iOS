@@ -50,9 +50,7 @@ class ScannerViewController: BarcodeController, BarcodeControllerDelegate {
             }
         }
     }
-    
-    private var flashOn = false
-    
+        
     @IBAction func flashlightHandler(_ sender: Any) {
         isTourchEnable = !isTourchEnable
         flashlightButton.setImage(isTourchEnable ? #imageLiteral(resourceName: "Flash-Filled") : #imageLiteral(resourceName: "Flash"), for: .normal)

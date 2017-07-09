@@ -61,16 +61,18 @@ class CameraItemView: UIView {
                 recipeNameLabel.text = nil
                 recipeImageView.image = nil
             } else {
+                let recipe = dataSource?.recipeNameForItem()
+                
                 activityIndicator.stopAnimating()
                 ingredientNameLabel.isHidden = false
                 recipeNameLabel.isHidden = false
                 recipeImageView.isHidden = false
                 labels.forEach {
-                    $0.isHidden = false
+                    $0.isHidden = recipe == nil
                 }
                 
                 ingredientNameLabel.text = dataSource?.ingredientNameForItem()
-                recipeNameLabel.text = dataSource?.recipeNameForItem()
+                recipeNameLabel.text = recipe
                 recipeImageView.image = dataSource?.recipeImageForItem()
             }
         }

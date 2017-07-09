@@ -53,11 +53,12 @@ class CameraViewController: BarcodeController, BarcodeControllerDelegate, Camera
                     self.ingredientName = ingredient.name
                     
                     let recipes = RecipeHandler.list(ingredientID: ingredient.id)
-                    self.recipe = recipes[Int(arc4random_uniform(UInt32(recipes.count)))]
-                    
-                    if let recipe = self.recipe {
-                        self.recipeName = recipe.name
-                        self.recipeImage = ResourceHandler.loadImage(scope: .recipe, id: recipe.id)
+                    if recipes.count > 0 {
+                        self.recipe = recipes[Int(arc4random_uniform(UInt32(recipes.count)))]
+                        if let recipe = self.recipe {
+                            self.recipeName = recipe.name
+                            self.recipeImage = ResourceHandler.loadImage(scope: .recipe, id: recipe.id)
+                        }
                     }
                     
                     DispatchQueue.main.async {
@@ -90,7 +91,10 @@ class CameraViewController: BarcodeController, BarcodeControllerDelegate, Camera
         if let currentCode = currentCode {
             self.finishReding(code: currentCode)
             self.itemView.removeFromSuperview()
-            self.performSegue(withIdentifier: "RecipeViewSegue", sender: self)
+            
+            if recipe != nil {
+                self.performSegue(withIdentifier: "RecipeViewSegue", sender: self)
+            }
         }
     }
     

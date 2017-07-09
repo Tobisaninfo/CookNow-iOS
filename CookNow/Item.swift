@@ -8,16 +8,43 @@
 
 import Foundation
 
-class Item {
-    let id: Int
-    let name: String
+
+/**
+ An item is a object needed to cook a recipe. They are collected in the ```Step```.
+ */
+public class Item {
     
-    init(id: Int, name: String) {
+    // MARK: - Properties
+    
+    /**
+     Id of the item
+     */
+    public let id: Int
+    /**
+     Name of the item
+     */
+    public let name: String
+    
+    // MARK: - Initalizer
+    
+    /**
+     Create a new item with id and name.
+     - Parameter id: Id of the item
+     - Parameter name: Name of the item
+     */
+    public init(id: Int, name: String) {
         self.id = id
         self.name = name
     }
     
-    class func fromJson(jsonData: JsonObject) -> Item? {
+    // MARK: - Parsing Data
+    
+    /**
+     Parse an item from json data. If the data is invalid, nil is returned.
+     - Parameter jsonData: Json Data
+     - Returns: Item from Json Data.
+     */
+    public class func fromJson(jsonData: JsonObject) -> Item? {
         guard let name = jsonData["name"] as? String else {
             return nil
         }

@@ -8,18 +8,48 @@
 
 import Foundation
 
-class Barcode {
-    let name: String
-    let amount: Double
-    let ingredient: Ingredient?
+/**
+ Contains information of a barcode. That includes the associated ingredient.
+ */
+public class Barcode {
     
-    init(name: String, amount: Double, ingredient: Ingredient? = nil) {
+    // MARK: - Properties
+    
+    /**
+     Barcode name.
+     */
+    public let name: String
+    /**
+     Ingredient amount.
+     */
+    public let amount: Double
+    /**
+     Associated ingredient.
+     */
+    public let ingredient: Ingredient?
+    
+    // MARK: - Initalizer
+    
+    /**
+     Create a new barcode object.
+     - Parameter name: Product name
+     - Parameter amount: Amount of the ingredient
+     - Parameter ingredient: Associated ingredient. Could be nil
+     */
+    public init(name: String, amount: Double, ingredient: Ingredient? = nil) {
         self.name = name
         self.amount = amount
         self.ingredient = ingredient
     }
     
-    class func fromJson(json: JsonObject) -> Barcode? {
+    // MARK: - Parsing Data
+    
+    /**
+     Parse a barcode from json data. If the data is invalid, nil is returned.
+     - Parameter jsonData: Json Data
+     - Returns: Barcode from Json Data
+     */
+    public class func fromJson(json: JsonObject) -> Barcode? {
         guard let name = json["name"] as? String else {
             return nil
         }

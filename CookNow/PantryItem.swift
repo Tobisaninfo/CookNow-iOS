@@ -9,12 +9,22 @@
 import UIKit
 import CoreData
 
+/**
+ Util CoreData methods for the ```PantryItem``` class.
+ */
 extension PantryItem {
     
     private static let className = String(describing: PantryItem.self)
     
-    class func add(id: Int, withAmount amount: Double) -> PantryItem? {
+    /**
+     Add an item to the pantry with an amount. If the insertion fails, ```nil``` will be returned. The returned object can be modified. The CoreData Context must be saved using the ```AppDelegate```.
+     - Parameter id: Ingredient ID
+     - Parameter amount: Amount of the ingredient
+     - Returns: Added PantryItem
+     */
+    public class func add(id: Int, withAmount amount: Double) -> PantryItem? {
         if let list = list() {
+            // Add amount to existing object
             for item in list {
                 if Int(item.ingredientID) == id {
                     item.amount = item.amount + amount
@@ -27,6 +37,7 @@ extension PantryItem {
             }
         }
         
+        // Create new object
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             let context = delegate.persistentContainer.viewContext
             if let entity = NSEntityDescription.entity(forEntityName: className, in: context) {
@@ -43,7 +54,11 @@ extension PantryItem {
         return nil
     }
     
-    func delete(amount: Double) {
+    /**
+     Delete an amount from this PantryItem. If the amount is the total amount in the pantry, the hole item will be deleted.
+     - Parameter amount: Amount to delete
+     */
+    public func delete(amount: Double) {
         if self.amount <= amount {
             delete()
         } else {
@@ -55,11 +70,18 @@ extension PantryItem {
         }
     }
     
-    func delete() {
+    /**
+     Delete an item from the pantry.
+     */
+    public func delete() {
         CoreDataUtils.delete(object: self)
     }
     
-    class func list() -> [PantryItem]? {
+    /**
+     List all items in the pantry. If the fetch request fails, ```nil``` will be returned.
+     - Returns: List of items.
+     */
+    public class func list() -> [PantryItem]? {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             do {
                 return try delegate.persistentContainer.viewContext.fetch(NSFetchRequest(entityName: className)) as? [PantryItem]
@@ -71,7 +93,15 @@ extension PantryItem {
     }
 }
 
+/**
+ Util methods to bridge the network objects and the core data objects.
+ */
 extension PantryItem {
+    
+    /**
+     Returns a PantryItem that matches the ingredient id.
+     - Returns: Macthed PantryItem or ```nil```
+     */
     class func find(ingredient: Ingredient) -> PantryItem? {
         if let list = list() {
             for item in list {

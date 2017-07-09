@@ -9,11 +9,22 @@
 import Foundation
 import CoreData
 
+/**
+ Util CoreData methods for the ```ShoppingItem``` class.
+ */
 extension ShoppingItem {
     
     private static let className = String(describing: ShoppingItem.self)
     
-    class func add(id: Int, name: String, amount: Double, unit: Unit) -> ShoppingItem? {
+    /**
+     Add a shopping item to the database. If the insertion fails, ```nil``` will be returned. The returned object can be modified. The CoreData Context must be saved using the ```AppDelegate```.
+     - Parameter id: Ingredient ID
+     - Parameter name: Ingredient Name
+     - Parameter amount: Amount
+     - Parameter unit: Unittype of the amount
+     - Returns: Added Shopping Item
+     */
+    public class func add(id: Int, name: String, amount: Double, unit: Unit) -> ShoppingItem? {
         // Check if exists
         if let list = list() {
             for item in list {
@@ -42,6 +53,10 @@ extension ShoppingItem {
         return nil
     }
 
+    /**
+     List all shopping items. If the fetch request fails, ```nil``` will be returned.
+     - Returns: List of shopping items.
+     */
     class func list() -> [ShoppingItem]? {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             do {
@@ -53,10 +68,17 @@ extension ShoppingItem {
         return nil
     }
     
+    /**
+     Delete a shopping item.
+     */
     func delete() {
         CoreDataUtils.delete(object: self)
     }
 
+    /**
+     Convert a shopping item into a ```PantryItem``` and add it into the pantry.
+     - Returns: Added PantryItem
+     */
     func addToPantry() -> PantryItem? {
         return PantryItem.add(id: Int(id), withAmount: amount)
     }

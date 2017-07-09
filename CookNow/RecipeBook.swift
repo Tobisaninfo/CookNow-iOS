@@ -9,10 +9,18 @@
 import UIKit
 import CoreData
 
+/**
+ Util CoreData methods for the ```RecipeBook``` class.
+ */
 extension RecipeBook {
     private static let className = String(describing: RecipeBook.self)
     
-    class func add(name: String) -> RecipeBook? {
+    /**
+     Add a new RecipeBook. If the insertion fails, ```nil``` will be returned. The returned object can be modified. The CoreData Context must be saved using the ```AppDelegate```.
+     - Parameter name: Name of the Book
+     - Returns: Added RecipeBook
+     */
+    public class func add(name: String) -> RecipeBook? {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             let context = delegate.persistentContainer.viewContext
             if let entity = NSEntityDescription.entity(forEntityName: className, in: context) {
@@ -28,10 +36,17 @@ extension RecipeBook {
         return nil
     }
     
-    func delete() {
+    /**
+     Delete a RecipeBook.
+     */
+    public func delete() {
         CoreDataUtils.delete(object: self)
     }
     
+    /**
+     List all books. If the fetch request fails, ```nil``` will be returned.
+     - Returns: List of books.
+     */
     class func list() -> [RecipeBook]? {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             do {

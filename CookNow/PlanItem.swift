@@ -9,10 +9,18 @@
 import Foundation
 import CoreData
 
-extension PlanItem {
+/**
+ Util CoreData methods for the ```PlanItem``` class.
+ */
+public extension PlanItem {
     private static let className = String(describing: PlanItem.self)
     
-    class func add(day: Int) -> PlanItem? {
+    /**
+     Add an item to the plan for a day. If the insertion fails, ```nil``` will be returned. The returned object can be modified. The CoreData Context must be saved using the ```AppDelegate```.
+     - Parameter day: Number of day (between 1 and 7)
+     - Returns: Added PlanItem
+     */
+    public class func add(day: Int) -> PlanItem? {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             let context = delegate.persistentContainer.viewContext
             if let entity = NSEntityDescription.entity(forEntityName: className, in: context) {
@@ -29,8 +37,11 @@ extension PlanItem {
         return nil
     }
     
-    
-    class func list() -> [PlanItem]? {
+    /**
+     List all items in the plan. If the fetch request fails, ```nil``` will be returned.
+     - Returns: List of items.
+     */
+    public class func list() -> [PlanItem]? {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             do {
                 return try delegate.persistentContainer.viewContext.fetch(NSFetchRequest(entityName: className)) as? [PlanItem]
@@ -41,7 +52,11 @@ extension PlanItem {
         return nil
     }
     
-    class func getCurrentPlan() -> [PlanItem]? {
+    /**
+     List all items in the plan. If the fetch request fails, ```nil``` will be returned. In comparesion to ```list()``` this method add missing days. The result is contains always 7 objects.
+     - Returns: List of items.
+     */
+    public class func getCurrentPlan() -> [PlanItem]? {
         if var plan = list() {
             
             func nextNumber() -> Int {
@@ -73,11 +88,25 @@ extension PlanItem {
         return nil
     }
     
-    func isEmpty() -> Bool {
+    /**
+     Check is a PlanItem contains a recipe.
+     - Returns: ```true``` Is Empty (RecipeID == -1)
+     */
+    public func isEmpty() -> Bool {
         return recipeID == -1
     }
+}
+
+/**
+ Util methods to bridge the network objects and the core data objects.
+ */
+extension PlanItem {
     
-    class func find(recipe: Recipe) -> PlanItem? {
+    /**
+     Returns a PlanItem that matches the recipe id.
+     - Returns: Macthed PlanItem or ```nil```
+     */
+    public class func find(recipe: Recipe) -> PlanItem? {
         if let list = list() {
             for item in list {
                 if Int(item.recipeID) == recipe.id {

@@ -9,11 +9,22 @@
 import UIKit
 import CoreData
 
+/**
+ Util CoreData methods for the ```RecipeRef``` class.
+ */
 extension RecipeRef {
     
     private static let className = String(describing: RecipeRef.self)
     
-    class func add(id: Int, name: String, image: UIImage, toBook book: RecipeBook) -> RecipeRef? {
+    /**
+     Add a recipe reference to a RecipeBook. If the insertion fails, ```nil``` will be returned. The returned object can be modified. The CoreData Context must be saved using the ```AppDelegate```.
+     - Parameter id: Recipe ID
+     - Parameter name: Name of the recipe
+     - Parameter image: Recipe Image
+     - Parameter book: Recipe Book to add
+     - Returns: Added RecipeRef
+     */
+    public class func add(id: Int, name: String, image: UIImage, toBook book: RecipeBook) -> RecipeRef? {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             let context = delegate.persistentContainer.viewContext
             if let entity = NSEntityDescription.entity(forEntityName: className, in: context) {
@@ -33,7 +44,10 @@ extension RecipeRef {
         return nil
     }
 
-    func delete() {
+    /**
+     Delete a RecipeBook from the pantry.
+     */
+    public func delete() {
         CoreDataUtils.delete(object: self)
     }
 }

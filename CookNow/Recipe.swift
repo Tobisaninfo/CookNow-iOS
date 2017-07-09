@@ -8,15 +8,45 @@
 
 import Foundation
 
-class Recipe {
+/**
+ Models a recipe with steps, ingredients and other information.
+ */
+public class Recipe {
     
-    let id: Int
-    let name: String
-    let steps: [Step]
-    let time: Int
-    let difficulty: Int
+    // MARK: - Properties
     
-    init(id: Int, name: String, steps: [Step], time: Int, difficulty: Int) {
+    /**
+     Recipe ID.
+     */
+    public let id: Int
+    /**
+     Recipe Name.
+     */
+    public let name: String
+    /**
+     Recipe Steps. Contains a manual for cooking and all needed ingredients and items.
+     */
+    public let steps: [Step]
+    /**
+     Time in minutes.
+     */
+    public let time: Int
+    /**
+     Difficulty between 1 and 3.
+     */
+    public let difficulty: Int
+    
+    // MARK: - Initalizer
+    
+    /**
+     Create a new Recipe.
+     - Parameter id: Recipe ID
+     - Parameter name: Recipe Name
+     - Parameter steps: Array of Steps
+     - Parameter time: Time in minutes
+     - Parameter difficulty: Difficulty between 1 and 3
+     */
+    public init(id: Int, name: String, steps: [Step], time: Int, difficulty: Int) {
         self.id = id
         self.name = name
         self.steps = steps
@@ -24,16 +54,33 @@ class Recipe {
         self.difficulty = difficulty
     }
     
-    var ingredients: [IngredientUse] {
+    // MARK: - Computed Properties
+    
+    /**
+     Compute the ingredients from all steps.
+     - Returns: All ingredients needed for the recipe
+     */
+    public var ingredients: [IngredientUse] {
         return steps.flatMap { return $0.ingredients }
     }
     
-    var price: Double {
+    /**
+     Compute the price for all ingredients
+     - Returns: Price for ingredients
+     */
+    public var price: Double {
         let prices = ingredients.map({return $0.price})
         return prices.reduce(0, +)
     }
     
-    class func fromJson(jsonData: JsonObject) -> Recipe? {
+    // MARK: - Parsing Data
+    
+    /**
+     Parse a recipe from json data. If the data is invalid, nil is returned.
+     - Parameter jsonData: Json Data
+     - Returns: Recipe from Json Data
+     */
+    public class func fromJson(jsonData: JsonObject) -> Recipe? {
         // Base Data
         guard let id = jsonData["id"] as? Int else {
             return nil
@@ -66,7 +113,13 @@ class Recipe {
 }
 
 extension Recipe {
-    var priceFormatted: String {
+    // MARK: Formatter
+    
+    /**
+     Format the price with the local currency
+     - Returns: Formatted price string
+     */
+    public var priceFormatted: String {
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
         formatter.numberStyle = .currency
@@ -74,8 +127,14 @@ extension Recipe {
     }
 }
 
+
 extension Recipe {
-    func done() {
+    // MARK: Ingredients
+    
+    /**
+     Removes all ingredients for the recipe from the pantry.
+     */
+    public func done() {
         for ingredient in ingredients {
             if let pantryItem = PantryItem.find(ingredient: ingredient.ingredient) {
                 pantryItem.delete(amount: ingredient.amount)
@@ -83,7 +142,11 @@ extension Recipe {
         }
     }
     
-    func hasAllIngredients() -> Bool {
+    /**
+     Check if all ingredients for the recipe are in the pantry.
+     - Returns: ```true``` all ingredients are in the pantry
+     */
+    public func hasAllIngredients() -> Bool {
         for ingredient in ingredients {
             guard let pantryItem = PantryItem.find(ingredient: ingredient.ingredient) else {
                 return false

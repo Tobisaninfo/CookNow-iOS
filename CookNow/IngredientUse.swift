@@ -8,18 +8,48 @@
 
 import Foundation
 
-class IngredientUse {
-    let ingredient: Ingredient
-    let amount: Double
-    let price: Double
+/**
+ This class contains a ingredient and an amount of this ingredient. It is used in ```Step```.
+ */
+public class IngredientUse {
     
-    init(ingredient: Ingredient, amount: Double, price: Double) {
+    // MARK: - Properties
+    
+    /**
+     Ingredient Refernce.
+     */
+    public let ingredient: Ingredient
+    /**
+     Amount. Unit is stored in ```Ingredient```.
+     */
+    public let amount: Double
+    /**
+     Price of the ingredient depends on the amount.
+     */
+    public let price: Double
+    
+    // MARK: - Initalizer
+    
+    /**
+     Create a new object.
+     - Parameter ingredient: Used Ingredient
+     - Parameter amount: Amount of the ingredient
+     - Parameter price: Price of the ingredient
+     */
+    public init(ingredient: Ingredient, amount: Double, price: Double) {
         self.ingredient = ingredient
         self.amount = amount
         self.price = price
     }
     
-    class func fromJson(jsonData: JsonObject) -> IngredientUse? {
+    // MARK: - Parsing Data
+    
+    /**
+     Parse an ingredient use from json data. If the data is invalid, nil is returned.
+     - Parameter jsonData: Json Data
+     - Returns: IngredientUse from Json Data
+     */
+    public class func fromJson(jsonData: JsonObject) -> IngredientUse? {
         guard let amount = jsonData["amount"] as? Double else {
             return nil
         }
@@ -37,7 +67,13 @@ class IngredientUse {
 }
 
 extension IngredientUse {
-    var amountFormatted: String {
+    // MARK: - Formatter
+    
+    /**
+     Format the amount with the local settings
+     - Returns: Formatted amount string
+     */
+    public var amountFormatted: String {
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
         formatter.numberStyle = .decimal

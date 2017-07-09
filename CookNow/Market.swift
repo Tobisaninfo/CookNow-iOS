@@ -8,19 +8,49 @@
 
 import Foundation
 
-class Market {
+/**
+ Market is type to store information of super markets.
+ */
+public class Market {
     
-    static var markets: [Market] = []
+    // MARK: - Cache
     
-    let id: Int
-    let name: String
+    /**
+     Local global cache for markets. Use ```MarketHandler``` to get markets.
+     */
+    public static var markets: [Market] = []
     
-    init(id: Int, name: String) {
+    // MARK: - Properties
+    
+    /**
+     Market ID
+     */
+    public let id: Int
+    /**
+     Market Name
+     */
+    public let name: String
+    
+    // MARK: - Initalizer
+    
+    /**
+     Create a new market.
+     - Parameter id: Market ID
+     - Parameter name: Market name
+     */
+    public init(id: Int, name: String) {
         self.id = id
         self.name = name
     }
     
-    class func fromJson(jsonData: JsonObject) -> Market? {
+    // MARK: - Parsing Data
+    
+    /**
+     Parse a market from json data. If the data is invalid, nil is returned.
+     - Parameter jsonData: Json Data
+     - Returns: Market from Json Data
+     */
+    public class func fromJson(jsonData: JsonObject) -> Market? {
         guard let name = jsonData["name"] as? String else {
             return nil
         }

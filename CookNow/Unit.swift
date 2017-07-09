@@ -8,17 +8,54 @@
 
 import Foundation
 
-enum Unit: Int {
+/**
+ Enumeration of all unit types.
+ */
+public enum Unit: Int {
+    
+    // MARK: - Types
+    
+    /**
+     Tüte / Packet
+     */
     case Tuete = 1
+    /**
+     Stück / Piece
+     */
     case Stueck
+    /**
+     Ml
+     */
     case ML
+    /**
+     G
+     */
     case G
+    /**
+     Prise / Pinch
+     */
     case Prise
+    /**
+     EL / tbsp.
+     */
     case EL
+    /**
+     TL / tsp.
+     */
     case TL
+    /**
+     Ohne / Without
+     */
     case Ohne
     
-    static func fromJson(jsonData: JsonObject) -> Unit? {
+    // MARK: - Parsing Data
+    
+    /**
+     Parse a Unit from json data. If the data is invalid, nil is returned.
+     - Parameter jsonData: Json Data
+     - Returns: Unit from Json Data
+     */
+    public static func fromJson(jsonData: JsonObject) -> Unit? {
         guard let id = jsonData["id"] as? Int else {
             return nil
         }

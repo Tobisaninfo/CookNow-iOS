@@ -8,17 +8,46 @@
 
 import Foundation
 
-class Step {
+/**
+ A step is a part of an ```Recipe``` and descripts the ingredients, items and manual.
+ */
+public class Step {
     
-    let id: Int
-    let order: Int
-    let content: String
+    // MARK: - Properties
     
-    let ingredients: [IngredientUse]
+    /**
+     Step id.
+     */
+    public let id: Int
+    /**
+     Number of step in recipe.
+     */
+    public let order: Int
+    /**
+     Description of the step.
+     */
+    public let content: String
     
-    let items: [Item]
+    /**
+     List of ingredients for the step.
+     */
+    public let ingredients: [IngredientUse]
+    /**
+     List of items used for the step.
+     */
+    public let items: [Item]
     
-    init(id: Int, order: Int, content: String, ingredients: [IngredientUse], items: [Item]) {
+    // MARK: - Initalizer
+    
+    /**
+     Create a new step using the data.
+     - Parameter id: Step id
+     - Parameter order: Number of step in recipe
+     - Parameter content: Description of the step
+     - Parameter ingredients: List of ingredients
+     - Parameter items: List of items
+     */
+    public init(id: Int, order: Int, content: String, ingredients: [IngredientUse], items: [Item]) {
         self.id = id
         self.order = order
         self.content = content
@@ -26,7 +55,14 @@ class Step {
         self.items = items
     }
     
-    class func formJson(jsonData: JsonObject) -> Step? {
+    // MARK: - Parsing Data
+    
+    /**
+     Parse a step from json data. If the data is invalid, nil is returned.
+     - Parameter jsonData: Json Data 
+     - Returns: Step from Json Data.
+     */
+    public class func formJson(jsonData: JsonObject) -> Step? {
         guard let id = jsonData["id"] as? Int else {
             return nil
         }

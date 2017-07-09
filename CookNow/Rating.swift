@@ -9,17 +9,34 @@
 import Foundation
 import CoreData
 
+/**
+ Util CoreData methods for the ```Rating``` class.
+ */
 extension Rating {
     private static let className = String(describing: Rating.self)
     
-    class func top(recipe: PlanItem) {
+    /**
+     Mark a ```PlanItem``` (recipe) positive.
+     - Parameter recipe: PlanItem to rate
+     */
+    public class func top(recipe: PlanItem) {
         _ = add(recipe: recipe, rating: 1)
     }
     
-    class func flop(recipe: PlanItem) {
+    /**
+     Mark a ```PlanItem``(recipe) negative.
+     - Parameter recipe: PlanItem to rate
+     */
+    public class func flop(recipe: PlanItem) {
         _ = add(recipe: recipe, rating: -1)
     }
     
+    /**
+     Add an rating to a PlanItem. If the insertion fails, ```nil``` will be returned. The returned object can be modified. The CoreData Context must be saved using the ```AppDelegate```.
+     - Parameter recipe: PlanItem to rate
+     - Parameter rating: positive number for posotive rating, genative number for negative rating
+     - Returns: Rating object from CoreData context
+     */
     private class func add(recipe: PlanItem, rating: Int) -> Rating? {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             let context = delegate.persistentContainer.viewContext
@@ -37,8 +54,11 @@ extension Rating {
         return nil
     }
     
-    
-    class func list() -> [Rating]? {
+    /**
+     List all ratings. If the fetch request fails, ```nil``` will be returned.
+     - Returns: List of ratings.
+     */
+    public class func list() -> [Rating]? {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             do {
                 return try delegate.persistentContainer.viewContext.fetch(NSFetchRequest(entityName: className)) as? [Rating]
@@ -49,7 +69,10 @@ extension Rating {
         return nil
     }
     
-    func delete() {
+    /**
+     Delete a rating.
+     */
+    public func delete() {
         CoreDataUtils.delete(object: self)
     }
 }

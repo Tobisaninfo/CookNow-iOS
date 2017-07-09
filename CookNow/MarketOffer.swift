@@ -8,27 +8,64 @@
 
 import Foundation
 
-class MarketOffer {
+/**
+ A MarketOffer is a class that contains information about market offers.
+ */
+public class MarketOffer {
     
-    static let MarketOfferUpdate = Notification.Name("MarketOfferUpdate")
+    // MARK: - Cache
+    
+    /**
+     Notification when offer cache is updated.
+     */
+    public static let MarketOfferUpdate = Notification.Name("MarketOfferUpdate")
 
-    static var offers: [MarketOffer] = [] {
+    /**
+     Local, global cache for market offers. Use ```MarketOfferHandler``` to get offers.
+     */
+    public static var offers: [MarketOffer] = [] {
         didSet {
             NotificationCenter.default.post(name: MarketOfferUpdate, object: self)
         }
     }
     
-    let name: String
-    let price: Double
-    let expires: Date
+    // MARK: - Properties
     
-    init(name: String, price: Double, expires: Date) {
+    /**
+     Name of the offer.
+     */
+    public let name: String
+    /**
+     Price of the offer.
+     */
+    public let price: Double
+    /**
+     Expire date of the offer.
+     */
+    public let expires: Date
+    
+    // MARK: - Initalizer
+    
+    /**
+     Create a new offer.
+     - Parameter name: Offer name
+     - Parameter price: Price
+     - Parameter expires: Date of expire
+     */
+    public init(name: String, price: Double, expires: Date) {
         self.name = name
         self.price = price
         self.expires = expires
     }
     
-    class func fromJson(jsonData: JsonObject) -> MarketOffer? {
+    // MARK: - Parsing Data
+    
+    /**
+     Parse a MarketOffer from json data. If the data is invalid, nil is returned.
+     - Parameter jsonData: Json Data
+     - Returns: MarketOffer from Json Data
+     */
+    public class func fromJson(jsonData: JsonObject) -> MarketOffer? {
         guard let name = jsonData["name"] as? String else {
             return nil
         }

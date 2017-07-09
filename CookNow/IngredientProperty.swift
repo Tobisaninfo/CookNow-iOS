@@ -8,19 +8,49 @@
 
 import Foundation
 
-class IngredientProperty: Comparable {
+/**
+ Model for Ingredient Properties. A properties descript an ingredient and is used for the dieatry restriction.
+ */
+public class IngredientProperty: Comparable {
     
-    let id: Int
-    let name: String
+    // MARK: - Cache
     
-    init(id: Int, name: String) {
+    /**
+     Local, global cache of propeties. Use ```IngredientPropertyHandler``` to get properties.
+     */
+    public static var properties: [IngredientProperty] = []
+    
+    // MARK: - Properties
+    
+    /**
+     Property id.
+     */
+    public let id: Int
+    /**
+     Property name.
+     */
+    public let name: String
+    
+    // Initalizer
+    
+    /**
+     Create a new property.
+     - Parameter id: ID
+     - Parameter name: Name
+     */
+    public init(id: Int, name: String) {
         self.id = id
         self.name = name
     }
     
-    static var properties: [IngredientProperty] = []
+    // MARK: -  Parsing Data
     
-    class func fromJson(jsonData: JsonObject) -> IngredientProperty? {
+    /**
+     Parse an ingredient property. If the data is invalid, nil is returned.
+     - Parameter jsonData: Json Data
+     - Returns: IngredientProperty from Json Data
+     */
+    public class func fromJson(jsonData: JsonObject) -> IngredientProperty? {
         guard let id = jsonData["id"] as? Int else {
             return nil
         }
@@ -36,11 +66,21 @@ class IngredientProperty: Comparable {
         return IngredientProperty(id: id, name: name)
     }
     
-    static func < (lhs: IngredientProperty, rhs: IngredientProperty) -> Bool {
+    // MARK: - Comparable
+    
+    /**
+     Compare two IngredientProperties by using its id.
+     - Returns: ```true``` First id is less than second id
+     */
+    public static func < (lhs: IngredientProperty, rhs: IngredientProperty) -> Bool {
         return lhs.id < rhs.id
     }
     
-    static func == (lhs: IngredientProperty, rhs: IngredientProperty) -> Bool {
+    /**
+     Compare two IngredientProperties by using its id.
+     - Returns: ```true``` Both objects are equal
+     */
+    public static func == (lhs: IngredientProperty, rhs: IngredientProperty) -> Bool {
         return lhs.id == rhs.id
     }
 }

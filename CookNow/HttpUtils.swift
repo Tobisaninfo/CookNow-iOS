@@ -9,8 +9,8 @@
 import Foundation
 import SwiftClient
 
-typealias JsonObject = [String:Any]
-typealias JsonArray = [[String:Any]]
+public typealias JsonObject = [String:Any]
+public typealias JsonArray = [[String:Any]]
 
 class HttpUtils {
     

@@ -1,3 +1,5 @@
 Carthage/
 Cartfile.resolved
 xcuserdata/
+build/
+docs/

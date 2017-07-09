@@ -9,8 +9,16 @@
 import Foundation
 import CoreData
 
-class CoreDataUtils {
-    class func delete(object: NSManagedObject) {
+/**
+ Util class for the CoreData Framework.
+ */
+public class CoreDataUtils {
+    
+    /**
+     Delete an object from the core data database.
+     - Parameter object: Object to delete.
+     */
+    public class func delete(object: NSManagedObject) {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             let context = delegate.persistentContainer.viewContext
             context.delete(object)

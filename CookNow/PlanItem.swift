@@ -12,14 +12,13 @@ import CoreData
 extension PlanItem {
     private static let className = String(describing: PlanItem.self)
     
-    class func add(recipe: Recipe, order: Int) -> PlanItem? {
+    class func add(day: Int) -> PlanItem? {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             let context = delegate.persistentContainer.viewContext
             if let entity = NSEntityDescription.entity(forEntityName: className, in: context) {
                 if let item = NSManagedObject(entity: entity, insertInto: context) as? PlanItem {
-                    item.recipeID = Int32(recipe.id)
-                    item.order = Int32(order)
-                    item.name = recipe.name
+                    item.day = Int32(day)
+                    item.recipeID = -1
                     
                     delegate.saveContext()
                     
@@ -48,25 +47,34 @@ extension PlanItem {
             func nextNumber() -> Int {
                 var min = 0
                 for item in plan {
-                    if Int(item.order) == min + 1 {
+                    if Int(item.day) == min + 1 {
                         min = min + 1
                     }
                 }
                 return min + 1
             }
             
+            // Add container objects
             while plan.count < 7 {
-                if let newItem = PlanGenerator.nextRecipe(position: nextNumber()) {
-                    plan.append(newItem)
+                if let item = add(day: nextNumber()) {
+                    plan.append(item)
                 }
             }
+            
+            // Fill object
+            for item in plan {
+                if item.isEmpty() {
+                    PlanGenerator.createNewItem(for: item)
+                }
+            }
+            
             return plan
         }
         return nil
     }
     
-    func delete() {
-        CoreDataUtils.delete(object: self)
+    func isEmpty() -> Bool {
+        return recipeID == -1
     }
     
     class func find(recipe: Recipe) -> PlanItem? {

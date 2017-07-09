@@ -13,7 +13,7 @@ class PlanGenerator {
     
     static let NewPlanItem = Notification.Name("NewPlanItem")
     
-    class func nextRecipe(position: Int) -> PlanItem? {
+    class func nextRecipe(position: Int) -> Recipe? {
         if let currentPlan = PlanItem.list(), let rating = Rating.list() {
             let userProperties = getUserProperties()
             
@@ -28,7 +28,7 @@ class PlanGenerator {
                 if positivRecipes.count > 0 {
                     let randomIndex = Int(arc4random_uniform(UInt32(positivRecipes.count)))
                     let recipe = positivRecipes[randomIndex]
-                    return PlanItem.add(recipe: recipe, order: position)
+                    return recipe
                 } else {
                     Rating.list()?.forEach({ $0.delete() })
                 }
@@ -49,7 +49,7 @@ class PlanGenerator {
                 if possibleRecipes.count > 0 {
                     let randomIndex = Int(arc4random_uniform(UInt32(usedList.count)))
                     let recipe = usedList[randomIndex]
-                    return PlanItem.add(recipe: recipe, order: position)
+                    return recipe
                 } else {
                     Rating.list()?.forEach({ $0.delete() })
                 }
@@ -59,21 +59,23 @@ class PlanGenerator {
     }
     
     class func newPlan() {
-        PlanItem.list()?.forEach({
-            let index = Int($0.order)
-            $0.delete()
-            _ = nextRecipe(position: index)
-        })
-        NotificationCenter.default.post(name: NewPlanItem, object: nil)
+        if let plan = PlanItem.getCurrentPlan() {
+            for item in plan {
+                createNewItem(for: item)
+            }
+            NotificationCenter.default.post(name: NewPlanItem, object: -1)
+        }
     }
     
     class func createNewItem(for item: PlanItem, withNotificaiton notification: Bool = false) {
-        let index = Int(item.order)
-        item.delete()
-        _ = nextRecipe(position: index)
-        
-        if notification {
-            NotificationCenter.default.post(name: NewPlanItem, object: index)
+        let index = Int(item.day)
+        if let recipe = nextRecipe(position: index) {
+            item.recipeID = Int32(recipe.id)
+            item.name = recipe.name
+            
+            if notification {
+                NotificationCenter.default.post(name: NewPlanItem, object: index)
+            }
         }
     }
     

@@ -30,7 +30,7 @@ class PlanItemCollectionViewCell: UICollectionViewCell {
     
     @IBAction func flopHandler(_ sender: UIButton) {
         if let planItem = planItem {
-            let index = Int(planItem.order)
+            let index = Int(planItem.day)
             
             Rating.flop(recipe: planItem)
             PlanGenerator.createNewItem(for: planItem)

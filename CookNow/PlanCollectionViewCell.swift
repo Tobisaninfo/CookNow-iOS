@@ -36,7 +36,7 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
     }
 
     private func loadData() {
-        self.planItems = PlanItem.getCurrentPlan()?.sorted(by: {$0.order < $1.order})
+        self.planItems = PlanItem.getCurrentPlan()?.sorted(by: {$0.day < $1.day})
     }
     
     // MARK: - CollectionView Deletage

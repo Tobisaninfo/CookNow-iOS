@@ -66,7 +66,6 @@
 		F69D68001EF99F7100DF2007 /* RecipeViewIngredientCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69D67FE1EF99F7100DF2007 /* RecipeViewIngredientCollectionViewCell.xib */; };
 		F69D68041EF9A03400DF2007 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69D68031EF9A03400DF2007 /* RecipeViewController.swift */; };
 		F69D68051EF9A1BC00DF2007 /* RecipeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F789521EF16CBD009E7323 /* RecipeCollectionViewController.swift */; };
-		F69F55911F06ADB7000831E7 /* NSString+Score.m in Sources */ = {isa = PBXBuildFile; fileRef = F69F55901F06ADB7000831E7 /* NSString+Score.m */; };
 		F6A79BAB1EFD720400B84B21 /* PantryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A79BAA1EFD720400B84B21 /* PantryItem.swift */; };
 		F6AAC5A81EFEF7F800068C33 /* RecipeBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AAC5A71EFEF7F800068C33 /* RecipeBook.swift */; };
 		F6AAC5AB1EFF02ED00068C33 /* TBEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6AAC5AA1EFF02ED00068C33 /* TBEmptyDataSet.framework */; };
@@ -83,6 +82,7 @@
 		F6BD7A901EFFC80D003AA67D /* CookBook2CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6BD7A8F1EFFC80D003AA67D /* CookBook2CollectionViewCell.xib */; };
 		F6BD7A921EFFC836003AA67D /* CookBook1CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6BD7A911EFFC836003AA67D /* CookBook1CollectionViewCell.xib */; };
 		F6BD7A941EFFC998003AA67D /* CookBook0CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6BD7A931EFFC998003AA67D /* CookBook0CollectionViewCell.xib */; };
+		F6CBBCB01F12605000721C79 /* NSString+Score.m in Sources */ = {isa = PBXBuildFile; fileRef = F6CBBCAF1F12605000721C79 /* NSString+Score.m */; };
 		F6D7FABF1EF058F1001DD906 /* SearchBarCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7FABE1EF058F1001DD906 /* SearchBarCollectionReusableView.swift */; };
 		F6D7FAC31EF05993001DD906 /* ProductSearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7FAC21EF05993001DD906 /* ProductSearchCollectionViewController.swift */; };
 		F6DD794E1EFDBA4F001A86F5 /* Barcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD794D1EFDBA4F001A86F5 /* Barcode.swift */; };
@@ -206,8 +206,6 @@
 		F69D67FD1EF99F7100DF2007 /* RecipeViewIngredientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewIngredientCollectionViewCell.swift; sourceTree = "<group>"; };
 		F69D67FE1EF99F7100DF2007 /* RecipeViewIngredientCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeViewIngredientCollectionViewCell.xib; sourceTree = "<group>"; };
 		F69D68031EF9A03400DF2007 /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
-		F69F558F1F06ADAB000831E7 /* NSString+Score.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSString+Score.h"; path = "../NSString+Score.h"; sourceTree = "<group>"; };
-		F69F55901F06ADB7000831E7 /* NSString+Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Score.m"; path = "../NSString+Score.m"; sourceTree = "<group>"; };
 		F6A79BAA1EFD720400B84B21 /* PantryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryItem.swift; sourceTree = "<group>"; };
 		F6AAC5A71EFEF7F800068C33 /* RecipeBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeBook.swift; sourceTree = "<group>"; };
 		F6AAC5AA1EFF02ED00068C33 /* TBEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TBEmptyDataSet.framework; path = Carthage/Build/iOS/TBEmptyDataSet.framework; sourceTree = "<group>"; };
@@ -222,6 +220,8 @@
 		F6BD7A8F1EFFC80D003AA67D /* CookBook2CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CookBook2CollectionViewCell.xib; sourceTree = "<group>"; };
 		F6BD7A911EFFC836003AA67D /* CookBook1CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CookBook1CollectionViewCell.xib; sourceTree = "<group>"; };
 		F6BD7A931EFFC998003AA67D /* CookBook0CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CookBook0CollectionViewCell.xib; sourceTree = "<group>"; };
+		F6CBBCAE1F12605000721C79 /* NSString+Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Score.h"; sourceTree = "<group>"; };
+		F6CBBCAF1F12605000721C79 /* NSString+Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Score.m"; sourceTree = "<group>"; };
 		F6D7FABE1EF058F1001DD906 /* SearchBarCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarCollectionReusableView.swift; sourceTree = "<group>"; };
 		F6D7FAC21EF05993001DD906 /* ProductSearchCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductSearchCollectionViewController.swift; sourceTree = "<group>"; };
 		F6DD794D1EFDBA4F001A86F5 /* Barcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Barcode.swift; sourceTree = "<group>"; };
@@ -433,8 +433,8 @@
 		F69F55921F06ADC6000831E7 /* StringScore */ = {
 			isa = PBXGroup;
 			children = (
-				F69F558F1F06ADAB000831E7 /* NSString+Score.h */,
-				F69F55901F06ADB7000831E7 /* NSString+Score.m */,
+				F6CBBCAE1F12605000721C79 /* NSString+Score.h */,
+				F6CBBCAF1F12605000721C79 /* NSString+Score.m */,
 			);
 			name = StringScore;
 			sourceTree = "<group>";
@@ -789,6 +789,7 @@
 				F667A5AB1F03A6FD003406E4 /* PlanItem.swift in Sources */,
 				F65C60531EEC4D0D008D7F0C /* ShoppingViewController.swift in Sources */,
 				F65AD39F1F0585900000960C /* FinishViewController.swift in Sources */,
+				F6CBBCB01F12605000721C79 /* NSString+Score.m in Sources */,
 				F69D68041EF9A03400DF2007 /* RecipeViewController.swift in Sources */,
 				F64F267E1EE583E000711189 /* MarketHandler.swift in Sources */,
 				F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */,
@@ -805,7 +806,6 @@
 				F65C60501EEC439D008D7F0C /* ResourceHandler.swift in Sources */,
 				F69D67FB1EF99EDB00DF2007 /* RecipeViewInfoCollectionViewCell.swift in Sources */,
 				F64F26841EE5867B00711189 /* MarketOfferHandler.swift in Sources */,
-				F69F55911F06ADB7000831E7 /* NSString+Score.m in Sources */,
 				F69D67FF1EF99F7100DF2007 /* RecipeViewIngredientCollectionViewCell.swift in Sources */,
 				F65C605A1EEC5AE3008D7F0C /* ShoppingTableViewCell.swift in Sources */,
 				F63D1A2B1F07E7100042DE07 /* BarcodeController.swift in Sources */,

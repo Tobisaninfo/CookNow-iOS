@@ -16,8 +16,8 @@ protocol BarcodeControllerDelegate {
 class BarcodeController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     private var captureDevice: AVCaptureDevice?
-    private var captureSession:AVCaptureSession?
-    private var videoPreviewLayer:AVCaptureVideoPreviewLayer?
+    private var captureSession: AVCaptureSession?
+    private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
     private let supportedCodeTypes = [AVMetadataObjectTypeUPCECode,
                               AVMetadataObjectTypeCode39Code,
@@ -53,13 +53,15 @@ class BarcodeController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
             videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
             videoPreviewLayer?.frame = view.layer.bounds
             view.layer.addSublayer(videoPreviewLayer!)
-            
-            // Start video capture.
-            captureSession?.startRunning()            
         } catch {
             print(error)
             return
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // Start video capture.
+        captureSession?.startRunning()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

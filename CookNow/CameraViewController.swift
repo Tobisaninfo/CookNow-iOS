@@ -15,7 +15,7 @@ class CameraViewController: BarcodeController, BarcodeControllerDelegate, Camera
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
-        allowMultipleMetadataObjects = true
+        allowMultipleMetadataObjects = false
         
         itemView.delegate = self
         itemView.dataSource = self
@@ -25,14 +25,20 @@ class CameraViewController: BarcodeController, BarcodeControllerDelegate, Camera
     private var ingredientName: String?
     private var recipeName: String?
     private var recipeImage: UIImage?
+    private var currentCode: String?
     
     func barcodeDidDetect(code: String, frame: CGRect) {
-        var origin = frame.origin
+        if let currentCode = currentCode {
+            self.finishReding(code: currentCode)
+        }
+        self.itemView.removeFromSuperview()
         
+        self.currentCode = code
+        
+        var origin = frame.origin
         if origin.x + 260 > self.view.bounds.size.width {
             origin.x = self.view.bounds.size.width / 2 - 130
         }
-        
         if origin.y + 130 > self.view.bounds.size.height {
             origin.y = self.view.bounds.size.height / 2 - 70
         }
@@ -59,7 +65,7 @@ class CameraViewController: BarcodeController, BarcodeControllerDelegate, Camera
                     }
                 } else {
                     DispatchQueue.main.async {
-                        self.ingredientName = "Failed"
+                        self.ingredientName = barcode.name
                         self.itemView.reloadData()
                     }
                 }
@@ -81,7 +87,11 @@ class CameraViewController: BarcodeController, BarcodeControllerDelegate, Camera
     }
     
     func didSelectReicpeImage() {
-        self.performSegue(withIdentifier: "RecipeViewSegue", sender: self)
+        if let currentCode = currentCode {
+            self.finishReding(code: currentCode)
+            self.itemView.removeFromSuperview()
+            self.performSegue(withIdentifier: "RecipeViewSegue", sender: self)
+        }
     }
     
     func ingredientNameForItem() -> String? {

@@ -49,15 +49,19 @@ class CameraItemView: UIView {
     func reloadData() {
         if let delegate = delegate {
             if delegate.shouldShowActivityView() {
-                activityIndicator.isHidden = false
+                activityIndicator.startAnimating()
                 ingredientNameLabel.isHidden = true
                 recipeNameLabel.isHidden = true
                 recipeImageView.isHidden = true
                 labels.forEach {
                     $0.isHidden = true
                 }
+                
+                ingredientNameLabel.text = nil
+                recipeNameLabel.text = nil
+                recipeImageView.image = nil
             } else {
-                activityIndicator.isHidden = true
+                activityIndicator.stopAnimating()
                 ingredientNameLabel.isHidden = false
                 recipeNameLabel.isHidden = false
                 recipeImageView.isHidden = false
@@ -90,6 +94,8 @@ class CameraItemView: UIView {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         recipeImageView.isUserInteractionEnabled = true
         recipeImageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        activityIndicator.stopAnimating()
     }
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {

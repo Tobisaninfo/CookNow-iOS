@@ -28,7 +28,7 @@ class CameraViewController: BarcodeController, BarcodeControllerDelegate, Camera
     private var currentCode: String?
     
     func barcodeDidDetect(code: String, frame: CGRect) {
-        if let currentCode = currentCode {
+        if let currentCode = currentCode, currentCode != code {
             self.finishReding(code: currentCode)
         }
         self.itemView.removeFromSuperview()

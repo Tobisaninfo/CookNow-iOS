@@ -81,7 +81,6 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
     }
     
     func replaceItem(index: Int) {
-        loadData()
         let viewIndex = index - 1
         if viewIndex < 7 && viewIndex >= 0 {
             planCollectionView.reloadItems(at: [IndexPath(row: viewIndex, section: 0)])

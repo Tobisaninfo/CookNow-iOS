@@ -38,6 +38,17 @@ class BarcodeController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
         
         captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         
+        // Configure Autofocus
+        do {
+            try captureDevice?.lockForConfiguration()
+            captureDevice?.focusPointOfInterest = CGPoint(x: 0.5, y: 0.5)
+            captureDevice?.autoFocusRangeRestriction = .near
+            captureDevice?.focusMode = .continuousAutoFocus
+            captureDevice?.unlockForConfiguration()
+        } catch {
+            print("Fail to set autofocus: \(error)")
+        }
+        
         do {
             let input = try AVCaptureDeviceInput(device: captureDevice)
             
@@ -78,7 +89,6 @@ class BarcodeController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
     
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         if metadataObjects == nil || metadataObjects.count == 0 {
-            print("No QR/barcode is detected")
             return
         }
         

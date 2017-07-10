@@ -55,7 +55,7 @@ public enum Unit: Int {
      - Parameter jsonData: Json Data
      - Returns: Unit from Json Data
      */
-    public static func fromJson(jsonData: JsonObject) -> Unit? {
+    public static func fromJson(jsonData: HttpUtils.JsonObject) -> Unit? {
         guard let id = jsonData["id"] as? Int else {
             return nil
         }

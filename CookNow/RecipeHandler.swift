@@ -19,7 +19,7 @@ class RecipeHandler {
         var recipe: Recipe? = nil
         
         HttpUtils.get(url: "/recipe/\(id)", callback: {
-            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? JsonObject {
+            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? HttpUtils.JsonObject {
                 if let json = jsonData {
                     recipe = Recipe.fromJson(jsonData: json)
                 }
@@ -35,7 +35,7 @@ class RecipeHandler {
         var recipes: [Recipe] = []
         
         HttpUtils.get(url: "/recipe/?ingredient=\(ingredientID)", callback: {
-            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? JsonArray {
+            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? HttpUtils.JsonArray {
                 if let json = jsonData {
                     for item in json {
                         if let recipe = Recipe.fromJson(jsonData: item) {
@@ -53,7 +53,7 @@ class RecipeHandler {
         var recipes: [Recipe] = []
         
         HttpUtils.get(url: "/recipe/", callback: {
-            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? JsonArray {
+            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? HttpUtils.JsonArray {
                 if let json = jsonData {
                     for item in json {
                         if let recipe = Recipe.fromJson(jsonData: item) {

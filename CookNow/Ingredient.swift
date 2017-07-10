@@ -61,7 +61,7 @@ public class Ingredient {
      - Parameter jsonData: Json Data
      - Returns: Ingredient from Json Data
      */
-    public class func fromJson(jsonData: JsonObject) -> Ingredient? {
+    public class func fromJson(jsonData: HttpUtils.JsonObject) -> Ingredient? {
         guard let id = jsonData["id"] as? Int else {
             return nil
         }
@@ -73,7 +73,7 @@ public class Ingredient {
         guard let name = jsonData["name"] as? String else {
             return nil
         }
-        guard let propertiesData = jsonData["property"] as? JsonArray else {
+        guard let propertiesData = jsonData["property"] as? HttpUtils.JsonArray else {
             return nil
         }
         var properties: [IngredientProperty] = []
@@ -83,7 +83,7 @@ public class Ingredient {
             }
         }
         
-        guard let unitData = jsonData["unit"] as? JsonObject else {
+        guard let unitData = jsonData["unit"] as? HttpUtils.JsonObject else {
             return nil
         }
         guard let unit = Unit.fromJson(jsonData: unitData) else {

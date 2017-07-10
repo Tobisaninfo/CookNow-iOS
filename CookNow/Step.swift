@@ -62,7 +62,7 @@ public class Step {
      - Parameter jsonData: Json Data 
      - Returns: Step from Json Data.
      */
-    public class func formJson(jsonData: JsonObject) -> Step? {
+    public class func formJson(jsonData: HttpUtils.JsonObject) -> Step? {
         guard let id = jsonData["id"] as? Int else {
             return nil
         }
@@ -73,7 +73,7 @@ public class Step {
             return nil
         }
         // Items
-        guard let itemsData = jsonData["items"] as? JsonArray else {
+        guard let itemsData = jsonData["items"] as? HttpUtils.JsonArray else {
             return nil
         }
         var items: [Item] = []
@@ -84,7 +84,7 @@ public class Step {
         }
         
         // Ingredients
-        guard let ingredientData = jsonData["ingredients"] as? JsonArray else {
+        guard let ingredientData = jsonData["ingredients"] as? HttpUtils.JsonArray else {
             return nil
         }
         var ingredients: [IngredientUse] = []

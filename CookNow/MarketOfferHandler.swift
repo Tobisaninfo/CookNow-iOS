@@ -14,7 +14,7 @@ class MarketOfferHandler {
         var offers: [MarketOffer] = []
         
         HttpUtils.get(url: "/market/offer/\(market.id)", callback: {
-            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? JsonArray {
+            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? HttpUtils.JsonArray {
                 if let json = jsonData {
                     for item in json {
                         if let market = MarketOffer.fromJson(jsonData: item) {

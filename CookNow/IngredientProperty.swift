@@ -50,7 +50,7 @@ public class IngredientProperty: Comparable {
      - Parameter jsonData: Json Data
      - Returns: IngredientProperty from Json Data
      */
-    public class func fromJson(jsonData: JsonObject) -> IngredientProperty? {
+    public class func fromJson(jsonData: HttpUtils.JsonObject) -> IngredientProperty? {
         guard let id = jsonData["id"] as? Int else {
             return nil
         }

@@ -49,14 +49,14 @@ public class Barcode {
      - Parameter jsonData: Json Data
      - Returns: Barcode from Json Data
      */
-    public class func fromJson(json: JsonObject) -> Barcode? {
+    public class func fromJson(json: HttpUtils.JsonObject) -> Barcode? {
         guard let name = json["name"] as? String else {
             return nil
         }
         guard let amount = json["amount"] as? Double else {
             return nil
         }
-        guard let ingredinentData = json["ingredient"] as? JsonObject else {
+        guard let ingredinentData = json["ingredient"] as? HttpUtils.JsonObject else {
             return Barcode(name: name, amount: amount)
         }
         guard let ingredient = Ingredient.fromJson(jsonData: ingredinentData) else {

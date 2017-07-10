@@ -9,12 +9,30 @@
 import Foundation
 import SwiftClient
 
-public typealias JsonObject = [String:Any]
-public typealias JsonArray = [[String:Any]]
-
-class HttpUtils {
+/**
+ Util class for http requests.
+ */
+public class HttpUtils {
     
-    class func get(url: String, callback: @escaping (Data) -> Void, error: ((Response.BasicResponseType) -> Void)? = nil) {
+    // MARK: - Types
+    
+    /**
+     Typealias for JSON Objects.
+     */
+    public typealias JsonObject = [String:Any]
+    /**
+     Typealias for JSON Arrays.
+     */
+    public typealias JsonArray = [[String:Any]]
+    
+    // MARK: - Methods
+    
+    /**
+     Method to make a get request. This methods blocks the thread.
+     - Parameter url: Host url
+     - Parameter callback: Data callback
+     */
+    class func get(url: String, callback: @escaping (Data) -> Void) {
         let semaphore = DispatchSemaphore.init(value: 0)
         
         if let host = Bundle.main.infoDictionary?["Host"] as? String {

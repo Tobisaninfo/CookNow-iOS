@@ -13,7 +13,7 @@ class IngredientPropertyHandler {
         var properties: [IngredientProperty] = []
         
         HttpUtils.get(url: "/properties/", callback: {
-            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? JsonArray {
+            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? HttpUtils.JsonArray {
                 if let json = jsonData {
                     for item in json {
                         if let ingredient = IngredientProperty.fromJson(jsonData: item) {

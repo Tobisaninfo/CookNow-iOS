@@ -49,14 +49,14 @@ public class IngredientUse {
      - Parameter jsonData: Json Data
      - Returns: IngredientUse from Json Data
      */
-    public class func fromJson(jsonData: JsonObject) -> IngredientUse? {
+    public class func fromJson(jsonData: HttpUtils.JsonObject) -> IngredientUse? {
         guard let amount = jsonData["amount"] as? Double else {
             return nil
         }
         guard let price = jsonData["price"] as? Double else {
             return nil
         }
-        guard let ingredientData = jsonData["ingredient"] as? JsonObject else {
+        guard let ingredientData = jsonData["ingredient"] as? HttpUtils.JsonObject else {
             return nil
         }
         guard let ingredient = Ingredient.fromJson(jsonData: ingredientData) else {

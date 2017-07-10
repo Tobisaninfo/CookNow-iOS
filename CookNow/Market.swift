@@ -50,7 +50,7 @@ public class Market {
      - Parameter jsonData: Json Data
      - Returns: Market from Json Data
      */
-    public class func fromJson(jsonData: JsonObject) -> Market? {
+    public class func fromJson(jsonData: HttpUtils.JsonObject) -> Market? {
         guard let name = jsonData["name"] as? String else {
             return nil
         }

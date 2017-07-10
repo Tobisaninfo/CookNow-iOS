@@ -24,7 +24,7 @@ class IngredientHanler {
         var ingredient: Ingredient? = nil
         
         HttpUtils.get(url: "/ingredient/\(id)", callback: {
-            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? JsonObject {
+            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? HttpUtils.JsonObject {
                 if let json = jsonData {
                     ingredient = Ingredient.fromJson(jsonData: json)
                 }
@@ -38,7 +38,7 @@ class IngredientHanler {
         var ingredients: [Ingredient] = []
         
         HttpUtils.get(url: "/ingredient/", callback: {
-            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? JsonArray {
+            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? HttpUtils.JsonArray {
                 if let json = jsonData {
                     for item in json {
                         if let ingredient = Ingredient.fromJson(jsonData: item) {
@@ -56,7 +56,7 @@ class IngredientHanler {
         var barcode: Barcode? = nil
 
         HttpUtils.get(url: "/barcode/?ean=\(code)", callback: {
-            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? JsonObject {
+            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? HttpUtils.JsonObject {
                 if let json = jsonData {
                     barcode = Barcode.fromJson(json: json)
                 }

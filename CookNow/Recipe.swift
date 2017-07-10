@@ -80,7 +80,7 @@ public class Recipe {
      - Parameter jsonData: Json Data
      - Returns: Recipe from Json Data
      */
-    public class func fromJson(jsonData: JsonObject) -> Recipe? {
+    public class func fromJson(jsonData: HttpUtils.JsonObject) -> Recipe? {
         // Base Data
         guard let id = jsonData["id"] as? Int else {
             return nil
@@ -96,7 +96,7 @@ public class Recipe {
         }
         
         // Steps
-        guard let stepsData = jsonData["steps"] as? JsonArray else {
+        guard let stepsData = jsonData["steps"] as? HttpUtils.JsonArray else {
             return nil
         }
         var steps: [Step] = []

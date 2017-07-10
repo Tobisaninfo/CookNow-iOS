@@ -22,7 +22,7 @@ class MarketHandler {
     class func list() -> [Market] {
         var markets: [Market] = []
         HttpUtils.get(url: "/market/", callback: {
-            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? JsonArray {
+            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? HttpUtils.JsonArray {
                 if let json = jsonData {
                     for item in json {
                         if let market = Market.fromJson(jsonData: item) {

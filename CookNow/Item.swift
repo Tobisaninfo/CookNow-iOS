@@ -44,7 +44,7 @@ public class Item {
      - Parameter jsonData: Json Data
      - Returns: Item from Json Data.
      */
-    public class func fromJson(jsonData: JsonObject) -> Item? {
+    public class func fromJson(jsonData: HttpUtils.JsonObject) -> Item? {
         guard let name = jsonData["name"] as? String else {
             return nil
         }

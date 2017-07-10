@@ -33,7 +33,7 @@ public class Ingredient {
      */
     public let properties: [IngredientProperty]
     
-    // MARK: - Initalizer
+    // MARK: - Initializer
     
     /**
      Create a new ingredient.

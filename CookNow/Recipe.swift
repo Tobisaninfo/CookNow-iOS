@@ -36,7 +36,7 @@ public class Recipe {
      */
     public let difficulty: Int
     
-    // MARK: - Initalizer
+    // MARK: - Initializer
     
     /**
      Create a new Recipe.

@@ -44,7 +44,7 @@ public class MarketOffer {
      */
     public let expires: Date
     
-    // MARK: - Initalizer
+    // MARK: - Initializer
     
     /**
      Create a new offer.

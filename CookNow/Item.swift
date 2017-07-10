@@ -25,7 +25,7 @@ public class Item {
      */
     public let name: String
     
-    // MARK: - Initalizer
+    // MARK: - Initializer
     
     /**
      Create a new item with id and name.

@@ -37,7 +37,7 @@ public class Step {
      */
     public let items: [Item]
     
-    // MARK: - Initalizer
+    // MARK: - Initializer
     
     /**
      Create a new step using the data.

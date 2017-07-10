@@ -31,7 +31,7 @@ public class IngredientProperty: Comparable {
      */
     public let name: String
     
-    // Initalizer
+    // MARK: - Initializer
     
     /**
      Create a new property.

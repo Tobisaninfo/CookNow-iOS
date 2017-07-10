@@ -9,11 +9,22 @@
 import UIKit
 import AVFoundation
 
-protocol BarcodeControllerDelegate {
+/**
+ Protocoll to handle events from ```BarcodeConroller```.
+ */
+public protocol BarcodeControllerDelegate {
+    /**
+     This function is called, than a barcode is recognized. You have to call the method ```BarcodeController.finishReading(:)``` to end up the recognition process.
+     - Parameter code: Barcode as String
+     - Parameter frame: Frame in camera view, there the code is recognized
+     */
     func barcodeDidDetect(code: String, frame: CGRect)
 }
 
-class BarcodeController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+/**
+ An UIViewController for Barcode Recogition. This ViewController adds a ```AVCaptureVideoPreviewLayer``` on top of the view stack and starts an ```AVCaptureSession```.
+ */
+public class BarcodeController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     private var captureDevice: AVCaptureDevice?
     private var captureSession: AVCaptureSession?
@@ -30,10 +41,19 @@ class BarcodeController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
                               AVMetadataObjectTypePDF417Code,
                               AVMetadataObjectTypeQRCode]
     
-    var delegate: BarcodeControllerDelegate?
-    var allowMultipleMetadataObjects: Bool = false
+    /**
+     Delegate for the BarcodeController.
+     */
+    public var delegate: BarcodeControllerDelegate?
+    /**
+     Allow to recognize multiple codes at the same time.
+     */
+    public var allowMultipleMetadataObjects: Bool = false
     
-    override func viewDidLoad() {
+    /**
+     Is called, then the view is loaded.
+     */
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
@@ -49,6 +69,7 @@ class BarcodeController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
             print("Fail to set autofocus: \(error)")
         }
         
+        // Setup capture session and preview.
         do {
             let input = try AVCaptureDeviceInput(device: captureDevice)
             
@@ -70,16 +91,16 @@ class BarcodeController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         // Start video capture.
         captureSession?.startRunning()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override public func viewDidDisappear(_ animated: Bool) {
         captureSession?.stopRunning()
     }
     
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
@@ -87,7 +108,10 @@ class BarcodeController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
     
     private var processing: [String] = []
     
-    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+    /**
+     Handles the recognized barcodes.
+     */
+    public final func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         if metadataObjects == nil || metadataObjects.count == 0 {
             return
         }
@@ -110,7 +134,10 @@ class BarcodeController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
         }
     }
     
-    var isTourchEnable: Bool = false {
+    /**
+     Enable the devices tourch, if available.
+     */
+    public var isTourchEnable: Bool = false {
         didSet {
             if let captureDevice = self.captureDevice {
                 if captureDevice.hasFlash && captureDevice.hasTorch {
@@ -131,7 +158,11 @@ class BarcodeController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
         }
     }
     
-    func finishReding(code: String) {
+    /**
+     Mark barcode as finish.
+     - Parameter code: Barcode from the delegate method ```BarcodeControllerDelegate.barcodeDidDetect(code:frame:)```
+     */
+    public func finishReding(code: String) {
         if let index = processing.index(of: code) {
             processing.remove(at: index)
         }

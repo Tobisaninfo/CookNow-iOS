@@ -16,7 +16,7 @@ public class IngredientUse {
     // MARK: - Properties
     
     /**
-     Ingredient Refernce.
+     Ingredient Reference.
      */
     public let ingredient: Ingredient
     /**
@@ -28,7 +28,7 @@ public class IngredientUse {
      */
     public let price: Double
     
-    // MARK: - Initalizer
+    // MARK: - Initializer
     
     /**
      Create a new object.

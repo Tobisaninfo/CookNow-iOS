@@ -31,7 +31,7 @@ public class Market {
      */
     public let name: String
     
-    // MARK: - Initalizer
+    // MARK: - Initializer
     
     /**
      Create a new market.

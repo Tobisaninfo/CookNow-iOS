@@ -28,7 +28,7 @@ public class Barcode {
      */
     public let ingredient: Ingredient?
     
-    // MARK: - Initalizer
+    // MARK: - Initializer
     
     /**
      Create a new barcode object.

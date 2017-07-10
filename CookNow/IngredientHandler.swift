@@ -8,16 +8,32 @@
 
 import Foundation
 
-class IngredientHanler {
+/**
+ This class contains methods to get information abount ingredients.
+ */
+public class IngredientHanler {
     
+    /**
+     Local cache for ingredients.
+     */
     private static var cache: [Int:Ingredient] = [:]
     
-    class func getLocal(id: Int) -> Ingredient? {
+    /**
+     Get an ingredient from the local cache.
+     - Parameter id: Ingredient ID
+     - Returns: Ingredient or ```nil```
+     */
+    public class func getLocal(id: Int) -> Ingredient? {
         return cache[id]
     }
     
-    class func get(id: Int) -> Ingredient? {
-        if let local = getLocal(id: id) {
+    /**
+     Get an ingredient from the server or cache.
+     - Parameter id: Ingredient ID
+     - Returns: Ingredient or ```nil```
+     */
+    public class func get(id: Int, fetch: Bool = false) -> Ingredient? {
+        if let local = getLocal(id: id), !fetch {
             return local
         }
         
@@ -34,7 +50,11 @@ class IngredientHanler {
         return ingredient
     }
     
-    class func list() -> [Ingredient] {
+    /**
+     List all ingredients.
+     - Returns: List of ingredients.
+     */
+    public class func list() -> [Ingredient] {
         var ingredients: [Ingredient] = []
         
         HttpUtils.get(url: "/ingredient/", callback: {
@@ -52,7 +72,7 @@ class IngredientHanler {
         return ingredients
     }
     
-    class func barcode(code: String) -> Barcode? {
+    public class func barcode(code: String) -> Barcode? {
         var barcode: Barcode? = nil
 
         HttpUtils.get(url: "/barcode/?ean=\(code)", callback: {

@@ -32,7 +32,7 @@ public class HttpUtils {
      - Parameter url: Host url
      - Parameter callback: Data callback
      */
-    class func get(url: String, callback: @escaping (Data) -> Void) {
+    public class func get(url: String, callback: @escaping (Data) -> Void) {
         let semaphore = DispatchSemaphore.init(value: 0)
         
         if let host = Bundle.main.infoDictionary?["Host"] as? String {

@@ -8,9 +8,17 @@
 
 import Foundation
 
-class MarketHandler {
+/**
+ This class contains methods to get information abount markets.
+ */
+public class MarketHandler {
     
-    class func get(id: Int) -> Market? {
+    /**
+     Get a market by id.
+     - Parameter id: Market id
+     - Returns: Market or ```nil```
+     */
+    public class func get(id: Int) -> Market? {
         for market in list() {
             if market.id == id {
                 return market
@@ -19,7 +27,11 @@ class MarketHandler {
         return nil
     }
     
-    class func list() -> [Market] {
+    /**
+     List all available markets
+     - Returns: List of markets.
+     */
+    public class func list() -> [Market] {
         var markets: [Market] = []
         HttpUtils.get(url: "/market/", callback: {
             if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? HttpUtils.JsonArray {

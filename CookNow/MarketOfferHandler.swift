@@ -8,9 +8,17 @@
 
 import Foundation
 
-class MarketOfferHandler {
+/**
+ This class contains methods to get information abount market offers.
+ */
+public class MarketOfferHandler {
     
-    class func list(market: Market) -> [MarketOffer] {
+    /**
+     List all offers for a market.
+     - Parameter market: Market
+     - Returns: List of market offers 
+     */
+    public class func list(market: Market) -> [MarketOffer] {
         var offers: [MarketOffer] = []
         
         HttpUtils.get(url: "/market/offer/\(market.id)", callback: {

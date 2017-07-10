@@ -9,14 +9,33 @@
 
 import UIKit
 
-class ResourceHandler {
+/**
+ Class that provides methods for handling resources like images.
+ */
+public class ResourceHandler {
     
-    enum Scope {
+    /**
+     Type of Resource
+     */
+    public enum Scope {
+        /**
+         Recipe.
+         */
         case recipe
+        /**
+         Ingredient.
+         */
         case ingredient
+        /**
+         Market
+         */
         case market
         
-        func url() -> String {
+        /**
+         Get the url part name of the scope.
+         - Returns: Url name
+         */
+        public func url() -> String {
             switch self {
             case .recipe:
                 return "recipe"
@@ -28,7 +47,14 @@ class ResourceHandler {
         }
     }
 
-    class func loadImage(scope: Scope, id: Int, handler: ((UIImage?) -> UIImage?)? = nil) -> UIImage? {
+    /**
+     Load an image from disk or network.
+     - Parameter scope: Type of image
+     - Parameter id: Id of the item
+     - Parameter handler: Change image before it will returned
+     - Returns: Loaded image
+     */
+    public class func loadImage(scope: Scope, id: Int, handler: ((UIImage?) -> UIImage?)? = nil) -> UIImage? {
         let fileSuffix = scope == .market ? "png" : "jpg"
         
         let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] as String

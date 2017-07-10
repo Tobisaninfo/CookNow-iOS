@@ -8,8 +8,16 @@
 
 import Foundation
 
-class IngredientPropertyHandler {
-    class func list() -> [IngredientProperty] {
+/**
+ This class contains methods to get information abount properties.
+ */
+public class IngredientPropertyHandler {
+    
+    /**
+     List all available properties.
+     - Returns: List of properties
+     */
+    public class func list() -> [IngredientProperty] {
         var properties: [IngredientProperty] = []
         
         HttpUtils.get(url: "/properties/", callback: {

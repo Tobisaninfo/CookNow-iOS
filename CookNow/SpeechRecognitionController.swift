@@ -9,19 +9,47 @@
 import UIKit
 import Speech
 
-protocol SpeechRecognitionDelegate {
+/**
+ Delegate for the ```SpechRecognitionController```. This protocoll provides methods to handle speech-to-text recognition.
+ */
+public protocol SpeechRecognitionDelegate {
+    /**
+     This method is invoked than the text is recognized.
+     */
     func speechDidRecognize(result: SFSpeechRecognitionResult)
 }
 
-enum SpeechRecognitionControllerState {
+/**
+ Enumeration of States for the ```SpeechRecognitionController```.
+ */
+public enum SpeechRecognitionState {
+    /**
+     Controller is listening.
+     */
     case listening
+    /**
+     Controller is ready to listen.
+     */
     case ready
+    /**
+     Controller is unautherized.
+     */
     case unauthorized
 }
 
-class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
+/**
+ A controller that handles speech-to-text recognition. It handles all setup for audio interaction and user authorization.
+ */
+public class SpeechRecognitionController: NSObject {
 
-    var delegate: SpeechRecognitionDelegate?
+    // MARK: - delegate
+    
+    /**
+     Controller delegate.
+     */
+    public var delegate: SpeechRecognitionDelegate?
+    
+    // MARK: - Audio Input
     
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "de-DE"))
 
@@ -33,11 +61,20 @@ class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
     private var lowPassResults: Double = 0
     private var levelTimer: Timer?
     
-    private(set) var state: SpeechRecognitionControllerState = .unauthorized
+    // MARK: - Properties
     
-    func setup() -> Bool {
-        speechRecognizer?.delegate = self
-        
+    /**
+     State of the controller.
+     */
+    private(set) public var state: SpeechRecognitionState = .unauthorized
+    
+    // MARK: - Methods
+    
+    /**
+     Setup the audio input and user authorization.
+     - Returns: ```true``` Speech Recognition is authorized
+     */
+    public func setup() -> Bool {
         var success = false
         SFSpeechRecognizer.requestAuthorization { (authStatus) in
             switch authStatus {
@@ -60,12 +97,17 @@ class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
         return success
     }
     
-    func start() {
+    /**
+     Setup the audio input and starts recording.
+     */
+    public func start() {
+        // Cancel previous task
         if recognitionTask != nil {
             recognitionTask?.cancel()
             recognitionTask = nil
         }
         
+        // Setup input
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSessionCategoryRecord)
@@ -75,6 +117,7 @@ class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
             print("audioSession properties weren't set because of an error.")
         }
 
+        // Setup recognition
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
 
         guard let inputNode = audioEngine.inputNode else {
@@ -126,6 +169,7 @@ class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
             levelTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.levelTimerCallback), userInfo: nil, repeats: true)
         }
         
+        // Start
         audioEngine.prepare()
         
         do {
@@ -136,12 +180,17 @@ class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
         }
     }
     
-    func stop() {
+    /**
+     Stops the audio recording and speech recognition.
+     */
+    public func stop() {
         recognitionRequest?.endAudio()
         if let node = audioEngine.inputNode {
             node.removeTap(onBus: 0)
         }
         audioEngine.stop()
+        
+        // Set device to audio output
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSessionCategoryPlayback)
@@ -150,12 +199,16 @@ class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
         } catch {
             print("audioSession properties weren't set because of an error.")
         }
+        
         recorder?.stop()
         levelTimer?.invalidate()
         state = .ready
     }
     
-    func cancel() {
+    /**
+     Cancel the audio recording and speech recognition.
+     */
+    public func cancel() {
         recognitionTask?.cancel()
         self.stop()
     }
@@ -163,7 +216,7 @@ class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
     private var counter = 0
     
     // Source https://stackoverflow.com/questions/36008063/ios-9-detect-silent-mode
-    func levelTimerCallback(_ timer: Timer) {
+    @objc private func levelTimerCallback(_ timer: Timer) {
         recorder?.updateMeters()
         
         if let level = recorder?.peakPower(forChannel: 0) {
@@ -181,9 +234,5 @@ class SpeechRecognitionController: NSObject, SFSpeechRecognizerDelegate {
                 counter = 0
             }
         }
-    }
-    
-    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-        print(available)
     }
 }

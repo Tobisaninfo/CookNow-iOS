@@ -16,7 +16,7 @@ public class Barcode {
     // MARK: - Properties
     
     /**
-     Barcode name.
+     Prodcut name.
      */
     public let name: String
     /**

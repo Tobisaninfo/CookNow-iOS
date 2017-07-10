@@ -9,11 +9,21 @@
 import Foundation
 import CoreData
 
-class PlanGenerator {
+/**
+ This class contains methods to generate the weekly plan.
+ */
+public class PlanGenerator {
     
-    static let NewPlanItem = Notification.Name("NewPlanItem")
+    /**
+     Notification when an plan item was changed. Theobject send with the notification is eather the index of the plan item or -1.
+     */
+    public static let NewPlanItem = Notification.Name("NewPlanItem")
     
-    class func nextRecipe(position: Int) -> Recipe? {
+    /**
+     Get a random recipe. This method uses network connection to get informationen from the server. It should run in a background thread.
+     -
+     */
+    public class func nextRecipe() -> Recipe? {
         if let currentPlan = PlanItem.list(), let rating = Rating.list() {
             let userProperties = getUserProperties()
             
@@ -58,7 +68,10 @@ class PlanGenerator {
         return nil
     }
     
-    class func newPlan() {
+    /**
+     Create a new plan for all 7 days. This method sends a ```NewPlanItem``` notification. This method uses the ```nextRecipe()```method.
+     */
+    public class func newPlan() {
         if let plan = PlanItem.getCurrentPlan() {
             for item in plan {
                 createNewItem(for: item)
@@ -67,9 +80,13 @@ class PlanGenerator {
         }
     }
     
-    class func createNewItem(for item: PlanItem, withNotificaiton notification: Bool = false) {
-        let index = Int(item.day)
-        if let recipe = nextRecipe(position: index) {
+    /**
+     Update the recipe for a plan item. This method sends a ```NewPlanItem``` notification. This method uses the ```nextRecipe()```method.
+     - Parameter item: Plan Item to update
+     - Parameter notification: Sends a ```NewPlanitem``` notification. Default Value is false
+     */
+    public class func createNewItem(for item: PlanItem, withNotificaiton notification: Bool = false) {
+        if let recipe = nextRecipe() {
             item.recipeID = Int32(recipe.id)
             item.name = recipe.name
             
@@ -79,7 +96,12 @@ class PlanGenerator {
         }
     }
     
-    // Getter
+    // MARK: - Getter
+    
+    /**
+     Get the users properties.
+     - Returns: List of properties
+     */
     private class func getUserProperties() -> [IngredientProperty] {
         var properties = [IngredientProperty]()
         for property in IngredientProperty.properties {
@@ -92,6 +114,10 @@ class PlanGenerator {
     
     // MARK: - Check Methods
     
+    /**
+     Check a recipe against the properties.
+     - Parameter recipe
+     */
     private class func checkProperties(recipe: Recipe, userProperties: [IngredientProperty]) -> Bool {
         for ingredient in recipe.ingredients {
             for userProperty in userProperties {
@@ -103,6 +129,12 @@ class PlanGenerator {
         return true
     }
     
+    /**
+     Check if a recipe is already in the weekly plan.
+     - Parameter recipe: Recipe to test
+     - Parameter plan: Current plan.
+     - Returns: ```true``` Recipe is in plan.
+     */
     private class func contains(recipe: Recipe, inPlan plan: [PlanItem]) -> Bool {
         for item in plan {
             if Int(item.recipeID) == recipe.id {
@@ -112,6 +144,12 @@ class PlanGenerator {
         return false
     }
     
+    /**
+     Check if a recipe is rated negative.
+     - Parameter recipe: Recipe to test
+     - Parameter rating: List of ratings.
+     - Returns: ```true``` Recipe is rated negative.
+     */
     private class func contains(recipe: Recipe, inNegativeRating rating: [Rating]) -> Bool {
         for item in rating {
             if Int(item.recipeID) == recipe.id && item.rating < 0 {
@@ -121,6 +159,12 @@ class PlanGenerator {
         return false
     }
     
+    /**
+     Check if a recipe is rated positive.
+     - Parameter recipe: Recipe to test
+     - Parameter rating: List of ratings.
+     - Returns: ```true``` Recipe is rated positive.
+     */
     private class func contains(recipe: Recipe, inPositiveRating rating: [Rating]) -> Bool {
         for item in rating {
             if Int(item.recipeID) == recipe.id && item.rating > 0 {

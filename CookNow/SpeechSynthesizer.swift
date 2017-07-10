@@ -9,29 +9,59 @@
 import Foundation
 import AVFoundation
 
-enum SpeechSynthesizerState {
+/**
+ Enumeration of ```SpeechSynthesizer``` States.
+ */
+public enum SpeechSynthesizerState {
+    /**
+     Text-to-speech is running.
+     */
     case running
+    /**
+     SpeechSynthesizer is ready to use.
+     */
     case ready
 }
 
-protocol SpeechSynthesizerDelegate {
+/**
+ Delegate for the ```SpeechSynthesizer```. This protocoll provides methods to handle text-to-speech.
+ */
+public protocol SpeechSynthesizerDelegate {
+    /**
+     This method is invoked then the SpeechSynthesizer finish the text-to-speech process.
+     */
     func synthesizerDidEnd()
 }
 
-class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate {
+/**
+ Class to handle text-to-speech easy.
+ */
+public class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate {
+    
+    // MARK: - Properties
     
     private let voice = AVSpeechSynthesisVoice.speechVoices().first(where: { $0.name == "Anna (Enhanced)" })
     private var speechSynthesizer: AVSpeechSynthesizer?
     
-    private(set) var state: SpeechSynthesizerState = .ready
+    /**
+     State of the controller.
+     */
+    private(set) public var state: SpeechSynthesizerState = .ready
     
-    var delegate: SpeechSynthesizerDelegate?
+    // MARK: - Delegate
     
-    override init() {
-        super.init()
-    }
+    /**
+     Controller delegate.
+     */
+    public var delegate: SpeechSynthesizerDelegate?
     
-    func speak(text: String) {
+    // MARK: - Methods
+    
+    /**
+     Read a text out to the user.
+     - Parameter text: String to read
+     */
+    public func speak(text: String) {
         let speechUtterance = AVSpeechUtterance(string: text)
         speechUtterance.voice = voice
         
@@ -40,11 +70,19 @@ class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate {
         speechSynthesizer?.speak(speechUtterance)
     }
     
-    func cancel() {
+    /**
+     Cancel the current text-to-speech process.
+     */
+    public func cancel() {
         speechSynthesizer?.stopSpeaking(at: .immediate)
     }
     
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+    // MARK: - Delegate
+    
+    /**
+     Handels the internal delegate.
+     */
+    final public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         state = .ready
         delegate?.synthesizerDidEnd()
     }

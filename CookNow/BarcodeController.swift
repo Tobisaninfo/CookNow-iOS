@@ -10,11 +10,11 @@ import UIKit
 import AVFoundation
 
 /**
- Protocoll to handle events from ```BarcodeConroller```.
+ Protocoll to handle events from ```BarcodeController```.
  */
 public protocol BarcodeControllerDelegate {
     /**
-     This function is called, than a barcode is recognized. You have to call the method ```BarcodeController.finishReading(:)``` to end up the recognition process.
+     This function is called, than a barcode is recognized. You have to call the method ```BarcodeController.finishReading(code:)``` to end up the recognition process.
      - Parameter code: Barcode as String
      - Parameter frame: Frame in camera view, there the code is recognized
      */
@@ -41,14 +41,46 @@ public class BarcodeController: UIViewController, AVCaptureMetadataOutputObjects
                               AVMetadataObjectTypePDF417Code,
                               AVMetadataObjectTypeQRCode]
     
+    // MARK: - Delegate
+    
     /**
      Delegate for the BarcodeController.
      */
     public var delegate: BarcodeControllerDelegate?
+    
+    // MARK: - Properties
+    
     /**
      Allow to recognize multiple codes at the same time.
      */
     public var allowMultipleMetadataObjects: Bool = false
+    
+    
+    /**
+     Enable the devices tourch, if available.
+     */
+    public var isTourchEnable: Bool = false {
+        didSet {
+            if let captureDevice = self.captureDevice {
+                if captureDevice.hasFlash && captureDevice.hasTorch {
+                    do {
+                        try captureDevice.lockForConfiguration()
+                        
+                        if isTourchEnable {
+                            try captureDevice.setTorchModeOnWithLevel(AVCaptureMaxAvailableTorchLevel)
+                        } else {
+                            captureDevice.torchMode = AVCaptureTorchMode.off
+                        }
+                        captureDevice.unlockForConfiguration()
+                    } catch {
+                        print(error)
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: - ViewController
     
     /**
      Is called, then the view is loaded.
@@ -128,30 +160,6 @@ public class BarcodeController: UIViewController, AVCaptureMetadataOutputObjects
                                 break
                             }
                         }
-                    }
-                }
-            }
-        }
-    }
-    
-    /**
-     Enable the devices tourch, if available.
-     */
-    public var isTourchEnable: Bool = false {
-        didSet {
-            if let captureDevice = self.captureDevice {
-                if captureDevice.hasFlash && captureDevice.hasTorch {
-                    do {
-                        try captureDevice.lockForConfiguration()
-                        
-                        if isTourchEnable {
-                            try captureDevice.setTorchModeOnWithLevel(AVCaptureMaxAvailableTorchLevel)
-                        } else {
-                            captureDevice.torchMode = AVCaptureTorchMode.off
-                        }
-                        captureDevice.unlockForConfiguration()
-                    } catch {
-                        print(error)
                     }
                 }
             }

@@ -9,22 +9,44 @@
 import Foundation
 import Speech
 
-class SpeechProcescor {
+/**
+ Class to process text from the recognition.
+ */
+public class SpeechProcescor {
 
-    typealias SpeechHandler = (SFTranscription) -> String?
+    // MARK: - Types
+    
+    /**
+     Function type for the processing methods.
+     */
+    public typealias SpeechHandler = (SFTranscription) -> String?
+    
+    // MARK: - Properties
     
     private let recipe: Recipe
     private var currentStep = 0
     
-    private var processors: [SpeechHandler] = []
+    /**
+     Contains the processors.
+     */
+    public var processors: [SpeechHandler] = []
     
-    init(recipe: Recipe) {
+    /**
+     Create a new instance of the class.
+     - Parameter recipe:
+     */
+    public init(recipe: Recipe) {
         self.recipe = recipe
         self.processors.append(getIngredinent(transcription:))
         self.processors.append(getDescription(transcription:))
     }
     
-    func execute(transcript: SFTranscription) -> String {
+    /**
+     Execute the processor methods with a transcription.
+     - Parameter transcription: Speech recognition transcription
+     - Returns: Result string for the text-to-speech or ```nil```
+     */
+    public func execute(transcript: SFTranscription) -> String {
         for processor in processors {
             if let result = processor(transcript) {
                 return result
@@ -33,7 +55,7 @@ class SpeechProcescor {
         return "Ich verstehe \(transcript.formattedString) nicht"
     }
     
-    func getIngredinent(transcription: SFTranscription) -> String? {
+    private func getIngredinent(transcription: SFTranscription) -> String? {
         // Check transcription
         if !contains(transcription: transcription, keywords: "welche", "zutaten") &&
             !contains(transcription: transcription, keywords: "welche", "zutat") &&
@@ -65,7 +87,7 @@ class SpeechProcescor {
         }
     }
     
-    func getDescription(transcription: SFTranscription) -> String? {
+    public func getDescription(transcription: SFTranscription) -> String? {
         if !contains(transcription: transcription, keywords: "was", "machen") &&
             !contains(transcription: transcription, keywords: "was", "schritt") &&
             !contains(transcription: transcription, keywords: "welcher", "schritt") &&
@@ -91,7 +113,13 @@ class SpeechProcescor {
         }
     }
     
-    private func contains(transcription: SFTranscription, keywords: String...) -> Bool {
+    /**
+     Check is a list of keywords are in the transcription.
+     - Parameter transciption: Text Transcription
+     - Parameter keywords: List of keywords
+     - Returns: ```true``` All keywords are in the transcription
+     */
+    public func contains(transcription: SFTranscription, keywords: String...) -> Bool {
         for word in keywords {
             var find = false
             for segment in transcription.segments {

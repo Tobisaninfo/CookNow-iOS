@@ -9,8 +9,16 @@
 import Foundation
 import CoreData
 
-class ShoppingItemController {
-    class func missingItemsForWeeklyPlan() -> [ShoppingItem] {
+/**
+ This class provides methods to create the shopping list depending on the weekly plan.
+ */
+public class ShoppingItemController {
+    
+    /**
+     Get the items for the recipes in the weeklply plan, that are not in the pantry. This method uses network connection to get all needed information. It should be run in a background thread.
+     - Returns: Shopping Items (already in the CoreData database)
+     */
+    public class func missingItemsForWeeklyPlan() -> [ShoppingItem] {
         var shoppingItems: [ShoppingItem] = []
         if let plan = PlanItem.getCurrentPlan(), let pantry = PantryItem.list() {
             for item in plan {
@@ -24,6 +32,10 @@ class ShoppingItemController {
         return shoppingItems
     }
     
+    /**
+     Get all missing items for a recipe depending on the pantry items.
+     - Returns: Shopping items for the recipe
+     */
     private class func missingItemsForRecipe(recipe: Recipe, inPanty pantry: [PantryItem]) -> [ShoppingItem] {
         var shoppingItems: [ShoppingItem] = []
         for ingredient in recipe.ingredients {
@@ -46,27 +58,19 @@ class ShoppingItemController {
         return shoppingItems
     }
     
-    class func clearUnusedItems(list: [ShoppingItem]) {
-        ShoppingItem.list()?.forEach({
-            var found = false
-            for item in list {
-                if item.id == $0.id {
-                    found = true
-                    break
-                }
-            }
-            if !found {
-                $0.delete()
-            }
-        })
-    }
-    
-    class func clearShoppingList() {
+    /**
+     Clear all items.
+     */
+    public class func clearShoppingList() {
         ShoppingItem.list()?.forEach({$0.delete()})
     }
     
-    
-    class func group(shoppingItems: [ShoppingItem]) -> [[ShoppingItem]] {
+    /**
+     Ground all shopping items into an array of similar items. Each array contains the indiviual shopping items from the recipe.
+     - Parameter shoppingItems: List of items to group
+     - Returns: Grouped items
+     */
+    public class func group(shoppingItems: [ShoppingItem]) -> [[ShoppingItem]] {
         var result = [[ShoppingItem]]()
         for item in shoppingItems {
             var found = false

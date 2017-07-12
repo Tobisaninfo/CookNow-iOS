@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CameraViewController: BarcodeController, BarcodeControllerDelegate, CameraItemViewDataSource, CameraItemViewDelegate {
     
     let itemView = CameraItemView()
+    
+    @IBOutlet weak var flashButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +22,13 @@ class CameraViewController: BarcodeController, BarcodeControllerDelegate, Camera
         
         itemView.delegate = self
         itemView.dataSource = self
+        
+        view.bringSubview(toFront: flashButton)
+    }
+    
+    @IBAction func flashButtonHandler(_ sender: UIButton) {
+        self.isTourchEnable = !self.isTourchEnable
+        flashButton.setImage(isTourchEnable ? #imageLiteral(resourceName: "Flash-Filled") : #imageLiteral(resourceName: "Flash"), for: .normal)
     }
     
     private var recipe: Recipe?
@@ -32,6 +42,8 @@ class CameraViewController: BarcodeController, BarcodeControllerDelegate, Camera
             self.finishReding(code: currentCode)
         }
         self.itemView.removeFromSuperview()
+        
+        AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
         
         self.currentCode = code
         

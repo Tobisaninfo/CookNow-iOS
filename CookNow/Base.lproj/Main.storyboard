@@ -354,9 +354,27 @@
                     <view key="view" contentMode="scaleToFill" id="ehn-0n-56y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osJ-jB-ZUq">
+                                <rect key="frame" x="10" y="74" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Ksa-UP-4zN"/>
+                                    <constraint firstAttribute="height" constant="50" id="hNA-96-wvx"/>
+                                </constraints>
+                                <state key="normal" image="Flash"/>
+                                <connections>
+                                    <action selector="flashButtonHandler:" destination="tES-2T-NJo" eventType="touchUpInside" id="ooA-eU-Vgt"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="osJ-jB-ZUq" firstAttribute="leading" secondItem="ehn-0n-56y" secondAttribute="leadingMargin" constant="-6" id="HxD-hp-nCH"/>
+                            <constraint firstItem="osJ-jB-ZUq" firstAttribute="top" secondItem="JzG-wH-ofa" secondAttribute="bottom" constant="10" id="WBF-oS-S1z"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="flashButton" destination="osJ-jB-ZUq" id="6W9-gE-Cbx"/>
                         <segue destination="yIJ-wE-VmR" kind="show" identifier="RecipeViewSegue" id="RxR-Ao-hkW"/>
                     </connections>
                 </viewController>

@@ -24,7 +24,8 @@ class ScannerViewController: BarcodeController, BarcodeControllerDelegate {
     
     func barcodeDidDetect(code: String, frame: CGRect) {
         HUD.show(.progress)
-        
+        AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+
         DispatchQueue.global().async {
             if let barcode = IngredientHanler.barcode(code: code) {
                 if let ingredient = barcode.ingredient {

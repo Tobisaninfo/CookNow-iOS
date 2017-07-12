@@ -12,10 +12,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RecipeViewInfoCollectionViewCell" customModule="CookNow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="easy • 12 min • 3,20 €" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7U-tU-Kym">
@@ -39,9 +39,12 @@
                             <action selector="shareHandler:" destination="gTV-IL-0wX" eventType="touchUpInside" id="sbG-Yg-3R8"/>
                         </connections>
                     </button>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGS-Qz-I9G">
-                        <rect key="frame" x="0.0" y="64" width="375" height="1"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGS-Qz-I9G" userLabel="Divider">
+                        <rect key="frame" x="20" y="80" width="335" height="1"/>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="CPz-Xe-XzG"/>
+                        </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Al-HD-qWV">
                         <rect key="frame" x="108" y="35" width="70" height="25"/>
@@ -61,25 +64,24 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="bGS-Qz-I9G" firstAttribute="leading" secondItem="Q7U-tU-Kym" secondAttribute="leading" id="1Eh-Ab-EEv"/>
-                <constraint firstAttribute="bottom" secondItem="bGS-Qz-I9G" secondAttribute="bottom" id="1LL-da-5FB"/>
+                <constraint firstItem="bGS-Qz-I9G" firstAttribute="leading" secondItem="Q7U-tU-Kym" secondAttribute="leading" constant="20" id="1Eh-Ab-EEv"/>
                 <constraint firstItem="1Al-HD-qWV" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" constant="-45" id="2PG-kW-qXO"/>
                 <constraint firstItem="Q7U-tU-Kym" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="6hl-Tm-6lf"/>
                 <constraint firstItem="r2e-c7-Suu" firstAttribute="leading" secondItem="1Al-HD-qWV" secondAttribute="trailing" constant="8" id="Bnu-TR-3Im"/>
                 <constraint firstAttribute="trailing" secondItem="Q7U-tU-Kym" secondAttribute="trailing" id="JPh-JQ-d1t"/>
                 <constraint firstItem="r2e-c7-Suu" firstAttribute="top" secondItem="1Al-HD-qWV" secondAttribute="top" id="Piy-az-m9h"/>
-                <constraint firstItem="bGS-Qz-I9G" firstAttribute="trailing" secondItem="Q7U-tU-Kym" secondAttribute="trailing" id="gLB-KE-d8Z"/>
+                <constraint firstItem="bGS-Qz-I9G" firstAttribute="trailing" secondItem="Q7U-tU-Kym" secondAttribute="trailing" constant="-20" id="gLB-KE-d8Z"/>
                 <constraint firstItem="Q7U-tU-Kym" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="hDz-le-wai"/>
-                <constraint firstAttribute="bottom" secondItem="1Al-HD-qWV" secondAttribute="bottom" constant="5" id="lUy-q9-F2f"/>
-                <constraint firstItem="bGS-Qz-I9G" firstAttribute="top" secondItem="r2e-c7-Suu" secondAttribute="bottom" constant="4" id="nXx-uX-MVZ"/>
+                <constraint firstItem="bGS-Qz-I9G" firstAttribute="top" secondItem="r2e-c7-Suu" secondAttribute="bottom" constant="20" id="nXx-uX-MVZ"/>
+                <constraint firstItem="r2e-c7-Suu" firstAttribute="top" secondItem="Q7U-tU-Kym" secondAttribute="bottom" constant="18" id="sha-PI-gbU"/>
             </constraints>
-            <size key="customSize" width="375" height="55"/>
+            <size key="customSize" width="375" height="85"/>
             <connections>
                 <outlet property="infoLabel" destination="Q7U-tU-Kym" id="6jU-X5-CIH"/>
                 <outlet property="saveButton" destination="1Al-HD-qWV" id="cXn-HA-fPc"/>
                 <outlet property="shareButton" destination="r2e-c7-Suu" id="TK4-9v-GlH"/>
             </connections>
-            <point key="canvasLocation" x="33.5" y="31"/>
+            <point key="canvasLocation" x="33.5" y="45.5"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -97,10 +97,15 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
             if let ingredient = recipe?.ingredients[indexPath.row - 2] {
                 if let cell = cell as? RecipeViewIngredientCollectionViewCell {
                     let unitText = NSLocalizedString("Unit.\(ingredient.ingredient.unit)", comment: "Unit")
-                    cell.amountLabel.text = "\(ingredient.amountFormatted) \(unitText)"
+                    if ingredient.amount != 0 {
+                        cell.amountLabel.text = "\(ingredient.amountFormatted) \(unitText)"
+                    } else {
+                        cell.amountLabel.text = ""
+                    }
+                    
                     cell.ingredientLabel.text = ingredient.ingredient.name
                                         
-                    // Check offer
+                    // TODO Check offer
                     
                     cell.offerImageView.backgroundColor = ingredient.ingredient.hasOffer() ? UIColor.red : UIColor.clear
                 }
@@ -118,9 +123,9 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         if indexPath.row == 0 {
             return CGSize(width: viewWidth, height: 250)
         } else if indexPath.row == 1 {
-            return CGSize(width: viewWidth, height: 65)
+            return CGSize(width: viewWidth, height: 95)
         } else if let recipe = recipe, indexPath.row == 2 + recipe.ingredients.count {
-            return CGSize(width: viewWidth, height: 30)
+            return CGSize(width: viewWidth, height: 40)
         } else {
             return CGSize(width: viewWidth, height: 17)
         }

@@ -42,8 +42,8 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="4pe-pa-dFp" firstAttribute="baseline" secondItem="et6-6g-1Kz" secondAttribute="baseline" id="H4D-6W-Iin"/>
                 <constraint firstItem="et6-6g-1Kz" firstAttribute="leading" secondItem="4pe-pa-dFp" secondAttribute="trailing" constant="8" id="MXB-wB-inT"/>
+                <constraint firstItem="et6-6g-1Kz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aHz-UP-SeT"/>
                 <constraint firstItem="4pe-pa-dFp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="cAp-e9-0br"/>
                 <constraint firstItem="KXE-hl-zPO" firstAttribute="leading" secondItem="et6-6g-1Kz" secondAttribute="trailing" constant="8" id="gbo-r1-0qQ"/>
                 <constraint firstItem="4pe-pa-dFp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="uNB-W1-bJS"/>

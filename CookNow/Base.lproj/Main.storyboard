@@ -24,9 +24,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xx2-Rw-ONm" customClass="BorderButton" customModule="CookNow" customModuleProvider="target">
-                                <rect key="frame" x="16" y="582" width="343" height="30"/>
+                                <rect key="frame" x="16" y="574" width="343" height="38"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.76862745099999996" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                 <state key="normal" title="Remove Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -42,8 +43,8 @@
                                     <action selector="doneHandler:" destination="MO2-cL-wPY" eventType="touchUpInside" id="iYh-Tt-Ma2"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NG1-1j-rhW">
-                                <rect key="frame" x="0.0" y="64" width="375" height="510"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NG1-1j-rhW">
+                                <rect key="frame" x="0.0" y="64" width="375" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="MO2-cL-wPY" id="u7a-iF-J55"/>
@@ -79,11 +80,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="eEz-Ev-bZi">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eEz-Ev-bZi">
                             <size key="itemSize" width="150" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells/>
                         <connections>
@@ -108,11 +109,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="mJD-WZ-oZw">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mJD-WZ-oZw">
                             <size key="itemSize" width="100" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells/>
                         <connections>
@@ -182,7 +183,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CqA-CV-1Ne">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="CqA-CV-1Ne">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -195,7 +196,7 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2E-Xz-ahb">
                                     <rect key="frame" x="8" y="15" width="359" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -223,6 +224,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="yIJ-wE-VmR" kind="show" identifier="planRecipeSegue" id="eOx-Rb-VXR"/>
+                        <segue destination="l1I-h0-yAx" kind="show" identifier="TipDetailSegue" id="Zgr-qi-IkA"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j31-2S-aCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -295,9 +297,9 @@
                                 <rect key="frame" x="87.5" y="283.5" width="200" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKJ-H9-bHL" customClass="BorderButton" customModule="CookNow" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="5" width="90" height="90"/>
+                                        <rect key="frame" x="10" y="10" width="85" height="80"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="90" id="9hP-Bw-EDR"/>
+                                            <constraint firstAttribute="width" constant="85" id="9hP-Bw-EDR"/>
                                         </constraints>
                                         <state key="normal" image="Pencil"/>
                                         <userDefinedRuntimeAttributes>
@@ -313,7 +315,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJu-d8-FdI" customClass="BorderButton" customModule="CookNow" customModuleProvider="target">
-                                        <rect key="frame" x="105" y="5" width="90" height="90"/>
+                                        <rect key="frame" x="105" y="10" width="85" height="80"/>
                                         <state key="normal" image="Camera"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -333,13 +335,13 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="0jc-WX-oJI"/>
                                     <constraint firstItem="cJu-d8-FdI" firstAttribute="width" secondItem="eKJ-H9-bHL" secondAttribute="width" id="5wK-NB-5vb"/>
-                                    <constraint firstItem="cJu-d8-FdI" firstAttribute="top" secondItem="zHP-Vz-7Hp" secondAttribute="top" constant="5" id="8y9-1p-IR4"/>
-                                    <constraint firstAttribute="trailing" secondItem="cJu-d8-FdI" secondAttribute="trailing" constant="5" id="XVY-jq-9Mw"/>
+                                    <constraint firstItem="cJu-d8-FdI" firstAttribute="top" secondItem="zHP-Vz-7Hp" secondAttribute="top" constant="10" id="8y9-1p-IR4"/>
+                                    <constraint firstAttribute="trailing" secondItem="cJu-d8-FdI" secondAttribute="trailing" constant="10" id="XVY-jq-9Mw"/>
                                     <constraint firstAttribute="width" constant="200" id="dag-JN-ofY"/>
-                                    <constraint firstItem="eKJ-H9-bHL" firstAttribute="leading" secondItem="zHP-Vz-7Hp" secondAttribute="leading" constant="5" id="g5M-2h-mCC"/>
-                                    <constraint firstAttribute="bottom" secondItem="cJu-d8-FdI" secondAttribute="bottom" constant="5" id="iDI-br-nZH"/>
-                                    <constraint firstItem="eKJ-H9-bHL" firstAttribute="top" secondItem="zHP-Vz-7Hp" secondAttribute="top" constant="5" id="mdl-fl-EBJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="eKJ-H9-bHL" secondAttribute="bottom" constant="5" id="wyX-Jd-cLP"/>
+                                    <constraint firstItem="eKJ-H9-bHL" firstAttribute="leading" secondItem="zHP-Vz-7Hp" secondAttribute="leading" constant="10" id="g5M-2h-mCC"/>
+                                    <constraint firstAttribute="bottom" secondItem="cJu-d8-FdI" secondAttribute="bottom" constant="10" id="iDI-br-nZH"/>
+                                    <constraint firstItem="eKJ-H9-bHL" firstAttribute="top" secondItem="zHP-Vz-7Hp" secondAttribute="top" constant="10" id="mdl-fl-EBJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="eKJ-H9-bHL" secondAttribute="bottom" constant="10" id="wyX-Jd-cLP"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -359,7 +361,7 @@
             </objects>
             <point key="canvasLocation" x="1453.5999999999999" y="698.5007496251875"/>
         </scene>
-        <!--Camera View Controller-->
+        <!--Camera-->
         <scene sceneID="zpq-9E-Ls8">
             <objects>
                 <viewController id="tES-2T-NJo" customClass="CameraViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
@@ -389,6 +391,7 @@
                             <constraint firstItem="osJ-jB-ZUq" firstAttribute="top" secondItem="JzG-wH-ofa" secondAttribute="bottom" constant="10" id="WBF-oS-S1z"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Camera" id="FHD-lv-9d0"/>
                     <connections>
                         <outlet property="flashButton" destination="osJ-jB-ZUq" id="6W9-gE-Cbx"/>
                         <segue destination="yIJ-wE-VmR" kind="show" identifier="RecipeViewSegue" id="RxR-Ao-hkW"/>
@@ -396,7 +399,62 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQ7-Ai-ape" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1906" y="-617"/>
+            <point key="canvasLocation" x="1904.8" y="-617.54122938530736"/>
+        </scene>
+        <!--Tip-->
+        <scene sceneID="bab-pR-13t">
+            <objects>
+                <viewController id="l1I-h0-yAx" customClass="TipViewController" customModule="CookNow" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f5z-X6-7uY"/>
+                        <viewControllerLayoutGuide type="bottom" id="J3Y-w4-mws"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hs9-Ng-R4e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BF2-pB-TDJ">
+                                <rect key="frame" x="16" y="114" width="343" height="25.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7i-DL-CWo">
+                                <rect key="frame" x="16" y="143.5" width="343" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iM-fG-YQR">
+                                <rect key="frame" x="16" y="169.5" width="343" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="O7i-DL-CWo" firstAttribute="top" secondItem="BF2-pB-TDJ" secondAttribute="bottom" constant="4" id="71G-I6-ZY2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="O7i-DL-CWo" secondAttribute="trailing" id="E36-pJ-lPf"/>
+                            <constraint firstItem="BF2-pB-TDJ" firstAttribute="top" secondItem="f5z-X6-7uY" secondAttribute="bottom" constant="50" id="IrT-AT-3Ig"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9iM-fG-YQR" secondAttribute="trailing" id="O80-Jy-U6L"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="O7i-DL-CWo" secondAttribute="leading" id="QG8-Gk-uIa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BF2-pB-TDJ" secondAttribute="trailing" id="Vle-7t-r75"/>
+                            <constraint firstItem="9iM-fG-YQR" firstAttribute="top" secondItem="O7i-DL-CWo" secondAttribute="bottom" constant="8" id="X5C-zr-pxY"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="9iM-fG-YQR" secondAttribute="leading" id="d4T-Fo-cq3"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="BF2-pB-TDJ" secondAttribute="leading" id="mDb-VD-nWx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tip" id="Jh8-l3-xKm"/>
+                    <connections>
+                        <outlet property="categoryLabel" destination="O7i-DL-CWo" id="Gfk-dp-1hN"/>
+                        <outlet property="contentLabel" destination="9iM-fG-YQR" id="aTn-mB-Ixe"/>
+                        <outlet property="nameLabel" destination="BF2-pB-TDJ" id="EGy-PD-wcH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bIC-Ja-ru1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3053.5999999999999" y="-427.73613193403304"/>
         </scene>
         <!--Add Product-->
         <scene sceneID="dtU-yp-W5g">
@@ -607,13 +665,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PiK-YF-hef">
-                                <rect key="frame" x="137" y="367" width="101" height="30"/>
-                                <state key="normal" title="Finish Cooking"/>
-                                <connections>
-                                    <action selector="finishButton:" destination="0tr-9H-jAt" eventType="touchUpInside" id="YjD-rg-qkk"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Done" translatesAutoresizingMaskIntoConstraints="NO" id="Hvv-pT-0vo">
                                 <rect key="frame" x="112" y="157" width="150" height="150"/>
                                 <constraints>
@@ -627,13 +678,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PiK-YF-hef" customClass="BorderButton" customModule="CookNow" customModuleProvider="target">
+                                <rect key="frame" x="16" y="586" width="343" height="38"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.76862745099999996" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                                <state key="normal" title="Finish Cooking"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="finishButton:" destination="0tr-9H-jAt" eventType="touchUpInside" id="YjD-rg-qkk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Hvv-pT-0vo" firstAttribute="centerX" secondItem="azg-fh-EnF" secondAttribute="centerX" id="5ys-dO-zDb"/>
-                            <constraint firstItem="PiK-YF-hef" firstAttribute="centerX" secondItem="pfD-Qe-cXK" secondAttribute="centerX" id="JwY-pl-kp5"/>
-                            <constraint firstItem="PiK-YF-hef" firstAttribute="top" secondItem="pfD-Qe-cXK" secondAttribute="bottom" constant="-1" id="Jxo-9r-ywp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PiK-YF-hef" secondAttribute="trailing" id="FBp-dK-dMg"/>
+                            <constraint firstItem="1tj-VO-SEx" firstAttribute="top" secondItem="PiK-YF-hef" secondAttribute="bottom" constant="43" id="HwX-gV-bGq"/>
                             <constraint firstItem="pfD-Qe-cXK" firstAttribute="centerX" secondItem="Hvv-pT-0vo" secondAttribute="centerX" id="aCH-jN-gcm"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="PiK-YF-hef" secondAttribute="leading" id="byh-94-cBX"/>
                             <constraint firstItem="pfD-Qe-cXK" firstAttribute="top" secondItem="Hvv-pT-0vo" secondAttribute="bottom" constant="40" id="quS-ZH-9ea"/>
                             <constraint firstItem="Hvv-pT-0vo" firstAttribute="top" secondItem="gKy-Dw-XQQ" secondAttribute="bottom" constant="93" id="tLi-9P-paU"/>
                         </constraints>
@@ -646,7 +714,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSe-Am-nf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4809" y="1065"/>
+            <point key="canvasLocation" x="4808.8000000000002" y="1064.6176911544228"/>
         </scene>
         <!--Scan Barcode-->
         <scene sceneID="F3y-Iw-Mfd">
@@ -914,7 +982,7 @@
         <image name="Tab-Shopping-Selected" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RxR-Ao-hkW"/>
+        <segue reference="pWa-oL-sMo"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.94509803920000002" green="0.76862745099999996" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

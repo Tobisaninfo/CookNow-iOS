@@ -34,4 +34,26 @@ public class TipHandler {
         
         return tips
     }
+    
+    public class func list() -> [Int: String] {
+        var tips: [Int:String] = [:]
+        
+        HttpUtils.get(url: "/tip/category/", callback: {
+            if let jsonData = try? JSONSerialization.jsonObject(with: $0, options: []) as? HttpUtils.JsonArray {
+                if let json = jsonData {
+                    for item in json {
+                        guard let id = item["id"] as? Int else {
+                            continue
+                        }
+                        guard let name = item["name"] as? String else {
+                            continue
+                        }
+                        tips[id]  = name
+                    }
+                }
+            }
+        })
+        
+        return tips
+    }
 }

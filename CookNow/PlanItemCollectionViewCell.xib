@@ -31,7 +31,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eu3-dY-uQo">
-                        <rect key="frame" x="102" y="82" width="18" height="18"/>
+                        <rect key="frame" x="97" y="78" width="18" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="y4X-f0-EsC"/>
                         </constraints>
@@ -41,7 +41,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91K-HW-uaF">
-                        <rect key="frame" x="6" y="82" width="18" height="18"/>
+                        <rect key="frame" x="10" y="78" width="18" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="TwT-Ad-9TQ"/>
                         </constraints>
@@ -55,14 +55,14 @@
             <constraints>
                 <constraint firstItem="os1-Nd-caP" firstAttribute="trailing" secondItem="7oT-vH-MZ4" secondAttribute="trailing" constant="5" id="22r-n3-QrI"/>
                 <constraint firstItem="os1-Nd-caP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8x6-hx-d5p"/>
-                <constraint firstItem="eu3-dY-uQo" firstAttribute="top" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="-23" id="FxM-lg-gZS"/>
+                <constraint firstItem="eu3-dY-uQo" firstAttribute="top" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="-27" id="FxM-lg-gZS"/>
                 <constraint firstAttribute="trailing" secondItem="os1-Nd-caP" secondAttribute="trailing" id="HbG-oy-Zf8"/>
-                <constraint firstItem="91K-HW-uaF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="6" id="NJY-D2-QyM"/>
+                <constraint firstItem="91K-HW-uaF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="NJY-D2-QyM"/>
                 <constraint firstItem="7oT-vH-MZ4" firstAttribute="top" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="4" id="T1O-Gy-ZMB"/>
-                <constraint firstAttribute="trailing" secondItem="eu3-dY-uQo" secondAttribute="trailing" constant="5" id="Xkg-Yz-sh0"/>
+                <constraint firstAttribute="trailing" secondItem="eu3-dY-uQo" secondAttribute="trailing" constant="10" id="Xkg-Yz-sh0"/>
                 <constraint firstItem="os1-Nd-caP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rIg-kH-XDj"/>
                 <constraint firstItem="os1-Nd-caP" firstAttribute="leading" secondItem="7oT-vH-MZ4" secondAttribute="leading" constant="-5" id="sQz-Hx-t3f"/>
-                <constraint firstItem="91K-HW-uaF" firstAttribute="top" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="-23" id="w4y-IN-hhZ"/>
+                <constraint firstItem="91K-HW-uaF" firstAttribute="top" secondItem="os1-Nd-caP" secondAttribute="bottom" constant="-27" id="w4y-IN-hhZ"/>
             </constraints>
             <connections>
                 <outlet property="flopButton" destination="eu3-dY-uQo" id="tXM-0I-Uuy"/>

@@ -12,30 +12,30 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="ShoppingTableViewCell" customModule="CookNow" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="KGk-i7-Jjw" customClass="ShoppingTableViewCell" customModule="CookNow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5Z-6x-TeN">
-                        <rect key="frame" x="8" y="37" width="304" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="28" y="28" width="284" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFM-Z3-bNT">
-                        <rect key="frame" x="8" y="8" width="304" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="28" y="8" width="284" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="gFM-Z3-bNT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Qj9-dR-LEy"/>
+                    <constraint firstItem="gFM-Z3-bNT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="Qj9-dR-LEy"/>
                     <constraint firstItem="N5Z-6x-TeN" firstAttribute="trailing" secondItem="gFM-Z3-bNT" secondAttribute="trailing" id="Vph-hW-1AS"/>
-                    <constraint firstItem="N5Z-6x-TeN" firstAttribute="top" secondItem="gFM-Z3-bNT" secondAttribute="bottom" constant="8" symbolic="YES" id="hCa-TU-KA8"/>
+                    <constraint firstItem="N5Z-6x-TeN" firstAttribute="top" secondItem="gFM-Z3-bNT" secondAttribute="bottom" constant="2" id="hCa-TU-KA8"/>
                     <constraint firstItem="gFM-Z3-bNT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="jKp-Aw-RLJ"/>
                     <constraint firstItem="N5Z-6x-TeN" firstAttribute="leading" secondItem="gFM-Z3-bNT" secondAttribute="leading" id="ukq-hG-t2T"/>
                     <constraint firstItem="gFM-Z3-bNT" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="urO-MJ-8Z2"/>
@@ -45,7 +45,7 @@
                 <outlet property="descriptionLabel" destination="N5Z-6x-TeN" id="hWN-Ca-QGr"/>
                 <outlet property="nameLabel" destination="gFM-Z3-bNT" id="SBa-1K-j73"/>
             </connections>
-            <point key="canvasLocation" x="34" y="67"/>
+            <point key="canvasLocation" x="34" y="57"/>
         </tableViewCell>
     </objects>
 </document>

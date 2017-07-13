@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- This class describs a tip. 
+ This class describs a tip.
  */
 public class Tip {
     
@@ -28,6 +28,8 @@ public class Tip {
      */
     public let content: String
     
+    public let categoryID: Int
+    
     // MARK: - Initializer
     
     /**
@@ -36,10 +38,11 @@ public class Tip {
      - Parameter name: Name of the tip
      - Parameter content: Content of the tip
      */
-    public init(id: Int, name: String, content: String) {
+    public init(id: Int, name: String, content: String, categoryID: Int) {
         self.id = id
         self.name = name
         self .content = content
+        self.categoryID = categoryID
     }
     
     // MARK: - Parsing Data
@@ -54,13 +57,18 @@ public class Tip {
             return nil
         }
         
-        guard let name = jsonData["name"] as? String else {
+        guard let name = jsonData["title"] as? String else {
             return nil
         }
         
         guard let content = jsonData["content"] as? String else {
             return nil
         }
-        return Tip(id: id, name: name, content: content)
+        
+        guard let categoryID = jsonData["category"] as? Int else {
+            return nil
+        }
+        
+        return Tip(id: id, name: name, content: content, categoryID: categoryID)
     }
 }

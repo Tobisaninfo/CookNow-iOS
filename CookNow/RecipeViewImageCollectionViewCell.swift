@@ -21,9 +21,9 @@ class RecipeViewImageCollectionViewCell: UICollectionViewCell {
     
     func setIngredientsAvailble(available: Bool) {
         if available {
-            checkImageView.backgroundColor = UIColor.green
+            checkImageView.image = #imageLiteral(resourceName: "Checked")
         } else {
-            checkImageView.backgroundColor = UIColor.clear
+            checkImageView.image = nil
         }
     }
 }

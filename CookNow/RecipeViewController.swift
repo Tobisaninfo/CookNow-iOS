@@ -125,7 +125,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         } else if indexPath.row == 1 {
             return CGSize(width: viewWidth, height: 95)
         } else if let recipe = recipe, indexPath.row == 2 + recipe.ingredients.count {
-            return CGSize(width: viewWidth, height: 40)
+            return CGSize(width: viewWidth, height: 48)
         } else {
             return CGSize(width: viewWidth, height: 17)
         }

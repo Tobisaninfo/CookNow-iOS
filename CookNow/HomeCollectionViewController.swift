@@ -13,19 +13,25 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
     private let planReuseIdentifier = "PlanCell"
     private let itemReuseIdentifier = "ItemCell"
-
-    private let columnCount = 2
+    
+    private var tipsCategoryNames = [Int:String]()
+    private var tips: [Tip] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        DispatchQueue.global().async {
+            self.tipsCategoryNames = TipHandler.list()
+            self.tips = TipHandler.list()
+
+            DispatchQueue.main.async {
+                self.collectionView?.reloadSections(IndexSet(integer: 1))
+            }
+        }
 
         // Register cell classes
         self.collectionView!.register(UINib(nibName: "PlanCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: planReuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        self.collectionView!.register(UINib(nibName: "TipCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: itemReuseIdentifier)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,12 +43,18 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     // MARK: - Navigation
     
     var selectedRecipe: Int?
+    var selectedTip: Int?
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationViewControler = segue.destination as? RecipeViewController, let id = selectedRecipe {
             destinationViewControler.recipe = RecipeHandler.get(id: id)
             destinationViewControler.image = ResourceHandler.loadImage(scope: .recipe, id: id)
+        }
+        
+        if let destinationViewControler = segue.destination as? TipViewController, let selectedTip = selectedTip {
+            destinationViewControler.tip = tips[selectedTip]
+            destinationViewControler.categoryName = tipsCategoryNames[tips[selectedTip].categoryID]
         }
     }
 
@@ -57,7 +69,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         if section == 0 {
             return 1
         } else {
-            return 0
+            return tips.count
         }
     }
 
@@ -71,10 +83,12 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
             
             return cell
         } else {
-            // TODO
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemReuseIdentifier, for: indexPath)
-        
-            // Configure the cell
+            
+            if let cell = cell as? TipCollectionViewCell {
+                cell.nameLabel.text = tips[indexPath.row].name
+                cell.categoryLabel.text = tipsCategoryNames[tips[indexPath.row].categoryID]
+            }
         
             return cell
         }
@@ -86,9 +100,9 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
             let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "TitleHeander", for: indexPath)
             if let headerView = headerView as? TitleCollectionReusableView {
                 if indexPath.section == 0 {
-                    headerView.titleLabel.text = "Weekly Plan"
+                    headerView.titleLabel.text = NSLocalizedString("Home.WeeklyPlan", comment: "Weekly Plan")
                 } else if indexPath.section == 1 {
-                    headerView.titleLabel.text = "Tipps"
+                    headerView.titleLabel.text = NSLocalizedString("Home.Tips", comment: "Tips")
                 }
             }
             return headerView
@@ -107,11 +121,17 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
             let viewWidth =  collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right
             return CGSize(width: viewWidth, height: 145)
         } else if indexPath.section == 1 {
-            let viewWidth =  collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right - flowLayout.minimumInteritemSpacing * CGFloat(columnCount - 1)
-            let itemSize = viewWidth / CGFloat(columnCount)
-            return CGSize(width: itemSize, height: itemSize)
+            let viewWidth =  collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right
+            return CGSize(width: viewWidth, height: 55)
         } else {
             return CGSize()
         }
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedTip = indexPath.row
+        self.performSegue(withIdentifier: "TipDetailSegue", sender: self)
+    }
+    
+    
 }

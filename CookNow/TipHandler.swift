@@ -35,6 +35,10 @@ public class TipHandler {
         return tips
     }
     
+    /**
+     List all categories fromt the server.
+     - Returns: Id and name of category
+     */
     public class func listCategories() -> [Int: String] {
         var tips: [Int:String] = [:]
         

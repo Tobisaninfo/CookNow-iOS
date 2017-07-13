@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- This class contains methods to get information abount properties.
+ This class contains methods to get information about properties.
  */
 public class IngredientPropertyHandler {
     

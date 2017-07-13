@@ -15,6 +15,8 @@
 		F607CAB01F005599008D77CF /* AddRecipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F607CAAE1F005599008D77CF /* AddRecipeTableViewCell.m */; };
 		F607CAB11F005599008D77CF /* AddRecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F607CAAF1F005599008D77CF /* AddRecipeTableViewCell.xib */; };
 		F607CAB31F005962008D77CF /* RecipeRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607CAB21F005962008D77CF /* RecipeRef.swift */; };
+		F62D13251F17735A009F9703 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62D13241F17735A009F9703 /* Tip.swift */; };
+		F62D13271F17745A009F9703 /* TipHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62D13261F17745A009F9703 /* TipHandler.swift */; };
 		F6348D681EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */; };
 		F63896F01EFE84BE00FF533B /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63896EF1EFE84BE00FF533B /* SpeechViewController.swift */; };
 		F63D1A2B1F07E7100042DE07 /* BarcodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63D1A2A1F07E7100042DE07 /* BarcodeController.swift */; };
@@ -156,6 +158,8 @@
 		F607CAAE1F005599008D77CF /* AddRecipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRecipeTableViewCell.m; sourceTree = "<group>"; };
 		F607CAAF1F005599008D77CF /* AddRecipeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRecipeTableViewCell.xib; sourceTree = "<group>"; };
 		F607CAB21F005962008D77CF /* RecipeRef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeRef.swift; sourceTree = "<group>"; };
+		F62D13241F17735A009F9703 /* Tip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		F62D13261F17745A009F9703 /* TipHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipHandler.swift; sourceTree = "<group>"; };
 		F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIngredientOptionMenuViewController.swift; sourceTree = "<group>"; };
 		F63896EF1EFE84BE00FF533B /* SpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
 		F63D1A2A1F07E7100042DE07 /* BarcodeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeController.swift; sourceTree = "<group>"; };
@@ -504,6 +508,7 @@
 				F6AE62CB1EE0779C00D8E0DF /* RecipeHandler.swift */,
 				F64F26831EE5867B00711189 /* MarketOfferHandler.swift */,
 				F65C604F1EEC439D008D7F0C /* ResourceHandler.swift */,
+				F62D13261F17745A009F9703 /* TipHandler.swift */,
 			);
 			name = NetworkHandle;
 			sourceTree = "<group>";
@@ -517,6 +522,7 @@
 				F64F26771EE57BFA00711189 /* Item.swift */,
 				F6AE62CF1EE0780D00D8E0DF /* Recipe.swift */,
 				F6AE62D71EE09B6F00D8E0DF /* Step.swift */,
+				F62D13241F17735A009F9703 /* Tip.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -793,6 +799,7 @@
 				F69D68041EF9A03400DF2007 /* RecipeViewController.swift in Sources */,
 				F64F267E1EE583E000711189 /* MarketHandler.swift in Sources */,
 				F68D63451EE0A44800921E86 /* HttpUtils.swift in Sources */,
+				F62D13251F17735A009F9703 /* Tip.swift in Sources */,
 				F6E107131EEDFD33007D82CC /* AddCollectionViewCell.swift in Sources */,
 				F64DAB441EF2F233002343BF /* HomeCollectionViewController.swift in Sources */,
 				F6952ACB1F0E7CBA0067A61A /* BorderView.swift in Sources */,
@@ -812,6 +819,7 @@
 				F6AE62CC1EE0779C00D8E0DF /* RecipeHandler.swift in Sources */,
 				F6F789501EF16C05009E7323 /* RecipeCollectionViewCell.swift in Sources */,
 				F6ACBDB21EEFF42F00472AA3 /* CookBookCollectionViewCell.swift in Sources */,
+				F62D13271F17745A009F9703 /* TipHandler.swift in Sources */,
 				F6AE62D01EE0780D00D8E0DF /* Recipe.swift in Sources */,
 				F66F5CE91EE34CB70060491F /* Ingredient.swift in Sources */,
 				F6FA3A631EFAED2C0074744A /* StepViewController.swift in Sources */,

@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- This class contains methods to get information abount recipes.
+ This class contains methods to get information about recipes.
  */
 public class RecipeHandler {
 

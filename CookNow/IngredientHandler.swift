@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- This class contains methods to get information abount ingredients.
+ This class contains methods to get information about ingredients.
  */
 public class IngredientHanler {
     

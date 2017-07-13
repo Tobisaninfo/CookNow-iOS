@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- Models a recipe with steps, ingredients and other information.
+ Model a recipe with steps, ingredients and other information.
  */
 public class Recipe {
     

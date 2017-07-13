@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- This class contains methods to get information abount markets.
+ This class contains methods to get information about markets.
  */
 public class MarketHandler {
     

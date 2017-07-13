@@ -121,7 +121,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
         
         let viewWidth =  collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right
         if indexPath.row == 0 {
-            return CGSize(width: viewWidth, height: 250)
+            return CGSize(width: viewWidth, height: 200)
         } else if indexPath.row == 1 {
             return CGSize(width: viewWidth, height: 95)
         } else if let recipe = recipe, indexPath.row == 2 + recipe.ingredients.count {

@@ -31,7 +31,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FTG-IE-9BH">
-                        <rect key="frame" x="20" y="54" width="355" height="1"/>
+                        <rect key="frame" x="10" y="54" width="365" height="1"/>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="92Q-0M-tbu"/>
@@ -41,7 +41,7 @@
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="FTG-IE-9BH" secondAttribute="trailing" id="8in-JX-Sra"/>
-                <constraint firstItem="FTG-IE-9BH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="A3z-CR-VzW"/>
+                <constraint firstItem="FTG-IE-9BH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="A3z-CR-VzW"/>
                 <constraint firstItem="kMC-hY-FHK" firstAttribute="top" secondItem="eV1-T8-9CZ" secondAttribute="bottom" constant="-1" id="A7l-Um-thf"/>
                 <constraint firstItem="eV1-T8-9CZ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="HUh-mF-xRe"/>
                 <constraint firstItem="kMC-hY-FHK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="IkD-EP-f40"/>

@@ -13,7 +13,7 @@ class StepViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var ingredientLabel: UILabel!
     @IBOutlet weak var itemsLabel: UILabel!
-    @IBOutlet weak var contentView: UITextView!
+    @IBOutlet weak var contentLabel: UILabel!
     
     var recipeID: Int?
     var step: Step? {
@@ -44,7 +44,7 @@ class StepViewController: UIViewController {
             }
             ingredientLabel.text = step.ingredients.map({return $0.ingredient.name}).reduce("", concatString)
             itemsLabel.text = step.items.map({return $0.name}).reduce("", concatString)
-            contentView.text = step.content
+            contentLabel.text = step.content
         }
     }
     

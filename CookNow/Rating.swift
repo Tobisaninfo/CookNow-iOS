@@ -18,9 +18,10 @@ extension Rating {
     /**
      Mark a ```PlanItem``` (recipe) positive.
      - Parameter recipe: PlanItem to rate
+     - Returns: Added Rating
      */
-    public class func top(recipe: PlanItem) {
-        _ = add(recipe: recipe, rating: 1)
+    public class func top(recipe: PlanItem) -> Rating? {
+        return add(recipe: recipe, rating: 1)
     }
     
     /**
@@ -64,6 +65,22 @@ extension Rating {
                 return try delegate.persistentContainer.viewContext.fetch(NSFetchRequest(entityName: className)) as? [Rating]
             } catch {
                 print(error)
+            }
+        }
+        return nil
+    }
+    
+    /**
+     Get a rating by id.
+     - Parameter id: Recipe ID
+     - Returns: Rating or ```nil```
+     */
+    public class func get(id: Int) -> Rating? {
+        if let list = list() {
+            for item in list {
+                if item.recipeID == Int32(id) {
+                    return item
+                }
             }
         }
         return nil

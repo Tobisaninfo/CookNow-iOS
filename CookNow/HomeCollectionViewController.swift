@@ -21,7 +21,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         super.viewDidLoad()
 
         DispatchQueue.global().async {
-            self.tipsCategoryNames = TipHandler.list()
+            self.tipsCategoryNames = TipHandler.listCategories()
             self.tips = TipHandler.list()
 
             DispatchQueue.main.async {

@@ -64,6 +64,17 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
                 }
             }
             
+            if let rating = Rating.get(id: Int(item.recipeID)) {
+                if rating.rating > 0 {
+                    cell.topRating = rating
+                    cell.setImageForTopButton(image: #imageLiteral(resourceName: "Thumbsup-Filled"))
+                }
+            }
+            
+            DispatchQueue.global().async {
+                _ = RecipeHandler.get(id: Int(item.recipeID))
+            }
+            
             cell.planItem = item
             cell.planCollectionViewCell = self
         }

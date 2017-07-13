@@ -35,7 +35,7 @@ public class TipHandler {
         return tips
     }
     
-    public class func list() -> [Int: String] {
+    public class func listCategories() -> [Int: String] {
         var tips: [Int:String] = [:]
         
         HttpUtils.get(url: "/tip/category/", callback: {

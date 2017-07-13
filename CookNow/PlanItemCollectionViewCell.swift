@@ -18,13 +18,26 @@ class PlanItemCollectionViewCell: UICollectionViewCell {
     var planCollectionViewCell: PlanCollectionViewCell?
     var planItem: PlanItem?
     
+    var topRating: Rating?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    func setImageForTopButton(image: UIImage) {
+        topButton.setImage(image, for: .normal)
+    }
 
     @IBAction func topHandler(_ sender: UIButton) {
-        if let planItem = planItem {
-            Rating.top(recipe: planItem)
+        if let rating = topRating {
+            rating.delete()
+            setImageForTopButton(image: #imageLiteral(resourceName: "Thumbsup"))
+            topRating = nil
+        } else {
+            if let planItem = planItem {
+                topRating = Rating.top(recipe: planItem)
+                setImageForTopButton(image: #imageLiteral(resourceName: "Thumbsup-Filled"))
+            }
         }
     }
     

@@ -21,6 +21,9 @@
 "Alert.Add"="Add";
 "Alert.Cancel"="Cancel";
 
+"Alert.Ingredient.Add.Title"="Add product to pantry";
+"Alert.Ingredient.Add.Description"="Enter amount of %@";
+"Alert.Ingredient.Add.Description.NoUnit"="Should %@ added to the pantry?";
 "Alert.Ingredient.Add"="350 %@";
 
 "Alert.CookBook.Add.Title"="New Collection";

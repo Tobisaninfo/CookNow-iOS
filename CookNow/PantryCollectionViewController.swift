@@ -65,9 +65,14 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pantryReuseIdentifier, for: indexPath) as! PantryCollectionViewCell
             
             if let item = items?[indexPath.row - 1], let unit = Unit(rawValue: Int(item.unit)) {
-                let unitText = NSLocalizedString("Unit.\(unit)", comment: "Unit")
                 cell.nameLabel.text = item.name
-                cell.amountLabel.text = "\(item.amountFormatted) \(unitText)"
+                
+                if unit != .Ohne {
+                    let unitText = NSLocalizedString("Unit.\(unit)", comment: "Unit")
+                    cell.amountLabel.text = "\(item.amountFormatted) \(unitText)"
+                } else {
+                    cell.amountLabel.text = ""
+                }
                 
                 cell.imageView.image = nil
                 DispatchQueue.global().async {

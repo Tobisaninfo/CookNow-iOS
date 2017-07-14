@@ -206,7 +206,7 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
         alert.addTextField { (textField) in
             textField.placeholder = NSLocalizedString("Alert.CookBook.Add.Placeholder", comment: "Cook Book Name")
         }
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Alert.Cancel", comment: "Cancel"), style: .destructive, handler: { (action) -> Void in }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Alert.Cancel", comment: "Cancel"), style: .cancel, handler: { (action) -> Void in }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Alert.Add", comment: "Add"), style: .default, handler: { [weak alert] (_) in
             if let textField = alert?.textFields![0] {
                 if let name = textField.text {

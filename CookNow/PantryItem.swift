@@ -18,11 +18,23 @@ extension PantryItem {
     
     /**
      Add an item to the pantry with an amount. If the insertion fails, ```nil``` will be returned. The returned object can be modified. The CoreData Context must be saved using the ```AppDelegate```.
-     - Parameter id: Ingredient ID
+     - Parameter ingredient: Ingredient
      - Parameter amount: Amount of the ingredient
      - Returns: Added PantryItem
      */
-    public class func add(id: Int, withAmount amount: Double) -> PantryItem? {
+    public class func add(ingredient: Ingredient, withAmount amount: Double) -> PantryItem? {
+        return add(ingredient.id, name: ingredient.name, unit: ingredient.unit, amount: amount)
+    }
+    
+    /**
+     Add an item to the pantry with an amount. If the insertion fails, ```nil``` will be returned. The returned object can be modified. The CoreData Context must be saved using the ```AppDelegate```.
+     - Parameter id: Ingredient ID
+     - Parameter name: Ingredient name
+     - Parameter unit: Unit Type of ingredient
+     - Parameter amount: Amount of the ingredient
+     - Returns: Added PantryItem
+     */
+    public class func add(_ id: Int, name: String, unit: Unit, amount: Double) -> PantryItem?{
         if let list = list() {
             // Add amount to existing object
             for item in list {
@@ -44,6 +56,8 @@ extension PantryItem {
                 if let item = NSManagedObject(entity: entity, insertInto: context) as? PantryItem {
                     item.ingredientID = Int32(id)
                     item.amount = amount
+                    item.unit = Int32(unit.rawValue)
+                    item.name = name
                     
                     delegate.saveContext()
                     
@@ -111,5 +125,20 @@ extension PantryItem {
             }
         }
         return nil
+    }
+}
+
+extension PantryItem {
+    // MARK: - Formatter
+    
+    /**
+     Format the amount with the local settings
+     - Returns: Formatted amount string
+     */
+    public var amountFormatted: String {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .decimal
+        return formatter.string(from: amount as NSNumber) ?? ""
     }
 }

@@ -34,7 +34,7 @@ class ScannerViewController: BarcodeController, BarcodeControllerDelegate {
                             self.finishReding(code: code)
                         }
                     }
-                    _ = PantryItem.add(id: ingredient.id, withAmount: barcode.amount)
+                    _ = PantryItem.add(ingredient: ingredient, withAmount: barcode.amount)
                 } else {
                     DispatchQueue.main.async {
                         HUD.flash(.error, delay: 2.0) { success in

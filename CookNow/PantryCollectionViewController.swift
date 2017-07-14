@@ -64,27 +64,19 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pantryReuseIdentifier, for: indexPath) as! PantryCollectionViewCell
             
-            if let item = items?[indexPath.row - 1] {
+            if let item = items?[indexPath.row - 1], let unit = Unit(rawValue: Int(item.unit)) {
+                let unitText = NSLocalizedString("Unit.\(unit)", comment: "Unit")
+                cell.nameLabel.text = item.name
+                cell.amountLabel.text = "\(item.amountFormatted) \(unitText)"
                 
                 cell.imageView.image = nil
-                
                 DispatchQueue.global().async {
                     let image = ResourceHandler.loadImage(scope: .ingredient, id: Int(item.ingredientID)) {
                         return $0?.gradient(start: 0.25)
                     }
-                    let ingredient = IngredientHanler.get(id: Int(item.ingredientID))
                     DispatchQueue.main.async {
                         if let image = image {
                             cell.imageView.image = image
-                        }
-                        
-                        if let ingredient = ingredient {
-                            let unitText = NSLocalizedString("Unit.\(ingredient.unit)", comment: "Unit")
-                            cell.nameLabel.text = ingredient.name
-                            cell.amountLabel.text = "\(item.amount) \(unitText)"
-                        } else {
-                            cell.nameLabel.text = ""
-                            cell.amountLabel.text = ""
                         }
                     }
                 }

@@ -80,7 +80,10 @@ extension ShoppingItem {
      - Returns: Added PantryItem
      */
     func addToPantry() -> PantryItem? {
-        return PantryItem.add(id: Int(id), withAmount: amount)
+        if let unit = Unit(rawValue: Int(unit)), let name = name {
+            return PantryItem.add(Int(id), name: name, unit: unit, amount: amount)
+        }
+        return nil
     }
 
 }

@@ -164,6 +164,6 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
     // MARK: - Save
     
     func save(ingredient: Ingredient, withAmount amount: Double) {
-        _ = PantryItem.add(id: ingredient.id, withAmount: amount)
+        _ = PantryItem.add(ingredient: ingredient, withAmount: amount)
     }
 }

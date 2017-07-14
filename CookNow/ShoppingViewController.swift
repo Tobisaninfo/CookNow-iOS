@@ -63,7 +63,11 @@ class ShoppingViewController: UIViewController, UITableViewDataSource, UITableVi
                 let amount = item.map({$0.amount}).reduce(0, {$0 + $1})
                 
                 cell.nameLabel?.text = item[0].name
-                cell.descriptionLabel?.text = "\(amount) \(unitText)"
+                if unit != .Ohne {
+                    cell.descriptionLabel?.text = "\(amount.formatted) \(unitText)"
+                } else {
+                    cell.descriptionLabel.text = ""
+                }
                 cell.accessoryType = item[0].done ? .checkmark : .none
             }
         }

@@ -39,3 +39,12 @@ extension UIImage {
         return image!
     }
 }
+
+extension Double {
+    var formatted: String {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .decimal
+        return formatter.string(from: self as NSNumber) ?? ""
+    }
+}

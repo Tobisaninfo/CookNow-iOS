@@ -128,17 +128,3 @@ extension PantryItem {
     }
 }
 
-extension PantryItem {
-    // MARK: - Formatter
-    
-    /**
-     Format the amount with the local settings
-     - Returns: Formatted amount string
-     */
-    public var amountFormatted: String {
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        formatter.numberStyle = .decimal
-        return formatter.string(from: amount as NSNumber) ?? ""
-    }
-}

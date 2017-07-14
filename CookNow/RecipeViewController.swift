@@ -97,8 +97,8 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
             if let ingredient = recipe?.ingredients[indexPath.row - 2] {
                 if let cell = cell as? RecipeViewIngredientCollectionViewCell {
                     let unitText = NSLocalizedString("Unit.\(ingredient.ingredient.unit)", comment: "Unit")
-                    if ingredient.amount != 0 {
-                        cell.amountLabel.text = "\(ingredient.amountFormatted) \(unitText)"
+                    if ingredient.ingredient.unit != .Ohne  {
+                        cell.amountLabel.text = "\(ingredient.amount.formatted) \(unitText)"
                     } else {
                         cell.amountLabel.text = ""
                     }

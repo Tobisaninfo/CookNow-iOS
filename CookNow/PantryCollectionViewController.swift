@@ -69,7 +69,7 @@ class PantryCollectionViewController: UICollectionViewController, UICollectionVi
                 
                 if unit != .Ohne {
                     let unitText = NSLocalizedString("Unit.\(unit)", comment: "Unit")
-                    cell.amountLabel.text = "\(item.amountFormatted) \(unitText)"
+                    cell.amountLabel.text = "\(item.amount.formatted) \(unitText)"
                 } else {
                     cell.amountLabel.text = ""
                 }

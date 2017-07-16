@@ -30,6 +30,9 @@
 "Alert.CookBook.Add.Description"="Enter a title for this collection";
 "Alert.CookBook.Add.Placeholder"="Collection Title";
 
+"Alert.CookBook.Recipe.Add.Title"="Add recipe";
+"Alert.CookBook.Recipe.Add.Description"="Choose a collection.";
+
 "About"="No data is saved on our servers.\nWeekly offers  are fetched from the respective supermarkets and are only processed within this app.\nLibraries used: TBEmptyDataSet, PKHUD, SwiftClient";
 
 "Settings.Restriction.Update"="Update Plan";

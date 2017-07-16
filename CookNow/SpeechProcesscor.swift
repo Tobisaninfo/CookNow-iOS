@@ -79,7 +79,11 @@ public class SpeechProcescor {
         if currentStep < recipe.steps.count {
             var result = ""
             for ingredientUse in recipe.steps[currentStep].ingredients {
-                result = result + "\(ingredientUse.amount.formatted) \(ingredientUse.ingredient.unit) \(ingredientUse.ingredient.name), "
+                if ingredientUse.ingredient.unit != .Ohne {
+                    result = result + "\(ingredientUse.amount.formatted) \(ingredientUse.ingredient.unit) \(ingredientUse.ingredient.name), "
+                } else {
+                    result = result + "\(ingredientUse.ingredient.name), "
+                }
             }
             return result
         } else {

@@ -141,7 +141,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
     
     // MARK: - Event Handler
     func addHandler(_ sender: UIButton) {
-        let controller = RecipeAddViewController(title: "Add Recipe", message: "Choose a recipe book", preferredStyle: .alert)
+        let controller = RecipeAddViewController(title: NSLocalizedString("Alert.CookBook.Recipe.Add.Title", comment: "Title"), message: NSLocalizedString("Alert.CookBook.Recipe.Add.Description", comment: "Description"), preferredStyle: .alert)
         controller.setData(RecipeBook.list()!.map({return $0.name!}))
         controller.delegate = self
         self.present(controller, animated: true, completion: nil)

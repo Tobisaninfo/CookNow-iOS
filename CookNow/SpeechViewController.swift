@@ -69,7 +69,7 @@ class SpeechViewController: UIViewController, SpeechRecognitionDelegate, SpeechS
     
 
     func speechDidRecognize(result: SFSpeechRecognitionResult) {
-        micButton.setImage(#imageLiteral(resourceName: "Microphone"), for: .normal)
+        micButton.setImage(#imageLiteral(resourceName: "Microphone-Large"), for: .normal)
         micButton.isHidden = true
         activityView.isHidden = false
         
@@ -94,13 +94,13 @@ class SpeechViewController: UIViewController, SpeechRecognitionDelegate, SpeechS
     @IBAction func speechButtonHandler(_ sender: UIButton) {
         if speechRecognition.state == .listening {
             speechRecognition.stop()
-            micButton.setImage(#imageLiteral(resourceName: "Microphone"), for: .normal)
+            micButton.setImage(#imageLiteral(resourceName: "Microphone-Large"), for: .normal)
         } else {
             if speechSynthesizer.state == .running {
                 speechSynthesizer.cancel()
             }
             speechRecognition.start()
-            micButton.setImage(#imageLiteral(resourceName: "Microphone-Filled"), for: .normal)
+            micButton.setImage(#imageLiteral(resourceName: "Microphone-Filled-Large"), for: .normal)
         }
     }
 }

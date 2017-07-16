@@ -642,7 +642,7 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHx-ho-ZSw">
                                             <rect key="frame" x="112" y="77.5" width="150" height="150"/>
-                                            <state key="normal" image="Microphone-Filled-Large"/>
+                                            <state key="normal" image="Microphone-Large"/>
                                             <connections>
                                                 <action selector="speechButtonHandler:" destination="s9i-p2-rwO" eventType="touchUpInside" id="1Cd-8i-M3n"/>
                                             </connections>
@@ -1000,7 +1000,7 @@
         <image name="Flash" width="25" height="25"/>
         <image name="Ingredients" width="25" height="25"/>
         <image name="Microphone" width="25" height="25"/>
-        <image name="Microphone-Filled-Large" width="150" height="150"/>
+        <image name="Microphone-Large" width="150" height="150"/>
         <image name="Pencil" width="25" height="25"/>
         <image name="Tab-Collections" width="25" height="25"/>
         <image name="Tab-Collections-Selected" width="25" height="25"/>

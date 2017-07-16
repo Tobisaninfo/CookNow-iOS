@@ -107,7 +107,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
                                         
                     // TODO Check offer
                     
-                    cell.offerImageView.backgroundColor = ingredient.ingredient.hasOffer() ? UIColor.red : UIColor.clear
+                    cell.offerImageView.image = ingredient.ingredient.hasOffer() ? #imageLiteral(resourceName: "Pricetag-Small") : nil
                 }
             }
             return cell

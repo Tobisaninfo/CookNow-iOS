@@ -32,9 +32,9 @@ public enum Unit: Int {
      */
     case G
     /**
-     Prise / Pinch
+     Priese / Pinch
      */
-    case Prise
+    case Priese
     /**
      EL / tbsp.
      */

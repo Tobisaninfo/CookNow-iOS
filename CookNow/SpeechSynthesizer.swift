@@ -40,7 +40,6 @@ public class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate {
     
     // MARK: - Properties
     
-    private let voice = AVSpeechSynthesisVoice.speechVoices().first(where: { $0.name == "Anna (Enhanced)" })
     private var speechSynthesizer: AVSpeechSynthesizer?
     
     /**
@@ -61,7 +60,8 @@ public class SpeechSynthesizer: NSObject, AVSpeechSynthesizerDelegate {
      Read a text out to the user.
      - Parameter text: String to read
      */
-    public func speak(text: String) {
+    public func speak(text: String, usingLanguage language: String) {
+        let voice = AVSpeechSynthesisVoice(language: language)
         let speechUtterance = AVSpeechUtterance(string: text)
         speechUtterance.voice = voice
         

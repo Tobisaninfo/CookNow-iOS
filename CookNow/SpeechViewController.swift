@@ -77,7 +77,7 @@ class SpeechViewController: UIViewController, SpeechRecognitionDelegate, SpeechS
             print(result.bestTranscription.formattedString)
             if let speechProcesscor = self.speechProcesscor {
                 let result = speechProcesscor.execute(transcript: result.bestTranscription)
-                self.speechSynthesizer.speak(text: result)
+                self.speechSynthesizer.speak(text: result.content, usingLanguage: result.language)
             } else {
                 self.synthesizerDidEnd()
             }

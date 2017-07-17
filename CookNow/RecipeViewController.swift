@@ -104,8 +104,14 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
                     }
                     
                     cell.ingredientLabel.text = ingredient.ingredient.name
-                                                            
-                    cell.offerImageView.image = ingredient.ingredient.hasOffer() ? #imageLiteral(resourceName: "Pricetag-Small") : nil
+                    
+                    cell.offerImageView.image = nil
+                    DispatchQueue.global().async {
+                        let hasOffer = ingredient.ingredient.hasOffer()
+                        DispatchQueue.main.async {
+                            cell.offerImageView.image = hasOffer ? #imageLiteral(resourceName: "Pricetag-Small") : nil
+                        }
+                    }
                 }
             }
             return cell

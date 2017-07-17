@@ -19,7 +19,7 @@ public class SpeechProcescor {
     /**
      Function type for the processing methods.
      */
-    public typealias SpeechHandler = (SFTranscription) -> String?
+    public typealias SpeechHandler = (SFTranscription) -> (content: String, language: String)?
     
     // MARK: - Properties
     
@@ -46,16 +46,16 @@ public class SpeechProcescor {
      - Parameter transcription: Speech recognition transcription
      - Returns: Result string for the text-to-speech or ```nil```
      */
-    public func execute(transcript: SFTranscription) -> String {
+    public func execute(transcript: SFTranscription) -> (content: String, language: String) {
         for processor in processors {
             if let result = processor(transcript) {
                 return result
             }
         }
-        return "Ich verstehe \(transcript.formattedString) nicht"
+        return (content: "Ich verstehe \(transcript.formattedString) nicht", language: "de")
     }
     
-    private func getIngredinent(transcription: SFTranscription) -> String? {
+    private func getIngredinent(transcription: SFTranscription) -> (content: String, language: String)? {
         // Check transcription
         if !contains(transcription: transcription, keywords: "welche", "zutaten") &&
             !contains(transcription: transcription, keywords: "welche", "zutat") &&
@@ -66,6 +66,7 @@ public class SpeechProcescor {
         
         // Which step
         if contains(transcription: transcription, keywords: "nächste") ||
+            contains(transcription: transcription, keywords: "nächstes") ||
             contains(transcription: transcription, keywords: "danach") {
             currentStep = currentStep + 1
         }
@@ -80,18 +81,19 @@ public class SpeechProcescor {
             var result = ""
             for ingredientUse in recipe.steps[currentStep].ingredients {
                 if ingredientUse.ingredient.unit != .Ohne {
-                    result = result + "\(ingredientUse.amount.formatted) \(ingredientUse.ingredient.unit) \(ingredientUse.ingredient.name), "
+                    let unitText = NSLocalizedString("Unit.\(ingredientUse.ingredient.unit)", comment: "Unit")
+                    result = result + "\(ingredientUse.amount.formatted) \(unitText) \(ingredientUse.ingredient.name), "
                 } else {
                     result = result + "\(ingredientUse.ingredient.name), "
                 }
             }
-            return result
+            return (content: result, language: "en")
         } else {
-            return "Es gibt keine weiteren Schritte"
+            return (content: "Es gibt keine weiteren Schritte", language: "de")
         }
     }
     
-    public func getDescription(transcription: SFTranscription) -> String? {
+    public func getDescription(transcription: SFTranscription) -> (content: String, language: String)? {
         if !contains(transcription: transcription, keywords: "was", "machen") &&
             !contains(transcription: transcription, keywords: "was", "schritt") &&
             !contains(transcription: transcription, keywords: "welcher", "schritt") &&
@@ -100,6 +102,7 @@ public class SpeechProcescor {
         }
         
         if contains(transcription: transcription, keywords: "nächste") ||
+            contains(transcription: transcription, keywords: "nächstes") ||
             contains(transcription: transcription, keywords: "danach") {
             currentStep = currentStep + 1
         }
@@ -111,9 +114,9 @@ public class SpeechProcescor {
         
         // Create Feedback
         if currentStep < recipe.steps.count {
-            return recipe.steps[currentStep].content
+            return (content: recipe.steps[currentStep].content, language: "en")
         } else {
-            return "Es gibt keine weiteren Schritte"
+            return (content: "Es gibt keine weiteren Schritte", language: "de")
         }
     }
     

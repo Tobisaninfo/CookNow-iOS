@@ -32,7 +32,7 @@ class SettingsTableViewController: UITableViewController {
         } else if section == 1 {
             return 1
         } else if section == 2 {
-            return 1
+            return 2
         }
         return 0
     }
@@ -51,9 +51,14 @@ class SettingsTableViewController: UITableViewController {
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "marketTableCell", for: indexPath)
             return cell
-        } else { // row == 2
-            let cell = tableView.dequeueReusableCell(withIdentifier: "aboutCell", for: indexPath)
-            return cell
+        } else { // section == 2
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "aboutCell", for: indexPath)
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "resetCell", for: indexPath)
+                return cell
+            }
         }
     }
     
@@ -96,7 +101,18 @@ class SettingsTableViewController: UITableViewController {
                 }
             }
         } else if indexPath.section == 2 {
-            self.performSegue(withIdentifier: aboutSegueIdentifer, sender: self)
+            if indexPath.row == 0 {
+                self.performSegue(withIdentifier: aboutSegueIdentifer, sender: self)
+            } else if indexPath.row == 1 {
+                ResourceHandler.clear() // Clear resource cache
+                
+                Rating.list()?.forEach({ $0.delete() })
+                ShoppingItem.list()?.forEach({ $0.delete() })
+                PantryItem.list()?.forEach({ $0.delete() })
+                RecipeBook.list()?.forEach({ $0.delete() })
+                
+                PlanGenerator.newPlan()
+            }
         }
         
         tableView.deselectRow(at: indexPath, animated: true)

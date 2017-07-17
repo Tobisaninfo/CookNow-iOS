@@ -90,4 +90,12 @@ public class ResourceHandler {
         }
         return nil
     }
+ 
+    class func clear() {
+        for scope in iterateEnum(Scope.self) {
+            let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] as String
+            let folder = URL(fileURLWithPath: path).appendingPathComponent(scope.url())
+            try? FileManager.default.removeItem(at: folder)
+        }
+    }
 }

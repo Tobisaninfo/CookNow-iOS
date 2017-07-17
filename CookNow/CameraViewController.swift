@@ -57,6 +57,7 @@ class CameraViewController: BarcodeController, BarcodeControllerDelegate, Camera
         
         itemView.frame = CGRect(origin: origin, size: CGSize(width: 260, height: 130))
         
+        self.ingredientName = nil
         itemView.reloadData()
         
         DispatchQueue.global().async {

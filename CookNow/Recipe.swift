@@ -148,11 +148,13 @@ extension Recipe {
      */
     public func hasAllIngredients() -> Bool {
         for ingredient in ingredients {
-            guard let pantryItem = PantryItem.find(ingredient: ingredient.ingredient) else {
-                return false
-            }
-            if pantryItem.amount < ingredient.amount {
-                return false
+            if ingredient.ingredient.canAddToPantry {
+                guard let pantryItem = PantryItem.find(ingredient: ingredient.ingredient) else {
+                    return false
+                }
+                if pantryItem.amount < ingredient.amount {
+                    return false
+                }
             }
         }
         return true

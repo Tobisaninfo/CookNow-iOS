@@ -32,7 +32,7 @@ class ProductSearchCollectionViewController: UICollectionViewController, UIColle
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         DispatchQueue.global().async {
-            self.ingredients = IngredientHanler.list().sorted(by: { return $0.0.name < $0.1.name})
+            self.ingredients = IngredientHanler.list().filter({ $0.canAddToPantry} ).sorted(by: { return $0.0.name < $0.1.name})
             self.filteredIngredients = self.ingredients
             
             DispatchQueue.main.async {

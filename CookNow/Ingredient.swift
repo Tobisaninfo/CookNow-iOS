@@ -36,6 +36,11 @@ public class Ingredient {
      */
     public let properties: [IngredientProperty]
     
+    /**
+     Flag for pantry.
+     */
+    public let canAddToPantry: Bool
+    
     // MARK: - Initializer
     
     /**
@@ -45,13 +50,15 @@ public class Ingredient {
      - Parameter productName: Product name
      - Parameter unit: Unit Type of the ingredient
      - Parameter properties: Properties of the ingredient
+     - Parameter canAddToPantry: Cann add this ingredient to pantry
      */
-    private init(id: Int, name: String, productName: String, unit: Unit, properties: [IngredientProperty]) {
+    private init(id: Int, name: String, productName: String, unit: Unit, properties: [IngredientProperty], canAddToPantry: Bool) {
         self.id = id
         self.name = name
         self.productName = productName
         self.unit = unit
         self.properties = properties
+        self.canAddToPantry = canAddToPantry
     }
     
     // MARK: - Parsing Data
@@ -97,8 +104,11 @@ public class Ingredient {
         guard let unit = Unit.fromJson(jsonData: unitData) else {
             return nil
         }
+        guard let canAddToPantry = jsonData["canAddToPantry"] as? Bool else {
+            return nil
+        }
     
-        cache[id] = Ingredient(id: id, name: name, productName: productName, unit: unit, properties: properties)
+        cache[id] = Ingredient(id: id, name: name, productName: productName, unit: unit, properties: properties, canAddToPantry: canAddToPantry)
         return cache[id]
     }
 }

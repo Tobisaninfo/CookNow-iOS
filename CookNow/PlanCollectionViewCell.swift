@@ -64,6 +64,9 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
                 }
             }
             
+            cell.setImageForTopButton(image: #imageLiteral(resourceName: "Thumbsup"))
+            cell.setImageForDownButton(image: #imageLiteral(resourceName: "Thumbsdown"))
+
             if let rating = Rating.get(id: Int(item.recipeID)) {
                 if rating.rating > 0 {
                     cell.topRating = rating

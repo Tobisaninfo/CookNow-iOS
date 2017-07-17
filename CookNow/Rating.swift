@@ -21,6 +21,10 @@ extension Rating {
      - Returns: Added Rating
      */
     public class func top(recipe: PlanItem) -> Rating? {
+        if let get = get(id: Int(recipe.recipeID)) {
+            get.rating = 1
+            return get
+        }
         return add(recipe: recipe, rating: 1)
     }
     
@@ -29,6 +33,10 @@ extension Rating {
      - Parameter recipe: PlanItem to rate
      */
     public class func flop(recipe: PlanItem) {
+        if let get = get(id: Int(recipe.recipeID)) {
+            get.rating = -1
+            return
+        }
         _ = add(recipe: recipe, rating: -1)
     }
     

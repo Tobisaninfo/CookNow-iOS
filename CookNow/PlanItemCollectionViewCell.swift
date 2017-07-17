@@ -27,6 +27,10 @@ class PlanItemCollectionViewCell: UICollectionViewCell {
     func setImageForTopButton(image: UIImage) {
         topButton.setImage(image, for: .normal)
     }
+    
+    func setImageForDownButton(image: UIImage) {
+        flopButton.setImage(image, for: .normal)
+    }
 
     @IBAction func topHandler(_ sender: UIButton) {
         if let rating = topRating {
@@ -44,6 +48,8 @@ class PlanItemCollectionViewCell: UICollectionViewCell {
     @IBAction func flopHandler(_ sender: UIButton) {
         if let planItem = planItem {
             let index = Int(planItem.day)
+            
+            setImageForDownButton(image: #imageLiteral(resourceName: "Thumbsdown-Filled"))
             
             Rating.flop(recipe: planItem)
             PlanGenerator.createNewItem(for: planItem)

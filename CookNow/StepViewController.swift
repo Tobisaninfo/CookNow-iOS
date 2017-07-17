@@ -12,7 +12,10 @@ class StepViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var ingredientLabel: UILabel!
+    @IBOutlet weak var ingredientsImage: UIImageView!
     @IBOutlet weak var itemsLabel: UILabel!
+    @IBOutlet weak var itemsImage: UIImageView!
+    @IBOutlet weak var dividerView: UIView!
     @IBOutlet weak var contentLabel: UILabel!
     
     var recipeID: Int?
@@ -45,6 +48,14 @@ class StepViewController: UIViewController {
             ingredientLabel.text = step.ingredients.map({return $0.ingredient.name}).reduce("", concatString)
             itemsLabel.text = step.items.map({return $0.name}).reduce("", concatString)
             contentLabel.text = step.content
+            
+            if step.ingredients.count == 0 {
+                ingredientsImage.removeFromSuperview()
+            }
+            
+            if step.items.count == 0 {
+                itemsImage.removeFromSuperview()
+            }
         }
     }
     

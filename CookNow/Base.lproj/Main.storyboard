@@ -540,18 +540,12 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njZ-MX-DiB">
                                 <rect key="frame" x="44" y="240" width="307" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="Ivg-Iz-99X"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qc4-tp-Qp4">
                                 <rect key="frame" x="44" y="264" width="307" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="ouk-US-liH"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -610,8 +604,11 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="contentLabel" destination="Orv-BX-uVE" id="dAI-1r-iRC"/>
+                        <outlet property="dividerView" destination="k6M-cW-d5S" id="fl7-J8-27i"/>
                         <outlet property="imageView" destination="tGY-wo-Lcu" id="MxR-9l-efv"/>
                         <outlet property="ingredientLabel" destination="njZ-MX-DiB" id="QJ0-o9-GVn"/>
+                        <outlet property="ingredientsImage" destination="vvx-cV-xeU" id="YuK-X9-sJi"/>
+                        <outlet property="itemsImage" destination="phW-EZ-OyT" id="biO-xl-7Pf"/>
                         <outlet property="itemsLabel" destination="qc4-tp-Qp4" id="hy1-am-wKX"/>
                     </connections>
                 </viewController>

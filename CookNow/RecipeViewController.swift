@@ -104,9 +104,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
                     }
                     
                     cell.ingredientLabel.text = ingredient.ingredient.name
-                                        
-                    // TODO Check offer
-                    
+                                                            
                     cell.offerImageView.image = ingredient.ingredient.hasOffer() ? #imageLiteral(resourceName: "Pricetag-Small") : nil
                 }
             }

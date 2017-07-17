@@ -23,7 +23,10 @@ public class Ingredient {
      Ingredient name
      */
     public let name: String
-    
+    /**
+     Ingredient product name (german)
+     */
+    public let productName: String
     /**
      Unit type of ingredient. This is used in ```IngredientUse``` to give amount a context.
      */
@@ -39,12 +42,14 @@ public class Ingredient {
      Create a new ingredient.
      - Parameter id: Ingredient ID
      - Parameter name: Ingredient name
+     - Parameter productName: Product name
      - Parameter unit: Unit Type of the ingredient
      - Parameter properties: Properties of the ingredient
      */
-    private init(id: Int, name: String, unit: Unit, properties: [IngredientProperty]) {
+    private init(id: Int, name: String, productName: String, unit: Unit, properties: [IngredientProperty]) {
         self.id = id
         self.name = name
+        self.productName = productName
         self.unit = unit
         self.properties = properties
     }
@@ -70,7 +75,10 @@ public class Ingredient {
             return cache[id]
         }
         
-        guard let name = jsonData["name"] as? String else {
+        guard let name = jsonData["displayname"] as? String else {
+            return nil
+        }
+        guard let productName = jsonData["productname"] as? String else {
             return nil
         }
         guard let propertiesData = jsonData["property"] as? HttpUtils.JsonArray else {
@@ -90,7 +98,7 @@ public class Ingredient {
             return nil
         }
     
-        cache[id] = Ingredient(id: id, name: name, unit: unit, properties: properties)
+        cache[id] = Ingredient(id: id, name: name, productName: productName, unit: unit, properties: properties)
         return cache[id]
     }
 }
@@ -106,7 +114,7 @@ extension Ingredient {
         var isOffer = false
         for offer in MarketOffer.offers {
             for word in offer.name.components(separatedBy: " ") {
-                if (word as NSString).scoreAgainst(name) > 0.9 {
+                if (word as NSString).scoreAgainst(productName) > 0.9 {
                     isOffer = true
                 }
             }

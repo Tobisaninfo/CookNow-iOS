@@ -136,8 +136,10 @@ extension Recipe {
      */
     public func done() {
         for ingredient in ingredients {
-            if let pantryItem = PantryItem.find(ingredient: ingredient.ingredient) {
-                pantryItem.delete(amount: ingredient.amount)
+            if ingredient.ingredient.canAddToPantry && ingredient.ingredient.unit != .Ohne {
+                if let pantryItem = PantryItem.find(ingredient: ingredient.ingredient) {
+                    pantryItem.delete(amount: ingredient.amount)
+                }
             }
         }
     }

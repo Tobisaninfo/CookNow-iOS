@@ -112,7 +112,7 @@ class RecipeCollectionViewController: UICollectionViewController, UICollectionVi
         }
     }
     
-    func deleteHandler(_ sender: Any) {
+    @objc func deleteHandler(_ sender: Any) {
         if let indexPaths = self.collectionView?.indexPathsForSelectedItems, let recipes = recipeBook?.recipes {
             var temp = [RecipeRef]()
             for indexPath in indexPaths {

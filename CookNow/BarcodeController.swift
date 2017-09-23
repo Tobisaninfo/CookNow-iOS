@@ -30,16 +30,16 @@ public class BarcodeController: UIViewController, AVCaptureMetadataOutputObjects
     private var captureSession: AVCaptureSession?
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
-    private let supportedCodeTypes = [AVMetadataObjectTypeUPCECode,
-                              AVMetadataObjectTypeCode39Code,
-                              AVMetadataObjectTypeCode39Mod43Code,
-                              AVMetadataObjectTypeCode93Code,
-                              AVMetadataObjectTypeCode128Code,
-                              AVMetadataObjectTypeEAN8Code,
-                              AVMetadataObjectTypeEAN13Code,
-                              AVMetadataObjectTypeAztecCode,
-                              AVMetadataObjectTypePDF417Code,
-                              AVMetadataObjectTypeQRCode]
+    private let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
+                              AVMetadataObject.ObjectType.code39,
+                              AVMetadataObject.ObjectType.code39Mod43,
+                              AVMetadataObject.ObjectType.code93,
+                              AVMetadataObject.ObjectType.code128,
+                              AVMetadataObject.ObjectType.ean8,
+                              AVMetadataObject.ObjectType.ean13,
+                              AVMetadataObject.ObjectType.aztec,
+                              AVMetadataObject.ObjectType.pdf417,
+                              AVMetadataObject.ObjectType.qr]
     
     // MARK: - Delegate
     
@@ -67,9 +67,9 @@ public class BarcodeController: UIViewController, AVCaptureMetadataOutputObjects
                         try captureDevice.lockForConfiguration()
                         
                         if isTourchEnable {
-                            try captureDevice.setTorchModeOnWithLevel(AVCaptureMaxAvailableTorchLevel)
+                            try captureDevice.setTorchModeOn(level: AVCaptureDevice.maxAvailableTorchLevel)
                         } else {
-                            captureDevice.torchMode = AVCaptureTorchMode.off
+                            captureDevice.torchMode = AVCaptureDevice.TorchMode.off
                         }
                         captureDevice.unlockForConfiguration()
                     } catch {
@@ -88,7 +88,7 @@ public class BarcodeController: UIViewController, AVCaptureMetadataOutputObjects
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
         
         // Configure Autofocus
         do {
@@ -103,7 +103,7 @@ public class BarcodeController: UIViewController, AVCaptureMetadataOutputObjects
         
         // Setup capture session and preview.
         do {
-            let input = try AVCaptureDeviceInput(device: captureDevice)
+            let input = try AVCaptureDeviceInput(device: captureDevice!)
             
             captureSession = AVCaptureSession()
             captureSession?.addInput(input)
@@ -113,8 +113,8 @@ public class BarcodeController: UIViewController, AVCaptureMetadataOutputObjects
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             captureMetadataOutput.metadataObjectTypes = supportedCodeTypes
             
-            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+            videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
             videoPreviewLayer?.frame = view.layer.bounds
             view.layer.addSublayer(videoPreviewLayer!)
         } catch {
@@ -143,8 +143,8 @@ public class BarcodeController: UIViewController, AVCaptureMetadataOutputObjects
     /**
      Handles the recognized barcodes.
      */
-    public final func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
-        if metadataObjects == nil || metadataObjects.count == 0 {
+    public final func metadataOutput(captureOutput: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        if metadataObjects.count == 0 {
             return
         }
         
@@ -152,7 +152,7 @@ public class BarcodeController: UIViewController, AVCaptureMetadataOutputObjects
             if let metadataObj = obj as? AVMetadataMachineReadableCodeObject {
                 if supportedCodeTypes.contains(metadataObj.type) {
                     if metadataObj.stringValue != nil {
-                        if let code = metadataObj.stringValue, let bounds = videoPreviewLayer?.transformedMetadataObject(for: metadataObj).bounds, !processing.contains(code) {
+                        if let code = metadataObj.stringValue, let bounds = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)?.bounds, !processing.contains(code) {
                             processing.append(code)
                             delegate?.barcodeDidDetect(code: code, frame: bounds)
                             

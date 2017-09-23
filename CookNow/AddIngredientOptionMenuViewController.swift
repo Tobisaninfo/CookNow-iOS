@@ -28,7 +28,7 @@ class AddIngredientOptionMenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func handleTapGesture(recognizer: UITapGestureRecognizer) {
+    @objc func handleTapGesture(recognizer: UITapGestureRecognizer) {
         let point = recognizer.location(in: recognizer.view)
         if !buttonContainer.frame.contains(point) {
             self.dismiss(animated: true, completion: nil)

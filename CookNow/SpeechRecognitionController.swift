@@ -120,10 +120,7 @@ public class SpeechRecognitionController: NSObject {
         // Setup recognition
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
 
-        guard let inputNode = audioEngine.inputNode else {
-            print("Audio engine has no input node")
-            return
-        }
+        let inputNode = audioEngine.inputNode
         
         guard let recognitionRequest = recognitionRequest else {
             print("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
@@ -185,9 +182,9 @@ public class SpeechRecognitionController: NSObject {
      */
     public func stop() {
         recognitionRequest?.endAudio()
-        if let node = audioEngine.inputNode {
-            node.removeTap(onBus: 0)
-        }
+        let node = audioEngine.inputNode
+        node.removeTap(onBus: 0)
+        
         audioEngine.stop()
         
         // Set device to audio output

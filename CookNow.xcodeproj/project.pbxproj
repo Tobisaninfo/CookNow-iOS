@@ -164,6 +164,7 @@
 		F6180A2B1F17A531003E077B /* TipCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6180A2C1F17A531003E077B /* TipCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipCollectionViewCell.xib; sourceTree = "<group>"; };
 		F6180A301F17AC97003E077B /* TipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipViewController.swift; sourceTree = "<group>"; };
+		F6217C741FB75BB20051DE7B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F62D13241F17735A009F9703 /* Tip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		F62D13261F17745A009F9703 /* TipHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipHandler.swift; sourceTree = "<group>"; };
 		F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIngredientOptionMenuViewController.swift; sourceTree = "<group>"; };
@@ -604,6 +605,7 @@
 				F6F1EC801EDD7C9B004383D2 /* CookNow.xcdatamodeld */,
 				F6FA3A691EFAF9F30074744A /* Localizable.strings */,
 				F69F55921F06ADC6000831E7 /* StringScore */,
+				F6217C741FB75BB20051DE7B /* README.md */,
 			);
 			path = CookNow;
 			sourceTree = "<group>";

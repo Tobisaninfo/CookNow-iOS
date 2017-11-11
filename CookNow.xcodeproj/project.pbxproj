@@ -18,6 +18,7 @@
 		F6180A2D1F17A531003E077B /* TipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6180A2B1F17A531003E077B /* TipCollectionViewCell.swift */; };
 		F6180A2E1F17A531003E077B /* TipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6180A2C1F17A531003E077B /* TipCollectionViewCell.xib */; };
 		F6180A311F17AC97003E077B /* TipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6180A301F17AC97003E077B /* TipViewController.swift */; };
+		F6217C761FB760F50051DE7B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F6217C751FB760F50051DE7B /* README.md */; };
 		F62D13251F17735A009F9703 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62D13241F17735A009F9703 /* Tip.swift */; };
 		F62D13271F17745A009F9703 /* TipHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62D13261F17745A009F9703 /* TipHandler.swift */; };
 		F6348D681EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */; };
@@ -164,7 +165,7 @@
 		F6180A2B1F17A531003E077B /* TipCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6180A2C1F17A531003E077B /* TipCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipCollectionViewCell.xib; sourceTree = "<group>"; };
 		F6180A301F17AC97003E077B /* TipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipViewController.swift; sourceTree = "<group>"; };
-		F6217C741FB75BB20051DE7B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F6217C751FB760F50051DE7B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F62D13241F17735A009F9703 /* Tip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		F62D13261F17745A009F9703 /* TipHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipHandler.swift; sourceTree = "<group>"; };
 		F6348D671EEEE03500CAF208 /* AddIngredientOptionMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIngredientOptionMenuViewController.swift; sourceTree = "<group>"; };
@@ -570,6 +571,7 @@
 		F6F1EC6D1EDD7C9B004383D2 = {
 			isa = PBXGroup;
 			children = (
+				F6217C751FB760F50051DE7B /* README.md */,
 				F6F1EC781EDD7C9B004383D2 /* CookNow */,
 				F6F1EC901EDD7C9B004383D2 /* CookNowTests */,
 				F6F1EC9B1EDD7C9B004383D2 /* CookNowUITests */,
@@ -605,7 +607,6 @@
 				F6F1EC801EDD7C9B004383D2 /* CookNow.xcdatamodeld */,
 				F6FA3A691EFAF9F30074744A /* Localizable.strings */,
 				F69F55921F06ADC6000831E7 /* StringScore */,
-				F6217C741FB75BB20051DE7B /* README.md */,
 			);
 			path = CookNow;
 			sourceTree = "<group>";
@@ -775,6 +776,7 @@
 				F6F789511EF16C05009E7323 /* RecipeCollectionViewCell.xib in Resources */,
 				F6952AC91F0E7BF90067A61A /* CookBookAddCollectionViewCell.xib in Resources */,
 				F607CA9D1F003E79008D77CF /* MarketCollectionViewCell.xib in Resources */,
+				F6217C761FB760F50051DE7B /* README.md in Resources */,
 				F6F1EC841EDD7C9B004383D2 /* Assets.xcassets in Resources */,
 				F64DAB421EF2F01B002343BF /* PlanItemCollectionViewCell.xib in Resources */,
 				F6FA3A6A1EFAF9F30074744A /* Localizable.strings in Resources */,

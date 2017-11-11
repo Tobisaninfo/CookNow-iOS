@@ -5,13 +5,13 @@ CookNow helps you managing your ingredients at home and helps you cooking. In ad
 ## Features
 
 - Random weekly recipe plan
-- shopping list for ingredients not in your plantry
+- shopping list for ingredients not in your pantry
 - save your ingredients at home in the pantry
 - save recipes in collections
-- scan barcodes for recipes suggestions
-- scan barcodes to add products into your pantry
+- scan barcode for recipes suggestions
+- scan barcode to add products into your pantry
 - select a supermarket for discover deals
-- choose your diatry restriction (vegan, vegeratian, ...)
+- choose your dietary restriction (vegan, vegetarian, ...)
 
 ## Screenshots
 
@@ -24,12 +24,12 @@ CookNow helps you managing your ingredients at home and helps you cooking. In ad
 ## Installation
 
 - Clone the repository and open the xcode project
-- Install the iOS app on yout iPhone
+- Install the iOS app on your iPhone
 
-## Requerments
+## Requirements
 
 - iOS 10.3
-- apple developer account for permanet use
+- apple developer account for permanent use
 - a CookNow Server
 
 ## Libraries

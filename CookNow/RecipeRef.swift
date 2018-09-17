@@ -33,7 +33,7 @@ extension RecipeRef {
                     item.id = Int32(id)
                     item.name = name
                     item.recipeBook = book
-                    item.image = UIImagePNGRepresentation(image) as NSData?
+                    item.image = UIImagePNGRepresentation(image)
                     
                     delegate.saveContext()
                     

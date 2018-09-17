@@ -88,7 +88,7 @@ class PlanCollectionViewCell: UICollectionViewCell, UICollectionViewDelegate, UI
         return CGSize(width: 125, height: 145)
     }
     
-    func replceItemByObserver(notification: Notification) {
+    @objc func replceItemByObserver(notification: Notification) {
         DispatchQueue.main.async {
             self.replaceItem(index: -1)
         }

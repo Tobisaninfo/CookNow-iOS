@@ -137,7 +137,7 @@ class RecipeViewController: UICollectionViewController, UICollectionViewDelegate
     
     // MARK: - Observer
     
-    func marketOfferDidUpdate(notification: Notification) {
+    @objc func marketOfferDidUpdate(notification: Notification) {
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
         }

@@ -100,7 +100,7 @@ class CameraItemView: UIView {
         activityIndicator.stopAnimating()
     }
     
-    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         delegate?.didSelectReicpeImage()
     }
     

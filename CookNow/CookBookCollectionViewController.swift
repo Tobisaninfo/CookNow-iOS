@@ -165,7 +165,7 @@ class CookBookCollectionViewController: UICollectionViewController, UICollection
         }
     }
     
-    func deleteHandler(_ sender: Any) {
+    @objc func deleteHandler(_ sender: Any) {
         if let indexPaths = self.collectionView?.indexPathsForSelectedItems, let items = self.items {
             for indexPath in indexPaths {
                 items[indexPath.row - 1].delete()
